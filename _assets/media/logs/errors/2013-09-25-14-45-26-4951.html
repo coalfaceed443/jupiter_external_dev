@@ -1,0 +1,150 @@
+﻿<font face="Arial" size="4" color="red">An error occurred at http://localhost:45240/admin/Duplicate/List.aspx?namespace=CRM.Code.Models.CRM_Person&compare=nigel|depledge|nigel.depledge@tesco.net||<br><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;Cannot&nbsp;open&nbsp;database&nbsp;"sevenstories"&nbsp;requested&nbsp;by&nbsp;the&nbsp;login.&nbsp;The&nbsp;login&nbsp;failed.<BR>Login&nbsp;failed&nbsp;for&nbsp;user&nbsp;'sa'.</font></font><br><br><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Error Information</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Source</font></td>
+<td><font face="Arial" size="2">.Net&nbsp;SqlClient&nbsp;Data&nbsp;Provider</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">Exception Type</font></td>
+<td><font face="Arial" size="2">System.Data.SqlClient.SqlException</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Message</font></td>
+<td><font face="Arial" size="2">Cannot&nbsp;open&nbsp;database&nbsp;"sevenstories"&nbsp;requested&nbsp;by&nbsp;the&nbsp;login.&nbsp;The&nbsp;login&nbsp;failed.<BR>Login&nbsp;failed&nbsp;for&nbsp;user&nbsp;'sa'.</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">StackTrace</font></td>
+<td><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnection.OnError(SqlException&nbsp;exception,&nbsp;Boolean&nbsp;breakConnection)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject&nbsp;stateObj)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.TdsParser.Run(RunBehavior&nbsp;runBehavior,&nbsp;SqlCommand&nbsp;cmdHandler,&nbsp;SqlDataReader&nbsp;dataStream,&nbsp;BulkCopySimpleResultSet&nbsp;bulkCopyHandler,&nbsp;TdsParserStateObject&nbsp;stateObj)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean&nbsp;enlistOK)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo&nbsp;serverInfo,&nbsp;String&nbsp;newPassword,&nbsp;Boolean&nbsp;ignoreSniOpenTimeout,&nbsp;Int64&nbsp;timerExpire,&nbsp;SqlConnection&nbsp;owningObject)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(String&nbsp;host,&nbsp;String&nbsp;newPassword,&nbsp;Boolean&nbsp;redirectedUserInstance,&nbsp;SqlConnection&nbsp;owningObject,&nbsp;SqlConnectionString&nbsp;connectionOptions,&nbsp;Int64&nbsp;timerStart)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(SqlConnection&nbsp;owningObject,&nbsp;SqlConnectionString&nbsp;connectionOptions,&nbsp;String&nbsp;newPassword,&nbsp;Boolean&nbsp;redirectedUserInstance)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity&nbsp;identity,&nbsp;SqlConnectionString&nbsp;connectionOptions,&nbsp;Object&nbsp;providerInfo,&nbsp;String&nbsp;newPassword,&nbsp;SqlConnection&nbsp;owningObject,&nbsp;Boolean&nbsp;redirectedUserInstance)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions&nbsp;options,&nbsp;Object&nbsp;poolGroupProviderInfo,&nbsp;DbConnectionPool&nbsp;pool,&nbsp;DbConnection&nbsp;owningConnection)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnection&nbsp;owningConnection,&nbsp;DbConnectionPool&nbsp;pool,&nbsp;DbConnectionOptions&nbsp;options)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection&nbsp;owningObject)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection&nbsp;owningObject)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection&nbsp;owningObject)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection&nbsp;owningConnection)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection&nbsp;outerConnection,&nbsp;DbConnectionFactory&nbsp;connectionFactory)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlConnection.Open()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlConnectionManager.UseConnection(IConnectionUser&nbsp;user)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.get_IsSqlCe()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.InitializeProviderMode()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression&nbsp;query)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.Table`1.System.Linq.IQueryProvider.Execute[TResult](Expression&nbsp;expression)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Linq.Queryable.SingleOrDefault[TSource](IQueryable`1&nbsp;source,&nbsp;Expression`1&nbsp;predicate)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Code.Auth.AuthAdmin.Authorise()&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Code\Auth\AuthAdmin.cs:line&nbsp;39<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Code.BasePages.Admin.AdminPage.Page_PreInit(Object&nbsp;sender,&nbsp;EventArgs&nbsp;e)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Code\BasePages\Admin\AdminPage.cs:line&nbsp;80<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr&nbsp;fp,&nbsp;Object&nbsp;o,&nbsp;Object&nbsp;t,&nbsp;EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object&nbsp;sender,&nbsp;EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.OnPreInit(EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.PerformPreInit()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.ProcessRequestMain(Boolean&nbsp;includeStagesBeforeAsyncPoint,&nbsp;Boolean&nbsp;includeStagesAfterAsyncPoint)</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">TargetSite</font></td>
+<td><font face="Arial" size="2">Void&nbsp;OnError(System.Data.SqlClient.SqlException,&nbsp;Boolean)</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;QueryString Collection</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">namespace</font></td>
+<td><font face="Arial" size="2">CRM.Code.Models.CRM_Person</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">compare</font></td>
+<td><font face="Arial" size="2">nigel|depledge|nigel.depledge@tesco.net||</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Cookies Collection</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ASP.NET_SessionId</font></td>
+<td><font face="Arial" size="2">jiefyg45g15zf5ikfyb3rx45</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">admin</font></td>
+<td><font face="Arial" size="2">authcode=19694030-0efe-4673-9951-6f0b280c6b58</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">7stories_query_status</font></td>
+<td><font face="Arial" size="2">true</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Session Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">IsAuthorized</font></td>
+<td><font face="Arial" size="2">True</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00_mainContent_lvAnnualPassPAGE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00_mainContent_ucListPAGE</font></td>
+<td><font face="Arial" size="2">590</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ucListPAGE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Server Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ALL_HTTP</font></td>
+<td><font face="Arial" size="2">HTTP_CONNECTION:keep-alive<BR>HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<BR>HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3<BR>HTTP_ACCEPT_ENCODING:gzip,deflate<BR>HTTP_ACCEPT_LANGUAGE:en-US<BR>HTTP_COOKIE:ASP.NET_SessionId=jiefyg45g15zf5ikfyb3rx45;&nbsp;admin=authcode=19694030-0efe-4673-9951-6f0b280c6b58;&nbsp;7stories_query_status=true<BR>HTTP_HOST:localhost:45240<BR>HTTP_REFERER:http://localhost:45240/admin/person/details.aspx?id=10024<BR>HTTP_USER_AGENT:Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.1&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Maxthon/4.1.2.4000&nbsp;Chrome/26.0.1410.43&nbsp;Safari/537.1<BR>HTTP_DNT:1<BR></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ALL_RAW</font></td>
+<td><font face="Arial" size="2">Connection:&nbsp;keep-alive<BR>Accept:&nbsp;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<BR>Accept-Charset:&nbsp;ISO-8859-1,utf-8;q=0.7,*;q=0.3<BR>Accept-Encoding:&nbsp;gzip,deflate<BR>Accept-Language:&nbsp;en-US<BR>Cookie:&nbsp;ASP.NET_SessionId=jiefyg45g15zf5ikfyb3rx45;&nbsp;admin=authcode=19694030-0efe-4673-9951-6f0b280c6b58;&nbsp;7stories_query_status=true<BR>Host:&nbsp;localhost:45240<BR>Referer:&nbsp;http://localhost:45240/admin/person/details.aspx?id=10024<BR>User-Agent:&nbsp;Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.1&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Maxthon/4.1.2.4000&nbsp;Chrome/26.0.1410.43&nbsp;Safari/537.1<BR>DNT:&nbsp;1<BR></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">APPL_MD_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">APPL_PHYSICAL_PATH</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">AUTH_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_PASSWORD</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">LOGON_USER</font></td>
+<td><font face="Arial" size="2">Ed-PC\Ed</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_COOKIE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_FLAGS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERIALNUMBER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CONTENT_LENGTH</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CONTENT_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">GATEWAY_INTERFACE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">INSTANCE_ID</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">INSTANCE_META_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">LOCAL_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">PATH_INFO</font></td>
+<td><font face="Arial" size="2">/admin/Duplicate/List.aspx</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">PATH_TRANSLATED</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\admin\Duplicate\List.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">QUERY_STRING</font></td>
+<td><font face="Arial" size="2">namespace=CRM.Code.Models.CRM_Person&amp;compare=nigel|depledge|nigel.depledge@tesco.net||</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REMOTE_HOST</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_PORT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REQUEST_METHOD</font></td>
+<td><font face="Arial" size="2">GET</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SCRIPT_NAME</font></td>
+<td><font face="Arial" size="2">/admin/Duplicate/List.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_NAME</font></td>
+<td><font face="Arial" size="2">localhost</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PORT</font></td>
+<td><font face="Arial" size="2">45240</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_PORT_SECURE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PROTOCOL</font></td>
+<td><font face="Arial" size="2">HTTP/1.1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_SOFTWARE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">URL</font></td>
+<td><font face="Arial" size="2">/admin/Duplicate/List.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_CONNECTION</font></td>
+<td><font face="Arial" size="2">keep-alive</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ACCEPT</font></td>
+<td><font face="Arial" size="2">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT_CHARSET</font></td>
+<td><font face="Arial" size="2">ISO-8859-1,utf-8;q=0.7,*;q=0.3</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ACCEPT_ENCODING</font></td>
+<td><font face="Arial" size="2">gzip,deflate</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT_LANGUAGE</font></td>
+<td><font face="Arial" size="2">en-US</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_COOKIE</font></td>
+<td><font face="Arial" size="2">ASP.NET_SessionId=jiefyg45g15zf5ikfyb3rx45;&nbsp;admin=authcode=19694030-0efe-4673-9951-6f0b280c6b58;&nbsp;7stories_query_status=true</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_HOST</font></td>
+<td><font face="Arial" size="2">localhost:45240</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_REFERER</font></td>
+<td><font face="Arial" size="2">http://localhost:45240/admin/person/details.aspx?id=10024</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_USER_AGENT</font></td>
+<td><font face="Arial" size="2">Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.1&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Maxthon/4.1.2.4000&nbsp;Chrome/26.0.1410.43&nbsp;Safari/537.1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_DNT</font></td>
+<td><font face="Arial" size="2">1</font></td></tr>
+</table>

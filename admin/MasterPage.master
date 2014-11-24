@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="CRM.Admin.MasterPage" CodeBehind="MasterPage.master.cs" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Admin Panel</title>
+    <ucUtil:Scripts ID="ucScripts" runat="server" />
+    <asp:ContentPlaceHolder ID="cphHeader" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function closeSidr(target) {
+            $.sidr('close', target);
+        }
+
+
+    </script>
+
+</head>
+<body id="body" runat="server">
+    <form id="form1" runat="server">
+
+    <asp:ScriptManager ID="scrptMan" runat="server" />
+    <ucUtil:DropDownNotice ID="ddnAlert" runat="server" />
+    <div id="header-wrapper">
+        <div class="container">
+            
+                <div id="top-header">
+                <div id="logo">
+                    <a href="/admin">
+                        <img src="http://www.jupiterartland.org/_assets/images/site/logo.png" alt="Seven Stories CRM" style="height: 70px;
+                            padding-bottom: 30px;" /></a>
+                </div>
+                <div id="userBox">
+                    <p>                    
+                        <a href="/admin/scanning/list.aspx" class="link-header-home">
+                            <img src="/_assets/images/admin/icons_b/tag.png" alt="scan" title="Scan" /></a>
+                        <a href="/admin/adminuser/details.aspx" class="link-header-home">
+                            <img src="/_assets/images/admin/icons_b/user.png" alt="account" title="Account" /></a>
+                        <a href="/admin/setting/list.aspx" class="link-header-home">
+                            <img src="/_assets/images/admin/icons_b/engine.png" alt="settings" title="Settings" /></a>
+                        <a href="/admin/login.aspx?action=logout" class="link-header-home">
+                            <img src="/_assets/images/admin/icons_b/minus.png" alt="logout" title="Logout" /></a></p>
+                </div>
+                </div>
+                <br class="clearFix" />
+                <div id="menu">
+                    <ul>
+                        <% foreach (var item in this.menuItems)
+                           { %>
+                        <li class="<%= item.IsCurrentArea && item.name != "Dropdowns" ? "selected" : "" %>" style="white-space: nowrap">
+                           
+                            <% if (item.name == "Dashboard")
+                            {%>
+                                <span class="glyphicon glyphicon-home"></span>
+                            <%}
+                              else
+                              { %> <a href="<%= item.url %>">
+                                <%= item.name %></a>
+                                <%} %>
+                            <%if (item.HasChildren)
+                              { %>
+                            <ul class="main-sub-nav">
+                                <% foreach (var child in item.children)
+                                   { %>
+                                <li class="<%= child.IsCurrentArea ? "selected" : "" %>"><span class="text-link"><a
+                                    href="<%= child.url %>">
+                                    <%= child.name%></a></span></li>
+                                <%}%>
+                            </ul>
+                            <%}%>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+           
+        </div>
+    </div>
+    <div id="submenu-wrapper">
+        <div class="container">
+            <div id="<%= submenuID %>">
+                <asp:MultiView ID="mvSubmenu" runat="server">
+                </asp:MultiView>
+            </div>
+        </div>
+    </div>
+    <div id="content-wrapper">
+        <div class="container">
+            <div id="content">
+                <div id="leftBox">
+                    <asp:ContentPlaceHolder ID="mainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ucUtil:NavigationHistory ID="ucNavHistory" runat="server" />
+
+    <!-- Include the Sidr JS -->
+    <script src="/_assets/scripts/jquery.sidr.min.js"></script>
+    </form>
+</body>
+</html>

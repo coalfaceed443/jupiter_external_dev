@@ -1,0 +1,2500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{67515D8D-CDE6-4D18-B8E1-656FC5A676D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRM</RootNamespace>
+    <AssemblyName>Website</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Analytics">
+      <HintPath>C:\Users\Ed\Desktop\build\bin\Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="App_Licenses">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\App_Licenses.dll</HintPath>
+    </Reference>
+    <Reference Include="CampaignMonitorAPIWrapper">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\CampaignMonitorAPIWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET, Version=3.6.4.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeCarvings.Piczard">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\CodeCarvings.Piczard.dll</HintPath>
+    </Reference>
+    <Reference Include="createsend-dotnet.net35">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\createsend-dotnet.net35.dll</HintPath>
+    </Reference>
+    <Reference Include="FredCK.FCKeditorV2">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\FredCK.FCKeditorV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Intelligencia.UrlRewriter">
+      <HintPath>..\..\..\..\..\DO NOT TOUCH Resources 3.5\DllBase\Intelligencia.UrlRewriter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Utils.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\AdminUser\Details.aspx" />
+    <Content Include="admin\AnnualPassCard\Overview.aspx" />
+    <Content Include="admin\Calendar\Frame\Rota.aspx" />
+    <Content Include="admin\Calendar\Frame\WeekView.aspx" />
+    <Content Include="admin\Calendar\Invite\List.aspx" />
+    <Content Include="admin\Calendar\List.aspx" />
+    <Content Include="admin\Calendar\Outreach\Details.aspx" />
+    <Content Include="admin\Calendar\RSVP\Default.aspx" />
+    <Content Include="admin\Communications\Emails\Details.aspx" />
+    <Content Include="admin\Communications\Emails\List.aspx" />
+    <Content Include="admin\Communications\Frames\Comms.aspx" />
+    <Content Include="admin\Communications\List.aspx" />
+    <Content Include="admin\Families\Details.aspx" />
+    <Content Include="admin\Families\List.aspx" />
+    <Content Include="admin\Fundraising\Gifts\List.aspx" />
+    <Content Include="admin\Organisation\Persons\FullList.aspx" />
+    <Content Include="admin\Person\Attendance\List.aspx" />
+    <Content Include="admin\Person\Donations\List.aspx" />
+    <Content Include="admin\Person\Gift\Details.aspx" />
+    <Content Include="admin\Person\Gift\List.aspx" />
+    <Content Include="admin\School\Region\Details.aspx" />
+    <Content Include="admin\School\Region\List.aspx" />
+    <Content Include="admin\Exhibition\Details.aspx" />
+    <Content Include="admin\Exhibition\List.aspx" />
+    <Content Include="admin\Organisation\Persons\List.aspx" />
+    <Content Include="admin\Organisation\Schools\List.aspx" />
+    <Content Include="admin\Person\Passes\List.aspx" />
+    <Content Include="admin\Person\Titles\Details.aspx" />
+    <Content Include="admin\Person\Titles\List.aspx" />
+    <Content Include="admin\School\KeyStages\Details.aspx" />
+    <Content Include="admin\School\KeyStages\List.aspx" />
+    <Content Include="admin\School\Person\List.aspx" />
+    <Content Include="admin\School\Organisations\List.aspx" />
+    <Content Include="admin\Setting\AdminUser\BespokePermissions\List.aspx" />
+    <Content Include="admin\Setting\AdminUser\Details.aspx" />
+    <Content Include="admin\Setting\AdminUser\List.aspx" />
+    <Content Include="admin\AnnualPassCard\AnnualPass\Details.aspx" />
+    <Content Include="admin\AnnualPassCard\Types\Details.aspx" />
+    <Content Include="admin\AnnualPassCard\Details.aspx" />
+    <Content Include="admin\AnnualPassCard\List.aspx" />
+    <Content Include="admin\AnnualPassCard\AnnualPass\List.aspx" />
+    <Content Include="admin\AnnualPassCard\Types\List.aspx" />
+    <Content Include="admin\Calendar\CPD\Details.aspx" />
+    <Content Include="admin\Calendar\Clashes\List.aspx" />
+    <Content Include="admin\Calendar\Default.aspx" />
+    <Content Include="admin\Calendar\Details.aspx" />
+    <Content Include="admin\Calendar\Duplicate\Details.aspx" />
+    <Content Include="admin\Calendar\Frame\Calendar.aspx" />
+    <Content Include="admin\Calendar\Finance\Details.aspx" />
+    <Content Include="admin\Calendar\Frame\CalendarList.aspx" />
+    <Content Include="admin\Calendar\GroupBookings\Details.aspx" />
+    <Content Include="admin\Calendar\Parties\Details.aspx" />
+    <Content Include="admin\Calendar\Task\Details.aspx" />
+    <Content Include="admin\Calendar\Task\List.aspx" />
+    <Content Include="admin\Calendar\UserTags\List.aspx" />
+    <Content Include="admin\Calendar\Venues\Default.aspx" />
+    <Content Include="admin\CustomFields\Answers\Details.aspx" />
+    <Content Include="admin\CustomFields\Answers\List.aspx" />
+    <Content Include="admin\CustomFields\Details.aspx" />
+    <Content Include="admin\CustomFields\List.aspx" />
+    <Content Include="admin\Fundraising\PaymentType\Details.aspx" />
+    <Content Include="admin\Fundraising\PaymentType\List.aspx" />
+    <Content Include="admin\Fundraising\Reasons\Details.aspx" />
+    <Content Include="admin\Fundraising\Reasons\List.aspx" />
+    <Content Include="admin\Fundraising\Details.aspx" />
+    <Content Include="admin\Fundraising\Funds\Details.aspx" />
+    <Content Include="admin\Fundraising\Funds\List.aspx" />
+    <Content Include="admin\Fundraising\List.aspx" />
+    <Content Include="admin\Package\Details.aspx" />
+    <Content Include="admin\Package\List.aspx" />
+    <Content Include="admin\Default.aspx" />
+    <Content Include="admin\Duplicate\List.aspx" />
+    <Content Include="admin\History\Frames\History.aspx" />
+    <Content Include="admin\Login.aspx" />
+    <Content Include="admin\NoPermission.aspx" />
+    <Content Include="admin\Notes\Frames\Details.aspx" />
+    <Content Include="admin\Notes\Frames\List.aspx" />
+    <Content Include="admin\Offer\Details.aspx" />
+    <Content Include="admin\Offer\List.aspx" />
+    <Content Include="admin\Organisation\Details.aspx" />
+    <Content Include="admin\Person\Families\Details.aspx" />
+    <Content Include="admin\Person\Families\List.aspx" />
+    <Content Include="admin\Person\Schools\Details.aspx" />
+    <Content Include="admin\Person\Schools\List.aspx" />
+    <Content Include="admin\Scanning\Details\Basic.aspx" />
+    <Content Include="admin\Scanning\Details\Personal.aspx" />
+    <Content Include="admin\Scanning\Details\Families.aspx" />
+    <Content Include="admin\Scanning\Details\School.aspx" />
+    <Content Include="admin\Scanning\Details\Organisation.aspx" />
+    <Content Include="admin\Scanning\Frame\ScanLog.aspx" />
+    <Content Include="admin\Scanning\List.aspx" />
+    <Content Include="admin\Scanning\ScanResultFrame.aspx" />
+    <Content Include="admin\School\Details.aspx" />
+    <Content Include="admin\School\LEA\Details.aspx" />
+    <Content Include="admin\School\LEA\List.aspx" />
+    <Content Include="admin\Organisation\List.aspx" />
+    <Content Include="admin\Organisation\Types\Details.aspx" />
+    <Content Include="admin\Organisation\Types\List.aspx" />
+    <Content Include="admin\Password.aspx" />
+    <Content Include="admin\Person\Details.aspx" />
+    <Content Include="admin\Person\List.aspx" />
+    <Content Include="admin\Person\Organisations\Details.aspx" />
+    <Content Include="admin\Person\Organisations\List.aspx" />
+    <Content Include="admin\Person\Personal\Details.aspx" />
+    <Content Include="admin\Person\Personal\List.aspx" />
+    <Content Include="admin\Role\Details.aspx" />
+    <Content Include="admin\Role\List.aspx" />
+    <Content Include="admin\School\List.aspx" />
+    <Content Include="admin\School\Types\Details.aspx" />
+    <Content Include="admin\School\Types\List.aspx" />
+    <Content Include="admin\Setting\AdminUser\Permissions\List.aspx" />
+    <Content Include="admin\Setting\List.aspx" />
+    <Content Include="admin\Setting\Venues\Details.aspx" />
+    <Content Include="admin\Setting\Venues\List.aspx" />
+    <Content Include="admin\test-match.aspx" />
+    <Content Include="App_Emails\Invites\RSVP.aspx" />
+    <Content Include="App_Emails\Invites\UserRemoved.aspx" />
+    <Content Include="App_Emails\Invites\DateTimeChange.aspx" />
+    <Content Include="App_Emails\Invites\NewInvite.aspx" />
+    <Content Include="App_Emails\Invites\VenueChange.aspx" />
+    <Content Include="App_Emails\ResetLink.aspx" />
+    <Content Include="bin\Utils.dll" />
+    <Content Include="Controls\Admin\calendar.aspx" />
+    <Content Include="Controls\Admin\CustomFields\CustomFields.ascx" />
+    <Content Include="Controls\Admin\CustomFields\Field\CustomField.ascx" />
+    <Content Include="Controls\Admin\ImageUpload\SimpleImageUpload.ascx" />
+    <Content Include="Controls\Admin\ImageUpload\SimpleImageUpload.js" />
+    <Content Include="Controls\Admin\ImageUpload\upload.aspx" />
+    <Content Include="Controls\Admin\ImageUpload\wait.gif" />
+    <Content Include="Controls\Admin\Navigation\Calendar.ascx" />
+    <Content Include="Controls\Admin\Navigation\AnnualPass.ascx" />
+    <Content Include="Controls\Admin\Navigation\Schools.ascx" />
+    <Content Include="Controls\Admin\Navigation\CustomField.ascx" />
+    <Content Include="Controls\Admin\Navigation\NavigationHistory.ascx" />
+    <Content Include="Controls\Admin\Navigation\Organisations.ascx" />
+    <Content Include="Controls\Admin\Navigation\Persons.ascx" />
+    <Content Include="Controls\Admin\Navigation\Scan.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\Address.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\Duplicate.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\List\Query\DataQuery.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\List\SubmitMailout.aspx" />
+    <Content Include="Controls\Admin\SharedObjects\List\UtilListView.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\Panel\CommsLog.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\Panel\Notes\List.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\Panel\LogHistory.ascx" />
+    <Content Include="Controls\Admin\SharedObjects\Scripts.ascx" />
+    <Content Include="Controls\Forms\AutoComplete.ascx" />
+    <Content Include="Controls\Forms\ConfirmationPage.ascx" />
+    <Content Include="Controls\Forms\DateCalendar.ascx" />
+    <Content Include="Controls\Forms\DropDownNotice.ascx" />
+    <Content Include="Controls\Forms\EmbeddedVideo.ascx" />
+    <Content Include="Controls\Forms\FileUpload.ascx" />
+    <Content Include="Controls\Forms\TextBox.ascx" />
+    <Content Include="Controls\Forms\TextEditor.ascx" />
+    <Content Include="Controls\Forms\UserControlButton.ascx" />
+    <Content Include="Swap.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WebService\CRMSync.asmx" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\accept.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\ajax-loader.gif" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\application_view_icons.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\application_view_list.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\bin_closed.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\bullet_arrow_down.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\bullet_arrow_up.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\download.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\aac.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\avi.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\bmp.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\chm.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\css.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\default.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\dll.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\doc.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\docx.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\fla.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\gif.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\htm.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\html.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\ini.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\jar.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\jpeg.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\jpg.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\js.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\lasso.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\mdb.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\mov.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\mp3.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\mp4.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\mpg.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\ogg.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\ogv.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\other_image.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\other_movie.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\other_music.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\other_music2.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\pdf.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\php.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\png.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\ppt.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\py.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\rb.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\real.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\reg.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\rtf.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\sql.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\swf.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\txt.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\vbs.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\wav.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\webm.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\wma.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\wmv.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\xls.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\xlsx.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\xml.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\xsl.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\zip.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Close.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Documents.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Favorites.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Image.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Movie.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Music.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Net.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Open.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_ProgramFiles.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\fileicons\_Works.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\folder_add.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\house.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\parentfolder.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\pencil.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\plus.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\reset.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\upload.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\images\wait30trans.gif" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\index.html" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\filemanager.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\filemanager.liveSearch.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\filemanager.liveSearch.min.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\filemanager.min.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery-1.8.3.min.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\images\cut.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\images\door.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\images\page_white_copy.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\images\page_white_delete.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\images\page_white_edit.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\images\page_white_paste.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\jquery.contextMenu-1.01.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.contextmenu\jquery.contextMenu-1.01.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\application.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\code.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\css.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\db.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\directory.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\doc.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\file.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\film.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\flash.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\folder_open.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\html.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\java.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\linux.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\music.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\pdf.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\php.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\picture.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\ppt.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\psd.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\ruby.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\script.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\spinner.gif" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\txt.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\xls.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\images\zip.png" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\jqueryFileTree.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.filetree\jqueryFileTree.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.form-3.24.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.impromptu-3.2.min.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.splitter\hgrabber.gif" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.splitter\jquery.splitter-1.5.1.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.splitter\jquery.splitter.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.splitter\vgrabber.gif" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\jquery.tablesorter-2.7.2.min.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\ca.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\cs.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\da.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\de.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\en-gb.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\en.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\es.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\fi.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\fr.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\he.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\hu.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\it.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\ja.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\nl.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\pl.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\pt.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\ru.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\sv.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\tr.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\vn.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\zh-cn.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\languages\zh-tw.js" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\styles\filemanager.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\styles\ie8.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\styles\ie9.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\styles\reset.css" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\userfiles\welcome.txt" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\utils\generate-lang.py" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\utils\minify.py" />
+    <Content Include="_assets\ckeditor\build-config.js" />
+    <Content Include="_assets\ckeditor\ckeditor.js" />
+    <Content Include="_assets\ckeditor\config.js" />
+    <Content Include="_assets\ckeditor\contents.css" />
+    <Content Include="_assets\ckeditor\lang\af.js" />
+    <Content Include="_assets\ckeditor\lang\ar.js" />
+    <Content Include="_assets\ckeditor\lang\bg.js" />
+    <Content Include="_assets\ckeditor\lang\bn.js" />
+    <Content Include="_assets\ckeditor\lang\bs.js" />
+    <Content Include="_assets\ckeditor\lang\ca.js" />
+    <Content Include="_assets\ckeditor\lang\cs.js" />
+    <Content Include="_assets\ckeditor\lang\cy.js" />
+    <Content Include="_assets\ckeditor\lang\da.js" />
+    <Content Include="_assets\ckeditor\lang\de.js" />
+    <Content Include="_assets\ckeditor\lang\el.js" />
+    <Content Include="_assets\ckeditor\lang\en-au.js" />
+    <Content Include="_assets\ckeditor\lang\en-ca.js" />
+    <Content Include="_assets\ckeditor\lang\en-gb.js" />
+    <Content Include="_assets\ckeditor\lang\en.js" />
+    <Content Include="_assets\ckeditor\lang\eo.js" />
+    <Content Include="_assets\ckeditor\lang\es.js" />
+    <Content Include="_assets\ckeditor\lang\et.js" />
+    <Content Include="_assets\ckeditor\lang\eu.js" />
+    <Content Include="_assets\ckeditor\lang\fa.js" />
+    <Content Include="_assets\ckeditor\lang\fi.js" />
+    <Content Include="_assets\ckeditor\lang\fo.js" />
+    <Content Include="_assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="_assets\ckeditor\lang\fr.js" />
+    <Content Include="_assets\ckeditor\lang\gl.js" />
+    <Content Include="_assets\ckeditor\lang\gu.js" />
+    <Content Include="_assets\ckeditor\lang\he.js" />
+    <Content Include="_assets\ckeditor\lang\hi.js" />
+    <Content Include="_assets\ckeditor\lang\hr.js" />
+    <Content Include="_assets\ckeditor\lang\hu.js" />
+    <Content Include="_assets\ckeditor\lang\is.js" />
+    <Content Include="_assets\ckeditor\lang\it.js" />
+    <Content Include="_assets\ckeditor\lang\ja.js" />
+    <Content Include="_assets\ckeditor\lang\ka.js" />
+    <Content Include="_assets\ckeditor\lang\km.js" />
+    <Content Include="_assets\ckeditor\lang\ko.js" />
+    <Content Include="_assets\ckeditor\lang\ku.js" />
+    <Content Include="_assets\ckeditor\lang\lt.js" />
+    <Content Include="_assets\ckeditor\lang\lv.js" />
+    <Content Include="_assets\ckeditor\lang\mk.js" />
+    <Content Include="_assets\ckeditor\lang\mn.js" />
+    <Content Include="_assets\ckeditor\lang\ms.js" />
+    <Content Include="_assets\ckeditor\lang\nb.js" />
+    <Content Include="_assets\ckeditor\lang\nl.js" />
+    <Content Include="_assets\ckeditor\lang\no.js" />
+    <Content Include="_assets\ckeditor\lang\pl.js" />
+    <Content Include="_assets\ckeditor\lang\pt-br.js" />
+    <Content Include="_assets\ckeditor\lang\pt.js" />
+    <Content Include="_assets\ckeditor\lang\ro.js" />
+    <Content Include="_assets\ckeditor\lang\ru.js" />
+    <Content Include="_assets\ckeditor\lang\sk.js" />
+    <Content Include="_assets\ckeditor\lang\sl.js" />
+    <Content Include="_assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="_assets\ckeditor\lang\sr.js" />
+    <Content Include="_assets\ckeditor\lang\sv.js" />
+    <Content Include="_assets\ckeditor\lang\th.js" />
+    <Content Include="_assets\ckeditor\lang\tr.js" />
+    <Content Include="_assets\ckeditor\lang\ug.js" />
+    <Content Include="_assets\ckeditor\lang\uk.js" />
+    <Content Include="_assets\ckeditor\lang\vi.js" />
+    <Content Include="_assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="_assets\ckeditor\lang\zh.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="_assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="_assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="_assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="_assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="_assets\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="_assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="_assets\ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="_assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="_assets\ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="_assets\ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="_assets\ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="_assets\ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="_assets\ckeditor\plugins\icons.png" />
+    <Content Include="_assets\ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="_assets\ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="_assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="_assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="_assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="_assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="_assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="_assets\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="_assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="_assets\ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="_assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="_assets\ckeditor\plugins\preview\preview.html" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="_assets\ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="_assets\ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="_assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="_assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="_assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="_assets\ckeditor\plugins\templates\dialogs\templates.css" />
+    <Content Include="_assets\ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="_assets\ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="_assets\ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="_assets\ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="_assets\ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="_assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="_assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="_assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="_assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="_assets\ckeditor\samples\ajax.html" />
+    <Content Include="_assets\ckeditor\samples\api.html" />
+    <Content Include="_assets\ckeditor\samples\appendto.html" />
+    <Content Include="_assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="_assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="_assets\ckeditor\samples\assets\sample.css" />
+    <Content Include="_assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="_assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="_assets\ckeditor\samples\divreplace.html" />
+    <Content Include="_assets\ckeditor\samples\index.html" />
+    <Content Include="_assets\ckeditor\samples\inlineall.html" />
+    <Content Include="_assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="_assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="_assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="_assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="_assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="_assets\ckeditor\samples\readonly.html" />
+    <Content Include="_assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="_assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="_assets\ckeditor\samples\sample.css" />
+    <Content Include="_assets\ckeditor\samples\sample.js" />
+    <Content Include="_assets\ckeditor\samples\tabindex.html" />
+    <Content Include="_assets\ckeditor\samples\uicolor.html" />
+    <Content Include="_assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="_assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="_assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="_assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="_assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="_assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="_assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="_assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="_assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="_assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="_assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="_assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="_assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="_assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="_assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="_assets\ckeditor\styles.js" />
+    <Content Include="_assets\css\admin\buttons.css" />
+    <Content Include="_assets\css\admin\default.css" />
+    <Content Include="_assets\fckeditor\editor\css\behaviors\disablehandles.htc" />
+    <Content Include="_assets\fckeditor\editor\css\behaviors\showtableborders.htc" />
+    <Content Include="_assets\fckeditor\editor\css\fck_editorarea.css" />
+    <Content Include="_assets\fckeditor\editor\css\fck_internal.css" />
+    <Content Include="_assets\fckeditor\editor\css\fck_showtableborders_gecko.css" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_address.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_blockquote.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_div.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_h1.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_h2.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_h3.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_h4.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_h5.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_h6.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_p.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\block_pre.png" />
+    <Content Include="_assets\fckeditor\editor\css\images\fck_anchor.gif" />
+    <Content Include="_assets\fckeditor\editor\css\images\fck_flashlogo.gif" />
+    <Content Include="_assets\fckeditor\editor\css\images\fck_hiddenfield.gif" />
+    <Content Include="_assets\fckeditor\editor\css\images\fck_pagebreak.gif" />
+    <Content Include="_assets\fckeditor\editor\css\images\fck_plugin.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\common\fck_dialog_common.css" />
+    <Content Include="_assets\fckeditor\editor\dialog\common\fck_dialog_common.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\common\images\locked.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\common\images\reset.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\common\images\unlocked.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_about.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_about\logo_fckeditor.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_about\logo_fredck.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_about\sponsors\spellchecker_net.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_anchor.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_button.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_checkbox.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_colorselector.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_div.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_docprops.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_docprops\fck_document_preview.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_flash.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_flash\fck_flash.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_flash\fck_flash_preview.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_form.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_hiddenfield.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_image.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_image\fck_image.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_image\fck_image_preview.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_link.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_link\fck_link.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_listprop.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_paste.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_radiobutton.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_replace.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_scayt.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_scayt\scayt_dialog.css" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_select.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_select\fck_select.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_smiley.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_source.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_specialchar.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\blank.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\controls.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\controlWindow.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\spellchecker.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\spellChecker.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\spellerStyle.css" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\wordWindow.js" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_table.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_tablecell.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_template.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_template\images\template1.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_template\images\template2.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_template\images\template3.gif" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_textarea.html" />
+    <Content Include="_assets\fckeditor\editor\dialog\fck_textfield.html" />
+    <Content Include="_assets\fckeditor\editor\dtd\fck_dtd_test.html" />
+    <Content Include="_assets\fckeditor\editor\dtd\fck_xhtml10strict.js" />
+    <Content Include="_assets\fckeditor\editor\dtd\fck_xhtml10transitional.js" />
+    <Content Include="_assets\fckeditor\editor\fckdebug.html" />
+    <Content Include="_assets\fckeditor\editor\fckdialog.html" />
+    <Content Include="_assets\fckeditor\editor\fckeditor.html" />
+    <Content Include="_assets\fckeditor\editor\fckeditor.original.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\browser.css" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\browser.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\frmactualfolder.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\frmcreatefolder.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\frmfolders.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\frmresourceslist.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\frmresourcetype.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\frmupload.html" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\ButtonArrow.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\Folder.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\Folder32.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\FolderOpened.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\FolderOpened32.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\FolderUp.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\ai.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\avi.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\bmp.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\cs.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\default.icon.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\dll.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\doc.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\exe.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\fla.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\gif.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\htm.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\html.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\jpg.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\js.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\mdb.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\mp3.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\pdf.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\png.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\ppt.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\rdp.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\swf.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\swt.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\txt.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\vsd.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\xls.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\xml.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\zip.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\ai.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\avi.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\bmp.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\cs.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\default.icon.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\dll.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\doc.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\exe.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\fla.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\gif.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\htm.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\html.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\jpg.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\js.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\mdb.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\mp3.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\pdf.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\png.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\ppt.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\rdp.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\swf.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\swt.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\txt.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\vsd.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\xls.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\xml.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\zip.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\images\spacer.gif" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\js\common.js" />
+    <Content Include="_assets\fckeditor\editor\filemanager\browser\default\js\fckxml.js" />
+    <Content Include="_assets\fckeditor\editor\filemanager\connectors\aspx\config.ascx" />
+    <Content Include="_assets\fckeditor\editor\filemanager\connectors\aspx\connector.aspx" />
+    <Content Include="_assets\fckeditor\editor\filemanager\connectors\aspx\upload.aspx" />
+    <Content Include="_assets\fckeditor\editor\images\anchor.gif" />
+    <Content Include="_assets\fckeditor\editor\images\arrow_ltr.gif" />
+    <Content Include="_assets\fckeditor\editor\images\arrow_rtl.gif" />
+    <Content Include="_assets\fckeditor\editor\images\spacer.gif" />
+    <Content Include="_assets\fckeditor\editor\js\fckadobeair.js" />
+    <Content Include="_assets\fckeditor\editor\js\fckeditorcode_gecko.js" />
+    <Content Include="_assets\fckeditor\editor\js\fckeditorcode_ie.js" />
+    <Content Include="_assets\fckeditor\editor\lang\en-uk.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\autogrow\fckplugin.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\bbcode\fckplugin.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\bbcode\_sample\sample.config.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\bbcode\_sample\sample.html" />
+    <Content Include="_assets\fckeditor\editor\plugins\dragresizetable\fckplugin.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\fckplugin.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\fck_placeholder.html" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\lang\de.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\lang\en.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\lang\es.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\lang\fr.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\lang\it.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\lang\pl.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\placeholder\placeholder.gif" />
+    <Content Include="_assets\fckeditor\editor\plugins\simplecommands\fckplugin.js" />
+    <Content Include="_assets\fckeditor\editor\plugins\tablecommands\fckplugin.js" />
+    <Content Include="_assets\fckeditor\editor\skins\default\fck_dialog.css" />
+    <Content Include="_assets\fckeditor\editor\skins\default\fck_dialog_ie6.js" />
+    <Content Include="_assets\fckeditor\editor\skins\default\fck_editor.css" />
+    <Content Include="_assets\fckeditor\editor\skins\default\fck_strip.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\dialog.sides.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\dialog.sides.png" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\dialog.sides.rtl.png" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\sprites.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\sprites.png" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.arrowright.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.buttonarrow.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.collapse.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.end.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.expand.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.separator.gif" />
+    <Content Include="_assets\fckeditor\editor\skins\default\images\toolbar.start.gif" />
+    <Content Include="_assets\fckeditor\editor\wsc\ciframe.html" />
+    <Content Include="_assets\fckeditor\editor\wsc\tmpFrameset.html" />
+    <Content Include="_assets\fckeditor\editor\wsc\w.html" />
+    <Content Include="_assets\fckeditor\fckconfig.js" />
+    <Content Include="_assets\fckeditor\fckeditor.js" />
+    <Content Include="_assets\fckeditor\fckpackager.xml" />
+    <Content Include="_assets\fckeditor\fckstyles.xml" />
+    <Content Include="_assets\fckeditor\fcktemplates.xml" />
+    <Content Include="_assets\images\admin\ajax-loader.gif" />
+    <Content Include="_assets\images\admin\butt_ddown.gif" />
+    <Content Include="_assets\images\admin\butt_down.gif" />
+    <Content Include="_assets\images\admin\butt_dup.gif" />
+    <Content Include="_assets\images\admin\butt_left.gif" />
+    <Content Include="_assets\images\admin\butt_right.gif" />
+    <Content Include="_assets\images\admin\butt_up.gif" />
+    <Content Include="_assets\images\admin\calendar.png" />
+    <Content Include="_assets\images\admin\favicon.ico" />
+    <Content Include="_assets\images\admin\globe.png" />
+    <Content Include="_assets\images\admin\help\buttons.jpg" />
+    <Content Include="_assets\images\admin\help\datepicker.jpg" />
+    <Content Include="_assets\images\admin\help\editor.jpg" />
+    <Content Include="_assets\images\admin\help\icon1.jpg" />
+    <Content Include="_assets\images\admin\help\icon10.jpg" />
+    <Content Include="_assets\images\admin\help\icon11.jpg" />
+    <Content Include="_assets\images\admin\help\icon12.jpg" />
+    <Content Include="_assets\images\admin\help\icon13.jpg" />
+    <Content Include="_assets\images\admin\help\icon14.jpg" />
+    <Content Include="_assets\images\admin\help\icon15.jpg" />
+    <Content Include="_assets\images\admin\help\icon16.jpg" />
+    <Content Include="_assets\images\admin\help\icon17.jpg" />
+    <Content Include="_assets\images\admin\help\icon18.jpg" />
+    <Content Include="_assets\images\admin\help\icon19.jpg" />
+    <Content Include="_assets\images\admin\help\icon2.jpg" />
+    <Content Include="_assets\images\admin\help\icon20.jpg" />
+    <Content Include="_assets\images\admin\help\icon21.jpg" />
+    <Content Include="_assets\images\admin\help\icon22.jpg" />
+    <Content Include="_assets\images\admin\help\icon23.jpg" />
+    <Content Include="_assets\images\admin\help\icon24.jpg" />
+    <Content Include="_assets\images\admin\help\icon25.jpg" />
+    <Content Include="_assets\images\admin\help\icon26.jpg" />
+    <Content Include="_assets\images\admin\help\icon27.jpg" />
+    <Content Include="_assets\images\admin\help\icon28.jpg" />
+    <Content Include="_assets\images\admin\help\icon29.jpg" />
+    <Content Include="_assets\images\admin\help\icon3.jpg" />
+    <Content Include="_assets\images\admin\help\icon30.jpg" />
+    <Content Include="_assets\images\admin\help\icon31.jpg" />
+    <Content Include="_assets\images\admin\help\icon4.jpg" />
+    <Content Include="_assets\images\admin\help\icon5.jpg" />
+    <Content Include="_assets\images\admin\help\icon6.jpg" />
+    <Content Include="_assets\images\admin\help\icon7.jpg" />
+    <Content Include="_assets\images\admin\help\icon8.jpg" />
+    <Content Include="_assets\images\admin\help\icon9.jpg" />
+    <Content Include="_assets\images\admin\help\image-1.jpg" />
+    <Content Include="_assets\images\admin\help\image-2.jpg" />
+    <Content Include="_assets\images\admin\help\image-3.jpg" />
+    <Content Include="_assets\images\admin\help\image-4.jpg" />
+    <Content Include="_assets\images\admin\help\menu-sub.jpg" />
+    <Content Include="_assets\images\admin\help\menu.jpg" />
+    <Content Include="_assets\images\admin\help\required.jpg" />
+    <Content Include="_assets\images\admin\help\status.jpg" />
+    <Content Include="_assets\images\admin\help\title.jpg" />
+    <Content Include="_assets\images\admin\help\validation.jpg" />
+    <Content Include="_assets\images\admin\help\viewsite.jpg" />
+    <Content Include="_assets\images\admin\icons\mail.png" />
+    <Content Include="_assets\images\admin\icons\account.png" />
+    <Content Include="_assets\images\admin\icons\add.png" />
+    <Content Include="_assets\images\admin\icons\anticlockwise.png" />
+    <Content Include="_assets\images\admin\icons\arrow_left.png" />
+    <Content Include="_assets\images\admin\icons\arrow_refresh.png" />
+    <Content Include="_assets\images\admin\icons\arrow_right.png" />
+    <Content Include="_assets\images\admin\icons\bullet_green.png" />
+    <Content Include="_assets\images\admin\icons\bullet_red.png" />
+    <Content Include="_assets\images\admin\icons\capture.png" />
+    <Content Include="_assets\images\admin\icons\cross.png" />
+    <Content Include="_assets\images\admin\icons\cut.png" />
+    <Content Include="_assets\images\admin\icons\delete.png" />
+    <Content Include="_assets\images\admin\icons\email_go.png" />
+    <Content Include="_assets\images\admin\icons\image.png" />
+    <Content Include="_assets\images\admin\icons\image_edit.png" />
+    <Content Include="_assets\images\admin\icons\left.png" />
+    <Content Include="_assets\images\admin\icons\loading.gif" />
+    <Content Include="_assets\images\admin\icons\logout.png" />
+    <Content Include="_assets\images\admin\icons\new-window-icon-gray.png" />
+    <Content Include="_assets\images\admin\icons\new.png" />
+    <Content Include="_assets\images\admin\icons\notes.png" />
+    <Content Include="_assets\images\admin\icons\page_link.png" />
+    <Content Include="_assets\images\admin\icons\record.png" />
+    <Content Include="_assets\images\admin\icons\refresh_small.png" />
+    <Content Include="_assets\images\admin\icons\remove.png" />
+    <Content Include="_assets\images\admin\icons\right.png" />
+    <Content Include="_assets\images\admin\icons\scan.png" />
+    <Content Include="_assets\images\admin\icons\search.png" />
+    <Content Include="_assets\images\admin\icons\settings.png" />
+    <Content Include="_assets\images\admin\icons\switch.png" />
+    <Content Include="_assets\images\admin\icons\table.png" />
+    <Content Include="_assets\images\admin\icons\table_go.png" />
+    <Content Include="_assets\images\admin\icons\tick.png" />
+    <Content Include="_assets\images\admin\icons\tick_b.png" />
+    <Content Include="_assets\images\admin\icons\time.png" />
+    <Content Include="_assets\images\admin\icons\unread.png" />
+    <Content Include="_assets\images\admin\icons\view.png" />
+    <Content Include="_assets\images\admin\icons\view_gallery.png" />
+    <Content Include="_assets\images\admin\icons\zoom.png" />
+    <Content Include="_assets\images\admin\icon_arrow.gif" />
+    <Content Include="_assets\images\admin\icon_arrow_hover.gif" />
+    <Content Include="_assets\images\admin\logo.png" />
+    <Content Include="_assets\images\admin\novideo.jpg" />
+    <Content Include="_assets\images\admin\selected_tab_arrow.gif" />
+    <Content Include="_assets\images\admin\typeahead-load-2.gif" />
+    <Content Include="_assets\images\admin\typeahead-load-3.gif" />
+    <Content Include="_assets\images\admin\typeahead-load.gif" />
+    <Content Include="_assets\images\admin\Untitled-6.png" />
+    <Content Include="_assets\images\admin\Untitled-7.png" />
+    <Content Include="_assets\images\files-extensions\doc.png" />
+    <Content Include="_assets\images\files-extensions\pdf.png" />
+    <Content Include="_assets\images\files-extensions\txt.png" />
+    <Content Include="_assets\media\emails\template.html" />
+    <Content Include="_assets\media\logs\emails\email-log.txt" />
+    <Content Include="_assets\media\persons\photos\test.png" />
+    <Content Include="_assets\scripts\7S.CMS.Calendar.js" />
+    <Content Include="_assets\scripts\admin.js" />
+    <Content Include="_assets\scripts\autocomplete\jquery.autocomplete.css" />
+    <Content Include="_assets\scripts\autocomplete\jquery.autocomplete.pack.js" />
+    <Content Include="_assets\scripts\dropkick\dropkick.css" />
+    <Content Include="_assets\scripts\dropkick\jquery.dropkick-1.0.0.js" />
+    <Content Include="_assets\scripts\fancybox\blank.gif" />
+    <Content Include="_assets\scripts\fancybox\fancybox-x.png" />
+    <Content Include="_assets\scripts\fancybox\fancybox-y.png" />
+    <Content Include="_assets\scripts\fancybox\fancybox.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_close.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_loading.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_nav_left.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_nav_right.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_e.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_n.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_ne.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_nw.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_s.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_se.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_sw.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_shadow_w.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_title_left.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_title_main.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_title_over.png" />
+    <Content Include="_assets\scripts\fancybox\fancy_title_right.png" />
+    <Content Include="_assets\scripts\fancybox\fb.css" />
+    <Content Include="_assets\scripts\fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="_assets\scripts\fancybox\jquery.fancybox-1.3.1.css" />
+    <Content Include="_assets\scripts\fancybox\jquery.fancybox-1.3.1.js" />
+    <Content Include="_assets\scripts\fancybox\jquery.fancybox-1.3.1.pack.js" />
+    <Content Include="_assets\scripts\fancybox\jquery.mousewheel-3.0.2.pack.js" />
+    <Content Include="_assets\scripts\jcrop\Jcrop.gif" />
+    <Content Include="_assets\scripts\jcrop\jquery.Jcrop.css" />
+    <Content Include="_assets\scripts\jcrop\jquery.Jcrop.js" />
+    <Content Include="_assets\scripts\jcrop\jquery.Jcrop.min.js" />
+    <Content Include="_assets\scripts\jquery-1.7.1.min.js" />
+    <Content Include="_assets\scripts\jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="_assets\scripts\jquery.cookie.js" />
+    <Content Include="_assets\scripts\jquery.cycle.all.min.js" />
+    <Content Include="_assets\scripts\jquery.dataTables.js" />
+    <Content Include="_assets\scripts\jquery.mCustomScrollbar.css" />
+    <Content Include="_assets\scripts\jquery.mCustomScrollbar.min.js" />
+    <Content Include="_assets\scripts\jquery.mousewheel.min.js" />
+    <Content Include="_assets\scripts\jquery.sidr.min.js" />
+    <Content Include="_assets\scripts\jquery.tools.min.js" />
+    <Content Include="_assets\scripts\modernizr.custom.00047.js" />
+    <Content Include="_assets\scripts\moment.js" />
+    <Content Include="_assets\scripts\pie\PIE.htc" />
+    <Content Include="_assets\scripts\pie\PIE.js" />
+    <Content Include="_assets\scripts\qTip.js" />
+    <Content Include="_assets\scripts\shadowbox.js" />
+    <Content Include="_assets\scripts\stylesheets\jquery.sidr.dark.css" />
+    <Content Include="_assets\scripts\stylesheets\jquery.sidr.light.css" />
+    <Content Include="_assets\scripts\typeahead.css" />
+    <Content Include="_assets\scripts\typeahead.min.js" />
+    <Content Include="_assets\scripts\utils.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admin\AdminUser\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AdminUser\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Overview.aspx.cs">
+      <DependentUpon>Overview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Overview.aspx.designer.cs">
+      <DependentUpon>Overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\Rota.aspx.cs">
+      <DependentUpon>Rota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\Rota.aspx.designer.cs">
+      <DependentUpon>Rota.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\WeekView.aspx.cs">
+      <DependentUpon>WeekView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\WeekView.aspx.designer.cs">
+      <DependentUpon>WeekView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Invite\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Invite\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Outreach\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Outreach\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\RSVP\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\RSVP\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Communications\Emails\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Communications\Emails\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Communications\Emails\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Communications\Emails\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Communications\Export.ashx.cs">
+      <DependentUpon>Export.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Communications\Frames\Comms.aspx.cs">
+      <DependentUpon>Comms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Communications\Frames\Comms.aspx.designer.cs">
+      <DependentUpon>Comms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Communications\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Communications\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Families\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Families\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Families\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Families\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Gifts\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Gifts\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\Persons\FullList.aspx.cs">
+      <DependentUpon>FullList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\Persons\FullList.aspx.designer.cs">
+      <DependentUpon>FullList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Attendance\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Attendance\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Donations\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Donations\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Gift\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Gift\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Gift\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Gift\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Region\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\Region\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Region\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\Region\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Exhibition\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Exhibition\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Exhibition\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Exhibition\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\Persons\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\Persons\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\Schools\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\Schools\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Passes\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Passes\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Titles\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Titles\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Titles\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Titles\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\KeyStages\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\KeyStages\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\KeyStages\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\KeyStages\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Organisations\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Person\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\Person\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Organisations\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\BespokePermissions\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\BespokePermissions\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\AnnualPass\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\AnnualPass\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\AnnualPass\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Types\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Types\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\AnnualPass\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Types\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Types\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\CPD\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\CPD\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Clashes\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Clashes\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Duplicate\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Duplicate\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\Calendar.aspx.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\Calendar.aspx.designer.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Finance\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Finance\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\CalendarList.aspx.cs">
+      <DependentUpon>CalendarList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Frame\CalendarList.aspx.designer.cs">
+      <DependentUpon>CalendarList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\GroupBookings\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\GroupBookings\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Parties\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Parties\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Task\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Task\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Task\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Task\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\UserTags\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\UserTags\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Calendar\Venues\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Calendar\Venues\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CollectStructure.ashx.cs">
+      <DependentUpon>CollectStructure.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CustomFields\Answers\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CustomFields\Answers\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CustomFields\Answers\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CustomFields\Answers\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CustomFields\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CustomFields\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CustomFields\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CustomFields\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Duplicate\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\PaymentType\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\PaymentType\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\PaymentType\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\PaymentType\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Reasons\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Reasons\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Reasons\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Reasons\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Funds\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Funds\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Funds\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Funds\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\History\Frames\History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Notes\Frames\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Notes\Frames\GetStatus.ashx.cs">
+      <DependentUpon>GetStatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Notes\Frames\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Offer\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\Types\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Package\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Package\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Package\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Duplicate\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\History\Frames\History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Notes\Frames\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Notes\Frames\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Offer\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Offer\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Offer\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Package\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Families\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Families\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Families\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Families\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Organisations\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Organisations\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Personal\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Schools\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Schools\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Schools\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Schools\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Role\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Basic.aspx.cs">
+      <DependentUpon>Basic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Basic.aspx.designer.cs">
+      <DependentUpon>Basic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Families.aspx.designer.cs">
+      <DependentUpon>Families.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Organisation.aspx.designer.cs">
+      <DependentUpon>Organisation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Personal.aspx.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Families.aspx.cs">
+      <DependentUpon>Families.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Personal.aspx.designer.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\School.aspx.cs">
+      <DependentUpon>School.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\Organisation.aspx.cs">
+      <DependentUpon>Organisation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\Details\School.aspx.designer.cs">
+      <DependentUpon>School.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\Frame\ScanLog.aspx.cs">
+      <DependentUpon>ScanLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\Frame\ScanLog.aspx.designer.cs">
+      <DependentUpon>ScanLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Scanning\ScanResultFrame.aspx.cs">
+      <DependentUpon>ScanResultFrame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Scanning\ScanResultFrame.aspx.designer.cs">
+      <DependentUpon>ScanResultFrame.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\LEA\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\LEA\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\LEA\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\Types\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Organisation\Types\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Organisation\Types\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Organisations\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Organisations\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Personal\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Personal\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Personal\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Role\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Role\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Role\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\LEA\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Types\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\Types\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\School\Types\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\School\Types\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\Permissions\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\AdminUser\Permissions\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Setting\Venues\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\Venues\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Setting\Venues\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\Venues\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\test-match.aspx.cs">
+      <DependentUpon>test-match.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\test-match.aspx.designer.cs">
+      <DependentUpon>test-match.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UpdateTitles.ashx.cs">
+      <DependentUpon>UpdateTitles.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\Invites\RSVP.aspx.cs">
+      <DependentUpon>RSVP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\Invites\RSVP.aspx.designer.cs">
+      <DependentUpon>RSVP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\Invites\UserRemoved.aspx.cs">
+      <DependentUpon>UserRemoved.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\Invites\UserRemoved.aspx.designer.cs">
+      <DependentUpon>UserRemoved.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\Invites\DateTimeChange.aspx.cs">
+      <DependentUpon>DateTimeChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\Invites\DateTimeChange.aspx.designer.cs">
+      <DependentUpon>DateTimeChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\Invites\NewInvite.aspx.cs">
+      <DependentUpon>NewInvite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\Invites\NewInvite.aspx.designer.cs">
+      <DependentUpon>NewInvite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\Invites\VenueChange.aspx.cs">
+      <DependentUpon>VenueChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\Invites\VenueChange.aspx.designer.cs">
+      <DependentUpon>VenueChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\ResetLink.aspx.cs">
+      <DependentUpon>ResetLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\ResetLink.aspx.designer.cs">
+      <DependentUpon>ResetLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Abstracts\absShallowCopy.cs" />
+    <Compile Include="Code\Attribute\DuplicateTest.cs" />
+    <Compile Include="Code\Attribute\IsListData.cs" />
+    <Compile Include="Code\BasePages\Admin\AnnualPass\AnnualPassCardPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\Admin\Calendar\CRM_CalendarPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\Admin\CustomField\CRM_CustomFieldPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\Admin\Organisation\CRM_OrganisationPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\Admin\Persons\CRM_PersonPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\Admin\School\CRM_SchoolPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\CSVExport.cs" />
+    <Compile Include="Code\Described.cs" />
+    <Compile Include="Code\Helpers\PaymentType.cs" />
+    <Compile Include="Code\Helpers\WebService\ContextResult.cs" />
+    <Compile Include="Code\Helpers\DynamicQueryable.cs" />
+    <Compile Include="Code\Helpers\ListData.cs" />
+    <Compile Include="Code\Helpers\ListDataItem.cs" />
+    <Compile Include="Code\Abstracts\absArchivable.cs" />
+    <Compile Include="Code\Helpers\RotaContainer.cs" />
+    <Compile Include="Code\Helpers\WebService\Response.cs" />
+    <Compile Include="Code\Interfaces\IArchivable.cs" />
+    <Compile Include="Code\Interfaces\ICRMContext.cs" />
+    <Compile Include="Code\Interfaces\IDynamicQueryable.cs" />
+    <Compile Include="Code\Interfaces\IMailable.cs" />
+    <Compile Include="Code\Interfaces\ISchoolOrganisation.cs" />
+    <Compile Include="Code\Managers\AutoCompleteManager.cs" />
+    <Compile Include="Code\Managers\DataQueryManager.cs" />
+    <Compile Include="Code\Interfaces\IAddress.cs" />
+    <Compile Include="Code\Interfaces\IAutocomplete.cs" />
+    <Compile Include="Code\Interfaces\IClash.cs" />
+    <Compile Include="Code\Interfaces\IContact.cs" />
+    <Compile Include="Code\Interfaces\ICRMRecord.cs" />
+    <Compile Include="Code\Interfaces\IDuplicate.cs" />
+    <Compile Include="Code\Interfaces\INotes.cs" />
+    <Compile Include="Code\Managers\AnnualPassManager.cs" />
+    <Compile Include="Code\Managers\ContactManager.cs" />
+    <Compile Include="Code\Managers\NoteManager.cs" />
+    <Compile Include="Code\Managers\RotaManager.cs" />
+    <Compile Include="Code\Models\Calendar\CalendarTypes\CRM_CalendarOutreach.cs" />
+    <Compile Include="Code\Models\Calendar\CRM_CalendarAdmin.cs" />
+    <Compile Include="Code\Models\Calendar\CRM_CalendarInvite.cs" />
+    <Compile Include="Code\Models\Country.cs" />
+    <Compile Include="Code\Models\CRM_Communication.cs" />
+    <Compile Include="Code\Models\CRM_Region.cs" />
+    <Compile Include="Code\Models\CRM_Exhibition.cs" />
+    <Compile Include="Code\Models\CRM_NavHistory.cs" />
+    <Compile Include="Code\Models\CRM_SystemAccess.cs" />
+    <Compile Include="Code\Models\CRM_SystemAccessAdmin.cs" />
+    <Compile Include="Code\Models\DataQuery\AdminDataQuery.cs" />
+    <Compile Include="Code\Models\AnnualPass\CRM_AnnualPassCard.cs" />
+    <Compile Include="Code\Models\AnnualPass\CRM_AnnualPass.cs" />
+    <Compile Include="Code\Models\AnnualPass\CRM_AnnualPassPerson.cs" />
+    <Compile Include="Code\Models\AnnualPass\CRM_AnnualPassType.cs" />
+    <Compile Include="Code\Models\Calendar\CalendarTypes\CRM_CalenderCPD.cs" />
+    <Compile Include="Code\Models\Calendar\CalendarTypes\CRM_CalenderParty.cs" />
+    <Compile Include="Code\Models\Calendar\CalendarTypes\CRM_CalendarGroupBooking.cs" />
+    <Compile Include="Code\Models\Calendar\CRM_CalendarAttendance.cs" />
+    <Compile Include="Code\Models\Calendar\CRM_CalendarType.cs" />
+    <Compile Include="Code\Models\Calendar\Task\CRM_Task.cs" />
+    <Compile Include="Code\Models\Calendar\Task\CRM_TaskParticipant.cs" />
+    <Compile Include="Code\Models\CRM_Package.cs" />
+    <Compile Include="Code\Models\CRM_Offer.cs" />
+    <Compile Include="Code\Models\CRM_Note.cs" />
+    <Compile Include="Code\Models\CRM_Role.cs" />
+    <Compile Include="Code\Models\CustomFields\CRM_FormField.cs" />
+    <Compile Include="Code\Models\CustomFields\CRM_FormFieldItem.cs" />
+    <Compile Include="Code\Models\DataQuery\AdminDataQueryFilter.cs" />
+    <Compile Include="Code\Models\Fund\CRM_PaymentType.cs" />
+    <Compile Include="Code\Models\Fund\CRM_FundraisingReason.cs" />
+    <Compile Include="Code\Models\Fund\CRM_Fund.cs" />
+    <Compile Include="Code\Models\Fund\CRM_Fundraising.cs" />
+    <Compile Include="Code\Models\Fund\CRM_FundraisingSplit.cs" />
+    <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfile.cs" />
+    <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfileLog.cs" />
+    <Compile Include="Code\Models\HoldingPen.cs" />
+    <Compile Include="Code\Models\Organisation\CRM_Organisation.cs" />
+    <Compile Include="Code\Models\Organisation\CRM_OrganisationSchool.cs" />
+    <Compile Include="Code\Models\Organisation\Type\CRM_OrganisationType.cs" />
+    <Compile Include="Code\Models\Person\CRM_Family.cs" />
+    <Compile Include="Code\Models\Person\CRM_FamilyPerson.cs" />
+    <Compile Include="Code\Models\Person\CRM_PersonSchool.cs" />
+    <Compile Include="Code\Models\Person\CRM_Person.cs" />
+    <Compile Include="Code\Models\Person\CRM_PersonOrganisation.cs" />
+    <Compile Include="Code\Models\Person\CRM_PersonPersonal.cs" />
+    <Compile Include="Code\Models\Person\CRM_Title.cs" />
+    <Compile Include="Code\Models\School\CRM_School.cs" />
+    <Compile Include="Code\Models\School\KeyStage\CRM_KeyStage.cs" />
+    <Compile Include="Code\Models\School\LEA\CRM_LEA.cs" />
+    <Compile Include="Code\Models\School\Type\CRM_SchoolType.cs" />
+    <Compile Include="Code\Models\TemplateEmail.cs" />
+    <Compile Include="Code\Models\_DataTableColumn.cs" />
+    <Compile Include="Code\Utils\List\Custom.cs" />
+    <Compile Include="Code\Utils\WebControl\AutoCompleteConfig.cs" />
+    <Compile Include="Code\Utils\WebControl\TitledDropDownList.cs" />
+    <Compile Include="Code\Utils\WebControl\UserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\calendar.aspx.designer.cs">
+      <DependentUpon>calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\CaptureImageStream.ashx.cs">
+      <DependentUpon>CaptureImageStream.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\CustomFields\CustomFields.ascx.cs">
+      <DependentUpon>CustomFields.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\CustomFields\CustomFields.ascx.designer.cs">
+      <DependentUpon>CustomFields.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\CustomFields\Field\CustomField.ascx.cs">
+      <DependentUpon>CustomField.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\CustomFields\Field\CustomField.ascx.designer.cs">
+      <DependentUpon>CustomField.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\AnnualPass.ascx.cs">
+      <DependentUpon>AnnualPass.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\AnnualPass.ascx.designer.cs">
+      <DependentUpon>AnnualPass.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Schools.ascx.cs">
+      <DependentUpon>Schools.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Schools.ascx.designer.cs">
+      <DependentUpon>Schools.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\CustomField.ascx.cs">
+      <DependentUpon>CustomField.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\CustomField.ascx.designer.cs">
+      <DependentUpon>CustomField.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\NavigationHistory.ascx.cs">
+      <DependentUpon>NavigationHistory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\NavigationHistory.ascx.designer.cs">
+      <DependentUpon>NavigationHistory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Organisations.ascx.cs">
+      <DependentUpon>Organisations.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Organisations.ascx.designer.cs">
+      <DependentUpon>Organisations.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Persons.ascx.cs">
+      <DependentUpon>Persons.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Persons.ascx.designer.cs">
+      <DependentUpon>Persons.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Scan.ascx.cs">
+      <DependentUpon>Scan.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Scan.ascx.designer.cs">
+      <DependentUpon>Scan.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Address.ascx.cs">
+      <DependentUpon>Address.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Address.ascx.designer.cs">
+      <DependentUpon>Address.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Duplicate.ascx.cs">
+      <DependentUpon>Duplicate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Duplicate.ascx.designer.cs">
+      <DependentUpon>Duplicate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\List\Query\DataQuery.ascx.cs">
+      <DependentUpon>DataQuery.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\List\Query\DataQuery.ascx.designer.cs">
+      <DependentUpon>DataQuery.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\List\SubmitMailout.aspx.cs">
+      <DependentUpon>SubmitMailout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\List\SubmitMailout.aspx.designer.cs">
+      <DependentUpon>SubmitMailout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\List\UtilListView.ascx.cs">
+      <DependentUpon>UtilListView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\List\UtilListView.ascx.designer.cs">
+      <DependentUpon>UtilListView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Panel\CommsLog.ascx.cs">
+      <DependentUpon>CommsLog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Panel\CommsLog.ascx.designer.cs">
+      <DependentUpon>CommsLog.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Panel\Notes\List.ascx.cs">
+      <DependentUpon>List.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Panel\Notes\List.ascx.designer.cs">
+      <DependentUpon>List.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Scripts.ascx.cs">
+      <DependentUpon>Scripts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Scripts.ascx.designer.cs">
+      <DependentUpon>Scripts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\Handlers\ActionLinks.ashx.cs">
+      <DependentUpon>ActionLinks.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\Handlers\AutoCompleteJSON.ashx.cs">
+      <DependentUpon>AutoCompleteJSON.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\MasterPage.master.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\MasterPage.master.designer.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\NoPermission.aspx.cs">
+      <DependentUpon>NoPermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\NoPermission.aspx.designer.cs">
+      <DependentUpon>NoPermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Password.aspx.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Password.aspx.designer.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Setting\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Setting\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Auth\Auth.cs" />
+    <Compile Include="Code\BasePages\Admin\AdminPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\Admin\UserPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\BasePages\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\Calendar\Calendar.cs" />
+    <Compile Include="Code\Calendar\CalendarItem.cs" />
+    <Compile Include="Code\Calendar\CalendarSlot.cs" />
+    <Compile Include="Code\Calendar\CRM_CalendarVenue.cs" />
+    <Compile Include="Code\Constants.cs" />
+    <Compile Include="Code\ConstantsConfig.cs" />
+    <Compile Include="Code\Helpers\Admin\SearchItem.cs" />
+    <Compile Include="Code\Helpers\JSONSet.cs" />
+    <Compile Include="Code\Helpers\Vimeo.cs" />
+    <Compile Include="Code\History\History.cs" />
+    <Compile Include="Code\Interfaces\IHistory.cs" />
+    <Compile Include="Code\Interfaces\ISearchItem.cs" />
+    <Compile Include="Code\Managers\CalendarManager.cs" />
+    <Compile Include="Code\Managers\NoticeManager.cs" />
+    <Compile Include="Code\Managers\EmailManager.cs" />
+    <Compile Include="Code\Managers\PermissionManager.cs" />
+    <Compile Include="Code\Models\Admin.cs" />
+    <Compile Include="Code\Auth\AuthAdmin.cs" />
+    <Compile Include="Code\Models\Calendar\CRM_Calendar.cs" />
+    <Compile Include="Code\Models\Calendar\CRM_CalendarVenue.cs" />
+    <Compile Include="Code\Models\CRM_Address.cs" />
+    <Compile Include="Code\Models\CRM_Venue.cs" />
+    <Compile Include="Code\Models\Main.designer.cs">
+      <DependentUpon>Main.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Code\Models\MainDataContext.cs" />
+    <Compile Include="Code\Models\Meta.cs" />
+    <Compile Include="Code\Models\Setting.cs" />
+    <Compile Include="Code\Utils\Ajax\AjaxMethods.cs" />
+    <Compile Include="Code\Utils\Confirmation\ConfirmationPageDetail.cs" />
+    <Compile Include="Code\Utils\Control\Control.cs" />
+    <Compile Include="Code\Utils\ECommerce\CurrencyConverter.cs" />
+    <Compile Include="Code\Utils\Email\Email.cs" />
+    <Compile Include="Code\Utils\Encryption\Encryption.cs" />
+    <Compile Include="Code\Utils\Enumeration\Enumeration.cs" />
+    <Compile Include="Code\Utils\Enumeration\StringEnum.cs" />
+    <Compile Include="Code\Utils\Error\Error.cs" />
+    <Compile Include="Code\Utils\Error\ErrorMessage.cs" />
+    <Compile Include="Code\Utils\Error\ValidationError.cs" />
+    <Compile Include="Code\Utils\Files\DownloadDescriptor.cs" />
+    <Compile Include="Code\Utils\Files\Files.cs" />
+    <Compile Include="Code\Utils\Imaging\Imaging.cs" />
+    <Compile Include="Code\Utils\Json\Json.cs" />
+    <Compile Include="Code\Utils\Linq\Dynamic.cs" />
+    <Compile Include="Code\Utils\Linq\IQueryable.cs" />
+    <Compile Include="Code\Utils\List\Ordering.cs" />
+    <Compile Include="Code\Utils\Menu\AdminMenuItem.cs" />
+    <Compile Include="Code\Utils\Menu\MenuListItem.cs" />
+    <Compile Include="Code\Utils\Pager\Pager.cs" />
+    <Compile Include="Code\Utils\RemotePost\ASyncPost.cs" />
+    <Compile Include="Code\Utils\RemotePost\RemotePost.cs" />
+    <Compile Include="Code\Utils\Rss\Facebook.cs" />
+    <Compile Include="Code\Utils\Rss\Flickr.cs" />
+    <Compile Include="Code\Utils\Rss\RssItem.cs" />
+    <Compile Include="Code\Utils\Rss\RSSReader.cs" />
+    <Compile Include="Code\Utils\Rss\RssWriter.cs" />
+    <Compile Include="Code\Utils\Rss\Twitter.cs" />
+    <Compile Include="Code\Utils\Search\SearchSession.cs" />
+    <Compile Include="Code\Utils\Search\SearchSessionItem.cs" />
+    <Compile Include="Code\Utils\SharedObject\SharedObject.cs" />
+    <Compile Include="Code\Utils\Text\HtmlParser.cs" />
+    <Compile Include="Code\Utils\Text\Text.cs" />
+    <Compile Include="Code\Utils\Time\UKTime.cs" />
+    <Compile Include="Code\Utils\Url\Url.cs" />
+    <Compile Include="Code\Utils\Validation\Validation.cs" />
+    <Compile Include="Code\Utils\Web\HttpResponse.cs" />
+    <Compile Include="Controls\Admin\calendar.aspx.cs">
+      <DependentUpon>calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\ImageUpload\SimpleImageUpload.ascx.cs">
+      <DependentUpon>SimpleImageUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\ImageUpload\SimpleImageUpload.ascx.designer.cs">
+      <DependentUpon>SimpleImageUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\ImageUpload\upload.aspx.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\ImageUpload\upload.aspx.designer.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Calendar.ascx.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\Navigation\Calendar.ascx.designer.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Panel\LogHistory.ascx.cs">
+      <DependentUpon>LogHistory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\SharedObjects\Panel\LogHistory.ascx.designer.cs">
+      <DependentUpon>LogHistory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\AutoComplete.ascx.cs">
+      <DependentUpon>AutoComplete.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\AutoComplete.ascx.designer.cs">
+      <DependentUpon>AutoComplete.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\ConfirmationPage.ascx.cs">
+      <DependentUpon>ConfirmationPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\ConfirmationPage.ascx.designer.cs">
+      <DependentUpon>ConfirmationPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\DateCalendar.ascx.cs">
+      <DependentUpon>DateCalendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\DateCalendar.ascx.designer.cs">
+      <DependentUpon>DateCalendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\DropDownNotice.ascx.cs">
+      <DependentUpon>DropDownNotice.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\DropDownNotice.ascx.designer.cs">
+      <DependentUpon>DropDownNotice.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\EmbeddedVideo.ascx.cs">
+      <DependentUpon>EmbeddedVideo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\EmbeddedVideo.ascx.designer.cs">
+      <DependentUpon>EmbeddedVideo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\FileUpload.ascx.cs">
+      <DependentUpon>FileUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\FileUpload.ascx.designer.cs">
+      <DependentUpon>FileUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\TextBox.ascx.cs">
+      <DependentUpon>TextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\TextBox.ascx.designer.cs">
+      <DependentUpon>TextBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\TextEditor.ascx.cs">
+      <DependentUpon>TextEditor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\TextEditor.ascx.designer.cs">
+      <DependentUpon>TextEditor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\UserControlButton.ascx.cs">
+      <DependentUpon>UserControlButton.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\UserControlButton.ascx.designer.cs">
+      <DependentUpon>UserControlButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduled\GiftAidSchedule.ashx.cs">
+      <DependentUpon>GiftAidSchedule.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduled\RetroMembers.ashx.cs">
+      <DependentUpon>RetroMembers.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduled\SendReminders.ashx.cs">
+      <DependentUpon>SendReminders.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduled\WrongSend.ashx.cs">
+      <DependentUpon>WrongSend.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Swap.aspx.cs">
+      <DependentUpon>Swap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Swap.aspx.designer.cs">
+      <DependentUpon>Swap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\ConstType.ashx.cs">
+      <DependentUpon>ConstType.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\EdinSchoolsImport.ashx.cs">
+      <DependentUpon>EdinSchoolsImport.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\expiry.ashx.cs">
+      <DependentUpon>expiry.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\Import.ashx.cs">
+      <DependentUpon>Import.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\MemberHistory.ashx.cs">
+      <DependentUpon>MemberHistory.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\MoveSchools.ashx.cs">
+      <DependentUpon>MoveSchools.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskScript\scot_schools.ashx.cs">
+      <DependentUpon>scot_schools.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebService\CRMSync.asmx.cs">
+      <DependentUpon>CRMSync.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\Service.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Service.dbml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="admin\Calendar\WebsiteBookings\" />
+    <Folder Include="App_Data\PiczardTempFiles\" />
+    <Folder Include="Code\Utils\CampaignMonitor\" />
+    <Folder Include="Controls\Site\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\MasterPage.master" />
+    <Content Include="admin\Notes\Frames\GetStatus.ashx" />
+    <Content Include="admin\CollectStructure.ashx" />
+    <Content Include="admin\UpdateTitles.ashx" />
+    <Content Include="admin\Communications\Export.ashx" />
+    <None Include="Code\Models\Main.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Main.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Controls\Admin\ImageUpload\preview.ashx" />
+    <Content Include="Controls\Admin\ImageUpload\uploadMonitor.ashx" />
+    <Content Include="Controls\Forms\Handlers\AutoCompleteJSON.ashx" />
+    <Content Include="Controls\Forms\Handlers\ActionLinks.ashx" />
+    <Content Include="Controls\Admin\CaptureImageStream.ashx" />
+    <Content Include="Scheduled\GiftAidSchedule.ashx" />
+    <Content Include="TaskScript\Import.ashx" />
+    <Content Include="TaskScript\ConstType.ashx" />
+    <Content Include="Scheduled\SendReminders.ashx" />
+    <Content Include="Scheduled\RetroMembers.ashx" />
+    <Content Include="Scheduled\WrongSend.ashx" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="TaskScript\ConstTypes.csv" />
+    <Content Include="TaskScript\expiry.ashx" />
+    <Content Include="TaskScript\EdinSchoolsImport.ashx" />
+    <None Include="TaskScript\FinalListforCoalFace.csv" />
+    <Content Include="TaskScript\MemberHistory.ashx" />
+    <Content Include="TaskScript\MoveSchools.ashx" />
+    <Content Include="TaskScript\scot_schools.ashx" />
+    <None Include="WebService\Service.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Service.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_assets\ckeditor\browsers\Filemanager-master\.gitignore" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\connectors\ashx\filemanager.ashx" />
+    <None Include="_assets\ckeditor\browsers\Filemanager-master\ReadMe.md" />
+    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\filemanager.config.js" />
+    <None Include="_assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <None Include="_assets\ckeditor\plugins\wsc\README.md" />
+    <None Include="_assets\ckeditor\samples\assets\posteddata.php" />
+    <None Include="_assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <None Include="_assets\ckeditor\samples\sample_posteddata.php" />
+    <None Include="_assets\ckeditor\skins\moono\readme.md" />
+    <None Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
+    <None Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
+    <None Include="_assets\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
+    <None Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\32\Thumbs.db" />
+    <None Include="_assets\fckeditor\editor\filemanager\browser\default\images\icons\Thumbs.db" />
+    <None Include="_assets\fckeditor\editor\images\Thumbs.db" />
+    <None Include="_assets\fckeditor\editor\plugins\placeholder\Thumbs.db" />
+    <None Include="_assets\fckeditor\fckconfig.js.bak" />
+    <None Include="_assets\images\admin\help\Thumbs.db" />
+    <None Include="_assets\images\admin\icons\Thumbs.db" />
+    <None Include="_assets\images\admin\Thumbs.db" />
+    <None Include="_assets\images\email\dummy.dumb" />
+    <None Include="_assets\images\files-extensions\Thumbs.db" />
+    <None Include="_assets\media\content\dummy.dumb" />
+    <None Include="_assets\media\logs\errors\dummy.dumb" />
+    <None Include="_assets\scripts\fancybox\Thumbs.db" />
+    <None Include="_assets\scripts\jcrop\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\Models\Main.dbml.layout">
+      <DependentUpon>Main.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebService\Service.dbml.layout">
+      <DependentUpon>Service.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45240</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

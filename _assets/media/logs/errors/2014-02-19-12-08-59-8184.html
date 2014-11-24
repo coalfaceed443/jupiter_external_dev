@@ -1,0 +1,132 @@
+﻿<font face="Arial" size="4" color="red">An error occurred at http://localhost:45240/ImportTest.ashx<br><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;SqlDateTime&nbsp;overflow.&nbsp;Must&nbsp;be&nbsp;between&nbsp;1/1/1753&nbsp;12:00:00&nbsp;AM&nbsp;and&nbsp;12/31/9999&nbsp;11:59:59&nbsp;PM.</font></font><br><br><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Error Information</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Source</font></td>
+<td><font face="Arial" size="2">System.Data</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">Exception Type</font></td>
+<td><font face="Arial" size="2">System.Data.SqlTypes.SqlTypeException</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Message</font></td>
+<td><font face="Arial" size="2">SqlDateTime&nbsp;overflow.&nbsp;Must&nbsp;be&nbsp;between&nbsp;1/1/1753&nbsp;12:00:00&nbsp;AM&nbsp;and&nbsp;12/31/9999&nbsp;11:59:59&nbsp;PM.</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">StackTrace</font></td>
+<td><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan&nbsp;value)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime&nbsp;value)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.MetaType.FromDateTime(DateTime&nbsp;dateTime,&nbsp;Byte&nbsp;cb)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.TdsParser.WriteValue(Object&nbsp;value,&nbsp;MetaType&nbsp;type,&nbsp;Byte&nbsp;scale,&nbsp;Int32&nbsp;actualLength,&nbsp;Int32&nbsp;encodingByteSize,&nbsp;Int32&nbsp;offset,&nbsp;TdsParserStateObject&nbsp;stateObj)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[]&nbsp;rpcArray,&nbsp;Int32&nbsp;timeout,&nbsp;Boolean&nbsp;inSchema,&nbsp;SqlNotificationRequest&nbsp;notificationRequest,&nbsp;TdsParserStateObject&nbsp;stateObj,&nbsp;Boolean&nbsp;isCommandProc)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior&nbsp;cmdBehavior,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;Boolean&nbsp;returnStream,&nbsp;Boolean&nbsp;async)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior&nbsp;cmdBehavior,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;Boolean&nbsp;returnStream,&nbsp;String&nbsp;method,&nbsp;DbAsyncResult&nbsp;result)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior&nbsp;cmdBehavior,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;Boolean&nbsp;returnStream,&nbsp;String&nbsp;method)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior&nbsp;behavior,&nbsp;String&nbsp;method)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior&nbsp;behavior)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Common.DbCommand.ExecuteReader()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.Execute(Expression&nbsp;query,&nbsp;QueryInfo&nbsp;queryInfo,&nbsp;IObjectReaderFactory&nbsp;factory,&nbsp;Object[]&nbsp;parentArgs,&nbsp;Object[]&nbsp;userArgs,&nbsp;ICompiledSubQuery[]&nbsp;subQueries,&nbsp;Object&nbsp;lastResult)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression&nbsp;query,&nbsp;QueryInfo[]&nbsp;queryInfos,&nbsp;IObjectReaderFactory&nbsp;factory,&nbsp;Object[]&nbsp;userArguments,&nbsp;ICompiledSubQuery[]&nbsp;subQueries)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression&nbsp;query)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject&nbsp;item)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject&nbsp;item)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode&nbsp;failureMode)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.DataContext.SubmitChanges(ConflictMode&nbsp;failureMode)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.DataContext.SubmitChanges()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.ImportTest.ImportDonors(DonorRoute&nbsp;route)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\ImportTest.ashx.cs:line&nbsp;548<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.ImportTest.ProcessRequest(HttpContext&nbsp;context)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\ImportTest.ashx.cs:line&nbsp;20<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.HttpApplication.ExecuteStep(IExecutionStep&nbsp;step,&nbsp;Boolean&amp;&nbsp;completedSynchronously)</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">TargetSite</font></td>
+<td><font face="Arial" size="2">System.Data.SqlTypes.SqlDateTime&nbsp;FromTimeSpan(System.TimeSpan)</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Cookies Collection</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">__lc.visitor_id.1657641</font></td>
+<td><font face="Arial" size="2">S1390562339.9dd27a92ed</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">__atuvc</font></td>
+<td><font face="Arial" size="2">2%7C2%2C13%7C3%2C151%7C4%2C21%7C5%2C16%7C6</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">__lc.visitor_id.1884322</font></td>
+<td><font face="Arial" size="2">S1391442351.68ee462157</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ASP.NET_SessionId</font></td>
+<td><font face="Arial" size="2">ncfttb2nlqsebymmi4orhn55</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">admin</font></td>
+<td><font face="Arial" size="2">authcode=5ddaeb67-ea53-408c-96da-3411ab7cd9a7</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Server Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ALL_HTTP</font></td>
+<td><font face="Arial" size="2">HTTP_CACHE_CONTROL:max-age=0<BR>HTTP_CONNECTION:keep-alive<BR>HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8<BR>HTTP_ACCEPT_ENCODING:gzip,deflate,sdch<BR>HTTP_ACCEPT_LANGUAGE:en-GB,en-US;q=0.8,en;q=0.6<BR>HTTP_COOKIE:__lc.visitor_id.1657641=S1390562339.9dd27a92ed;&nbsp;__atuvc=2%7C2%2C13%7C3%2C151%7C4%2C21%7C5%2C16%7C6;&nbsp;__lc.visitor_id.1884322=S1391442351.68ee462157;&nbsp;ASP.NET_SessionId=ncfttb2nlqsebymmi4orhn55;&nbsp;admin=authcode=5ddaeb67-ea53-408c-96da-3411ab7cd9a7<BR>HTTP_HOST:localhost:45240<BR>HTTP_USER_AGENT:Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/32.0.1700.107&nbsp;Safari/537.36<BR></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ALL_RAW</font></td>
+<td><font face="Arial" size="2">Cache-Control:&nbsp;max-age=0<BR>Connection:&nbsp;keep-alive<BR>Accept:&nbsp;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8<BR>Accept-Encoding:&nbsp;gzip,deflate,sdch<BR>Accept-Language:&nbsp;en-GB,en-US;q=0.8,en;q=0.6<BR>Cookie:&nbsp;__lc.visitor_id.1657641=S1390562339.9dd27a92ed;&nbsp;__atuvc=2%7C2%2C13%7C3%2C151%7C4%2C21%7C5%2C16%7C6;&nbsp;__lc.visitor_id.1884322=S1391442351.68ee462157;&nbsp;ASP.NET_SessionId=ncfttb2nlqsebymmi4orhn55;&nbsp;admin=authcode=5ddaeb67-ea53-408c-96da-3411ab7cd9a7<BR>Host:&nbsp;localhost:45240<BR>User-Agent:&nbsp;Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/32.0.1700.107&nbsp;Safari/537.36<BR></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">APPL_MD_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">APPL_PHYSICAL_PATH</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">AUTH_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_PASSWORD</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">LOGON_USER</font></td>
+<td><font face="Arial" size="2">Ed-PC\Ed</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_COOKIE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_FLAGS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERIALNUMBER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CONTENT_LENGTH</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CONTENT_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">GATEWAY_INTERFACE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">INSTANCE_ID</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">INSTANCE_META_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">LOCAL_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">PATH_INFO</font></td>
+<td><font face="Arial" size="2">/ImportTest.ashx</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">PATH_TRANSLATED</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\ImportTest.ashx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">QUERY_STRING</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REMOTE_HOST</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_PORT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REQUEST_METHOD</font></td>
+<td><font face="Arial" size="2">GET</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SCRIPT_NAME</font></td>
+<td><font face="Arial" size="2">/ImportTest.ashx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_NAME</font></td>
+<td><font face="Arial" size="2">localhost</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PORT</font></td>
+<td><font face="Arial" size="2">45240</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_PORT_SECURE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PROTOCOL</font></td>
+<td><font face="Arial" size="2">HTTP/1.1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_SOFTWARE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">URL</font></td>
+<td><font face="Arial" size="2">/ImportTest.ashx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_CACHE_CONTROL</font></td>
+<td><font face="Arial" size="2">max-age=0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_CONNECTION</font></td>
+<td><font face="Arial" size="2">keep-alive</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT</font></td>
+<td><font face="Arial" size="2">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ACCEPT_ENCODING</font></td>
+<td><font face="Arial" size="2">gzip,deflate,sdch</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT_LANGUAGE</font></td>
+<td><font face="Arial" size="2">en-GB,en-US;q=0.8,en;q=0.6</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_COOKIE</font></td>
+<td><font face="Arial" size="2">__lc.visitor_id.1657641=S1390562339.9dd27a92ed;&nbsp;__atuvc=2%7C2%2C13%7C3%2C151%7C4%2C21%7C5%2C16%7C6;&nbsp;__lc.visitor_id.1884322=S1391442351.68ee462157;&nbsp;ASP.NET_SessionId=ncfttb2nlqsebymmi4orhn55;&nbsp;admin=authcode=5ddaeb67-ea53-408c-96da-3411ab7cd9a7</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_HOST</font></td>
+<td><font face="Arial" size="2">localhost:45240</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_USER_AGENT</font></td>
+<td><font face="Arial" size="2">Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/32.0.1700.107&nbsp;Safari/537.36</font></td></tr>
+</table>

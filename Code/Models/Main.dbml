@@ -1,0 +1,1044 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="jupiter_crm" EntityNamespace="CRM.Code.Models" ContextNamespace="CRM.Code.Models" Class="MainDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cfserver;Initial Catalog=jupiter_crm;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="sevenstoriesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CRM_Address" Member="CRM_Addresses">
+    <Type Name="CRM_Address">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AddressLine1" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine2" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine3" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Town" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="County" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Postcode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine4" Type="System.String" CanBeNull="false" />
+      <Column Name="AddressLine5" Type="System.String" CanBeNull="false" />
+      <Association Name="CRM_Address_CRM_Venue" Member="CRM_Venues" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Venue" />
+      <Association Name="CRM_Address_CRM_Venue1" Member="CRM_Venues1" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Venue" />
+      <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Fundraisings" ThisKey="ID" OtherKey="GiftAidAddressID" Type="CRM_Fundraising" />
+      <Association Name="CRM_Address_CRM_School" Member="CRM_Schools" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_School" />
+      <Association Name="CRM_Address_CRM_Person" Member="CRM_Persons" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Person" />
+      <Association Name="CRM_Address_CRM_PersonPersonal" Member="CRM_PersonPersonals" ThisKey="ID" OtherKey="AddressID" Type="CRM_PersonPersonal" />
+      <Association Name="CRM_Address_CRM_Organisation" Member="CRM_Organisations" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Organisation" />
+      <Association Name="CRM_Address_CRM_Calendar" Member="CRM_Calendars" ThisKey="ID" OtherKey="InvoiceAddressID" Type="CRM_Calendar" />
+      <Association Name="Country_CRM_Address" Member="Country" ThisKey="CountryID" OtherKey="ID" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarVenue" Member="CRM_CalendarVenues">
+    <Type Name="CRM_CalendarVenue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_VenueID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeFrom" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeTo" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Venue_CRM_CalendarVenue" Member="CRM_Venue" ThisKey="CRM_VenueID" OtherKey="ID" Type="CRM_Venue" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarVenue" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Role" Member="CRM_Roles">
+    <Type Name="CRM_Role">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Role_CRM_PersonSchool" Member="CRM_PersonSchools" ThisKey="ID" OtherKey="CRM_RoleID" Type="CRM_PersonSchool" />
+      <Association Name="CRM_Role_CRM_PersonOrganisation" Member="CRM_PersonOrganisations" ThisKey="ID" OtherKey="CRM_RoleID" Type="CRM_PersonOrganisation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_SchoolKeystage" Member="CRM_SchoolKeystages">
+    <Type Name="CRM_SchoolKeystage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_SchoolID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_KeyStageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_KeyStage_CRM_SchoolKeystage" Member="CRM_KeyStage" ThisKey="CRM_KeyStageID" OtherKey="ID" Type="CRM_KeyStage" IsForeignKey="true" />
+      <Association Name="CRM_School_CRM_SchoolKeystage" Member="CRM_School" ThisKey="CRM_SchoolID" OtherKey="ID" Type="CRM_School" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Source" Member="CRM_Sources">
+    <Type Name="CRM_Source">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Source_CRM_Transaction" Member="CRM_Transactions" ThisKey="ID" OtherKey="CRM_SourceID" Type="CRM_Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Tag" Member="CRM_Tags">
+    <Type Name="CRM_Tag">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ToAttend" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StartDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Transaction" Member="CRM_Transactions">
+    <Type Name="CRM_Transaction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PayMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_SourceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsGiftAid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidDateCollected" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Source_CRM_Transaction" Member="CRM_Source" ThisKey="CRM_SourceID" OtherKey="ID" Type="CRM_Source" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuthSession" Member="AuthSessions">
+    <Type Name="AuthSession">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IPAddress" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SessionCode" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CookieID" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdminPermission" Member="AdminPermissions">
+    <Type Name="AdminPermission">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Section" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsUpdate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_AdminPermission" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Setting" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TableHistory" Member="TableHistories">
+    <Type Name="TableHistory">
+      <Column Name="TableHistoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Key1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ActionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Property" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OldValue" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NewValue" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ActionUserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBML_Schema" Member="DBML_Schemas">
+    <Type Name="DBML_Schema">
+      <Column Name="[table]" Member="table" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="[column]" Member="column" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="column_desc" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_DataTableColumn]" Member="_DataTableColumns">
+    <Type Name="_DataTableColumn">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[_DataTableID]" Member="_DataTableID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[_DataFieldName]" Member="_DataFieldName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="[_DataFieldFriendly]" Member="_DataFieldFriendly" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="_DataTable__DataTableColumn" Member="_DataTable" ThisKey="_DataTableID" OtherKey="ID" Type="_DataTable" IsForeignKey="true" />
+      <Association Name="Admin__DataTableColumn" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country" Member="Countries">
+    <Type Name="Country">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyCode" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryZoneID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Country_CRM_Address" Member="CRM_Addresses" ThisKey="ID" OtherKey="CountryID" Type="CRM_Address" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Note" Member="CRM_Notes">
+    <Type Name="CRM_Note">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerAdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Note_CRM_NoteAdminRead" Member="CRM_NoteAdminReads" ThisKey="ID" OtherKey="CRM_NoteID" Type="CRM_NoteAdminRead" />
+      <Association Name="Admin_CRM_Note" Member="Admin" ThisKey="OwnerAdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_LEA" Member="CRM_LEAs">
+    <Type Name="CRM_LEA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Website" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_LEA_CRM_School" Member="CRM_Schools" ThisKey="ID" OtherKey="CRM_LEAID" Type="CRM_School" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FamilyPerson" Member="CRM_FamilyPersons">
+    <Type Name="CRM_FamilyPerson">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_FamilyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryContact" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(23)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Family_CRM_FamilyPerson" Member="CRM_Family" ThisKey="CRM_FamilyID" OtherKey="ID" Type="CRM_Family" IsForeignKey="true" />
+      <Association Name="CRM_Person_CRM_FamilyPerson" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarType" Member="CRM_CalendarTypes">
+    <Type Name="CRM_CalendarType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CSSClass" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Hex" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="FixedRef" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_CalendarType_CRM_Calendar" Member="CRM_Calendars" ThisKey="ID" OtherKey="CRM_CalendarTypeID" Type="CRM_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_TaskParticipant" Member="CRM_TaskParticipants">
+    <Type Name="CRM_TaskParticipant">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateAssigned" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Task_CRM_TaskParticipant" Member="CRM_Task" ThisKey="CRM_TaskID" OtherKey="ID" Type="CRM_Task" IsForeignKey="true" />
+      <Association Name="Admin_CRM_TaskParticipant" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Task" Member="CRM_Tasks">
+    <Type Name="CRM_Task">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsComplete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerAdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCancelled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(15)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Task_CRM_TaskParticipant" Member="CRM_TaskParticipants" ThisKey="ID" OtherKey="CRM_TaskID" Type="CRM_TaskParticipant" />
+      <Association Name="Admin_CRM_Task" Member="Admin" ThisKey="OwnerAdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_Task" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Venue" Member="CRM_Venues">
+    <Type Name="CRM_Venue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsInternal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(16)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Venue_CRM_CalendarVenue" Member="CRM_CalendarVenues" ThisKey="ID" OtherKey="CRM_VenueID" Type="CRM_CalendarVenue" />
+      <Association Name="CRM_Address_CRM_Venue" Member="CRM_Address" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_Address_CRM_Venue1" Member="CRM_Address1" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Family" Member="CRM_Families">
+    <Type Name="CRM_Family">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(17)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Family_CRM_FamilyPerson" Member="CRM_FamilyPersons" ThisKey="ID" OtherKey="CRM_FamilyID" Type="CRM_FamilyPerson" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarPerHead" Member="CRM_CalendarPerHeads">
+    <Type Name="CRM_CalendarPerHead">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PlusChildren" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChildrenPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Calendar_CRM_CalendarPerHead" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassCard" Member="CRM_AnnualPassCards">
+    <Type Name="CRM_AnnualPassCard">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MembershipNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassCardID" Type="CRM_AnnualPass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassType" Member="CRM_AnnualPassTypes">
+    <Type Name="CRM_AnnualPassType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassTypeID" Type="CRM_AnnualPass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons">
+    <Type Name="CRM_AnnualPassPerson">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Person_CRM_AnnualPassPerson" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_AnnualPass_CRM_AnnualPassPerson" Member="CRM_AnnualPass" ThisKey="CRM_AnnualPassID" OtherKey="ID" Type="CRM_AnnualPass" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarAttendance" Member="CRM_CalendarAttendances">
+    <Type Name="CRM_CalendarAttendance">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Admin_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_CRM_CalendarAttendance" Member="Admin" ThisKey="Admin_ID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+      <Association Name="CRM_Person_CRM_CalendarAttendance" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarAttendance" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event" Member="Events">
+    <Type Name="Event">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DateFrom" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateTo" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ShortDescription" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="SharePromo" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RelatedInfo" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OverrideDates" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsExhibition" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsRequiresAnnualPass" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsRequiresDayTicket" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsFeatured" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="VATCodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OverrideSoldOut" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Association Name="Event_CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings" ThisKey="ID" OtherKey="EventID" Type="CRM_CalendarGroupBooking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarParty" Member="CRM_CalendarParties">
+    <Type Name="CRM_CalendarParty">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Theme" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AgeOnBirthday" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfChildren" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalAdults" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CateringRequirements" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CateringPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="AgreedToTerms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalEmail" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(16)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Calendar_CRM_CalendarParty" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Package" Member="CRM_Packages">
+    <Type Name="CRM_Package">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Package_CRM_CalendarCPD" Member="CRM_CalendarCPDs" ThisKey="ID" OtherKey="CRM_PackageID" Type="CRM_CalendarCPD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_DataTable]" Member="_DataTables">
+    <Type Name="_DataTable">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TableReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="FriendlyName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAllowCustom" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="_DataTable__DataTableColumn" Member="_DataTableColumns" ThisKey="ID" OtherKey="_DataTableID" Type="_DataTableColumn" />
+      <Association Name="_DataTable_CRM_FormField" Member="CRM_FormFields" ThisKey="ID" OtherKey="_DataTableID" Type="CRM_FormField" />
+      <Association Name="_DataTable_AdminDataQuery" Member="AdminDataQueries" ThisKey="ID" OtherKey="_DataTableID" Type="AdminDataQuery" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FormField" Member="CRM_FormFields">
+    <Type Name="CRM_FormField">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[_DataTableID]" Member="_DataTableID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_FormField_CRM_FormFieldItem" Member="CRM_FormFieldItems" ThisKey="ID" OtherKey="CRM_FormFieldID" Type="CRM_FormFieldItem" />
+      <Association Name="CRM_FormField_CRM_FormFieldAnswer" Member="CRM_FormFieldAnswers" ThisKey="ID" OtherKey="CRM_FormFieldID" Type="CRM_FormFieldAnswer" />
+      <Association Name="_DataTable_CRM_FormField" Member="_DataTable" ThisKey="_DataTableID" OtherKey="ID" Type="_DataTable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FormFieldItem" Member="CRM_FormFieldItems">
+    <Type Name="CRM_FormFieldItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_FormFieldID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Label" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_FormField_CRM_FormFieldItem" Member="CRM_FormField" ThisKey="CRM_FormFieldID" OtherKey="ID" Type="CRM_FormField" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_NoteAdminRead" Member="CRM_NoteAdminReads">
+    <Type Name="CRM_NoteAdminRead">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_NoteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Note_CRM_NoteAdminRead" Member="CRM_Note" ThisKey="CRM_NoteID" OtherKey="ID" Type="CRM_Note" IsForeignKey="true" />
+      <Association Name="Admin_CRM_NoteAdminRead" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdminDataQuery" Member="AdminDataQueries">
+    <Type Name="AdminDataQuery">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[_DataTableID]" Member="_DataTableID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="AdminDataQuery_AdminDataQueryFilter" Member="AdminDataQueryFilters" ThisKey="ID" OtherKey="AdminDataQueryID" Type="AdminDataQueryFilter" />
+      <Association Name="_DataTable_AdminDataQuery" Member="_DataTable" ThisKey="_DataTableID" OtherKey="ID" Type="_DataTable" IsForeignKey="true" />
+      <Association Name="Admin_AdminDataQuery" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdminDataQueryFilter" Member="AdminDataQueryFilters">
+    <Type Name="AdminDataQueryFilter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdminDataQueryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataFieldName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Operator" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Concat" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="AdminDataQuery_AdminDataQueryFilter" Member="AdminDataQuery" ThisKey="AdminDataQueryID" OtherKey="ID" Type="AdminDataQuery" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FundraisingReason" Member="CRM_FundraisingReasons">
+    <Type Name="CRM_FundraisingReason">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_FundraisingReason_CRM_Fundraising" Member="CRM_Fundraisings" ThisKey="ID" OtherKey="CRM_FundraisingReasonID" Type="CRM_Fundraising" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FundraisingSplit" Member="CRM_FundraisingSplits">
+    <Type Name="CRM_FundraisingSplit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_FundID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_FundRaisingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DateGiven" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidRate" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Fund_CRM_FundraisingSplit" Member="CRM_Fund" ThisKey="CRM_FundID" OtherKey="ID" Type="CRM_Fund" IsForeignKey="true" />
+      <Association Name="CRM_Fundraising_CRM_FundraisingSplit" Member="CRM_Fundraising" ThisKey="CRM_FundRaisingID" OtherKey="ID" Type="CRM_Fundraising" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_PaymentType" Member="CRM_PaymentTypes">
+    <Type Name="CRM_PaymentType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_PaymentType_CRM_Fundraising" Member="CRM_Fundraisings" ThisKey="ID" OtherKey="CRM_PaymentTypeID" Type="CRM_Fundraising" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Fund" Member="CRM_Funds">
+    <Type Name="CRM_Fund">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ThankyouTemplate" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(15)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Fund_CRM_FundraisingSplit" Member="CRM_FundraisingSplits" ThisKey="ID" OtherKey="CRM_FundID" Type="CRM_FundraisingSplit" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_OrganisationType" Member="CRM_OrganisationTypes">
+    <Type Name="CRM_OrganisationType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_OrganisationType_CRM_Organisation" Member="CRM_Organisations" ThisKey="ID" OtherKey="CRM_OrganisationTypeID" Type="CRM_Organisation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Fundraising" Member="CRM_Fundraisings">
+    <Type Name="CRM_Fundraising">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInKind" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PledgedAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsGiftAid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidFirstname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidLastname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidAddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsRecurring" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RecurringEveryWeeks" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PaymentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_FundraisingReasonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(22)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Fundraising_CRM_FundraisingSplit" Member="CRM_FundraisingSplits" ThisKey="ID" OtherKey="CRM_FundRaisingID" Type="CRM_FundraisingSplit" />
+      <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Address" ThisKey="GiftAidAddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_FundraisingReason_CRM_Fundraising" Member="CRM_FundraisingReason" ThisKey="CRM_FundraisingReasonID" OtherKey="ID" Type="CRM_FundraisingReason" IsForeignKey="true" />
+      <Association Name="CRM_PaymentType_CRM_Fundraising" Member="CRM_PaymentType" ThisKey="CRM_PaymentTypeID" OtherKey="ID" Type="CRM_PaymentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_SystemAccess" Member="CRM_SystemAccesses">
+    <Type Name="CRM_SystemAccess">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="FriendlyName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsPermissable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_SystemAccess_CRM_SystemAccessAdmin" Member="CRM_SystemAccessAdmins" ThisKey="ID" OtherKey="CRM_SystemAccessID" Type="CRM_SystemAccessAdmin" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="LastLogin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsMasterAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsReducedContentAccess" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastReset" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ResetLink" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_AdminPermission" Member="AdminPermissions" ThisKey="ID" OtherKey="AdminID" Type="AdminPermission" />
+      <Association Name="Admin__DataTableColumn" Member="_DataTableColumns" ThisKey="ID" OtherKey="AdminID" Type="_DataTableColumn" />
+      <Association Name="Admin_CRM_Note" Member="CRM_Notes" ThisKey="ID" OtherKey="OwnerAdminID" Type="CRM_Note" />
+      <Association Name="Admin_CRM_TaskParticipant" Member="CRM_TaskParticipants" ThisKey="ID" OtherKey="AdminID" Type="CRM_TaskParticipant" />
+      <Association Name="Admin_CRM_Task" Member="CRM_Tasks" ThisKey="ID" OtherKey="OwnerAdminID" Type="CRM_Task" />
+      <Association Name="Admin_CRM_CalendarAttendance" Member="CRM_CalendarAttendances" ThisKey="ID" OtherKey="Admin_ID" Type="CRM_CalendarAttendance" />
+      <Association Name="Admin_CRM_NoteAdminRead" Member="CRM_NoteAdminReads" ThisKey="ID" OtherKey="AdminID" Type="CRM_NoteAdminRead" />
+      <Association Name="Admin_AdminDataQuery" Member="AdminDataQueries" ThisKey="ID" OtherKey="AdminID" Type="AdminDataQuery" />
+      <Association Name="Admin_CRM_NavHistory" Member="CRM_NavHistories" ThisKey="ID" OtherKey="AdminID" Type="CRM_NavHistory" />
+      <Association Name="Admin_CRM_CalendarInvite" Member="CRM_CalendarInvites" ThisKey="ID" OtherKey="LastAmendedAdminID" Type="CRM_CalendarInvite" />
+      <Association Name="Admin_CRM_CalendarAdmin" Member="CRM_CalendarAdmins" ThisKey="ID" OtherKey="AdminID" Type="CRM_CalendarAdmin" />
+      <Association Name="Admin_CRM_SystemAccessAdmin" Member="CRM_SystemAccessAdmins" ThisKey="ID" OtherKey="AdminID" Type="CRM_SystemAccessAdmin" />
+      <Association Name="Admin_CRM_Communication" Member="CRM_Communications" ThisKey="ID" OtherKey="AdminID" Type="CRM_Communication" />
+      <Association Name="Admin_CRM_Calendar" Member="CRM_Calendars" ThisKey="ID" OtherKey="CreatedByAdminID" Type="CRM_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_KeyStage" Member="CRM_KeyStages">
+    <Type Name="CRM_KeyStage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_KeyStage_CRM_SchoolKeystage" Member="CRM_SchoolKeystages" ThisKey="ID" OtherKey="CRM_KeyStageID" Type="CRM_SchoolKeystage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Offer" Member="CRM_Offers">
+    <Type Name="CRM_Offer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Offer_CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings" ThisKey="ID" OtherKey="OfferID" Type="CRM_CalendarGroupBooking" />
+      <Association Name="CRM_Offer_CRM_CalendarOutreach" Member="CRM_CalendarOutreaches" ThisKey="ID" OtherKey="CRM_OfferID" Type="CRM_CalendarOutreach" />
+      <Association Name="CRM_Offer_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_OfferID" Type="CRM_AnnualPass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_NavHistory" Member="CRM_NavHistories">
+    <Type Name="CRM_NavHistory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="FriendlyName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="LastAccessed" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsStarred" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ContextName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_CRM_NavHistory" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Title" Member="CRM_Titles">
+    <Type Name="CRM_Title">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_OrganisationSchool" Member="CRM_OrganisationSchools">
+    <Type Name="CRM_OrganisationSchool">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_OrganisationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_SchoolID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_School_CRM_OrganisationSchool" Member="CRM_School" ThisKey="CRM_SchoolID" OtherKey="ID" Type="CRM_School" IsForeignKey="true" />
+      <Association Name="CRM_Organisation_CRM_OrganisationSchool" Member="CRM_Organisation" ThisKey="CRM_OrganisationID" OtherKey="ID" Type="CRM_Organisation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarInvite" Member="CRM_CalendarInvites">
+    <Type Name="CRM_CalendarInvite">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInvited" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsAttended" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCancelled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsBooked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastAmendedAdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_CRM_CalendarInvite" Member="Admin" ThisKey="LastAmendedAdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarInvite" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_SchoolType" Member="CRM_SchoolTypes">
+    <Type Name="CRM_SchoolType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_SchoolType_CRM_School" Member="CRM_Schools" ThisKey="ID" OtherKey="CRM_SchoolTypeID" Type="CRM_School" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Exhibition" Member="CRM_Exhibitions">
+    <Type Name="CRM_Exhibition">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Exhibition_CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings" ThisKey="ID" OtherKey="CRM_ExhibitionID" Type="CRM_CalendarGroupBooking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_School" Member="CRM_Schools">
+    <Type Name="CRM_School">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_LEAID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRM_RegionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRM_AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_SchoolTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSEN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SENSupportFreq" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ApproxPupils" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SageAccountNumber" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(17)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_School_CRM_SchoolKeystage" Member="CRM_SchoolKeystages" ThisKey="ID" OtherKey="CRM_SchoolID" Type="CRM_SchoolKeystage" />
+      <Association Name="CRM_School_CRM_OrganisationSchool" Member="CRM_OrganisationSchools" ThisKey="ID" OtherKey="CRM_SchoolID" Type="CRM_OrganisationSchool" />
+      <Association Name="CRM_School_CRM_PersonSchool" Member="CRM_PersonSchools" ThisKey="ID" OtherKey="CRM_SchoolID" Type="CRM_PersonSchool" />
+      <Association Name="CRM_School_CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings" ThisKey="ID" OtherKey="CRM_SchoolID" Type="CRM_CalendarGroupBooking" />
+      <Association Name="CRM_Address_CRM_School" Member="CRM_Address" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_LEA_CRM_School" Member="CRM_LEA" ThisKey="CRM_LEAID" OtherKey="ID" Type="CRM_LEA" IsForeignKey="true" />
+      <Association Name="CRM_SchoolType_CRM_School" Member="CRM_SchoolType" ThisKey="CRM_SchoolTypeID" OtherKey="ID" Type="CRM_SchoolType" IsForeignKey="true" />
+      <Association Name="CRM_Region_CRM_School" Member="CRM_Region" ThisKey="CRM_RegionID" OtherKey="ID" Type="CRM_Region" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Region" Member="CRM_Regions">
+    <Type Name="CRM_Region">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Region_CRM_School" Member="CRM_Schools" ThisKey="ID" OtherKey="CRM_RegionID" Type="CRM_School" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Person" Member="CRM_Persons">
+    <Type Name="CRM_Person">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsGiftAid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PreviousNames" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DateOfBirth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsChild" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsConcession" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCarerMinder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryEmail" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryTelephone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsContactEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsContactPost" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeceased" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(17)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDoNotMail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDoNotEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="WebsiteAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LegacyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsMale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AddressType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone2" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Person_CRM_FamilyPerson" Member="CRM_FamilyPersons" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_FamilyPerson" />
+      <Association Name="CRM_Person_CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_AnnualPassPerson" />
+      <Association Name="CRM_Person_CRM_CalendarAttendance" Member="CRM_CalendarAttendances" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_CalendarAttendance" />
+      <Association Name="CRM_Person_CRM_PersonSchool" Member="CRM_PersonSchools" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_PersonSchool" />
+      <Association Name="CRM_Person_CRM_PersonOrganisation" Member="CRM_PersonOrganisations" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_PersonOrganisation" />
+      <Association Name="CRM_Person_CRM_PersonPersonal" Member="CRM_PersonPersonals" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_PersonPersonal" />
+      <Association Name="CRM_Person_CRM_FundraisingGiftProfile" Member="CRM_FundraisingGiftProfiles" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_FundraisingGiftProfile" />
+      <Association Name="CRM_Address_CRM_Person" Member="CRM_Address" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarAdmin" Member="CRM_CalendarAdmins">
+    <Type Name="CRM_CalendarAdmin">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="Admin_CRM_CalendarAdmin" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarAdmin" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_PersonSchool" Member="CRM_PersonSchools">
+    <Type Name="CRM_PersonSchool">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_SchoolID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(23)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_PersonSchool_CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings" ThisKey="ID" OtherKey="CRM_PersonSchoolID" Type="CRM_CalendarGroupBooking" />
+      <Association Name="CRM_Person_CRM_PersonSchool" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_Role_CRM_PersonSchool" Member="CRM_Role" ThisKey="CRM_RoleID" OtherKey="ID" Type="CRM_Role" IsForeignKey="true" />
+      <Association Name="CRM_School_CRM_PersonSchool" Member="CRM_School" ThisKey="CRM_SchoolID" OtherKey="ID" Type="CRM_School" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_PersonOrganisation" Member="CRM_PersonOrganisations">
+    <Type Name="CRM_PersonOrganisation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OrganisationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(29)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Person_CRM_PersonOrganisation" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_Role_CRM_PersonOrganisation" Member="CRM_Role" ThisKey="CRM_RoleID" OtherKey="ID" Type="CRM_Role" IsForeignKey="true" />
+      <Association Name="CRM_Organisation_CRM_PersonOrganisation" Member="CRM_Organisation" ThisKey="CRM_OrganisationID" OtherKey="ID" Type="CRM_Organisation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_PersonPersonal" Member="CRM_PersonPersonals">
+    <Type Name="CRM_PersonPersonal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(25)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Address_CRM_PersonPersonal" Member="CRM_Address" ThisKey="AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_Person_CRM_PersonPersonal" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Organisation" Member="CRM_Organisations">
+    <Type Name="CRM_Organisation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OrganisationTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(23)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Organisation_CRM_OrganisationSchool" Member="CRM_OrganisationSchools" ThisKey="ID" OtherKey="CRM_OrganisationID" Type="CRM_OrganisationSchool" />
+      <Association Name="CRM_Organisation_CRM_PersonOrganisation" Member="CRM_PersonOrganisations" ThisKey="ID" OtherKey="CRM_OrganisationID" Type="CRM_PersonOrganisation" />
+      <Association Name="CRM_Address_CRM_Organisation" Member="CRM_Address" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_OrganisationType_CRM_Organisation" Member="CRM_OrganisationType" ThisKey="CRM_OrganisationTypeID" OtherKey="ID" Type="CRM_OrganisationType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_SystemAccessAdmin" Member="CRM_SystemAccessAdmins">
+    <Type Name="CRM_SystemAccessAdmin">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_SystemAccessID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsAdd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsRead" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsWrite" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BespokeURL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="BespokeName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Admin_CRM_SystemAccessAdmin" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+      <Association Name="CRM_SystemAccess_CRM_SystemAccessAdmin" Member="CRM_SystemAccess" ThisKey="CRM_SystemAccessID" OtherKey="ID" Type="CRM_SystemAccess" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarCPD" Member="CRM_CalendarCPDs">
+    <Type Name="CRM_CalendarCPD">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Attendees" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PackageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Length" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OrganisationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConfirmationSent" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(22)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ConfirmationInitials" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="SchoolOrganisationReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Package_CRM_CalendarCPD" Member="CRM_Package" ThisKey="CRM_PackageID" OtherKey="ID" Type="CRM_Package" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarCPD" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings">
+    <Type Name="CRM_CalendarGroupBooking">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_SchoolID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRM_PersonSchoolID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SchoolOrgReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsOutreach" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="EventID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OfferID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRM_ExhibitionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pupils" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Adults" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Yeargroup" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsBookshopRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Within2HourSlot" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPackedLunchSpace" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PackedLunchBookingID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecialNeeds" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ConfirmationSent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Facilitator" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FacilitatorTwo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FacilitatorThree" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(23)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ActualChildren" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActualAdults" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActualTeachers" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfirmationInitials" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ConfirmationDateSent" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrganisationName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Exhibition_CRM_CalendarGroupBooking" Member="CRM_Exhibition" ThisKey="CRM_ExhibitionID" OtherKey="ID" Type="CRM_Exhibition" IsForeignKey="true" />
+      <Association Name="CRM_Offer_CRM_CalendarGroupBooking" Member="CRM_Offer" ThisKey="OfferID" OtherKey="ID" Type="CRM_Offer" IsForeignKey="true" />
+      <Association Name="CRM_PersonSchool_CRM_CalendarGroupBooking" Member="CRM_PersonSchool" ThisKey="CRM_PersonSchoolID" OtherKey="ID" Type="CRM_PersonSchool" IsForeignKey="true" />
+      <Association Name="CRM_School_CRM_CalendarGroupBooking" Member="CRM_School" ThisKey="CRM_SchoolID" OtherKey="ID" Type="CRM_School" IsForeignKey="true" />
+      <Association Name="Event_CRM_CalendarGroupBooking" Member="Event" ThisKey="EventID" OtherKey="ID" Type="Event" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarGroupBooking" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CommunicationLink" Member="CRM_CommunicationLinks">
+    <Type Name="CRM_CommunicationLink">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CommunicationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Communication_CRM_CommunicationLink" Member="CRM_Communication" ThisKey="CRM_CommunicationID" OtherKey="ID" Type="CRM_Communication" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Communication" Member="CRM_Communications">
+    <Type Name="CRM_Communication">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FileStore" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataStore" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IncomingFileType" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="MailType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Communication_CRM_CommunicationLink" Member="CRM_CommunicationLinks" ThisKey="ID" OtherKey="CRM_CommunicationID" Type="CRM_CommunicationLink" />
+      <Association Name="Admin_CRM_Communication" Member="Admin" ThisKey="AdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FundraisingGiftProfile" Member="CRM_FundraisingGiftProfiles">
+    <Type Name="CRM_FundraisingGiftProfile">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProfileName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DayOfMonth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EveryXMonth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AmountToCharge" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NextPaymentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(13)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_FundraisingGiftProfile_CRM_FundraisingGiftProfileLog" Member="CRM_FundraisingGiftProfileLogs" ThisKey="ID" OtherKey="CRM_FundraisingGiftProfileID" Type="CRM_FundraisingGiftProfileLog" />
+      <Association Name="CRM_Person_CRM_FundraisingGiftProfile" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FundraisingGiftProfileLog" Member="CRM_FundraisingGiftProfileLogs">
+    <Type Name="CRM_FundraisingGiftProfileLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_FundraisingGiftProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AmountCharged" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TimestampCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TimestampConfirmed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PaymentReference" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_FundraisingGiftProfile_CRM_FundraisingGiftProfileLog" Member="CRM_FundraisingGiftProfile" ThisKey="CRM_FundraisingGiftProfileID" OtherKey="ID" Type="CRM_FundraisingGiftProfile" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_CalendarOutreach" Member="CRM_CalendarOutreaches">
+    <Type Name="CRM_CalendarOutreach">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SchoolOrgReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OfferID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoPupils" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoAdults" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Yeargroup" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkshopTimes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DeliveryAgreements" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SENNoChildren" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SENDetails" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Facilitator" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ActualChildren" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActualAdults" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActualTeachers" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfirmationSent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ConfirmationSentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ConfirmationInitials" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="OrganisationName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(26)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CRM_Offer_CRM_CalendarOutreach" Member="CRM_Offer" ThisKey="CRM_OfferID" OtherKey="ID" Type="CRM_Offer" IsForeignKey="true" />
+      <Association Name="CRM_Calendar_CRM_CalendarOutreach" Member="CRM_Calendar" ThisKey="CRM_CalendarID" OtherKey="ID" Type="CRM_Calendar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Calendar" Member="CRM_Calendars">
+    <Type Name="CRM_Calendar">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_CalendarTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsCancelled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CancellationReason" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CancellationAdminID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCancelled" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedByAdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceAgreed" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PriceType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RequiresCatering" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(19)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsInvoiced" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceTitle" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceFirstname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceLastname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DatePaid" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PrivacyStatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Calendar_CRM_CalendarVenue" Member="CRM_CalendarVenues" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarVenue" />
+      <Association Name="CRM_Calendar_CRM_Task" Member="CRM_Tasks" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_Task" />
+      <Association Name="CRM_Calendar_CRM_CalendarPerHead" Member="CRM_CalendarPerHeads" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarPerHead" />
+      <Association Name="CRM_Calendar_CRM_CalendarAttendance" Member="CRM_CalendarAttendances" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarAttendance" />
+      <Association Name="CRM_Calendar_CRM_CalendarParty" Member="CRM_CalendarParties" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarParty" />
+      <Association Name="CRM_Calendar_CRM_CalendarInvite" Member="CRM_CalendarInvites" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarInvite" />
+      <Association Name="CRM_Calendar_CRM_CalendarAdmin" Member="CRM_CalendarAdmins" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarAdmin" />
+      <Association Name="CRM_Calendar_CRM_CalendarCPD" Member="CRM_CalendarCPDs" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarCPD" />
+      <Association Name="CRM_Calendar_CRM_CalendarGroupBooking" Member="CRM_CalendarGroupBookings" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarGroupBooking" />
+      <Association Name="CRM_Calendar_CRM_CalendarOutreach" Member="CRM_CalendarOutreaches" ThisKey="ID" OtherKey="CRM_CalendarID" Type="CRM_CalendarOutreach" />
+      <Association Name="Admin_CRM_Calendar" Member="Admin" ThisKey="CreatedByAdminID" OtherKey="ID" Type="Admin" IsForeignKey="true" />
+      <Association Name="CRM_Address_CRM_Calendar" Member="CRM_Address" ThisKey="InvoiceAddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_CalendarType_CRM_Calendar" Member="CRM_CalendarType" ThisKey="CRM_CalendarTypeID" OtherKey="ID" Type="CRM_CalendarType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FormFieldAnswer" Member="CRM_FormFieldAnswers">
+    <Type Name="CRM_FormFieldAnswer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_FormFieldID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="CRM_FormField_CRM_FormFieldAnswer" Member="CRM_FormField" ThisKey="CRM_FormFieldID" OtherKey="ID" Type="CRM_FormField" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPass" Member="CRM_AnnualPasses">
+    <Type Name="CRM_AnnualPass">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPaid" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DiscountApplied" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsPending" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OfferID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPass_CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons" ThisKey="ID" OtherKey="CRM_AnnualPassID" Type="CRM_AnnualPassPerson" />
+      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
+      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPassType" ThisKey="CRM_AnnualPassTypeID" OtherKey="ID" Type="CRM_AnnualPassType" IsForeignKey="true" />
+      <Association Name="CRM_Offer_CRM_AnnualPass" Member="CRM_Offer" ThisKey="CRM_OfferID" OtherKey="ID" Type="CRM_Offer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HoldingPen" Member="HoldingPens">
+    <Type Name="HoldingPen">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DateReceived" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateCommitted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OriginDescription" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Address3" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="County" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Postcode" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="InterestObjects" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DoNotMail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DoNotEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AlwaysSendPassInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TemplateEmail" Member="TemplateEmails">
+    <Type Name="TemplateEmail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="FixedRef" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ToEmail" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="CCEmail" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="BCCEmail" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="FromEmail" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AdminDescription" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsToEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TemplateEmail_TemplateEmailPlaceholder" Member="TemplateEmailPlaceholders" ThisKey="ID" OtherKey="TemplateEmailID" Type="TemplateEmailPlaceholder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TemplateEmailPlaceholder" Member="TemplateEmailPlaceholders">
+    <Type Name="TemplateEmailPlaceholder">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TemplateEmailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Placeholder" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(2500) NOT NULL" CanBeNull="false" />
+      <Association Name="TemplateEmail_TemplateEmailPlaceholder" Member="TemplateEmail" ThisKey="TemplateEmailID" OtherKey="ID" Type="TemplateEmail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetNewId" Method="GetNewId" IsComposable="true">
+    <Return Type="System.Guid" />
+  </Function>
+</Database>

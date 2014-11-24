@@ -1,0 +1,194 @@
+﻿<font face="Arial" size="4" color="red">An error occurred at http://localhost:47620/admin/fundraising/details.aspx<br><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;Cannot&nbsp;insert&nbsp;the&nbsp;value&nbsp;NULL&nbsp;into&nbsp;column&nbsp;'PrimaryContactReference',&nbsp;table&nbsp;'sevenstories.dbo.CRM_Fundraising';&nbsp;column&nbsp;does&nbsp;not&nbsp;allow&nbsp;nulls.&nbsp;INSERT&nbsp;fails.<BR>The&nbsp;statement&nbsp;has&nbsp;been&nbsp;terminated.</font></font><br><br><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Error Information</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Source</font></td>
+<td><font face="Arial" size="2">.Net&nbsp;SqlClient&nbsp;Data&nbsp;Provider</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">Exception Type</font></td>
+<td><font face="Arial" size="2">System.Data.SqlClient.SqlException</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Message</font></td>
+<td><font face="Arial" size="2">Cannot&nbsp;insert&nbsp;the&nbsp;value&nbsp;NULL&nbsp;into&nbsp;column&nbsp;'PrimaryContactReference',&nbsp;table&nbsp;'sevenstories.dbo.CRM_Fundraising';&nbsp;column&nbsp;does&nbsp;not&nbsp;allow&nbsp;nulls.&nbsp;INSERT&nbsp;fails.<BR>The&nbsp;statement&nbsp;has&nbsp;been&nbsp;terminated.</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">StackTrace</font></td>
+<td><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlConnection.OnError(SqlException&nbsp;exception,&nbsp;Boolean&nbsp;breakConnection)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlInternalConnection.OnError(SqlException&nbsp;exception,&nbsp;Boolean&nbsp;breakConnection)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject&nbsp;stateObj)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.TdsParser.Run(RunBehavior&nbsp;runBehavior,&nbsp;SqlCommand&nbsp;cmdHandler,&nbsp;SqlDataReader&nbsp;dataStream,&nbsp;BulkCopySimpleResultSet&nbsp;bulkCopyHandler,&nbsp;TdsParserStateObject&nbsp;stateObj)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlDataReader.ConsumeMetaData()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlDataReader.get_MetaData()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader&nbsp;ds,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;String&nbsp;resetOptionsString)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior&nbsp;cmdBehavior,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;Boolean&nbsp;returnStream,&nbsp;Boolean&nbsp;async)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior&nbsp;cmdBehavior,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;Boolean&nbsp;returnStream,&nbsp;String&nbsp;method,&nbsp;DbAsyncResult&nbsp;result)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior&nbsp;cmdBehavior,&nbsp;RunBehavior&nbsp;runBehavior,&nbsp;Boolean&nbsp;returnStream,&nbsp;String&nbsp;method)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior&nbsp;behavior,&nbsp;String&nbsp;method)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior&nbsp;behavior)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Common.DbCommand.ExecuteReader()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.Execute(Expression&nbsp;query,&nbsp;QueryInfo&nbsp;queryInfo,&nbsp;IObjectReaderFactory&nbsp;factory,&nbsp;Object[]&nbsp;parentArgs,&nbsp;Object[]&nbsp;userArgs,&nbsp;ICompiledSubQuery[]&nbsp;subQueries,&nbsp;Object&nbsp;lastResult)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression&nbsp;query,&nbsp;QueryInfo[]&nbsp;queryInfos,&nbsp;IObjectReaderFactory&nbsp;factory,&nbsp;Object[]&nbsp;userArguments,&nbsp;ICompiledSubQuery[]&nbsp;subQueries)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression&nbsp;query)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject&nbsp;item)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject&nbsp;item)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode&nbsp;failureMode)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.DataContext.SubmitChanges(ConflictMode&nbsp;failureMode)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.DataContext.SubmitChanges()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.admin.Fundraising.Details.SaveRecord(Boolean&nbsp;newRecord)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\admin\Fundraising\Details.aspx.cs:line&nbsp;143<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.admin.Fundraising.Details.btnSubmit_Click(Object&nbsp;sender,&nbsp;EventArgs&nbsp;e)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\admin\Fundraising\Details.aspx.cs:line&nbsp;104<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.LinkButton.OnClick(EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String&nbsp;eventArgument)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.LinkButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String&nbsp;eventArgument)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler&nbsp;sourceControl,&nbsp;String&nbsp;eventArgument)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.RaisePostBackEvent(NameValueCollection&nbsp;postData)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.ProcessRequestMain(Boolean&nbsp;includeStagesBeforeAsyncPoint,&nbsp;Boolean&nbsp;includeStagesAfterAsyncPoint)</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">TargetSite</font></td>
+<td><font face="Arial" size="2">Void&nbsp;OnError(System.Data.SqlClient.SqlException,&nbsp;Boolean)</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Form Collection</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">__EVENTTARGET</font></td>
+<td><font face="Arial" size="2">ctl00$mainContent$btnSubmit$btnButton</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">__EVENTARGUMENT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">__VIEWSTATE</font></td>
+<td><font face="Arial" size="2">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MDBnEAUHVmFudWF0dQUDMTA4ZxAFDFZhdGljYW4gQ2l0eQUCNjRnEAUJVmVuZXp1ZWxhBQMxMDFnZGQCDA9kFgZmDw8WBh8JGwAAAAAA4HFAAQAAAB8KCysEAB8CAoACZGQCAg8PFgIfBgU8UmVjdXJyaW5nIGV2ZXJ5IHggd2Vla3MgLSB6ZXJvIGZvciBub3QgcmVjdXJyaW5nIGlzIHJlcXVpcmVkZGQCBQ8PFgQfBgVBUmVjdXJyaW5nIGV2ZXJ5IHggd2Vla3MgLSB6ZXJvIGZvciBub3QgcmVjdXJyaW5nIG11c3QgYmUgYSBudW1iZXIeBFR5cGULKixTeXN0ZW0uV2ViLlVJLldlYkNvbnRyb2xzLlZhbGlkYXRpb25EYXRhVHlwZQFkZAIND2QWBmYPDxYGHwkbAAAAAADgcUABAAAAHwoLKwQAHwICgAJkZAICDw8WAh8GBRREdXJhdGlvbiBpcyByZXF1aXJlZGRkAgUPDxYEHwYFGUR1cmF0aW9uIG11c3QgYmUgYSBudW1iZXIfDQsrBQFkZAIODxAPFgIfDGdkEBUFDERpcmVjdCBEZWJpdAdJbnZvaWNlBEJBQ1MKRGViaXQgQ2FyZAtDcmVkaXQgQ2FyZBUFATQBMwE1ATEBMhQrAwVnZ2dnZ2RkAg8PEA8WAh8MZ2QQFQMETm9uZQlUZXN0IEl0ZW0IQSBSZWFzb24VAwEyATQBMxQrAwNnZ2dkZAIQD2QWAmYPZBYCAgEPDxYEHwEFCHBvc2l0aXZlHwICAmRkAhEPZBYCZg9kFgICAQ8PFgQfAQUIcG9zaXRpdmUfAgICZGQCEg9kFgJmD2QWAgIBDw8WBB8BBQhuZWdhdGl2ZR8CAgJkZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAwUdY3RsMDAkbWFpbkNvbnRlbnQkY2hrSXNJbktpbmQFHmN0bDAwJG1haW5Db250ZW50JGNoa0lzR2lmdEFpZAUgY3RsMDAkbWFpbkNvbnRlbnQkY2hrSXNSZWN1cnJpbmcFLGN0bDAwJG1haW5Db250ZW50JHVjQUNQcmltYXJ5Q29udGFjdCRtdklucHV0Dw9kAgFkLG/OwgQIAwVu0ZdRxqv+PN5r1u0=</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">__EVENTVALIDATION</font></td>
+<td><font face="Arial" size="2">/wEWhAEC7I2j1gMC4uv27QsC/fur6gwC9bTHugUCxMbY8AsCsK/XzA0C8/Tb9AoC3I+YoQYC2+aUyAECzebA+wwC2ua8kgECrbaqqAMC/bbduAoCrJOusw0C4Z/djAsC4J/djAsCpdXL2w8C4p/djAsC5J+hjwsC9p/xjAsC5Z/djAsCsfC+hggC5J/djAsC55/djAsC5J+ljwsC5J+5jwsC4Z+djwsC4Z+RjwsC5J/9jAsC+Z+djwsC4Z+VjwsC+Z+RjwsC4Z+pjwsC5J/xjAsC+Z+VjwsC+Z+pjwsCiP6trAUC55+djwsC4Z+ljwsC55+RjwsC4Z+5jwsC4Z/9jAsC4Z/xjAsC55+VjwsC55+pjwsC+Z+tjwsC55+tjwsC4J+djwsCsfCyhggC+6Pz7QMC4J+VjwsC4J+pjwsC+Z+hjwsCv5Tt8g0C4J+tjwsC4J+hjwsC4J+5jwsC55+hjwsCgr3LxwMC55+ljwsC+Z+ljwsC55+5jwsC55/9jAsC4J/xjAsC45+djwsC45+RjwsC45+VjwsC55/xjAsCx97+2AwC45+tjwsC45+hjwsC45+ljwsC45+5jwsC45/9jAsC45/xjAsC4p+RjwsCqufQrQIC9p+djwsC4p+VjwsC4p+pjwsClJmVmw4C4p+hjwsC3szVxgkClJmRmw4C9p+RjwsCgr3PxwMC+6P37QMC4p+ljwsC3szpxgkC9p+VjwsCpdW32w8C+Z+5jwsC+Z/9jAsCx97y2AwC4p+5jwsC4p/9jAsC9p+pjwsC4p/xjAsC5Z+djwsC9p+tjwsC9p+hjwsC9p+ljwsCqufUrQIC5Z+RjwsC5Z+VjwsC5Z+pjwsC5Z+tjwsCiP6prAUC5Z+hjwsC+Z/xjAsC5Z+5jwsC5Z/9jAsC9p+5jwsC5J+djwsC5J+VjwsC9p/9jAsCx9762AwCv5Tp8g0C5J+tjwsCqufcrQICxI+FiwoCsLfjigQCo67VlQoCmrfrgQQCm7frgQQCnbfrgQQCmbfrgQQCmLfrgQQC28/+mQYC2c/+mQYC2M/+mQYCwKmGpw8QC1b66HI6V5r4McBvadQ5EqM3uA==</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$chkIsInKind</font></td>
+<td><font face="Arial" size="2">on</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$txtAmount$txtTextBox</font></td>
+<td><font face="Arial" size="2">300.00</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$chkIsGiftAid</font></td>
+<td><font face="Arial" size="2">on</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$txtGiftaidFirstname$txtTextBox</font></td>
+<td><font face="Arial" size="2">Ed</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$txtGiftaidLastname$txtTextBox</font></td>
+<td><font face="Arial" size="2">Francis</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$txtAddress1$txtTextBox</font></td>
+<td><font face="Arial" size="2">20&nbsp;South&nbsp;Street</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$txtAddress2$txtTextBox</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$txtAddress3$txtTextBox</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$txtTown$txtTextBox</font></td>
+<td><font face="Arial" size="2">Newcastle&nbsp;upon&nbsp;Tyne</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$txtCounty$txtTextBox</font></td>
+<td><font face="Arial" size="2">Tyne&nbsp;&amp;&nbsp;Wear</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$txtPostcode$txtTextBox</font></td>
+<td><font face="Arial" size="2">NE1&nbsp;3PE</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$ucGiftAidAddress$ddlCounty</font></td>
+<td><font face="Arial" size="2">1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$chkIsRecurring</font></td>
+<td><font face="Arial" size="2">on</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$txtRecurringWeeks$txtTextBox</font></td>
+<td><font face="Arial" size="2">52</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$txtDuration$txtTextBox</font></td>
+<td><font face="Arial" size="2">104</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00$mainContent$ddlPaymentType</font></td>
+<td><font face="Arial" size="2">4</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00$mainContent$ddlFundReason</font></td>
+<td><font face="Arial" size="2">2</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Cookies Collection</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">__lc.visitor_id.1949661</font></td>
+<td><font face="Arial" size="2">S1369987044.31b0ca615f</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">_jsuid</font></td>
+<td><font face="Arial" size="2">3283848793</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">__atuvc</font></td>
+<td><font face="Arial" size="2">0%7C33%2C3%7C34%2C0%7C35%2C0%7C36%2C9%7C37</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ASP.NET_SessionId</font></td>
+<td><font face="Arial" size="2">1gwcu355cgls4ebbsyaa3j55</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">admin</font></td>
+<td><font face="Arial" size="2">authcode=7fe8b928-918a-4ce4-be5c-1b204ac2ace7</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">7stories_query_status</font></td>
+<td><font face="Arial" size="2">true</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Session Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">IsAuthorized</font></td>
+<td><font face="Arial" size="2">True</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00_mainContent_ucListPAGE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Server Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ALL_HTTP</font></td>
+<td><font face="Arial" size="2">HTTP_CACHE_CONTROL:max-age=0<BR>HTTP_CONNECTION:keep-alive<BR>HTTP_CONTENT_LENGTH:8368<BR>HTTP_CONTENT_TYPE:application/x-www-form-urlencoded<BR>HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<BR>HTTP_ACCEPT_ENCODING:gzip,deflate,sdch<BR>HTTP_ACCEPT_LANGUAGE:en-GB,en-US;q=0.8,en;q=0.6<BR>HTTP_COOKIE:__lc.visitor_id.1949661=S1369987044.31b0ca615f;&nbsp;_jsuid=3283848793;&nbsp;__atuvc=0%7C33%2C3%7C34%2C0%7C35%2C0%7C36%2C9%7C37;&nbsp;ASP.NET_SessionId=1gwcu355cgls4ebbsyaa3j55;&nbsp;admin=authcode=7fe8b928-918a-4ce4-be5c-1b204ac2ace7;&nbsp;7stories_query_status=true<BR>HTTP_HOST:localhost:47620<BR>HTTP_REFERER:http://localhost:47620/admin/fundraising/details.aspx<BR>HTTP_USER_AGENT:Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/29.0.1547.66&nbsp;Safari/537.36<BR>HTTP_ORIGIN:http://localhost:47620<BR></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ALL_RAW</font></td>
+<td><font face="Arial" size="2">Cache-Control:&nbsp;max-age=0<BR>Connection:&nbsp;keep-alive<BR>Content-Length:&nbsp;8368<BR>Content-Type:&nbsp;application/x-www-form-urlencoded<BR>Accept:&nbsp;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<BR>Accept-Encoding:&nbsp;gzip,deflate,sdch<BR>Accept-Language:&nbsp;en-GB,en-US;q=0.8,en;q=0.6<BR>Cookie:&nbsp;__lc.visitor_id.1949661=S1369987044.31b0ca615f;&nbsp;_jsuid=3283848793;&nbsp;__atuvc=0%7C33%2C3%7C34%2C0%7C35%2C0%7C36%2C9%7C37;&nbsp;ASP.NET_SessionId=1gwcu355cgls4ebbsyaa3j55;&nbsp;admin=authcode=7fe8b928-918a-4ce4-be5c-1b204ac2ace7;&nbsp;7stories_query_status=true<BR>Host:&nbsp;localhost:47620<BR>Referer:&nbsp;http://localhost:47620/admin/fundraising/details.aspx<BR>User-Agent:&nbsp;Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/29.0.1547.66&nbsp;Safari/537.36<BR>Origin:&nbsp;http://localhost:47620<BR></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">APPL_MD_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">APPL_PHYSICAL_PATH</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">AUTH_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_PASSWORD</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">LOGON_USER</font></td>
+<td><font face="Arial" size="2">Ed-PC\Ed</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_COOKIE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_FLAGS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERIALNUMBER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CONTENT_LENGTH</font></td>
+<td><font face="Arial" size="2">8368</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CONTENT_TYPE</font></td>
+<td><font face="Arial" size="2">application/x-www-form-urlencoded</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">GATEWAY_INTERFACE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">INSTANCE_ID</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">INSTANCE_META_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">LOCAL_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">PATH_INFO</font></td>
+<td><font face="Arial" size="2">/admin/fundraising/details.aspx</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">PATH_TRANSLATED</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\admin\fundraising\details.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">QUERY_STRING</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REMOTE_HOST</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_PORT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REQUEST_METHOD</font></td>
+<td><font face="Arial" size="2">POST</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SCRIPT_NAME</font></td>
+<td><font face="Arial" size="2">/admin/fundraising/details.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_NAME</font></td>
+<td><font face="Arial" size="2">localhost</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PORT</font></td>
+<td><font face="Arial" size="2">47620</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_PORT_SECURE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PROTOCOL</font></td>
+<td><font face="Arial" size="2">HTTP/1.1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_SOFTWARE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">URL</font></td>
+<td><font face="Arial" size="2">/admin/fundraising/details.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_CACHE_CONTROL</font></td>
+<td><font face="Arial" size="2">max-age=0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_CONNECTION</font></td>
+<td><font face="Arial" size="2">keep-alive</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_CONTENT_LENGTH</font></td>
+<td><font face="Arial" size="2">8368</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_CONTENT_TYPE</font></td>
+<td><font face="Arial" size="2">application/x-www-form-urlencoded</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT</font></td>
+<td><font face="Arial" size="2">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ACCEPT_ENCODING</font></td>
+<td><font face="Arial" size="2">gzip,deflate,sdch</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT_LANGUAGE</font></td>
+<td><font face="Arial" size="2">en-GB,en-US;q=0.8,en;q=0.6</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_COOKIE</font></td>
+<td><font face="Arial" size="2">__lc.visitor_id.1949661=S1369987044.31b0ca615f;&nbsp;_jsuid=3283848793;&nbsp;__atuvc=0%7C33%2C3%7C34%2C0%7C35%2C0%7C36%2C9%7C37;&nbsp;ASP.NET_SessionId=1gwcu355cgls4ebbsyaa3j55;&nbsp;admin=authcode=7fe8b928-918a-4ce4-be5c-1b204ac2ace7;&nbsp;7stories_query_status=true</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_HOST</font></td>
+<td><font face="Arial" size="2">localhost:47620</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_REFERER</font></td>
+<td><font face="Arial" size="2">http://localhost:47620/admin/fundraising/details.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_USER_AGENT</font></td>
+<td><font face="Arial" size="2">Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/29.0.1547.66&nbsp;Safari/537.36</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ORIGIN</font></td>
+<td><font face="Arial" size="2">http://localhost:47620</font></td></tr>
+</table>

@@ -1,0 +1,143 @@
+﻿<font face="Arial" size="4" color="red">An error occurred at http://localhost:45240/admin/offer/list.aspx<br><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;Unable&nbsp;to&nbsp;cast&nbsp;object&nbsp;of&nbsp;type&nbsp;'CRM.Code.Models.CRM_Offer'&nbsp;to&nbsp;type&nbsp;'CRM.Code.Utils.List.ICustomField'.</font></font><br><br><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Error Information</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Source</font></td>
+<td><font face="Arial" size="2">System.Data.Linq</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">Exception Type</font></td>
+<td><font face="Arial" size="2">System.InvalidCastException</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">Message</font></td>
+<td><font face="Arial" size="2">Unable&nbsp;to&nbsp;cast&nbsp;object&nbsp;of&nbsp;type&nbsp;'CRM.Code.Models.CRM_Offer'&nbsp;to&nbsp;type&nbsp;'CRM.Code.Utils.List.ICustomField'.</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">StackTrace</font></td>
+<td><font face="Arial" size="2">&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitInvocation(InvocationExpression&nbsp;invoke)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitInner(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.Visit(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitExpression(Expression&nbsp;exp)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitBinary(BinaryExpression&nbsp;b)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitInner(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.Visit(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitExpression(Expression&nbsp;exp)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitBinary(BinaryExpression&nbsp;b)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitInner(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.Visit(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitExpression(Expression&nbsp;exp)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitFirst(Expression&nbsp;sequence,&nbsp;LambdaExpression&nbsp;lambda,&nbsp;Boolean&nbsp;isFirst)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitSequenceOperatorCall(MethodCallExpression&nbsp;mc)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitMethodCall(MethodCallExpression&nbsp;mc)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.VisitInner(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.QueryConverter.ConvertOuter(Expression&nbsp;node)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.BuildQuery(Expression&nbsp;query,&nbsp;SqlNodeAnnotations&nbsp;annotations)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression&nbsp;query)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Data.Linq.Table`1.System.Linq.IQueryProvider.Execute[TResult](Expression&nbsp;expression)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1&nbsp;source,&nbsp;Expression`1&nbsp;predicate)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Code.Utils.List.Custom.Eval(Object&nbsp;sentObject,&nbsp;String&nbsp;propertyname)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Code\Utils\List\Custom.cs:line&nbsp;31<BR>&nbsp;&nbsp;&nbsp;at&nbsp;ASP.controls_admin_sharedobjects_list_utillistview_ascx.__DataBind__control25(Object&nbsp;sender,&nbsp;EventArgs&nbsp;e)&nbsp;in&nbsp;d:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx:line&nbsp;128<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.OnDataBinding(EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.DataBind(Boolean&nbsp;raiseOnDataBinding)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.DataBind()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.DataBindChildren()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.DataBind(Boolean&nbsp;raiseOnDataBinding)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.DataBind()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.Repeater.CreateItem(Int32&nbsp;itemIndex,&nbsp;ListItemType&nbsp;itemType,&nbsp;Boolean&nbsp;dataBind,&nbsp;Object&nbsp;dataItem)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.Repeater.CreateControlHierarchy(Boolean&nbsp;useDataSource)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.Repeater.DataBind()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.lvItems_ItemBound(Object&nbsp;sender,&nbsp;ListViewItemEventArgs&nbsp;e)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;251<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.OnItemDataBound(ListViewItemEventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.CreateItemsWithoutGroups(ListViewPagedDataSource&nbsp;dataSource,&nbsp;Boolean&nbsp;dataBinding,&nbsp;InsertItemPosition&nbsp;insertPosition,&nbsp;ArrayList&nbsp;keyArray)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.CreateChildControls(IEnumerable&nbsp;dataSource,&nbsp;Boolean&nbsp;dataBinding)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.PerformDataBinding(IEnumerable&nbsp;data)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable&nbsp;data)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.DataSourceView.Select(DataSourceSelectArguments&nbsp;arguments,&nbsp;DataSourceViewSelectCallback&nbsp;callback)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.DataBoundControl.PerformSelect()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.PerformSelect()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.BaseDataBoundControl.DataBind()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.LoadView(AdminDataQuery&nbsp;query)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;223<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.LoadView()&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;229<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.lvItems_PagePropertiesChanging(Object&nbsp;sender,&nbsp;PagePropertiesChangingEventArgs&nbsp;e)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;286<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.OnPagePropertiesChanging(PagePropertiesChangingEventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.SetPageProperties(Int32&nbsp;startRowIndex,&nbsp;Int32&nbsp;maximumRows,&nbsp;Boolean&nbsp;databind)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.ListView.System.Web.UI.WebControls.IPageableItemContainer.SetPageProperties(Int32&nbsp;startRowIndex,&nbsp;Int32&nbsp;maximumRows,&nbsp;Boolean&nbsp;databind)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.DataPager.SetPageProperties(Int32&nbsp;startRowIndex,&nbsp;Int32&nbsp;maximumRows,&nbsp;Boolean&nbsp;databind)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.WebControls.DataPager.set_PageSize(Int32&nbsp;value)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.LoadView(AdminDataQuery&nbsp;query)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;204<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.LoadView()&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;229<BR>&nbsp;&nbsp;&nbsp;at&nbsp;CRM.Controls.Admin.SharedObjects.List.UtilListView.Page_Load(Object&nbsp;sender,&nbsp;EventArgs&nbsp;e)&nbsp;in&nbsp;D:\coalface\7stories-2012-07-03\Trunk\CRM\Controls\Admin\SharedObjects\List\UtilListView.ascx.cs:line&nbsp;146<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr&nbsp;fp,&nbsp;Object&nbsp;o,&nbsp;Object&nbsp;t,&nbsp;EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object&nbsp;sender,&nbsp;EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.OnLoad(EventArgs&nbsp;e)<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.LoadRecursive()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.LoadRecursive()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.LoadRecursive()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.LoadRecursive()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.LoadRecursive()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Control.LoadRecursive()<BR>&nbsp;&nbsp;&nbsp;at&nbsp;System.Web.UI.Page.ProcessRequestMain(Boolean&nbsp;includeStagesBeforeAsyncPoint,&nbsp;Boolean&nbsp;includeStagesAfterAsyncPoint)</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">TargetSite</font></td>
+<td><font face="Arial" size="2">System.Data.Linq.SqlClient.SqlNode&nbsp;VisitInvocation(System.Linq.Expressions.InvocationExpression)</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Cookies Collection</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ASP.NET_SessionId</font></td>
+<td><font face="Arial" size="2">jiefyg45g15zf5ikfyb3rx45</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">admin</font></td>
+<td><font face="Arial" size="2">authcode=19694030-0efe-4673-9951-6f0b280c6b58</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Session Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">IsAuthorized</font></td>
+<td><font face="Arial" size="2">True</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ctl00_mainContent_lvAnnualPassPAGE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ctl00_mainContent_ucListPAGE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+</table><BR><BR><table border="0" width="100%" cellpadding="1" cellspacing="0"><tr><td bgcolor="#666666" colspan="2"><font face="Arial" color="white"><b>&nbsp;Server Variables</b></font></td></tr></table>
+<table width="100%" bgcolor="#d1d9e4" cellspacing="1" cellpadding="3">
+  <tr bgcolor="#d0d0d0"><td><font face="Arial" size="2">&nbsp;<b>Name</b></font></td>  <td><font face="Arial" size="2">&nbsp;<b>Value</b></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">ALL_HTTP</font></td>
+<td><font face="Arial" size="2">HTTP_CACHE_CONTROL:no-cache<BR>HTTP_CONNECTION:keep-alive<BR>HTTP_PRAGMA:no-cache<BR>HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<BR>HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3<BR>HTTP_ACCEPT_ENCODING:gzip,deflate<BR>HTTP_ACCEPT_LANGUAGE:en-US<BR>HTTP_COOKIE:ASP.NET_SessionId=jiefyg45g15zf5ikfyb3rx45;&nbsp;admin=authcode=19694030-0efe-4673-9951-6f0b280c6b58<BR>HTTP_HOST:localhost:45240<BR>HTTP_REFERER:http://localhost:45240/admin/annualpasscard/list.aspx<BR>HTTP_USER_AGENT:Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.1&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Maxthon/4.1.2.4000&nbsp;Chrome/26.0.1410.43&nbsp;Safari/537.1<BR>HTTP_DNT:1<BR></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">ALL_RAW</font></td>
+<td><font face="Arial" size="2">Cache-Control:&nbsp;no-cache<BR>Connection:&nbsp;keep-alive<BR>Pragma:&nbsp;no-cache<BR>Accept:&nbsp;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<BR>Accept-Charset:&nbsp;ISO-8859-1,utf-8;q=0.7,*;q=0.3<BR>Accept-Encoding:&nbsp;gzip,deflate<BR>Accept-Language:&nbsp;en-US<BR>Cookie:&nbsp;ASP.NET_SessionId=jiefyg45g15zf5ikfyb3rx45;&nbsp;admin=authcode=19694030-0efe-4673-9951-6f0b280c6b58<BR>Host:&nbsp;localhost:45240<BR>Referer:&nbsp;http://localhost:45240/admin/annualpasscard/list.aspx<BR>User-Agent:&nbsp;Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.1&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Maxthon/4.1.2.4000&nbsp;Chrome/26.0.1410.43&nbsp;Safari/537.1<BR>DNT:&nbsp;1<BR></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">APPL_MD_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">APPL_PHYSICAL_PATH</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">AUTH_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">AUTH_PASSWORD</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">LOGON_USER</font></td>
+<td><font face="Arial" size="2">Ed-PC\Ed</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_USER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_COOKIE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_FLAGS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERIALNUMBER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CERT_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CERT_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">CONTENT_LENGTH</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">CONTENT_TYPE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">GATEWAY_INTERFACE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_KEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SECRETKEYSIZE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTPS_SERVER_ISSUER</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTPS_SERVER_SUBJECT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">INSTANCE_ID</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">INSTANCE_META_PATH</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">LOCAL_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">PATH_INFO</font></td>
+<td><font face="Arial" size="2">/admin/offer/list.aspx</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">PATH_TRANSLATED</font></td>
+<td><font face="Arial" size="2">D:\coalface\7stories-2012-07-03\Trunk\CRM\admin\offer\list.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">QUERY_STRING</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_ADDR</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REMOTE_HOST</font></td>
+<td><font face="Arial" size="2">::1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">REMOTE_PORT</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">REQUEST_METHOD</font></td>
+<td><font face="Arial" size="2">GET</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SCRIPT_NAME</font></td>
+<td><font face="Arial" size="2">/admin/offer/list.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_NAME</font></td>
+<td><font face="Arial" size="2">localhost</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PORT</font></td>
+<td><font face="Arial" size="2">45240</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_PORT_SECURE</font></td>
+<td><font face="Arial" size="2">0</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">SERVER_PROTOCOL</font></td>
+<td><font face="Arial" size="2">HTTP/1.1</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">SERVER_SOFTWARE</font></td>
+<td><font face="Arial" size="2"></font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">URL</font></td>
+<td><font face="Arial" size="2">/admin/offer/list.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_CACHE_CONTROL</font></td>
+<td><font face="Arial" size="2">no-cache</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_CONNECTION</font></td>
+<td><font face="Arial" size="2">keep-alive</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_PRAGMA</font></td>
+<td><font face="Arial" size="2">no-cache</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ACCEPT</font></td>
+<td><font face="Arial" size="2">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT_CHARSET</font></td>
+<td><font face="Arial" size="2">ISO-8859-1,utf-8;q=0.7,*;q=0.3</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_ACCEPT_ENCODING</font></td>
+<td><font face="Arial" size="2">gzip,deflate</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_ACCEPT_LANGUAGE</font></td>
+<td><font face="Arial" size="2">en-US</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_COOKIE</font></td>
+<td><font face="Arial" size="2">ASP.NET_SessionId=jiefyg45g15zf5ikfyb3rx45;&nbsp;admin=authcode=19694030-0efe-4673-9951-6f0b280c6b58</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_HOST</font></td>
+<td><font face="Arial" size="2">localhost:45240</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_REFERER</font></td>
+<td><font face="Arial" size="2">http://localhost:45240/admin/annualpasscard/list.aspx</font></td></tr>
+<tr valign="top" bgcolor="#f4f4f4"><td><font face="Arial" size="2">HTTP_USER_AGENT</font></td>
+<td><font face="Arial" size="2">Mozilla/5.0&nbsp;(Windows&nbsp;NT&nbsp;6.1)&nbsp;AppleWebKit/537.1&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Maxthon/4.1.2.4000&nbsp;Chrome/26.0.1410.43&nbsp;Safari/537.1</font></td></tr>
+<tr valign="top" bgcolor="white"><td><font face="Arial" size="2">HTTP_DNT</font></td>
+<td><font face="Arial" size="2">1</font></td></tr>
+</table>
