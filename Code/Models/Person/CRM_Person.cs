@@ -89,6 +89,15 @@ namespace CRM.Code.Models
         }
 
 
+        [IsListData("Address Country")]
+        public string Country
+        {
+            get
+            {
+                return this.PrimaryAddress.Country.Name;
+            }
+        }
+
         public IEnumerable<CRM_CalendarInvite> Invites
         {
             get
