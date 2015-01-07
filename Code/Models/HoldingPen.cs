@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Code.Utils.Enumeration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,6 +22,21 @@ namespace CRM.Code.Models
             {
                 return DateReceived.Ticks;
             }
+        }
+
+
+
+        /// <summary>
+        /// Don't move the order of these, the service relies on the integer value of the enum which webservices does not support.
+        /// Moving this enum order will destroy the data integrity of the CRM merge tool.
+        /// See MSDN https://social.msdn.microsoft.com/forums/vstudio/en-US/7f697ff4-ba14-4db3-a236-985d12e9a50e/web-service-enum-limitation
+        /// </summary>
+        public enum Origins
+        {
+            [StringValue("Website Checkout")]
+            websitecheckout = 0,
+            [StringValue("Website Membership")]
+            websitemembership = 1
         }
 
 

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sevenstories_CRM_realdata" EntityNamespace="Service" ContextNamespace="Service" Class="ServiceDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cfserver;Initial Catalog=sevenstories_CRM_realdata;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="sevenstoriesConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="jupiter_crm" EntityNamespace="Service" ContextNamespace="Service" Class="ServiceDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cfserver;Initial Catalog=jupiter_crm;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="sevenstoriesConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Country" Member="Countries">
     <Type Name="Country">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -47,6 +47,14 @@
       <Column Name="WebsiteAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CRM_FormFieldAnswer" Member="CRM_FormFieldAnswers" AccessModifier="Internal">
+    <Type Name="CRM_FormFieldAnswer" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_FormFieldID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.HoldingPen" Member="HoldingPens">
     <Type Name="HoldingPen">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -56,8 +64,9 @@
       <Column Name="Email" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="DateReceived" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="DateCommitted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OriginType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Column Name="OriginDescription" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="OriginID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OriginAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Address1" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Address2" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Address3" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
@@ -66,18 +75,37 @@
       <Column Name="Postcode" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Telephone" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="InterestObjects" AccessModifier="ProtectedInternal" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="InterestObjects" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="DoNotMail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DoNotEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="AlwaysSendPassInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MembershipA" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="MembershipB" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.CRM_FormFieldAnswer" Member="CRM_FormFieldAnswers" AccessModifier="Internal">
-    <Type Name="CRM_FormFieldAnswer" AccessModifier="Internal">
+  <Table Name="dbo.CRM_AnnualPassCard" Member="CRM_AnnualPassCards">
+    <Type Name="CRM_AnnualPassCard">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CRM_FormFieldID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Answer" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MembershipNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassCardID" Type="CRM_AnnualPass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPass" Member="CRM_AnnualPasses">
+    <Type Name="CRM_AnnualPass">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPaid" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DiscountApplied" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsPending" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OfferID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

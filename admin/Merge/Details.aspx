@@ -120,7 +120,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
             <div class="fl merge">
             
             <p><strong>Received: <%= CRM.Code.Utils.Text.Text.PrettyDate(Entity.DateReceived) %> <%= Entity.DateReceived.ToString("HH:mm") %></strong></p>
-            <p><strong><em>Origin: <%= Entity.OriginDescription %> (Record <%= Entity.OriginID %>)</em></strong></p>
+            <p><strong><em>Origin: <%= Entity.OriginDescription %> (Record <%= Entity.OriginAccountID %>)</em></strong></p>
 
 
                 <table class="details searchTableLeft">
@@ -247,6 +247,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                             <label><%= Entity.EMailPreference %></label>
                         </td>
                     </tr>
+                    <!--
                     <tr>     
                         <td>
                             <label>Pass Information Preference</label>
@@ -255,6 +256,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                             <label><%= Entity.PassInfoPreference %></label>
                         </td>     
                     </tr>
+                        -->
                 </table>
             </div>
 

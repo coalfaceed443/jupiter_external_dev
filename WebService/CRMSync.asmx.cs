@@ -8,6 +8,9 @@ using System.Xml.Serialization;
 using Service;
 using Website.Code.Helpers.WebService;
 using System.Web.Script.Serialization;
+using CRM.Code.Utils.Enumeration;
+using System.Runtime.Serialization;
+using CRM.Code.Utils.Time;
 
 namespace CRM.WebService
 {
@@ -43,7 +46,13 @@ namespace CRM.WebService
             public bool OptIn { get; set; }
             public int FormFieldID { get; set; }
         }
-        
+
+        [WebMethod]
+        public CRM.Code.Models.HoldingPen.Origins ExposeOrigins()
+        {
+            return Code.Models.HoldingPen.Origins.websitecheckout;
+        }
+
         [WebMethod]
         public bool SendAccount(string key, Service.HoldingPen account, InterestAnswer[] interests)
         {
@@ -58,6 +67,18 @@ namespace CRM.WebService
 
             return true;
         }
+
+
+        [WebMethod]
+        public bool CheckMemberNo(string key, string memberNo)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+
+            return db.CRM_AnnualPassCards.Any(c => c.MembershipNumber.ToString() == memberNo
+                && c.CRM_AnnualPasses.Any(ap => ap.StartDate <= UKTime.Now
+                    && ap.ExpiryDate >= UKTime.Now && !ap.IsArchived));
+        }
+
 
         [WebMethod]
         public ContextResult<CRM_Title[]> GetTitles(string authkey)
@@ -99,12 +120,12 @@ namespace CRM.WebService
         {
 
             ServiceDataContext db = new ServiceDataContext();
-            
+
             Service.CRM_Person personAccount = db.CRM_Persons.FirstOrDefault(s => s.WebsiteAccountID == WebsiteAccountID);
 
             InterestAnswer[] items = (from a in db.CRM_FormFieldAnswers
-                                     where a.CRM_FormFieldID == 24 && a.TargetReference == personAccount.Reference
-                                     select new InterestAnswer { FormFieldID = a.CRM_FormFieldID, OptIn = a.Answer == "Yes" }).ToArray();
+                                      where a.CRM_FormFieldID == 24 && a.TargetReference == personAccount.Reference
+                                      select new InterestAnswer { FormFieldID = a.CRM_FormFieldID, OptIn = a.Answer == "Yes" }).ToArray();
 
             ContextResult<InterestAnswer[]> result = new ContextResult<InterestAnswer[]>() { ReturnObject = items };
             result.IsSuccess = IsAuthValid(authkey);

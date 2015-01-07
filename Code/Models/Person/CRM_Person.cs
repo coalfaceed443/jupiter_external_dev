@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using CRM.Code.Utils.List;
 using CRM.Code.Utils.Enumeration;
+using System.Text;
 
 namespace CRM.Code.Models
 {
@@ -21,6 +22,29 @@ namespace CRM.Code.Models
             get
             {
                 return PhotoDirectory + this.ID + PhotoFileExtension;
+            }
+        }
+
+        private const string MergeCardFormat = "<span data-merge='{0}'>{1}</span>";
+
+        public string MergeCard
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(String.Format(MergeCardFormat, "reference", this.Reference));
+                sb.AppendLine(String.Format(MergeCardFormat, "title", this.Title) + " "
+                    + String.Format(MergeCardFormat, "firstname", this.Firstname) + " "
+                    + String.Format(MergeCardFormat, "lastname", this.Lastname));
+                sb.AppendLine(String.Format(MergeCardFormat, "primaryemail", this.PrimaryEmail));
+                sb.AppendLine(String.Format(MergeCardFormat, "address1", this.Address1));
+                sb.AppendLine(String.Format(MergeCardFormat, "address2", this.Address2));
+                sb.AppendLine(String.Format(MergeCardFormat, "address3", this.Address3));
+                sb.AppendLine(String.Format(MergeCardFormat, "town", this.Town));
+                sb.AppendLine(String.Format(MergeCardFormat, "county", this.County));
+                sb.AppendLine(String.Format(MergeCardFormat, "postcode", this.Postcode));
+                sb.AppendLine(String.Format(MergeCardFormat, "tel", this.PrimaryTelephone));
+                return sb.ToString();
             }
         }
 

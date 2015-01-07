@@ -71,14 +71,19 @@ namespace CRM.admin.Merge
 
             IEnumerable<ListItem> interests = db.CRM_FormFieldItems.Where(f => f.CRM_FormFieldID == 24 && f.IsActive && !f.IsArchived).Select(s => new ListItem(s.Label, s.ID.ToString()));
 
+            try
+            {
+                if (Entity.InterestObjects != null)
+                {
+                    var items = from p in serializer.Deserialize<IEnumerable<CRM.WebService.CRMSync.InterestAnswer>>(Entity.InterestObjects)
+                                select p;
 
-            var items = from p in serializer.Deserialize<IEnumerable<CRM.WebService.CRMSync.InterestAnswer>>(Entity.InterestObjects)
-                        select p;
-
-            rptInterests.DataSource = interests;
-            rptInterests.DataBind();
-
-            
+                    rptInterests.DataSource = interests;
+                    rptInterests.DataBind();
+                }
+            }
+            catch(ArgumentNullException ex) { }
+            /*
             for (int i = 0; i < rptInterests.Items.Count; i++)
             {
                 
@@ -90,6 +95,7 @@ namespace CRM.admin.Merge
                 }
 
             }
+             */
 
         }
 
@@ -160,19 +166,27 @@ namespace CRM.admin.Merge
                 oldAddress = person.CRM_Address.ShallowCopy();
 
                 TransformPerson(person);
-                person.WebsiteAccountID = Entity.OriginID;
+                person.WebsiteAccountID = Entity.OriginAccountID;
                 if (Entity.DoNotMail != null)
                     person.IsDoNotMail = (bool)Entity.DoNotMail;
 
                 if (Entity.DoNotEmail != null)
                     person.IsDoNotEmail = (bool)Entity.DoNotEmail;
 
+                /*
+                if (Entity.AlwaysSendPassInfo != null)
+                    person.AlwaysSendPassInfo = (bool)Entity.AlwaysSendPassInfo;
+                */
                 db.SubmitChanges();
 
                 CRM.Code.History.History.RecordLinqUpdate(AdminUser, oldEntity, person);
                 CRM.Code.History.History.RecordLinqUpdate(AdminUser, oldAddress, person.PrimaryAddress);
                 db.SubmitChanges();
 
+                MarkAsWebsiteOrigin(person);
+                db.SubmitChanges();
+
+                /*
                 
                 CRM_FormFieldAnswer answer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.CRM_FormFieldID == 24 && f.TargetReference == person.Reference);
 
@@ -195,12 +209,39 @@ namespace CRM.admin.Merge
                     }
                 }
 
+                 */
+ 
                 db.SubmitChanges();
 
-
+                
                 NoticeManager.SetMessage("Record merged");
 
             }
+        }
+
+        protected void MarkAsWebsiteOrigin(CRM_Person Person)
+        {
+            CRM_FormFieldAnswer answer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.CRM_FormFieldID == 2 && f.TargetReference == Person.Reference);
+
+            CRM_FormFieldItem item = db.CRM_FormFieldItems.FirstOrDefault(f => f.ID == 22);
+
+            if (answer == null)
+            {
+                answer = new CRM_FormFieldAnswer()
+                {
+                    CRM_FormFieldID = item.CRM_FormFieldID,
+                    Answer = item.Label,
+                    TargetReference = Person.Reference
+                };
+
+                db.CRM_FormFieldAnswers.InsertOnSubmit(answer);
+            }
+            else if (!answer.Answer.Contains(item.Label))
+            {
+                answer.Answer += "<br/>" + item.Label;
+            }
+
+            db.SubmitChanges();
         }
 
         protected void lnkCreateNew_Click(object sender, EventArgs e)
@@ -243,6 +284,8 @@ namespace CRM.admin.Merge
 
             db.CRM_Persons.InsertOnSubmit(person);
             db.SubmitChanges();
+
+            MarkAsWebsiteOrigin(person);
 
             NoticeManager.SetMessage("Record added (" + person.Reference + ")");
         }

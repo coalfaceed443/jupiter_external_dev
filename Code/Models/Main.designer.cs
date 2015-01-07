@@ -241,15 +241,15 @@ namespace CRM.Code.Models
     partial void InsertCRM_AnnualPass(CRM_AnnualPass instance);
     partial void UpdateCRM_AnnualPass(CRM_AnnualPass instance);
     partial void DeleteCRM_AnnualPass(CRM_AnnualPass instance);
-    partial void InsertHoldingPen(HoldingPen instance);
-    partial void UpdateHoldingPen(HoldingPen instance);
-    partial void DeleteHoldingPen(HoldingPen instance);
     partial void InsertTemplateEmail(TemplateEmail instance);
     partial void UpdateTemplateEmail(TemplateEmail instance);
     partial void DeleteTemplateEmail(TemplateEmail instance);
     partial void InsertTemplateEmailPlaceholder(TemplateEmailPlaceholder instance);
     partial void UpdateTemplateEmailPlaceholder(TemplateEmailPlaceholder instance);
     partial void DeleteTemplateEmailPlaceholder(TemplateEmailPlaceholder instance);
+    partial void InsertHoldingPen(HoldingPen instance);
+    partial void UpdateHoldingPen(HoldingPen instance);
+    partial void DeleteHoldingPen(HoldingPen instance);
     #endregion
 		
 		public MainDataContext() : 
@@ -850,14 +850,6 @@ namespace CRM.Code.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<HoldingPen> HoldingPens
-		{
-			get
-			{
-				return this.GetTable<HoldingPen>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TemplateEmail> TemplateEmails
 		{
 			get
@@ -871,6 +863,14 @@ namespace CRM.Code.Models
 			get
 			{
 				return this.GetTable<TemplateEmailPlaceholder>();
+			}
+		}
+		
+		public System.Data.Linq.Table<HoldingPen> HoldingPens
+		{
+			get
+			{
+				return this.GetTable<HoldingPen>();
 			}
 		}
 		
@@ -24644,582 +24644,6 @@ namespace CRM.Code.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HoldingPen")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class HoldingPen : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Title;
-		
-		private string _Firstname;
-		
-		private string _Lastname;
-		
-		private string _Email;
-		
-		private System.DateTime _DateReceived;
-		
-		private System.Nullable<System.DateTime> _DateCommitted;
-		
-		private string _OriginDescription;
-		
-		private int _OriginID;
-		
-		private string _Address1;
-		
-		private string _Address2;
-		
-		private string _Address3;
-		
-		private string _City;
-		
-		private string _County;
-		
-		private string _Postcode;
-		
-		private int _CountryID;
-		
-		private string _Telephone;
-		
-		private string _InterestObjects;
-		
-		private bool _DoNotMail;
-		
-		private bool _DoNotEmail;
-		
-		private bool _AlwaysSendPassInfo;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    partial void OnFirstnameChanging(string value);
-    partial void OnFirstnameChanged();
-    partial void OnLastnameChanging(string value);
-    partial void OnLastnameChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnDateReceivedChanging(System.DateTime value);
-    partial void OnDateReceivedChanged();
-    partial void OnDateCommittedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCommittedChanged();
-    partial void OnOriginDescriptionChanging(string value);
-    partial void OnOriginDescriptionChanged();
-    partial void OnOriginIDChanging(int value);
-    partial void OnOriginIDChanged();
-    partial void OnAddress1Changing(string value);
-    partial void OnAddress1Changed();
-    partial void OnAddress2Changing(string value);
-    partial void OnAddress2Changed();
-    partial void OnAddress3Changing(string value);
-    partial void OnAddress3Changed();
-    partial void OnCityChanging(string value);
-    partial void OnCityChanged();
-    partial void OnCountyChanging(string value);
-    partial void OnCountyChanged();
-    partial void OnPostcodeChanging(string value);
-    partial void OnPostcodeChanged();
-    partial void OnCountryIDChanging(int value);
-    partial void OnCountryIDChanged();
-    partial void OnTelephoneChanging(string value);
-    partial void OnTelephoneChanged();
-    partial void OnInterestObjectsChanging(string value);
-    partial void OnInterestObjectsChanged();
-    partial void OnDoNotMailChanging(bool value);
-    partial void OnDoNotMailChanged();
-    partial void OnDoNotEmailChanging(bool value);
-    partial void OnDoNotEmailChanged();
-    partial void OnAlwaysSendPassInfoChanging(bool value);
-    partial void OnAlwaysSendPassInfoChanged();
-    #endregion
-		
-		public HoldingPen()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Firstname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public string Firstname
-		{
-			get
-			{
-				return this._Firstname;
-			}
-			set
-			{
-				if ((this._Firstname != value))
-				{
-					this.OnFirstnameChanging(value);
-					this.SendPropertyChanging();
-					this._Firstname = value;
-					this.SendPropertyChanged("Firstname");
-					this.OnFirstnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lastname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public string Lastname
-		{
-			get
-			{
-				return this._Lastname;
-			}
-			set
-			{
-				if ((this._Lastname != value))
-				{
-					this.OnLastnameChanging(value);
-					this.SendPropertyChanging();
-					this._Lastname = value;
-					this.SendPropertyChanged("Lastname");
-					this.OnLastnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateReceived", DbType="DateTime NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
-		public System.DateTime DateReceived
-		{
-			get
-			{
-				return this._DateReceived;
-			}
-			set
-			{
-				if ((this._DateReceived != value))
-				{
-					this.OnDateReceivedChanging(value);
-					this.SendPropertyChanging();
-					this._DateReceived = value;
-					this.SendPropertyChanged("DateReceived");
-					this.OnDateReceivedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCommitted", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-		public System.Nullable<System.DateTime> DateCommitted
-		{
-			get
-			{
-				return this._DateCommitted;
-			}
-			set
-			{
-				if ((this._DateCommitted != value))
-				{
-					this.OnDateCommittedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCommitted = value;
-					this.SendPropertyChanged("DateCommitted");
-					this.OnDateCommittedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginDescription", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
-		public string OriginDescription
-		{
-			get
-			{
-				return this._OriginDescription;
-			}
-			set
-			{
-				if ((this._OriginDescription != value))
-				{
-					this.OnOriginDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._OriginDescription = value;
-					this.SendPropertyChanged("OriginDescription");
-					this.OnOriginDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginID", DbType="Int NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
-		public int OriginID
-		{
-			get
-			{
-				return this._OriginID;
-			}
-			set
-			{
-				if ((this._OriginID != value))
-				{
-					this.OnOriginIDChanging(value);
-					this.SendPropertyChanging();
-					this._OriginID = value;
-					this.SendPropertyChanged("OriginID");
-					this.OnOriginIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address1", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
-		public string Address1
-		{
-			get
-			{
-				return this._Address1;
-			}
-			set
-			{
-				if ((this._Address1 != value))
-				{
-					this.OnAddress1Changing(value);
-					this.SendPropertyChanging();
-					this._Address1 = value;
-					this.SendPropertyChanged("Address1");
-					this.OnAddress1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address2", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
-		public string Address2
-		{
-			get
-			{
-				return this._Address2;
-			}
-			set
-			{
-				if ((this._Address2 != value))
-				{
-					this.OnAddress2Changing(value);
-					this.SendPropertyChanging();
-					this._Address2 = value;
-					this.SendPropertyChanged("Address2");
-					this.OnAddress2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address3", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
-		public string Address3
-		{
-			get
-			{
-				return this._Address3;
-			}
-			set
-			{
-				if ((this._Address3 != value))
-				{
-					this.OnAddress3Changing(value);
-					this.SendPropertyChanging();
-					this._Address3 = value;
-					this.SendPropertyChanged("Address3");
-					this.OnAddress3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
-		public string City
-		{
-			get
-			{
-				return this._City;
-			}
-			set
-			{
-				if ((this._City != value))
-				{
-					this.OnCityChanging(value);
-					this.SendPropertyChanging();
-					this._City = value;
-					this.SendPropertyChanged("City");
-					this.OnCityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
-		public string County
-		{
-			get
-			{
-				return this._County;
-			}
-			set
-			{
-				if ((this._County != value))
-				{
-					this.OnCountyChanging(value);
-					this.SendPropertyChanging();
-					this._County = value;
-					this.SendPropertyChanged("County");
-					this.OnCountyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
-		public string Postcode
-		{
-			get
-			{
-				return this._Postcode;
-			}
-			set
-			{
-				if ((this._Postcode != value))
-				{
-					this.OnPostcodeChanging(value);
-					this.SendPropertyChanging();
-					this._Postcode = value;
-					this.SendPropertyChanged("Postcode");
-					this.OnPostcodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CountryID", DbType="Int NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
-		public int CountryID
-		{
-			get
-			{
-				return this._CountryID;
-			}
-			set
-			{
-				if ((this._CountryID != value))
-				{
-					this.OnCountryIDChanging(value);
-					this.SendPropertyChanging();
-					this._CountryID = value;
-					this.SendPropertyChanged("CountryID");
-					this.OnCountryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
-		public string Telephone
-		{
-			get
-			{
-				return this._Telephone;
-			}
-			set
-			{
-				if ((this._Telephone != value))
-				{
-					this.OnTelephoneChanging(value);
-					this.SendPropertyChanging();
-					this._Telephone = value;
-					this.SendPropertyChanged("Telephone");
-					this.OnTelephoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestObjects", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
-		public string InterestObjects
-		{
-			get
-			{
-				return this._InterestObjects;
-			}
-			set
-			{
-				if ((this._InterestObjects != value))
-				{
-					this.OnInterestObjectsChanging(value);
-					this.SendPropertyChanging();
-					this._InterestObjects = value;
-					this.SendPropertyChanged("InterestObjects");
-					this.OnInterestObjectsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoNotMail", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19)]
-		public bool DoNotMail
-		{
-			get
-			{
-				return this._DoNotMail;
-			}
-			set
-			{
-				if ((this._DoNotMail != value))
-				{
-					this.OnDoNotMailChanging(value);
-					this.SendPropertyChanging();
-					this._DoNotMail = value;
-					this.SendPropertyChanged("DoNotMail");
-					this.OnDoNotMailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoNotEmail", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=20)]
-		public bool DoNotEmail
-		{
-			get
-			{
-				return this._DoNotEmail;
-			}
-			set
-			{
-				if ((this._DoNotEmail != value))
-				{
-					this.OnDoNotEmailChanging(value);
-					this.SendPropertyChanging();
-					this._DoNotEmail = value;
-					this.SendPropertyChanged("DoNotEmail");
-					this.OnDoNotEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AlwaysSendPassInfo", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=21)]
-		public bool AlwaysSendPassInfo
-		{
-			get
-			{
-				return this._AlwaysSendPassInfo;
-			}
-			set
-			{
-				if ((this._AlwaysSendPassInfo != value))
-				{
-					this.OnAlwaysSendPassInfoChanging(value);
-					this.SendPropertyChanging();
-					this._AlwaysSendPassInfo = value;
-					this.SendPropertyChanged("AlwaysSendPassInfo");
-					this.OnAlwaysSendPassInfoChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void Initialize()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TemplateEmail")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class TemplateEmail : INotifyPropertyChanging, INotifyPropertyChanged
@@ -25802,6 +25226,657 @@ namespace CRM.Code.Models
 		private void Initialize()
 		{
 			this._TemplateEmail = default(EntityRef<TemplateEmail>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HoldingPen")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class HoldingPen : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Title;
+		
+		private string _Firstname;
+		
+		private string _Lastname;
+		
+		private string _Email;
+		
+		private System.DateTime _DateReceived;
+		
+		private System.Nullable<System.DateTime> _DateCommitted;
+		
+		private byte _OriginType;
+		
+		private string _OriginDescription;
+		
+		private int _OriginAccountID;
+		
+		private string _Address1;
+		
+		private string _Address2;
+		
+		private string _Address3;
+		
+		private string _City;
+		
+		private string _County;
+		
+		private string _Postcode;
+		
+		private int _CountryID;
+		
+		private string _Telephone;
+		
+		private string _InterestObjects;
+		
+		private bool _DoNotMail;
+		
+		private bool _DoNotEmail;
+		
+		private bool _AlwaysSendPassInfo;
+		
+		private string _MembershipA;
+		
+		private string _MembershipB;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnFirstnameChanging(string value);
+    partial void OnFirstnameChanged();
+    partial void OnLastnameChanging(string value);
+    partial void OnLastnameChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnDateReceivedChanging(System.DateTime value);
+    partial void OnDateReceivedChanged();
+    partial void OnDateCommittedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCommittedChanged();
+    partial void OnOriginTypeChanging(byte value);
+    partial void OnOriginTypeChanged();
+    partial void OnOriginDescriptionChanging(string value);
+    partial void OnOriginDescriptionChanged();
+    partial void OnOriginAccountIDChanging(int value);
+    partial void OnOriginAccountIDChanged();
+    partial void OnAddress1Changing(string value);
+    partial void OnAddress1Changed();
+    partial void OnAddress2Changing(string value);
+    partial void OnAddress2Changed();
+    partial void OnAddress3Changing(string value);
+    partial void OnAddress3Changed();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnCountyChanging(string value);
+    partial void OnCountyChanged();
+    partial void OnPostcodeChanging(string value);
+    partial void OnPostcodeChanged();
+    partial void OnCountryIDChanging(int value);
+    partial void OnCountryIDChanged();
+    partial void OnTelephoneChanging(string value);
+    partial void OnTelephoneChanged();
+    partial void OnInterestObjectsChanging(string value);
+    partial void OnInterestObjectsChanged();
+    partial void OnDoNotMailChanging(bool value);
+    partial void OnDoNotMailChanged();
+    partial void OnDoNotEmailChanging(bool value);
+    partial void OnDoNotEmailChanged();
+    partial void OnAlwaysSendPassInfoChanging(bool value);
+    partial void OnAlwaysSendPassInfoChanged();
+    partial void OnMembershipAChanging(string value);
+    partial void OnMembershipAChanged();
+    partial void OnMembershipBChanging(string value);
+    partial void OnMembershipBChanged();
+    #endregion
+		
+		public HoldingPen()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Firstname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public string Firstname
+		{
+			get
+			{
+				return this._Firstname;
+			}
+			set
+			{
+				if ((this._Firstname != value))
+				{
+					this.OnFirstnameChanging(value);
+					this.SendPropertyChanging();
+					this._Firstname = value;
+					this.SendPropertyChanged("Firstname");
+					this.OnFirstnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lastname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public string Lastname
+		{
+			get
+			{
+				return this._Lastname;
+			}
+			set
+			{
+				if ((this._Lastname != value))
+				{
+					this.OnLastnameChanging(value);
+					this.SendPropertyChanging();
+					this._Lastname = value;
+					this.SendPropertyChanged("Lastname");
+					this.OnLastnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateReceived", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public System.DateTime DateReceived
+		{
+			get
+			{
+				return this._DateReceived;
+			}
+			set
+			{
+				if ((this._DateReceived != value))
+				{
+					this.OnDateReceivedChanging(value);
+					this.SendPropertyChanging();
+					this._DateReceived = value;
+					this.SendPropertyChanged("DateReceived");
+					this.OnDateReceivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCommitted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public System.Nullable<System.DateTime> DateCommitted
+		{
+			get
+			{
+				return this._DateCommitted;
+			}
+			set
+			{
+				if ((this._DateCommitted != value))
+				{
+					this.OnDateCommittedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCommitted = value;
+					this.SendPropertyChanged("DateCommitted");
+					this.OnDateCommittedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginType", DbType="TinyInt NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public byte OriginType
+		{
+			get
+			{
+				return this._OriginType;
+			}
+			set
+			{
+				if ((this._OriginType != value))
+				{
+					this.OnOriginTypeChanging(value);
+					this.SendPropertyChanging();
+					this._OriginType = value;
+					this.SendPropertyChanged("OriginType");
+					this.OnOriginTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginDescription", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
+		public string OriginDescription
+		{
+			get
+			{
+				return this._OriginDescription;
+			}
+			set
+			{
+				if ((this._OriginDescription != value))
+				{
+					this.OnOriginDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._OriginDescription = value;
+					this.SendPropertyChanged("OriginDescription");
+					this.OnOriginDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginAccountID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+		public int OriginAccountID
+		{
+			get
+			{
+				return this._OriginAccountID;
+			}
+			set
+			{
+				if ((this._OriginAccountID != value))
+				{
+					this.OnOriginAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._OriginAccountID = value;
+					this.SendPropertyChanged("OriginAccountID");
+					this.OnOriginAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address1", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
+		public string Address1
+		{
+			get
+			{
+				return this._Address1;
+			}
+			set
+			{
+				if ((this._Address1 != value))
+				{
+					this.OnAddress1Changing(value);
+					this.SendPropertyChanging();
+					this._Address1 = value;
+					this.SendPropertyChanged("Address1");
+					this.OnAddress1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address2", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
+		public string Address2
+		{
+			get
+			{
+				return this._Address2;
+			}
+			set
+			{
+				if ((this._Address2 != value))
+				{
+					this.OnAddress2Changing(value);
+					this.SendPropertyChanging();
+					this._Address2 = value;
+					this.SendPropertyChanged("Address2");
+					this.OnAddress2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address3", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
+		public string Address3
+		{
+			get
+			{
+				return this._Address3;
+			}
+			set
+			{
+				if ((this._Address3 != value))
+				{
+					this.OnAddress3Changing(value);
+					this.SendPropertyChanging();
+					this._Address3 = value;
+					this.SendPropertyChanged("Address3");
+					this.OnAddress3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_County", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
+		public string County
+		{
+			get
+			{
+				return this._County;
+			}
+			set
+			{
+				if ((this._County != value))
+				{
+					this.OnCountyChanging(value);
+					this.SendPropertyChanging();
+					this._County = value;
+					this.SendPropertyChanged("County");
+					this.OnCountyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Postcode", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
+		public string Postcode
+		{
+			get
+			{
+				return this._Postcode;
+			}
+			set
+			{
+				if ((this._Postcode != value))
+				{
+					this.OnPostcodeChanging(value);
+					this.SendPropertyChanging();
+					this._Postcode = value;
+					this.SendPropertyChanged("Postcode");
+					this.OnPostcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CountryID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
+		public int CountryID
+		{
+			get
+			{
+				return this._CountryID;
+			}
+			set
+			{
+				if ((this._CountryID != value))
+				{
+					this.OnCountryIDChanging(value);
+					this.SendPropertyChanging();
+					this._CountryID = value;
+					this.SendPropertyChanged("CountryID");
+					this.OnCountryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this.OnTelephoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telephone = value;
+					this.SendPropertyChanged("Telephone");
+					this.OnTelephoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterestObjects", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19)]
+		public string InterestObjects
+		{
+			get
+			{
+				return this._InterestObjects;
+			}
+			set
+			{
+				if ((this._InterestObjects != value))
+				{
+					this.OnInterestObjectsChanging(value);
+					this.SendPropertyChanging();
+					this._InterestObjects = value;
+					this.SendPropertyChanged("InterestObjects");
+					this.OnInterestObjectsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoNotMail", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=20)]
+		public bool DoNotMail
+		{
+			get
+			{
+				return this._DoNotMail;
+			}
+			set
+			{
+				if ((this._DoNotMail != value))
+				{
+					this.OnDoNotMailChanging(value);
+					this.SendPropertyChanging();
+					this._DoNotMail = value;
+					this.SendPropertyChanged("DoNotMail");
+					this.OnDoNotMailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoNotEmail", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=21)]
+		public bool DoNotEmail
+		{
+			get
+			{
+				return this._DoNotEmail;
+			}
+			set
+			{
+				if ((this._DoNotEmail != value))
+				{
+					this.OnDoNotEmailChanging(value);
+					this.SendPropertyChanging();
+					this._DoNotEmail = value;
+					this.SendPropertyChanged("DoNotEmail");
+					this.OnDoNotEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AlwaysSendPassInfo", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
+		public bool AlwaysSendPassInfo
+		{
+			get
+			{
+				return this._AlwaysSendPassInfo;
+			}
+			set
+			{
+				if ((this._AlwaysSendPassInfo != value))
+				{
+					this.OnAlwaysSendPassInfoChanging(value);
+					this.SendPropertyChanging();
+					this._AlwaysSendPassInfo = value;
+					this.SendPropertyChanged("AlwaysSendPassInfo");
+					this.OnAlwaysSendPassInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembershipA", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=23)]
+		public string MembershipA
+		{
+			get
+			{
+				return this._MembershipA;
+			}
+			set
+			{
+				if ((this._MembershipA != value))
+				{
+					this.OnMembershipAChanging(value);
+					this.SendPropertyChanging();
+					this._MembershipA = value;
+					this.SendPropertyChanged("MembershipA");
+					this.OnMembershipAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MembershipB", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=24)]
+		public string MembershipB
+		{
+			get
+			{
+				return this._MembershipB;
+			}
+			set
+			{
+				if ((this._MembershipB != value))
+				{
+					this.OnMembershipBChanging(value);
+					this.SendPropertyChanging();
+					this._MembershipB = value;
+					this.SendPropertyChanged("MembershipB");
+					this.OnMembershipBChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
 			OnCreated();
 		}
 		
