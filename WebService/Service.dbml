@@ -55,6 +55,31 @@
       <Column Name="Answer" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.CRM_AnnualPassCard" Member="CRM_AnnualPassCards">
+    <Type Name="CRM_AnnualPassCard">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MembershipNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassCardID" Type="CRM_AnnualPass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPass" Member="CRM_AnnualPasses">
+    <Type Name="CRM_AnnualPass">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPaid" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DiscountApplied" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsPending" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_OfferID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.HoldingPen" Member="HoldingPens">
     <Type Name="HoldingPen">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -81,31 +106,7 @@
       <Column Name="AlwaysSendPassInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MembershipA" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="MembershipB" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CRM_AnnualPassCard" Member="CRM_AnnualPassCards">
-    <Type Name="CRM_AnnualPassCard">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MembershipNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassCardID" Type="CRM_AnnualPass" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CRM_AnnualPass" Member="CRM_AnnualPasses">
-    <Type Name="CRM_AnnualPass">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CRM_AnnualPassCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CRM_AnnualPassTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AmountPaid" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="DiscountApplied" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ExpiryDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="IsPending" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CRM_OfferID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
+      <Column Name="BasketContents" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>

@@ -231,6 +231,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                                                          
                         </td>
                     </tr>
+                    
+                    <tr>     
+                        <td>
+                            <label>Basket</label>
+                        </td>                 
+                        <td>
+                            <label><%= Entity.BasketContents %></label>
+                        </td>     
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            
+                            <asp:Repeater ID="rptConstituent" runat="server" OnItemDataBound="rptConstituent_ItemDataBound">
+
+                                <ItemTemplate>
+                                    <p>
+                                    <asp:CheckBox ID="chkOption" runat="server"  TextAlign="Right"/>
+                                        <label ID="lblOption" runat="server" style="float:none;"/>
+                                       </p>
+                                </ItemTemplate>
+
+                            </asp:Repeater>
+                                                      
+                        </td>
+                    </tr>
                     <tr>         
                         <td>
                             <label>Mail Preference</label>
@@ -247,16 +272,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                             <label><%= Entity.EMailPreference %></label>
                         </td>
                     </tr>
-                    <!--
-                    <tr>     
-                        <td>
-                            <label>Pass Information Preference</label>
-                        </td>                 
-                        <td>
-                            <label><%= Entity.PassInfoPreference %></label>
-                        </td>     
-                    </tr>
-                        -->
+                       
                 </table>
             </div>
 
@@ -315,6 +331,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                 Before</h2>
             
                 <asp:Label ID="litBefore" runat="server" CssClass="box" />
+                <asp:Label ID="lblConstituentTypesBefore" runat="server" CssClass="box" />
 
             </div>
             <div class="merge fr">
@@ -323,6 +340,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                 After</h2>
                 
                 <asp:Label ID="litAfter" runat="server" CssClass="box" />
+                <asp:Label ID="lblConstituentTypesAfter" runat="server" CssClass="box" />
 
                 <div class="buttons fr">
                 <asp:LinkButton ID="btnSubmitChanges" runat="server" OnClick="btnSubmitChanges_Click">Submit this record change</asp:LinkButton>

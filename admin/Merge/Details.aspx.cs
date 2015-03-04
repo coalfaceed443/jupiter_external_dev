@@ -10,6 +10,7 @@ using CRM.Code.Interfaces;
 using System.Web.Script.Serialization;
 using CRM.Code.Managers;
 using CRM.Code.Utils.Time;
+using System.Web.UI.HtmlControls;
 
 namespace CRM.admin.Merge
 {
@@ -71,6 +72,13 @@ namespace CRM.admin.Merge
 
             IEnumerable<ListItem> interests = db.CRM_FormFieldItems.Where(f => f.CRM_FormFieldID == 24 && f.IsActive && !f.IsArchived).Select(s => new ListItem(s.Label, s.ID.ToString()));
 
+
+            rptConstituent.DataSource = db.CRM_FormFieldItems.Where(f => f.CRM_FormFieldID == 1
+                && f.IsActive && !f.IsArchived
+                );
+            rptConstituent.DataBind();
+
+
             try
             {
                 if (Entity.InterestObjects != null)
@@ -104,7 +112,23 @@ namespace CRM.admin.Merge
             CRM.Code.Models.CRM_Person person = db.CRM_Persons.Single(s => s.ID.ToString() == ((LinkButton)sender).CommandArgument);
 
             litBefore.Text = person.MergeCard.Replace(Environment.NewLine, "<br/>");
+           
+            lblConstituentTypesBefore.Text = CRM.Code.Helpers.JSONSet.FlattenList(person.ConstituentTypes(db).ToList(), "<br/>");
+
             litAfter.Text = TransformPerson(person).MergeCard.Replace(Environment.NewLine, "<br/>");
+            lblConstituentTypesAfter.Text = lblConstituentTypesBefore.Text + "<br/>";
+
+            foreach (RepeaterItem item in rptConstituent.Items)
+            {
+                CheckBox chk = (CheckBox)item.FindControl("chkOption");
+                HtmlGenericControl lbl = (HtmlGenericControl)item.FindControl("lblOption");
+
+                if (chk.Checked && !person.ConstituentTypes(db).Contains(lbl.InnerText))
+                {
+                    lblConstituentTypesAfter.Text += lbl.InnerText + "<br/>";
+                }
+            }
+
 
             pnlMerge.Visible = true;
 
@@ -183,8 +207,11 @@ namespace CRM.admin.Merge
                 CRM.Code.History.History.RecordLinqUpdate(AdminUser, oldAddress, person.PrimaryAddress);
                 db.SubmitChanges();
 
-                MarkAsWebsiteOrigin(person);
+                ApplyCustomField(person, 2, 22);
                 db.SubmitChanges();
+
+                ApplyConstituentsToSelected(person);
+
 
                 /*
                 
@@ -219,11 +246,27 @@ namespace CRM.admin.Merge
             }
         }
 
-        protected void MarkAsWebsiteOrigin(CRM_Person Person)
+        protected void ApplyConstituentsToSelected(CRM_Person person)
         {
-            CRM_FormFieldAnswer answer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.CRM_FormFieldID == 2 && f.TargetReference == Person.Reference);
 
-            CRM_FormFieldItem item = db.CRM_FormFieldItems.FirstOrDefault(f => f.ID == 22);
+            foreach (RepeaterItem item in rptConstituent.Items)
+            {
+                CheckBox chk = (CheckBox)item.FindControl("chkOption");
+                HtmlGenericControl lbl = (HtmlGenericControl)item.FindControl("lblOption");
+
+                if (chk.Checked)
+                {
+                    ApplyCustomField(person, 1, Convert.ToInt32(chk.Attributes["data-id"]));
+                }
+            }
+
+        }
+
+        protected void ApplyCustomField(CRM_Person Person, int formFieldID, int formFieldItemID)
+        {
+            CRM_FormFieldAnswer answer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.CRM_FormFieldID == formFieldID && f.TargetReference == Person.Reference);
+
+            CRM_FormFieldItem item = db.CRM_FormFieldItems.FirstOrDefault(f => f.ID == formFieldItemID);
 
             if (answer == null)
             {
@@ -251,6 +294,8 @@ namespace CRM.admin.Merge
                 AddressLine1 = txtAddress1.Text,
                 AddressLine2 = txtAddress2.Text,
                 AddressLine3 = txtAddress3.Text,
+                AddressLine4 = "",
+                AddressLine5 = "",
                 CountryID = db.Countries.First().ID,
                 County = txtCounty.Text,
                 Postcode = txtPostcode.Text,
@@ -277,15 +322,22 @@ namespace CRM.admin.Merge
                 PrimaryEmail = txtEmail.Text,
                 PrimaryTelephone = txtTelephone.Text,
                 Title = ddlTitle.SelectedItem.Text,
-                WebsiteAccountID = Entity.ID,
+                WebsiteAccountID = Entity.OriginAccountID,
                 IsCarerMinder = false,
-                PreviousNames = ""
+                PreviousNames = "",
+                LegacyID = null,
+                IsMale = null,
+                AddressType = 0,
+                Telephone2 = ""
+
             };
 
             db.CRM_Persons.InsertOnSubmit(person);
             db.SubmitChanges();
 
-            MarkAsWebsiteOrigin(person);
+            ApplyCustomField(person, 2, 22);
+            ApplyConstituentsToSelected(person);
+
 
             NoticeManager.SetMessage("Record added (" + person.Reference + ")");
         }
@@ -299,7 +351,7 @@ namespace CRM.admin.Merge
             db.HoldingPens.DeleteOnSubmit(Entity);
             db.SubmitChanges();
 
-            if (indexOf != baseSet.Count)
+            if (indexOf != baseSet.Count - 1)
             {
                 NoticeManager.SetMessage("Deleted temporary merge record and moved to next record", baseSet[indexOf + 1].DetailsURL);
             }
@@ -309,5 +361,35 @@ namespace CRM.admin.Merge
             }
 
         }
+
+        protected void rptConstituent_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            CRM_FormFieldItem item = (CRM_FormFieldItem)e.Item.DataItem;
+
+            CheckBox chk = (CheckBox)e.Item.FindControl("chkOption");
+            chk.Attributes["data-id"] = item.ID.ToString();
+
+            HtmlGenericControl lblOption = (HtmlGenericControl)e.Item.FindControl("lblOption");
+
+            lblOption.InnerText = item.Label;
+            lblOption.Attributes["for"] = chk.ClientID;
+
+            if (item.ID == 18 && Entity.BasketContents.Contains("Event"))
+            {
+                chk.Checked = true;
+            }
+
+            if (item.ID == 20)
+            {
+                chk.Checked = true;
+            }
+
+            if (item.ID == 1 && (Entity.MembershipA != "" || Entity.MembershipB != ""))
+            {
+                chk.Checked = true;
+            }
+
+        }
+
     }
 }

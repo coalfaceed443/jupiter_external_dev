@@ -265,6 +265,15 @@ namespace CRM.admin.Merge {
         protected global::System.Web.UI.WebControls.CheckBoxList rptInterests;
         
         /// <summary>
+        /// rptConstituent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptConstituent;
+        
+        /// <summary>
         /// lvItems control.
         /// </summary>
         /// <remarks>
@@ -292,6 +301,15 @@ namespace CRM.admin.Merge {
         protected global::System.Web.UI.WebControls.Label litBefore;
         
         /// <summary>
+        /// lblConstituentTypesBefore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConstituentTypesBefore;
+        
+        /// <summary>
         /// litAfter control.
         /// </summary>
         /// <remarks>
@@ -299,6 +317,15 @@ namespace CRM.admin.Merge {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label litAfter;
+        
+        /// <summary>
+        /// lblConstituentTypesAfter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConstituentTypesAfter;
         
         /// <summary>
         /// btnSubmitChanges control.

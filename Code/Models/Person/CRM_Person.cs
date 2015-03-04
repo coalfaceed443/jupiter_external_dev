@@ -12,6 +12,20 @@ using System.Text;
 
 namespace CRM.Code.Models
 {
+    public static class PersonExtension
+    {
+        public static string[] ConstituentTypes(this CRM_Person person, MainDataContext db)
+        {
+            var answers = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.TargetReference == person.Reference && f.CRM_FormFieldID == 1);
+
+            if (answers != null)
+            {
+                return answers.Answer.Split(new string[] { "<br/>" }, StringSplitOptions.None);
+            }
+            else return new string []{};
+
+        }
+    }
     public partial class CRM_Person : IHistory, ICRMRecord, INotes, IDuplicate, IAutocomplete, IContact, ICustomField, ICRMContext, IMailable
     {
         public const string PlaceholderPhoto = PhotoDirectory + "placeholder" + PhotoFileExtension;
@@ -44,6 +58,7 @@ namespace CRM.Code.Models
                 sb.AppendLine(String.Format(MergeCardFormat, "county", this.County));
                 sb.AppendLine(String.Format(MergeCardFormat, "postcode", this.Postcode));
                 sb.AppendLine(String.Format(MergeCardFormat, "tel", this.PrimaryTelephone));
+
                 return sb.ToString();
             }
         }

@@ -25292,6 +25292,8 @@ namespace CRM.Code.Models
 		
 		private string _MembershipB;
 		
+		private string _BasketContents;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -25344,6 +25346,8 @@ namespace CRM.Code.Models
     partial void OnMembershipAChanged();
     partial void OnMembershipBChanging(string value);
     partial void OnMembershipBChanged();
+    partial void OnBasketContentsChanging(string value);
+    partial void OnBasketContentsChanged();
     #endregion
 		
 		public HoldingPen()
@@ -25851,6 +25855,27 @@ namespace CRM.Code.Models
 					this._MembershipB = value;
 					this.SendPropertyChanged("MembershipB");
 					this.OnMembershipBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BasketContents", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=25)]
+		public string BasketContents
+		{
+			get
+			{
+				return this._BasketContents;
+			}
+			set
+			{
+				if ((this._BasketContents != value))
+				{
+					this.OnBasketContentsChanging(value);
+					this.SendPropertyChanging();
+					this._BasketContents = value;
+					this.SendPropertyChanged("BasketContents");
+					this.OnBasketContentsChanged();
 				}
 			}
 		}
