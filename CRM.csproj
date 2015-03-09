@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="admin\AdminUser\Details.aspx" />
     <Content Include="admin\AnnualPassCard\Overview.aspx" />
+    <Content Include="admin\AnnualPassCard\Stats.aspx" />
     <Content Include="admin\Calendar\Frame\Rota.aspx" />
     <Content Include="admin\Calendar\Frame\WeekView.aspx" />
     <Content Include="admin\Calendar\Invite\List.aspx" />
@@ -1064,6 +1065,13 @@
     </Compile>
     <Compile Include="admin\AnnualPassCard\Overview.aspx.designer.cs">
       <DependentUpon>Overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Stats.aspx.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AnnualPassCard\Stats.aspx.designer.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Calendar\Frame\Rota.aspx.cs">
       <DependentUpon>Rota.aspx</DependentUpon>

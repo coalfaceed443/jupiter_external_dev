@@ -65,7 +65,8 @@ namespace CRM.Admin
 
             menuItems.Add(new AdminMenuListItem("/admin/annualpasscard/list.aspx", "Passes", new List<MenuListItem>()
                 {
-                    new MenuListItem("/admin/annualpasscard/overview.aspx", "Overview")
+                    new MenuListItem("/admin/annualpasscard/overview.aspx", "Overview"),
+                    new MenuListItem("/admin/annualpasscard/stats.aspx", "Stats")
                 }));
 
 

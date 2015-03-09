@@ -92,6 +92,10 @@
                 </div>
             </div>
         </div>
+
+        
+                    <asp:ContentPlaceHolder ID="fullWidthContent" runat="server">
+                    </asp:ContentPlaceHolder>
     </div>
 
     <ucUtil:NavigationHistory ID="ucNavHistory" runat="server" />
