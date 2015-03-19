@@ -2359,6 +2359,9 @@
     <Compile Include="Swap.aspx.designer.cs">
       <DependentUpon>Swap.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TaskScript\art_booking_import.ashx.cs">
+      <DependentUpon>art_booking_import.ashx</DependentUpon>
+    </Compile>
     <Compile Include="TaskScript\ConstType.ashx.cs">
       <DependentUpon>ConstType.ashx</DependentUpon>
     </Compile>
@@ -2419,6 +2422,8 @@
       <DependentUpon>Main.dbml</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <Content Include="TaskScript\art_booking_import.ashx" />
+    <Content Include="TaskScript\Art_Booking.csv" />
     <None Include="TaskScript\ConstTypes.csv" />
     <Content Include="TaskScript\expiry.ashx" />
     <Content Include="TaskScript\EdinSchoolsImport.ashx" />
