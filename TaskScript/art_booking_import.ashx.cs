@@ -152,6 +152,67 @@ namespace CRM.TaskScript
                             db.SubmitChanges();
 
                         }
+
+                        //constituent type
+                        CRM_FormFieldAnswer consTypeAnswer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.TargetReference == person.Reference && f.CRM_FormFieldID == 1);
+
+                        //origin
+                        CRM_FormFieldAnswer originAnswer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.TargetReference == person.Reference && f.CRM_FormFieldID == 2);
+
+
+
+                        if (consTypeAnswer == null)
+                        {
+
+                            consTypeAnswer = new CRM_FormFieldAnswer()
+                            {
+                                Answer = "Group Booking",
+                                CRM_FormFieldID = 1,
+                                TargetReference = person.Reference
+                            };
+
+                            db.CRM_FormFieldAnswers.InsertOnSubmit(consTypeAnswer);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            string[] items = consTypeAnswer.Answer.Split(new string[] { "<br/>" }, StringSplitOptions.None);
+
+                            if (!items.Any(i => i == "Group Booking"))
+                            {
+                                consTypeAnswer.Answer += "<br/>Group Booking";
+                            }
+
+                            db.SubmitChanges();
+                        }
+
+
+                        if (originAnswer == null)
+                        {
+
+                            originAnswer = new CRM_FormFieldAnswer()
+                            {
+                                Answer = "Import",
+                                CRM_FormFieldID = 2,
+                                TargetReference = person.Reference
+                            };
+
+                            db.CRM_FormFieldAnswers.InsertOnSubmit(originAnswer);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            string[] items = originAnswer.Answer.Split(new string[] { "<br/>" }, StringSplitOptions.None);
+
+                            if (!items.Any(i => i == "Import"))
+                            {
+                                consTypeAnswer.Answer += "<br/>Import";
+                            }
+
+                            db.SubmitChanges();
+                        }
+
+
                     
 
                     }

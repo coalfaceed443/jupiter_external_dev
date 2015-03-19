@@ -100,6 +100,7 @@ namespace CRM.admin.CustomFields.Answers
 
                 foreach (CRM_FormFieldAnswer answer in CRM_FormFieldItem.CRM_FormField.CRM_FormFieldAnswers)
                 {
+                    if (oldName != null && newName != null)
                     answer.Answer = answer.Answer.Replace(oldName, newName);
                 }
             }
