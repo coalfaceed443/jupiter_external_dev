@@ -177,13 +177,17 @@ namespace CRM.admin.Fundraising
             }
 
 
+            int recurring = 0;
+
+            Int32.TryParse(txtRecurringWeeks.Text, out recurring);
+
             Entity.IsInKind = chkIsInKind.Checked;
             Entity.PledgedAmount = Convert.ToDecimal(txtAmount.Text);
             Entity.IsGiftAid = chkIsGiftAid.Checked;
             Entity.GiftAidFirstname = txtGiftaidFirstname.Text;
             Entity.GiftAidLastname = txtGiftaidLastname.Text;
             Entity.IsRecurring = chkIsRecurring.Checked;
-            Entity.RecurringEveryWeeks = Convert.ToInt32(txtRecurringWeeks.Text);
+            Entity.RecurringEveryWeeks = recurring;
             Entity.Duration = Convert.ToInt32(txtDuration.Text);
             Entity.CRM_PaymentTypeID = Convert.ToInt32(ddlPaymentType.SelectedValue);
             Entity.CRM_FundraisingReasonID = Convert.ToInt32(ddlFundReason.SelectedValue);
