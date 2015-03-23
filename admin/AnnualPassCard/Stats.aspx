@@ -16,28 +16,53 @@
 
         function drawChart() {
 
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Membership Type');
-            data.addColumn('number', 'Subscribers');
 
             <% var dataset = db.CRM_AnnualPassTypes.Where(r => !r.IsArchived).ToList();%>
+            <% DateTime activeStartDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
 
-            data.addRows([
-                    <% for (int i = 0; i < dataset.Count(); i++)
-        { %>
-                    ['<%= dataset[i].Name%>', <%= dataset[i].CRM_AnnualPasses.Where(r => r.IsCurrent).Count()%>],
-                <% }%>
+
+            var data = new google.visualization.arrayToDataTable([
+
+                ['Year', 
+                    <% foreach (CRM.Code.Models.CRM_AnnualPassType type in db.CRM_AnnualPassTypes)
+                       {%>
+                   '<%= type.Name%>',
+                    <%}%>
+
+                ],
+
+
+
+            <% while (activeStartDate <= CRM.Code.Utils.Time.UKTime.Now)
+            {%>
+
+            [ '<%= activeStartDate.ToString("MMMM yy")%>', 
+                <% for (int i = 0; i < dataset.Count(); i++)
+                  { %>
+                       <%= dataset[i].CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == dataset[i].ID && r.StartDate <= activeStartDate && r.ExpiryDate >= activeStartDate).Count()%><% if (i +1 != dataset.Count()){%>,<%}%>
+                <% }%> 
+                
+                    <% activeStartDate = activeStartDate.AddMonths(1); %>
+            ],
+            <%}%>
+
+
             ]);
+
+
+            
 
             var options = {
                 'title': 'Active Memberships by Type',
-                'width': 500,
-                'height': 300,
-                is3D: true
+                'width': 1500,
+                'height': 400,
+                bars: 'vertical',
+                legend: { position: 'top' }
+
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('membershipByType'));
-            chart.draw(data, options);
+            var chart = new google.charts.Bar(document.getElementById('membershipByType'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
         function drawTimeline() {
@@ -97,7 +122,7 @@
 
             var options = {
                 'title':' Memberships total active, during the past 36 months',
-                'width': 600,
+                'width': 550,
                 'height': 300,
                 is3D: true,
                 legend: { position: 'bottom' }
@@ -125,7 +150,7 @@
 
             var options = {
                 'title': 'Total value of active members over the past 36 months',
-                'width': 600,
+                'width': 500,
                 'height': 300,
                 is3D: true,
                 legend: { position: 'bottom' }
@@ -259,6 +284,7 @@
 
                  Loading...
              </div>
+
              <div id="memberTimeline" class="graph">
 
                  Loading...
