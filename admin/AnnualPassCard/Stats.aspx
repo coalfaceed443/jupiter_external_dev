@@ -6,13 +6,72 @@
     <script type="text/javascript">
 
         google.load('visualization', '1.0', { 'packages': ['corechart', 'bar'] });
-        google.setOnLoadCallback(drawMap);
         google.setOnLoadCallback(drawChart);
+        google.setOnLoadCallback(drawFinanceChart);
         google.setOnLoadCallback(drawTimeline);
         google.setOnLoadCallback(drawTotalMembers);
         google.setOnLoadCallback(amountPaid);
         google.setOnLoadCallback(actualIncome);
         google.setOnLoadCallback(paymentMethods);
+
+
+        function drawFinanceChart() {
+
+
+            <% var financeDataset = db.CRM_AnnualPassTypes.Where(r => !r.IsArchived).ToList();%>
+            <% DateTime financeActiveStartDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
+
+
+            var data = new google.visualization.arrayToDataTable([
+
+                ['Year',
+                    <% foreach (CRM.Code.Models.CRM_AnnualPassType type in db.CRM_AnnualPassTypes)
+                       {%>
+                   '<%= type.Name%>',
+                    <%}%>
+
+                ],
+
+
+
+            <% while (financeActiveStartDate <= CRM.Code.Utils.Time.UKTime.Now)
+            {%>
+
+            ['<%= financeActiveStartDate.ToString("MMMM yy")%>',
+                <% for (int i = 0; i < financeDataset.Count(); i++)
+                  { %>
+                
+                       <%= financeDataset[i].
+                            CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == financeDataset[i].ID &&
+                                r.StartDate.Month == financeActiveStartDate.Month &&
+                                r.StartDate.Year == financeActiveStartDate.Year)
+                                .Sum(r => r.AmountPaid).ToString("N2").Replace(",", "") %>,
+                  <%}%>
+
+                    <% financeActiveStartDate = financeActiveStartDate.AddMonths(1); %>
+            ],
+            <%}%>
+
+
+            ]);
+
+
+
+
+            var options = {
+                'title': 'Income by Membership',
+                'width': 1500,
+                'height': 800,
+                bars: 'vertical',
+                vAxis: {format:'###,###'},
+                legend: { position: 'top' }
+
+            };
+
+
+            var chart = new google.charts.Bar(document.getElementById('financeByType'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
 
         function drawChart() {
 
@@ -274,6 +333,14 @@
         
          <div class="innerContentForm" style="width:100%;">
              
+             
+             <div id="financeByType" class="graph">
+                 
+                 Loading...
+
+             </div>
+             
+
              <div id="membershipByType" class="graph">
                  
                  Loading...
