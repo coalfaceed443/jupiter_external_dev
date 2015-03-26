@@ -169,6 +169,8 @@ namespace CRM.Code.BasePages.Admin
 
                 IEnumerable<T> items = sender.DataSet.Cast<T>();
 
+                IEnumerable<T> baseQuery = items; // make a copy so we can requery it later
+
                 if (dq.AdminDataQueryFilters.Any(a => a.IsCustomField))
                 {
 
@@ -181,6 +183,9 @@ namespace CRM.Code.BasePages.Admin
                     {
                         NoticeManager.SetMessage("Is not does not support True/false values.  Please use Is the same as.", "list.aspx");
                     }
+
+                    AdminDataQueryFilter previousFilter = null;
+
 
                     foreach (AdminDataQueryFilter filter in dq.AdminDataQueryFilters.Where(c => c.IsCustomField))
                     {
@@ -228,9 +233,18 @@ namespace CRM.Code.BasePages.Admin
 
                         if (FormFieldAnswers != null && FormFieldAnswers.Any())
                         {
-
-                            items = items.Where(x => FormFieldAnswers.Any(fa => ((ICustomField)x).Reference == fa.TargetReference)).Cast<T>();
+                            if (previousFilter != null && previousFilter.Concat == "OR")
+                            {
+                                items = items.Concat(baseQuery.Where(x => FormFieldAnswers.Any(fa => ((ICustomField)x).Reference == fa.TargetReference)).Cast<T>());
+                            }
+                            else
+                            {
+                                // if previous item is an OR, then concat, otherwise continue to query current set
+                                items = items.Where(x => FormFieldAnswers.Any(fa => ((ICustomField)x).Reference == fa.TargetReference)).Cast<T>();
+                            }
                         }
+
+                        previousFilter = filter;
                     }
 
 
