@@ -100,9 +100,6 @@ namespace CRM.Code.Models
     partial void InsertCRM_AnnualPassCard(CRM_AnnualPassCard instance);
     partial void UpdateCRM_AnnualPassCard(CRM_AnnualPassCard instance);
     partial void DeleteCRM_AnnualPassCard(CRM_AnnualPassCard instance);
-    partial void InsertCRM_AnnualPassType(CRM_AnnualPassType instance);
-    partial void UpdateCRM_AnnualPassType(CRM_AnnualPassType instance);
-    partial void DeleteCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void InsertCRM_AnnualPassPerson(CRM_AnnualPassPerson instance);
     partial void UpdateCRM_AnnualPassPerson(CRM_AnnualPassPerson instance);
     partial void DeleteCRM_AnnualPassPerson(CRM_AnnualPassPerson instance);
@@ -250,6 +247,15 @@ namespace CRM.Code.Models
     partial void InsertHoldingPen(HoldingPen instance);
     partial void UpdateHoldingPen(HoldingPen instance);
     partial void DeleteHoldingPen(HoldingPen instance);
+    partial void InsertCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void UpdateCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void DeleteCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void InsertCRM_RelationCode(CRM_RelationCode instance);
+    partial void UpdateCRM_RelationCode(CRM_RelationCode instance);
+    partial void DeleteCRM_RelationCode(CRM_RelationCode instance);
+    partial void InsertCRM_PersonRelationship(CRM_PersonRelationship instance);
+    partial void UpdateCRM_PersonRelationship(CRM_PersonRelationship instance);
+    partial void DeleteCRM_PersonRelationship(CRM_PersonRelationship instance);
     #endregion
 		
 		public MainDataContext() : 
@@ -471,14 +477,6 @@ namespace CRM.Code.Models
 			get
 			{
 				return this.GetTable<CRM_AnnualPassCard>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CRM_AnnualPassType> CRM_AnnualPassTypes
-		{
-			get
-			{
-				return this.GetTable<CRM_AnnualPassType>();
 			}
 		}
 		
@@ -871,6 +869,30 @@ namespace CRM.Code.Models
 			get
 			{
 				return this.GetTable<HoldingPen>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_AnnualPassType> CRM_AnnualPassTypes
+		{
+			get
+			{
+				return this.GetTable<CRM_AnnualPassType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_RelationCode> CRM_RelationCodes
+		{
+			get
+			{
+				return this.GetTable<CRM_RelationCode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_PersonRelationship> CRM_PersonRelationships
+		{
+			get
+			{
+				return this.GetTable<CRM_PersonRelationship>();
 			}
 		}
 		
@@ -6859,207 +6881,6 @@ namespace CRM.Code.Models
 		{
 			this.SendPropertyChanging();
 			entity.CRM_AnnualPassCard = null;
-		}
-		
-		private void Initialize()
-		{
-			this._CRM_AnnualPasses = new EntitySet<CRM_AnnualPass>(new Action<CRM_AnnualPass>(this.attach_CRM_AnnualPasses), new Action<CRM_AnnualPass>(this.detach_CRM_AnnualPasses));
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerializing(StreamingContext context)
-		{
-			this.serializing = true;
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializedAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerialized(StreamingContext context)
-		{
-			this.serializing = false;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassType")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class CRM_AnnualPassType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Name;
-		
-		private bool _IsArchived;
-		
-		private decimal _DefaultPrice;
-		
-		private EntitySet<CRM_AnnualPass> _CRM_AnnualPasses;
-		
-		private bool serializing;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnIsArchivedChanging(bool value);
-    partial void OnIsArchivedChanged();
-    partial void OnDefaultPriceChanging(decimal value);
-    partial void OnDefaultPriceChanged();
-    #endregion
-		
-		public CRM_AnnualPassType()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public bool IsArchived
-		{
-			get
-			{
-				return this._IsArchived;
-			}
-			set
-			{
-				if ((this._IsArchived != value))
-				{
-					this.OnIsArchivedChanging(value);
-					this.SendPropertyChanging();
-					this._IsArchived = value;
-					this.SendPropertyChanged("IsArchived");
-					this.OnIsArchivedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultPrice", DbType="Money NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public decimal DefaultPrice
-		{
-			get
-			{
-				return this._DefaultPrice;
-			}
-			set
-			{
-				if ((this._DefaultPrice != value))
-				{
-					this.OnDefaultPriceChanging(value);
-					this.SendPropertyChanging();
-					this._DefaultPrice = value;
-					this.SendPropertyChanged("DefaultPrice");
-					this.OnDefaultPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPasses", ThisKey="ID", OtherKey="CRM_AnnualPassTypeID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5, EmitDefaultValue=false)]
-		public EntitySet<CRM_AnnualPass> CRM_AnnualPasses
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._CRM_AnnualPasses.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._CRM_AnnualPasses;
-			}
-			set
-			{
-				this._CRM_AnnualPasses.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_CRM_AnnualPasses(CRM_AnnualPass entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AnnualPassType = this;
-		}
-		
-		private void detach_CRM_AnnualPasses(CRM_AnnualPass entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AnnualPassType = null;
 		}
 		
 		private void Initialize()
@@ -16257,6 +16078,12 @@ namespace CRM.Code.Models
 		
 		private EntitySet<CRM_FundraisingGiftProfile> _CRM_FundraisingGiftProfiles;
 		
+		private EntitySet<CRM_PersonRelationship> _CRM_PersonRelationships;
+		
+		private EntitySet<CRM_PersonRelationship> _CRM_PersonRelationships1;
+		
+		private EntitySet<CRM_PersonRelationship> _CRM_PersonRelationships2;
+		
 		private EntityRef<CRM_Address> _CRM_Address;
 		
 		private bool serializing;
@@ -17030,6 +16857,63 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship", Storage="_CRM_PersonRelationships", ThisKey="ID", OtherKey="CRM_PersonID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
+		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_PersonRelationships.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_PersonRelationships;
+			}
+			set
+			{
+				this._CRM_PersonRelationships.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship1", Storage="_CRM_PersonRelationships1", ThisKey="ID", OtherKey="CRM_PersonID2")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
+		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships1
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_PersonRelationships1.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_PersonRelationships1;
+			}
+			set
+			{
+				this._CRM_PersonRelationships1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship2", Storage="_CRM_PersonRelationships2", ThisKey="ID", OtherKey="CRM_PersonIDAddress")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
+		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships2
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_PersonRelationships2.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_PersonRelationships2;
+			}
+			set
+			{
+				this._CRM_PersonRelationships2.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_Person", Storage="_CRM_Address", ThisKey="CRM_AddressID", OtherKey="ID", IsForeignKey=true)]
 		public CRM_Address CRM_Address
 		{
@@ -17168,6 +17052,42 @@ namespace CRM.Code.Models
 			entity.CRM_Person = null;
 		}
 		
+		private void attach_CRM_PersonRelationships(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Person = this;
+		}
+		
+		private void detach_CRM_PersonRelationships(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Person = null;
+		}
+		
+		private void attach_CRM_PersonRelationships1(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Person1 = this;
+		}
+		
+		private void detach_CRM_PersonRelationships1(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Person1 = null;
+		}
+		
+		private void attach_CRM_PersonRelationships2(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Person2 = this;
+		}
+		
+		private void detach_CRM_PersonRelationships2(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Person2 = null;
+		}
+		
 		private void Initialize()
 		{
 			this._CRM_FamilyPersons = new EntitySet<CRM_FamilyPerson>(new Action<CRM_FamilyPerson>(this.attach_CRM_FamilyPersons), new Action<CRM_FamilyPerson>(this.detach_CRM_FamilyPersons));
@@ -17177,6 +17097,9 @@ namespace CRM.Code.Models
 			this._CRM_PersonOrganisations = new EntitySet<CRM_PersonOrganisation>(new Action<CRM_PersonOrganisation>(this.attach_CRM_PersonOrganisations), new Action<CRM_PersonOrganisation>(this.detach_CRM_PersonOrganisations));
 			this._CRM_PersonPersonals = new EntitySet<CRM_PersonPersonal>(new Action<CRM_PersonPersonal>(this.attach_CRM_PersonPersonals), new Action<CRM_PersonPersonal>(this.detach_CRM_PersonPersonals));
 			this._CRM_FundraisingGiftProfiles = new EntitySet<CRM_FundraisingGiftProfile>(new Action<CRM_FundraisingGiftProfile>(this.attach_CRM_FundraisingGiftProfiles), new Action<CRM_FundraisingGiftProfile>(this.detach_CRM_FundraisingGiftProfiles));
+			this._CRM_PersonRelationships = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships));
+			this._CRM_PersonRelationships1 = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships1), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships1));
+			this._CRM_PersonRelationships2 = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships2), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships2));
 			this._CRM_Address = default(EntityRef<CRM_Address>);
 			OnCreated();
 		}
@@ -24132,9 +24055,9 @@ namespace CRM.Code.Models
 		
 		private EntityRef<CRM_AnnualPassCard> _CRM_AnnualPassCard;
 		
-		private EntityRef<CRM_AnnualPassType> _CRM_AnnualPassType;
-		
 		private EntityRef<CRM_Offer> _CRM_Offer;
+		
+		private EntityRef<CRM_AnnualPassType> _CRM_AnnualPassType;
 		
 		private bool serializing;
 		
@@ -24513,40 +24436,6 @@ namespace CRM.Code.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPassType", ThisKey="CRM_AnnualPassTypeID", OtherKey="ID", IsForeignKey=true)]
-		public CRM_AnnualPassType CRM_AnnualPassType
-		{
-			get
-			{
-				return this._CRM_AnnualPassType.Entity;
-			}
-			set
-			{
-				CRM_AnnualPassType previousValue = this._CRM_AnnualPassType.Entity;
-				if (((previousValue != value) 
-							|| (this._CRM_AnnualPassType.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CRM_AnnualPassType.Entity = null;
-						previousValue.CRM_AnnualPasses.Remove(this);
-					}
-					this._CRM_AnnualPassType.Entity = value;
-					if ((value != null))
-					{
-						value.CRM_AnnualPasses.Add(this);
-						this._CRM_AnnualPassTypeID = value.ID;
-					}
-					else
-					{
-						this._CRM_AnnualPassTypeID = default(int);
-					}
-					this.SendPropertyChanged("CRM_AnnualPassType");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Offer_CRM_AnnualPass", Storage="_CRM_Offer", ThisKey="CRM_OfferID", OtherKey="ID", IsForeignKey=true)]
 		public CRM_Offer CRM_Offer
 		{
@@ -24577,6 +24466,40 @@ namespace CRM.Code.Models
 						this._CRM_OfferID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("CRM_Offer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPassType", ThisKey="CRM_AnnualPassTypeID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_AnnualPassType CRM_AnnualPassType
+		{
+			get
+			{
+				return this._CRM_AnnualPassType.Entity;
+			}
+			set
+			{
+				CRM_AnnualPassType previousValue = this._CRM_AnnualPassType.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_AnnualPassType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_AnnualPassType.Entity = null;
+						previousValue.CRM_AnnualPasses.Remove(this);
+					}
+					this._CRM_AnnualPassType.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_AnnualPasses.Add(this);
+						this._CRM_AnnualPassTypeID = value.ID;
+					}
+					else
+					{
+						this._CRM_AnnualPassTypeID = default(int);
+					}
+					this.SendPropertyChanged("CRM_AnnualPassType");
 				}
 			}
 		}
@@ -24617,8 +24540,8 @@ namespace CRM.Code.Models
 		{
 			this._CRM_AnnualPassPersons = new EntitySet<CRM_AnnualPassPerson>(new Action<CRM_AnnualPassPerson>(this.attach_CRM_AnnualPassPersons), new Action<CRM_AnnualPassPerson>(this.detach_CRM_AnnualPassPersons));
 			this._CRM_AnnualPassCard = default(EntityRef<CRM_AnnualPassCard>);
-			this._CRM_AnnualPassType = default(EntityRef<CRM_AnnualPassType>);
 			this._CRM_Offer = default(EntityRef<CRM_Offer>);
+			this._CRM_AnnualPassType = default(EntityRef<CRM_AnnualPassType>);
 			OnCreated();
 		}
 		
@@ -25902,6 +25825,898 @@ namespace CRM.Code.Models
 		
 		private void Initialize()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_AnnualPassType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private bool _IsArchived;
+		
+		private decimal _DefaultPrice;
+		
+		private bool _IsWebsite;
+		
+		private bool _IsJoint;
+		
+		private EntitySet<CRM_AnnualPass> _CRM_AnnualPasses;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnIsArchivedChanging(bool value);
+    partial void OnIsArchivedChanged();
+    partial void OnDefaultPriceChanging(decimal value);
+    partial void OnDefaultPriceChanged();
+    partial void OnIsWebsiteChanging(bool value);
+    partial void OnIsWebsiteChanged();
+    partial void OnIsJointChanging(bool value);
+    partial void OnIsJointChanged();
+    #endregion
+		
+		public CRM_AnnualPassType()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public bool IsArchived
+		{
+			get
+			{
+				return this._IsArchived;
+			}
+			set
+			{
+				if ((this._IsArchived != value))
+				{
+					this.OnIsArchivedChanging(value);
+					this.SendPropertyChanging();
+					this._IsArchived = value;
+					this.SendPropertyChanged("IsArchived");
+					this.OnIsArchivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultPrice", DbType="Money NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public decimal DefaultPrice
+		{
+			get
+			{
+				return this._DefaultPrice;
+			}
+			set
+			{
+				if ((this._DefaultPrice != value))
+				{
+					this.OnDefaultPriceChanging(value);
+					this.SendPropertyChanging();
+					this._DefaultPrice = value;
+					this.SendPropertyChanged("DefaultPrice");
+					this.OnDefaultPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebsite", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public bool IsWebsite
+		{
+			get
+			{
+				return this._IsWebsite;
+			}
+			set
+			{
+				if ((this._IsWebsite != value))
+				{
+					this.OnIsWebsiteChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebsite = value;
+					this.SendPropertyChanged("IsWebsite");
+					this.OnIsWebsiteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsJoint", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public bool IsJoint
+		{
+			get
+			{
+				return this._IsJoint;
+			}
+			set
+			{
+				if ((this._IsJoint != value))
+				{
+					this.OnIsJointChanging(value);
+					this.SendPropertyChanging();
+					this._IsJoint = value;
+					this.SendPropertyChanged("IsJoint");
+					this.OnIsJointChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPasses", ThisKey="ID", OtherKey="CRM_AnnualPassTypeID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
+		public EntitySet<CRM_AnnualPass> CRM_AnnualPasses
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_AnnualPasses.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_AnnualPasses;
+			}
+			set
+			{
+				this._CRM_AnnualPasses.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CRM_AnnualPasses(CRM_AnnualPass entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AnnualPassType = this;
+		}
+		
+		private void detach_CRM_AnnualPasses(CRM_AnnualPass entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AnnualPassType = null;
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_AnnualPasses = new EntitySet<CRM_AnnualPass>(new Action<CRM_AnnualPass>(this.attach_CRM_AnnualPasses), new Action<CRM_AnnualPass>(this.detach_CRM_AnnualPasses));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_RelationCode")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_RelationCode : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private EntitySet<CRM_PersonRelationship> _CRM_PersonRelationships;
+		
+		private EntitySet<CRM_PersonRelationship> _CRM_PersonRelationships1;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public CRM_RelationCode()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_RelationCode_CRM_PersonRelationship", Storage="_CRM_PersonRelationships", ThisKey="ID", OtherKey="CRM_RelationCodeID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3, EmitDefaultValue=false)]
+		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_PersonRelationships.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_PersonRelationships;
+			}
+			set
+			{
+				this._CRM_PersonRelationships.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_RelationCode_CRM_PersonRelationship1", Storage="_CRM_PersonRelationships1", ThisKey="ID", OtherKey="CRM_RelationCodeID2")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships1
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_PersonRelationships1.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_PersonRelationships1;
+			}
+			set
+			{
+				this._CRM_PersonRelationships1.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CRM_PersonRelationships(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_RelationCode = this;
+		}
+		
+		private void detach_CRM_PersonRelationships(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_RelationCode = null;
+		}
+		
+		private void attach_CRM_PersonRelationships1(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_RelationCode1 = this;
+		}
+		
+		private void detach_CRM_PersonRelationships1(CRM_PersonRelationship entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_RelationCode1 = null;
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_PersonRelationships = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships));
+			this._CRM_PersonRelationships1 = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships1), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships1));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_PersonRelationship")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_PersonRelationship : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _CRM_PersonID;
+		
+		private int _CRM_PersonID2;
+		
+		private string _Salutation;
+		
+		private int _CRM_RelationCodeID;
+		
+		private int _CRM_RelationCodeID2;
+		
+		private int _CRM_PersonIDAddress;
+		
+		private bool _IsSpouse;
+		
+		private EntityRef<CRM_Person> _CRM_Person;
+		
+		private EntityRef<CRM_Person> _CRM_Person1;
+		
+		private EntityRef<CRM_Person> _CRM_Person2;
+		
+		private EntityRef<CRM_RelationCode> _CRM_RelationCode;
+		
+		private EntityRef<CRM_RelationCode> _CRM_RelationCode1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCRM_PersonIDChanging(int value);
+    partial void OnCRM_PersonIDChanged();
+    partial void OnCRM_PersonID2Changing(int value);
+    partial void OnCRM_PersonID2Changed();
+    partial void OnSalutationChanging(string value);
+    partial void OnSalutationChanged();
+    partial void OnCRM_RelationCodeIDChanging(int value);
+    partial void OnCRM_RelationCodeIDChanged();
+    partial void OnCRM_RelationCodeID2Changing(int value);
+    partial void OnCRM_RelationCodeID2Changed();
+    partial void OnCRM_PersonIDAddressChanging(int value);
+    partial void OnCRM_PersonIDAddressChanged();
+    partial void OnIsSpouseChanging(bool value);
+    partial void OnIsSpouseChanged();
+    #endregion
+		
+		public CRM_PersonRelationship()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_PersonID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public int CRM_PersonID
+		{
+			get
+			{
+				return this._CRM_PersonID;
+			}
+			set
+			{
+				if ((this._CRM_PersonID != value))
+				{
+					if (this._CRM_Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_PersonIDChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_PersonID = value;
+					this.SendPropertyChanged("CRM_PersonID");
+					this.OnCRM_PersonIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_PersonID2", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public int CRM_PersonID2
+		{
+			get
+			{
+				return this._CRM_PersonID2;
+			}
+			set
+			{
+				if ((this._CRM_PersonID2 != value))
+				{
+					if (this._CRM_Person1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_PersonID2Changing(value);
+					this.SendPropertyChanging();
+					this._CRM_PersonID2 = value;
+					this.SendPropertyChanged("CRM_PersonID2");
+					this.OnCRM_PersonID2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salutation", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public string Salutation
+		{
+			get
+			{
+				return this._Salutation;
+			}
+			set
+			{
+				if ((this._Salutation != value))
+				{
+					this.OnSalutationChanging(value);
+					this.SendPropertyChanging();
+					this._Salutation = value;
+					this.SendPropertyChanged("Salutation");
+					this.OnSalutationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_RelationCodeID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public int CRM_RelationCodeID
+		{
+			get
+			{
+				return this._CRM_RelationCodeID;
+			}
+			set
+			{
+				if ((this._CRM_RelationCodeID != value))
+				{
+					if (this._CRM_RelationCode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_RelationCodeIDChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_RelationCodeID = value;
+					this.SendPropertyChanged("CRM_RelationCodeID");
+					this.OnCRM_RelationCodeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_RelationCodeID2", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public int CRM_RelationCodeID2
+		{
+			get
+			{
+				return this._CRM_RelationCodeID2;
+			}
+			set
+			{
+				if ((this._CRM_RelationCodeID2 != value))
+				{
+					if (this._CRM_RelationCode1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_RelationCodeID2Changing(value);
+					this.SendPropertyChanging();
+					this._CRM_RelationCodeID2 = value;
+					this.SendPropertyChanged("CRM_RelationCodeID2");
+					this.OnCRM_RelationCodeID2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_PersonIDAddress", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public int CRM_PersonIDAddress
+		{
+			get
+			{
+				return this._CRM_PersonIDAddress;
+			}
+			set
+			{
+				if ((this._CRM_PersonIDAddress != value))
+				{
+					if (this._CRM_Person2.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_PersonIDAddressChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_PersonIDAddress = value;
+					this.SendPropertyChanged("CRM_PersonIDAddress");
+					this.OnCRM_PersonIDAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsSpouse", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public bool IsSpouse
+		{
+			get
+			{
+				return this._IsSpouse;
+			}
+			set
+			{
+				if ((this._IsSpouse != value))
+				{
+					this.OnIsSpouseChanging(value);
+					this.SendPropertyChanging();
+					this._IsSpouse = value;
+					this.SendPropertyChanged("IsSpouse");
+					this.OnIsSpouseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship", Storage="_CRM_Person", ThisKey="CRM_PersonID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_Person CRM_Person
+		{
+			get
+			{
+				return this._CRM_Person.Entity;
+			}
+			set
+			{
+				CRM_Person previousValue = this._CRM_Person.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_Person.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_Person.Entity = null;
+						previousValue.CRM_PersonRelationships.Remove(this);
+					}
+					this._CRM_Person.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_PersonRelationships.Add(this);
+						this._CRM_PersonID = value.ID;
+					}
+					else
+					{
+						this._CRM_PersonID = default(int);
+					}
+					this.SendPropertyChanged("CRM_Person");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship1", Storage="_CRM_Person1", ThisKey="CRM_PersonID2", OtherKey="ID", IsForeignKey=true)]
+		public CRM_Person CRM_Person1
+		{
+			get
+			{
+				return this._CRM_Person1.Entity;
+			}
+			set
+			{
+				CRM_Person previousValue = this._CRM_Person1.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_Person1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_Person1.Entity = null;
+						previousValue.CRM_PersonRelationships1.Remove(this);
+					}
+					this._CRM_Person1.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_PersonRelationships1.Add(this);
+						this._CRM_PersonID2 = value.ID;
+					}
+					else
+					{
+						this._CRM_PersonID2 = default(int);
+					}
+					this.SendPropertyChanged("CRM_Person1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship2", Storage="_CRM_Person2", ThisKey="CRM_PersonIDAddress", OtherKey="ID", IsForeignKey=true)]
+		public CRM_Person CRM_Person2
+		{
+			get
+			{
+				return this._CRM_Person2.Entity;
+			}
+			set
+			{
+				CRM_Person previousValue = this._CRM_Person2.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_Person2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_Person2.Entity = null;
+						previousValue.CRM_PersonRelationships2.Remove(this);
+					}
+					this._CRM_Person2.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_PersonRelationships2.Add(this);
+						this._CRM_PersonIDAddress = value.ID;
+					}
+					else
+					{
+						this._CRM_PersonIDAddress = default(int);
+					}
+					this.SendPropertyChanged("CRM_Person2");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_RelationCode_CRM_PersonRelationship", Storage="_CRM_RelationCode", ThisKey="CRM_RelationCodeID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_RelationCode CRM_RelationCode
+		{
+			get
+			{
+				return this._CRM_RelationCode.Entity;
+			}
+			set
+			{
+				CRM_RelationCode previousValue = this._CRM_RelationCode.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_RelationCode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_RelationCode.Entity = null;
+						previousValue.CRM_PersonRelationships.Remove(this);
+					}
+					this._CRM_RelationCode.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_PersonRelationships.Add(this);
+						this._CRM_RelationCodeID = value.ID;
+					}
+					else
+					{
+						this._CRM_RelationCodeID = default(int);
+					}
+					this.SendPropertyChanged("CRM_RelationCode");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_RelationCode_CRM_PersonRelationship1", Storage="_CRM_RelationCode1", ThisKey="CRM_RelationCodeID2", OtherKey="ID", IsForeignKey=true)]
+		public CRM_RelationCode CRM_RelationCode1
+		{
+			get
+			{
+				return this._CRM_RelationCode1.Entity;
+			}
+			set
+			{
+				CRM_RelationCode previousValue = this._CRM_RelationCode1.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_RelationCode1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_RelationCode1.Entity = null;
+						previousValue.CRM_PersonRelationships1.Remove(this);
+					}
+					this._CRM_RelationCode1.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_PersonRelationships1.Add(this);
+						this._CRM_RelationCodeID2 = value.ID;
+					}
+					else
+					{
+						this._CRM_RelationCodeID2 = default(int);
+					}
+					this.SendPropertyChanged("CRM_RelationCode1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_Person = default(EntityRef<CRM_Person>);
+			this._CRM_Person1 = default(EntityRef<CRM_Person>);
+			this._CRM_Person2 = default(EntityRef<CRM_Person>);
+			this._CRM_RelationCode = default(EntityRef<CRM_RelationCode>);
+			this._CRM_RelationCode1 = default(EntityRef<CRM_RelationCode>);
 			OnCreated();
 		}
 		

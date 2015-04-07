@@ -118,6 +118,9 @@
     <Content Include="admin\Person\Donations\List.aspx" />
     <Content Include="admin\Person\Gift\Details.aspx" />
     <Content Include="admin\Person\Gift\List.aspx" />
+    <Content Include="admin\Person\Relation\List.aspx" />
+    <Content Include="admin\RelationshipCode\Details.aspx" />
+    <Content Include="admin\RelationshipCode\List.aspx" />
     <Content Include="admin\School\Region\Details.aspx" />
     <Content Include="admin\School\Region\List.aspx" />
     <Content Include="admin\Exhibition\Details.aspx" />
@@ -1219,6 +1222,27 @@
     <Compile Include="admin\Person\Gift\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Person\Relation\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Relation\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\RelationshipCode\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\RelationshipCode\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\RelationshipCode\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\RelationshipCode\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\School\Region\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2000,6 +2024,8 @@
     <Compile Include="Code\Models\Person\CRM_PersonOrganisation.cs" />
     <Compile Include="Code\Models\Person\CRM_PersonPersonal.cs" />
     <Compile Include="Code\Models\Person\CRM_Title.cs" />
+    <Compile Include="Code\Models\Person\Relationships\CRM_PersonRelationship.cs" />
+    <Compile Include="Code\Models\Person\Relationships\CRM_RelationCode.cs" />
     <Compile Include="Code\Models\School\CRM_School.cs" />
     <Compile Include="Code\Models\School\KeyStage\CRM_KeyStage.cs" />
     <Compile Include="Code\Models\School\LEA\CRM_LEA.cs" />

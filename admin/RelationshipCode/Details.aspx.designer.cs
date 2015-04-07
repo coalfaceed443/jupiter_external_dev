@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CRM.admin.AnnualPassCard.AnnualPass.Type {
+namespace CRM.admin.RelationshipCode {
     
     
     public partial class Details {
@@ -38,33 +38,6 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CRM.Controls.Forms.UserControlTextBox txtName;
-        
-        /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CRM.Controls.Forms.UserControlTextBox txtPrice;
-        
-        /// <summary>
-        /// chkIsWebsite control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsWebsite;
-        
-        /// <summary>
-        /// chkIsJoint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsJoint;
         
         /// <summary>
         /// btnSubmit control.

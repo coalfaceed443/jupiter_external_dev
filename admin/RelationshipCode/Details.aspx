@@ -1,20 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="CRM.admin.AnnualPassCard.AnnualPass.Type.Details" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="CRM.admin.RelationshipCode.Details" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHeader" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="server">
-
+    
  <ucUtil:ConfirmationPage ID="confirmationDelete" runat="server" />
-    <div class="topContentBox">
+        <div class="topContentBox">
         <div class="contentBoxTop">
             <h3>
-                Annual Pass Type :
+                Relationship Code :
                 <%if (Entity != null)
                   {%>
-                Edit
+                Edit Code
                 <%}
                   else
                   {%>
-                Add
+                Add a new Code
                 <%} %></h3>
         </div>
         <div class="innerContentForm">
@@ -29,35 +29,7 @@
                         <ucUtil:TextBox ID="txtName" runat="server" />
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label>
-                           Price : *</label>
-                    </td>
-                    <td>
-                        <ucUtil:TextBox ID="txtPrice" runat="server" DataType="decimal" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                           Show on website : *</label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkIsWebsite" runat="server" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                           Is a Joint Membership : *</label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkIsJoint" runat="server" />
-                    </td>
-                </tr>
-            
-            
+                     
             </table>
 
            
@@ -88,4 +60,6 @@
         </div>
     </div>
 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="fullWidthContent" runat="server">
 </asp:Content>

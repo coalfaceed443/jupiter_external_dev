@@ -1,24 +1,24 @@
-﻿using System;
+﻿using CRM.Code.BasePages.Admin;
+using CRM.Code.Managers;
+using CRM.Code.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CRM.Code.BasePages.Admin;
-using CRM.Code.Managers;
-using CRM.Code.Models;
 
-namespace CRM.admin.AnnualPassCard.AnnualPass.Type
+namespace CRM.admin.RelationshipCode
 {
     public partial class Details : AdminPage
     {
-        protected CRM.Code.Models.CRM_AnnualPassType Entity = null;
+        protected CRM_RelationCode Entity = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             RunSecurity(CRM.Code.Models.Admin.AllowedSections.NotSet);
-            Entity = db.CRM_AnnualPassTypes.SingleOrDefault(c => c.ID.ToString() == Request.QueryString["id"]);
-            
+            Entity = db.CRM_RelationCodes.SingleOrDefault(c => c.ID.ToString() == Request.QueryString["id"]);
+
             btnSubmitChanges.Visible = PermissionManager.CanUpdate;
             if (!PermissionManager.CanAdd && Entity == null)
                 Response.Redirect("list.aspx");
@@ -38,12 +38,11 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
 
             // confirmations //
 
-            confirmationDelete.StandardDeleteHidden("annual pass type", btnRealDelete_Click);
+            confirmationDelete.StandardDeleteHidden("role", btnRealDelete_Click);
 
             // process //
 
             CRMContext = Entity;
-
             if (!IsPostBack)
             {
                 if (Entity != null)
@@ -56,7 +55,6 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
         private void PopulateFields()
         {
             txtName.Text = Entity.Name;
-            txtPrice.Text = Entity.DefaultPrice.ToString("N2");
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -87,14 +85,12 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
 
             if (newRecord)
             {
-                Entity = new CRM_AnnualPassType();
-                db.CRM_AnnualPassTypes.InsertOnSubmit(Entity);
+                Entity = new CRM_RelationCode();
+                db.CRM_RelationCodes.InsertOnSubmit(Entity);
             }
 
             Entity.Name = txtName.Text;
-            Entity.DefaultPrice = Convert.ToDecimal(txtPrice.Text);
-            Entity.IsJoint = chkIsJoint.Checked;
-            Entity.IsWebsite = chkIsWebsite.Checked;
+
             db.SubmitChanges();
 
             if (oldEntity != null)
@@ -110,13 +106,20 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            confirmationDelete.ShowPopup();
+            if (Entity.CRM_PersonRelationships.Any() || Entity.CRM_PersonRelationships1.Any())
+            {
+                NoticeManager.SetMessage("This code still has people attached.  Please search for and reassign these codes before deleting.");
+            }
+            else
+            {
+                confirmationDelete.ShowPopup();
+            }
         }
 
 
         protected void btnRealDelete_Click(object sender, EventArgs e)
         {
-            db.CRM_AnnualPassTypes.DeleteOnSubmit(Entity);
+            db.CRM_RelationCodes.DeleteOnSubmit(Entity);
             db.SubmitChanges();
 
             NoticeManager.SetMessage("Item removed", "list.aspx");

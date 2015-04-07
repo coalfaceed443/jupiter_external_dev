@@ -264,15 +264,6 @@
       <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassCardID" Type="CRM_AnnualPass" />
     </Type>
   </Table>
-  <Table Name="dbo.CRM_AnnualPassType" Member="CRM_AnnualPassTypes">
-    <Type Name="CRM_AnnualPassType">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassTypeID" Type="CRM_AnnualPass" />
-    </Type>
-  </Table>
   <Table Name="dbo.CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons">
     <Type Name="CRM_AnnualPassPerson">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -687,6 +678,9 @@
       <Association Name="CRM_Person_CRM_PersonOrganisation" Member="CRM_PersonOrganisations" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_PersonOrganisation" />
       <Association Name="CRM_Person_CRM_PersonPersonal" Member="CRM_PersonPersonals" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_PersonPersonal" />
       <Association Name="CRM_Person_CRM_FundraisingGiftProfile" Member="CRM_FundraisingGiftProfiles" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_FundraisingGiftProfile" />
+      <Association Name="CRM_Person_CRM_PersonRelationship" Member="CRM_PersonRelationships" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_PersonRelationship" />
+      <Association Name="CRM_Person_CRM_PersonRelationship1" Member="CRM_PersonRelationships1" ThisKey="ID" OtherKey="CRM_PersonID2" Type="CRM_PersonRelationship" />
+      <Association Name="CRM_Person_CRM_PersonRelationship2" Member="CRM_PersonRelationships2" ThisKey="ID" OtherKey="CRM_PersonIDAddress" Type="CRM_PersonRelationship" />
       <Association Name="CRM_Address_CRM_Person" Member="CRM_Address" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
     </Type>
   </Table>
@@ -983,8 +977,8 @@
       <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Association Name="CRM_AnnualPass_CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons" ThisKey="ID" OtherKey="CRM_AnnualPassID" Type="CRM_AnnualPassPerson" />
       <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
-      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPassType" ThisKey="CRM_AnnualPassTypeID" OtherKey="ID" Type="CRM_AnnualPassType" IsForeignKey="true" />
       <Association Name="CRM_Offer_CRM_AnnualPass" Member="CRM_Offer" ThisKey="CRM_OfferID" OtherKey="ID" Type="CRM_Offer" IsForeignKey="true" />
+      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPassType" ThisKey="CRM_AnnualPassTypeID" OtherKey="ID" Type="CRM_AnnualPassType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TemplateEmail" Member="TemplateEmails">
@@ -1040,6 +1034,42 @@
       <Column Name="MembershipA" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="MembershipB" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="BasketContents" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassType" Member="CRM_AnnualPassTypes">
+    <Type Name="CRM_AnnualPassType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsWebsite" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsJoint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassTypeID" Type="CRM_AnnualPass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_RelationCode" Member="CRM_RelationCodes">
+    <Type Name="CRM_RelationCode">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_RelationCode_CRM_PersonRelationship" Member="CRM_PersonRelationships" ThisKey="ID" OtherKey="CRM_RelationCodeID" Type="CRM_PersonRelationship" />
+      <Association Name="CRM_RelationCode_CRM_PersonRelationship1" Member="CRM_PersonRelationships1" ThisKey="ID" OtherKey="CRM_RelationCodeID2" Type="CRM_PersonRelationship" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_PersonRelationship" Member="CRM_PersonRelationships">
+    <Type Name="CRM_PersonRelationship">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonID2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Salutation" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_RelationCodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_RelationCodeID2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonIDAddress" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsSpouse" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Person_CRM_PersonRelationship" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_Person_CRM_PersonRelationship1" Member="CRM_Person1" ThisKey="CRM_PersonID2" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_Person_CRM_PersonRelationship2" Member="CRM_Person2" ThisKey="CRM_PersonIDAddress" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Association Name="CRM_RelationCode_CRM_PersonRelationship" Member="CRM_RelationCode" ThisKey="CRM_RelationCodeID" OtherKey="ID" Type="CRM_RelationCode" IsForeignKey="true" />
+      <Association Name="CRM_RelationCode_CRM_PersonRelationship1" Member="CRM_RelationCode1" ThisKey="CRM_RelationCodeID2" OtherKey="ID" Type="CRM_RelationCode" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GetNewId" Method="GetNewId" IsComposable="true">

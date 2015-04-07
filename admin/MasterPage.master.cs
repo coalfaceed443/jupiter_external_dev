@@ -109,6 +109,7 @@ namespace CRM.Admin
                     new MenuListItem("/admin/school/lea/list.aspx", "Manage School LAs"),
                     new MenuListItem("/admin/school/region/list.aspx", "Manage School Regions"),
                     new MenuListItem("/admin/school/types/list.aspx", "Manage School Types"),
+                    new MenuListItem("/admin/relationshipcode/list.aspx", "Manage Relationship Codes")
 
                 }));
 
