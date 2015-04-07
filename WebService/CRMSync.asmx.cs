@@ -93,6 +93,19 @@ namespace CRM.WebService
             return result;
         }
 
+        [WebMethod]
+        public ContextResult<Service.CRM_AnnualPassType[]> GetMemberships(string authkey)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+            var items = db.CRM_AnnualPassTypes.Where(r => r.IsWebsite && !r.IsArchived).ToArray().OrderBy(c => c.Name).ToArray();
+            ContextResult<Service.CRM_AnnualPassType[]> result = new ContextResult<Service.CRM_AnnualPassType[]>() { ReturnObject = items };
+            result.IsSuccess = IsAuthValid(authkey);
+
+            SetResponseHeaders(result.IsSuccess);
+
+            return result;
+        }
+
         private int FieldsToShowID = 24; // interest 
 
         [WebMethod]

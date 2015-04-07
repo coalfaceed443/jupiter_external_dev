@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.25, 18" name="Service">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.25, 18" name="Service">
   <DataContextMoniker Name="/ServiceDataContext" />
   <nestedChildShapes>
     <classShape Id="88dbc25e-3795-49ea-b219-3352651dfe99" absoluteBounds="8, 2.625, 2, 1.9631982421875">
@@ -51,5 +51,18 @@
         <elementListCompartment Id="541d699c-b32e-4c31-b481-e6c7f7651ad2" absoluteBounds="3.015, 12.585, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="87a8f15e-a65c-4932-bb4a-3d411d54e674" absoluteBounds="14, 3.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ServiceDataContext/CRM_AnnualPassType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c739e123-8bbb-4c0d-8fe6-d3b0010d2746" absoluteBounds="14.015, 4.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14 : 5.10659912109375); (12.875 : 5.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ServiceDataContext/CRM_AnnualPassType/CRM_AnnualPassType_CRM_AnnualPass" />
+      <nodes>
+        <classShapeMoniker Id="87a8f15e-a65c-4932-bb4a-3d411d54e674" />
+        <classShapeMoniker Id="9df17543-6511-464c-825f-bea8e02e8ebf" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

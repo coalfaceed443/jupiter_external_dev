@@ -78,6 +78,7 @@
       <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
+      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPassType" ThisKey="CRM_AnnualPassTypeID" OtherKey="ID" Type="CRM_AnnualPassType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.HoldingPen" Member="HoldingPens">
@@ -107,6 +108,17 @@
       <Column Name="MembershipA" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="MembershipB" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="BasketContents" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassType" Member="CRM_AnnualPassTypes">
+    <Type Name="CRM_AnnualPassType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsWebsite" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsJoint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPassType_CRM_AnnualPass" Member="CRM_AnnualPasses" ThisKey="ID" OtherKey="CRM_AnnualPassTypeID" Type="CRM_AnnualPass" />
     </Type>
   </Table>
 </Database>
