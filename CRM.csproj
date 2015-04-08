@@ -118,6 +118,7 @@
     <Content Include="admin\Person\Donations\List.aspx" />
     <Content Include="admin\Person\Gift\Details.aspx" />
     <Content Include="admin\Person\Gift\List.aspx" />
+    <Content Include="admin\Person\Relation\Details.aspx" />
     <Content Include="admin\Person\Relation\List.aspx" />
     <Content Include="admin\RelationshipCode\Details.aspx" />
     <Content Include="admin\RelationshipCode\List.aspx" />
@@ -1221,6 +1222,13 @@
     </Compile>
     <Compile Include="admin\Person\Gift\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Relation\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Relation\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Person\Relation\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
@@ -2406,6 +2414,9 @@
     <Compile Include="TaskScript\MoveSchools.ashx.cs">
       <DependentUpon>MoveSchools.ashx</DependentUpon>
     </Compile>
+    <Compile Include="TaskScript\Relations.ashx.cs">
+      <DependentUpon>Relations.ashx</DependentUpon>
+    </Compile>
     <Compile Include="TaskScript\scot_schools.ashx.cs">
       <DependentUpon>scot_schools.ashx</DependentUpon>
     </Compile>
@@ -2457,6 +2468,7 @@
     <Content Include="TaskScript\MemberHistory.ashx" />
     <Content Include="TaskScript\MoveSchools.ashx" />
     <Content Include="TaskScript\scot_schools.ashx" />
+    <Content Include="TaskScript\Relations.ashx" />
     <None Include="WebService\Service.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Service.designer.cs</LastGenOutput>

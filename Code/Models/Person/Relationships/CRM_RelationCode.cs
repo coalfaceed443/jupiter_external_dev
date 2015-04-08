@@ -42,7 +42,7 @@ namespace CRM.Code.Models
 
         public object ShallowCopy()
         {
-            return (CRM_Offer)this.MemberwiseClone();
+            return (CRM_RelationCode)this.MemberwiseClone();
         }
 
         [IsListData("View")]
@@ -61,8 +61,17 @@ namespace CRM.Code.Models
                 return "/admin/relationshipcode/details.aspx?id=" + this.ID;
             }
         }
-
         
+       
+        [IsListData("Contacts assigned")]
+        public int ContactsAssigned
+        {
+            get
+            {
+                return this.CRM_PersonRelationships.Where(r => !r.IsArchived).Count() + this.CRM_PersonRelationships1.Where(r => !r.IsArchived).Count();
+            }
+        }
+      
         public int ParentID
         {
             get

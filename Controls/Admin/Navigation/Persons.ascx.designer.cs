@@ -58,13 +58,13 @@ namespace CRM.Controls.Admin.Navigation {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navSchools;
         
         /// <summary>
-        /// navFamilies control.
+        /// navRelations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navFamilies;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navRelations;
         
         /// <summary>
         /// navDonations control.

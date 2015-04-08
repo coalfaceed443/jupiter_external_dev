@@ -21,5 +21,6 @@ namespace CRM.Code.Interfaces
         CRM_Person Parent_CRM_Person { get; }
         string Photo { get; }
         bool IsArchived { get; }
+        int? RelationshipID { get; }
     }
 }

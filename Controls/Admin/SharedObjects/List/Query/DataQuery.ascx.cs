@@ -94,7 +94,7 @@ namespace CRM.Controls.Admin.SharedObjects.List.Query
             DataQueryManager DataQueryManager = new DataQueryManager(Type, ViewID);
             var usableFields = DataQueryManager.GetAllFields();
 
-            ddlFilterColumn.DataSource = usableFields;
+            ddlFilterColumn.DataSource = usableFields.OrderBy(r => r.Text);
             ddlFilterColumn.DataBind();
 
             lnkAdd.Visible = ShowAdd;

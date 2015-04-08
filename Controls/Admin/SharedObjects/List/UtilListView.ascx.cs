@@ -153,7 +153,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
             {
                 rbMailOut.Checked = Request.QueryString["mailout"] == Boolean.TrueString;
                 rbEmail.Checked = Request.QueryString["emailing"] == Boolean.TrueString;
-
+                chkGroupByRelationship.Checked = Request.QueryString["groupbyrel"] == Boolean.TrueString;
                 if (!String.IsNullOrEmpty(Request.QueryString["query"]))
                 {
                     RePopulateQueriesList();
@@ -209,7 +209,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
 
             DQManager = new DataQueryManager(Type, ViewID);
             DQManager.IncludeDataReference = rbMailOut.Checked || rbEmail.Checked;
-            CSVExport.GenericExport(DQManager.GetSchema(), FormData(), Response, DQManager.GetDataTable().TableReference);
+            CSVExport.GenericExport(DQManager.GetSchema(), FilterDownForMail(FormData()), Response, DQManager.GetDataTable().TableReference);
         }
 
         protected void LoadView(AdminDataQuery query)
@@ -244,24 +244,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
 
                 IEnumerable<ListData> data = FormData();
 
-                if (rbEmail.Checked)
-                {
-                    data = from c in data
-                           where c.IsEmailable
-                           select c;
-                }
-
-                if (rbMailOut.Checked)
-                {
-                    data = from c in data
-                           where c.IsMailable
-                           select c;
-
-                    if (typeof(IContact).IsAssignableFrom(Type))
-                    {
-                        data = data.OrderBy(d => ((IContact)d.DataItem).PrimaryAddress.Postcode);
-                    }
-                }
+                data = FilterDownForMail(data);
 
                 IsDataEmpty = !data.Any();
                 
@@ -380,12 +363,51 @@ namespace CRM.Controls.Admin.SharedObjects.List
             dpMain.Visible = DataSet.Any();
             IsDataEmpty = !DataSet.Any();
             SetPageColSpan();
+
+            IEnumerable<ListData> data = Enumerable.Empty<ListData>();
+
             if (CanOrder)
             {
-                return DataSet.OrderBy(d => ((CRM.Code.Utils.Ordering.ListOrderItem)d).OrderNo).Select(a => new ListData(a));
+                data = DataSet.OrderBy(d => ((CRM.Code.Utils.Ordering.ListOrderItem)d).OrderNo).Select(a => new ListData(a));
             }
             else
-                return DataSet.Select(a => new ListData(a));
+                data = DataSet.Select(a => new ListData(a));
+
+            return data;
+
+        }
+
+        protected IEnumerable<ListData> FilterDownForMail(IEnumerable<ListData> data)
+        {
+            if (rbEmail.Checked)
+            {
+                data = from c in data
+                       where c.IsEmailable
+                       select c;
+            }
+
+            if (rbMailOut.Checked)
+            {
+                data = from c in data
+                       where c.IsMailable
+                       select c;
+
+                if (typeof(IContact).IsAssignableFrom(Type))
+                {
+                    data = data.OrderBy(d => ((IContact)d.DataItem).PrimaryAddress.Postcode);
+                }
+            }
+
+            if (chkGroupByRelationship.Checked)
+            {
+                IEnumerable<IGrouping<int?, ListData>> groupset = data.GroupBy(g => g.RelationshipID);
+
+                var recordsWithRelation = groupset.Where(c => c.Key != null).Select(c => c.First());
+                var recordsWithoutRelation = groupset.Where(c => c.Key == null).SelectMany(c => c);
+                data = recordsWithRelation.Concat(recordsWithoutRelation);
+            }
+
+            return data;
         }
 
         private void reorderItem(ImageButton button, bool increase)
@@ -552,10 +574,11 @@ namespace CRM.Controls.Admin.SharedObjects.List
                 query.Remove("data");
                 query.Remove("mailout");
                 query.Remove("emailing");
+                query.Remove("groupbyrel");
             }
 
             string redirect = Request.Url.AbsolutePath + (query.Count == 0 ? "?" : "?" + query + "&") + "query=" + ddlExistingQueries.SelectedValue;
-            redirect += "&data=" + rbNone.Checked + "&mailout=" + rbMailOut.Checked + "&emailing=" + rbEmail.Checked;
+            redirect += "&data=" + rbNone.Checked + "&mailout=" + rbMailOut.Checked + "&emailing=" + rbEmail.Checked + "&groupbyrel=" + chkGroupByRelationship.Checked;
 
     
             NoticeManager.SetMessage("Query Complete", redirect);

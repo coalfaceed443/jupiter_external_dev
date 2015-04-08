@@ -1065,6 +1065,8 @@
       <Column Name="CRM_RelationCodeID2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CRM_PersonIDAddress" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsSpouse" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(11)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="CRM_Person_CRM_PersonRelationship" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
       <Association Name="CRM_Person_CRM_PersonRelationship1" Member="CRM_Person1" ThisKey="CRM_PersonID2" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
       <Association Name="CRM_Person_CRM_PersonRelationship2" Member="CRM_Person2" ThisKey="CRM_PersonIDAddress" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />

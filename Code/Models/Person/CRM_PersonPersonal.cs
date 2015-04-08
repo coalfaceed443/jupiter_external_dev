@@ -22,6 +22,15 @@ namespace CRM.Code.Models
             }
         }
 
+        public int? RelationshipID
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+
         public string Photo
         {
             get

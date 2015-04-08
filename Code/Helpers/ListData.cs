@@ -29,6 +29,21 @@ namespace CRM.Code.Helpers
             }
         }
 
+        public int? RelationshipID
+        {
+            get
+            {
+                if (DataItem is IContact)
+                {
+                    return ((IContact)DataItem).RelationshipID;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         public bool IsCRMRecord
         {
             get

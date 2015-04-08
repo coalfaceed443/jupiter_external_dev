@@ -26295,6 +26295,10 @@ namespace CRM.Code.Models
 		
 		private bool _IsSpouse;
 		
+		private string _Reference;
+		
+		private bool _IsArchived;
+		
 		private EntityRef<CRM_Person> _CRM_Person;
 		
 		private EntityRef<CRM_Person> _CRM_Person1;
@@ -26325,6 +26329,10 @@ namespace CRM.Code.Models
     partial void OnCRM_PersonIDAddressChanged();
     partial void OnIsSpouseChanging(bool value);
     partial void OnIsSpouseChanged();
+    partial void OnReferenceChanging(string value);
+    partial void OnReferenceChanged();
+    partial void OnIsArchivedChanging(bool value);
+    partial void OnIsArchivedChanged();
     #endregion
 		
 		public CRM_PersonRelationship()
@@ -26516,6 +26524,48 @@ namespace CRM.Code.Models
 					this._IsSpouse = value;
 					this.SendPropertyChanged("IsSpouse");
 					this.OnIsSpouseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reference", AutoSync=AutoSync.Always, DbType="VarChar(11)", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
+		public string Reference
+		{
+			get
+			{
+				return this._Reference;
+			}
+			set
+			{
+				if ((this._Reference != value))
+				{
+					this.OnReferenceChanging(value);
+					this.SendPropertyChanging();
+					this._Reference = value;
+					this.SendPropertyChanged("Reference");
+					this.OnReferenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+		public bool IsArchived
+		{
+			get
+			{
+				return this._IsArchived;
+			}
+			set
+			{
+				if ((this._IsArchived != value))
+				{
+					this.OnIsArchivedChanging(value);
+					this.SendPropertyChanging();
+					this._IsArchived = value;
+					this.SendPropertyChanged("IsArchived");
+					this.OnIsArchivedChanged();
 				}
 			}
 		}

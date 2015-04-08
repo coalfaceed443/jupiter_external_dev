@@ -70,6 +70,9 @@
     </p>
     <asp:LinkButton ID="lnkRunQuery" runat="server" onclick="lnkRunQuery_Click" CssClass="run-query">Save and Run Query</asp:LinkButton>
     </div>
+
+        <asp:CheckBox ID="chkGroupByRelationship" runat="server" Text="Group by relationship" style="float:left;" />
+
         </asp:Panel>
 
     <div class="query-section change-view">        
