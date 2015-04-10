@@ -93,6 +93,21 @@ namespace CRM.WebService
             return result;
         }
 
+
+
+        [WebMethod]
+        public ContextResult<Service.CRM_RelationCode[]> GetRelationshipCodes(string authkey)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+            var items = db.CRM_RelationCodes.ToArray().OrderBy(c => c.Name).ToArray();
+            ContextResult<Service.CRM_RelationCode[]> result = new ContextResult<Service.CRM_RelationCode[]>() { ReturnObject = items };
+            result.IsSuccess = IsAuthValid(authkey);
+
+            SetResponseHeaders(result.IsSuccess);
+
+            return result;
+        }
+
         [WebMethod]
         public ContextResult<Service.CRM_AnnualPassType[]> GetMemberships(string authkey)
         {

@@ -57,12 +57,11 @@
         <elementListCompartment Id="c739e123-8bbb-4c0d-8fe6-d3b0010d2746" absoluteBounds="14.015, 4.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(14 : 5.10659912109375); (12.875 : 5.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ServiceDataContext/CRM_AnnualPassType/CRM_AnnualPassType_CRM_AnnualPass" />
-      <nodes>
-        <classShapeMoniker Id="87a8f15e-a65c-4932-bb4a-3d411d54e674" />
-        <classShapeMoniker Id="9df17543-6511-464c-825f-bea8e02e8ebf" />
-      </nodes>
-    </associationConnector>
+    <classShape Id="26f7305a-f2db-4369-9caf-1728a37aa6f7" absoluteBounds="8.75, 8, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/ServiceDataContext/CRM_RelationCode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc336ab2-df7e-49ee-b049-5771627ad40b" absoluteBounds="8.765, 8.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

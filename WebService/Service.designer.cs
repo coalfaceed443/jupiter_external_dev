@@ -54,6 +54,9 @@ namespace Service
     partial void InsertCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void UpdateCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void DeleteCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void InsertCRM_RelationCode(CRM_RelationCode instance);
+    partial void UpdateCRM_RelationCode(CRM_RelationCode instance);
+    partial void DeleteCRM_RelationCode(CRM_RelationCode instance);
     #endregion
 		
 		public ServiceDataContext() : 
@@ -147,6 +150,14 @@ namespace Service
 			get
 			{
 				return this.GetTable<CRM_AnnualPassType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_RelationCode> CRM_RelationCodes
+		{
+			get
+			{
+				return this.GetTable<CRM_RelationCode>();
 			}
 		}
 	}
@@ -1387,8 +1398,6 @@ namespace Service
 		
 		private EntityRef<CRM_AnnualPassCard> _CRM_AnnualPassCard;
 		
-		private EntityRef<CRM_AnnualPassType> _CRM_AnnualPassType;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1424,7 +1433,6 @@ namespace Service
 		public CRM_AnnualPass()
 		{
 			this._CRM_AnnualPassCard = default(EntityRef<CRM_AnnualPassCard>);
-			this._CRM_AnnualPassType = default(EntityRef<CRM_AnnualPassType>);
 			OnCreated();
 		}
 		
@@ -1483,10 +1491,6 @@ namespace Service
 			{
 				if ((this._CRM_AnnualPassTypeID != value))
 				{
-					if (this._CRM_AnnualPassType.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnCRM_AnnualPassTypeIDChanging(value);
 					this.SendPropertyChanging();
 					this._CRM_AnnualPassTypeID = value;
@@ -1726,40 +1730,6 @@ namespace Service
 						this._CRM_AnnualPassCardID = default(int);
 					}
 					this.SendPropertyChanged("CRM_AnnualPassCard");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPassType", ThisKey="CRM_AnnualPassTypeID", OtherKey="ID", IsForeignKey=true)]
-		public CRM_AnnualPassType CRM_AnnualPassType
-		{
-			get
-			{
-				return this._CRM_AnnualPassType.Entity;
-			}
-			set
-			{
-				CRM_AnnualPassType previousValue = this._CRM_AnnualPassType.Entity;
-				if (((previousValue != value) 
-							|| (this._CRM_AnnualPassType.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CRM_AnnualPassType.Entity = null;
-						previousValue.CRM_AnnualPasses.Remove(this);
-					}
-					this._CRM_AnnualPassType.Entity = value;
-					if ((value != null))
-					{
-						value.CRM_AnnualPasses.Add(this);
-						this._CRM_AnnualPassTypeID = value.ID;
-					}
-					else
-					{
-						this._CRM_AnnualPassTypeID = default(int);
-					}
-					this.SendPropertyChanged("CRM_AnnualPassType");
 				}
 			}
 		}
@@ -2441,8 +2411,6 @@ namespace Service
 		
 		private bool _IsJoint;
 		
-		private EntitySet<CRM_AnnualPass> _CRM_AnnualPasses;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2463,7 +2431,6 @@ namespace Service
 		
 		public CRM_AnnualPassType()
 		{
-			this._CRM_AnnualPasses = new EntitySet<CRM_AnnualPass>(new Action<CRM_AnnualPass>(this.attach_CRM_AnnualPasses), new Action<CRM_AnnualPass>(this.detach_CRM_AnnualPasses));
 			OnCreated();
 		}
 		
@@ -2587,16 +2554,89 @@ namespace Service
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPasses", ThisKey="ID", OtherKey="CRM_AnnualPassTypeID")]
-		public EntitySet<CRM_AnnualPass> CRM_AnnualPasses
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_RelationCode")]
+	public partial class CRM_RelationCode : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public CRM_RelationCode()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
 		{
 			get
 			{
-				return this._CRM_AnnualPasses;
+				return this._ID;
 			}
 			set
 			{
-				this._CRM_AnnualPasses.Assign(value);
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
 			}
 		}
 		
@@ -2618,18 +2658,6 @@ namespace Service
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_CRM_AnnualPasses(CRM_AnnualPass entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AnnualPassType = this;
-		}
-		
-		private void detach_CRM_AnnualPasses(CRM_AnnualPass entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AnnualPassType = null;
 		}
 	}
 }
