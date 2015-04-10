@@ -57,6 +57,8 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
         {
             txtName.Text = Entity.Name;
             txtPrice.Text = Entity.DefaultPrice.ToString("N2");
+            chkIsJoint.Checked = Entity.IsJoint;
+            chkIsWebsite.Checked = Entity.IsWebsite;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

@@ -52,6 +52,26 @@ namespace CRM.Code.Models
             }
         }
 
+
+        [IsListData("Show on website")]
+        public string ShowOnWebsiteOutput
+        {
+            get
+            {
+                return IsWebsite ? "Yes" : "No";
+            }
+        }
+
+        [IsListData("Is Joint")]
+        public string IsJointOutput
+        {
+            get
+            {
+                return IsJoint ? "Yes" : "No";
+            }
+        }
+
+
         [IsListData("View")]
         public string ViewRecord
         {
