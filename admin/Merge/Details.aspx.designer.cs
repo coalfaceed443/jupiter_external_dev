@@ -265,6 +265,24 @@ namespace CRM.admin.Merge {
         protected global::System.Web.UI.WebControls.CheckBoxList rptInterests;
         
         /// <summary>
+        /// litOtherRecordRel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litOtherRecordRel;
+        
+        /// <summary>
+        /// litFromRel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litFromRel;
+        
+        /// <summary>
         /// rptConstituent control.
         /// </summary>
         /// <remarks>

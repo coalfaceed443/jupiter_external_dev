@@ -232,6 +232,48 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                         </td>
                     </tr>
                     
+
+                    <tr>
+
+                        <td>
+
+                            <label>
+                                Joint Salutation
+                            </label>
+
+                        </td>
+
+                        <td>
+                            <label>
+                                <%= Entity.JointSalutation %>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                Relationship to other record
+                            </label>                            
+                        </td>
+                        <td>
+                            <label>
+                                <asp:Literal ID="litOtherRecordRel" runat="server" />
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                Relationship from other record
+                            </label>                            
+                        </td>
+                        <td>
+                            <label>
+                                <asp:Literal ID="litFromRel" runat="server" />
+                            </label>
+                        </td>
+                    </tr>
+
                     <tr>     
                         <td>
                             <label>Basket</label>

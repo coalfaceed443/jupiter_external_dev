@@ -48,15 +48,15 @@ namespace Service
     partial void InsertCRM_AnnualPass(CRM_AnnualPass instance);
     partial void UpdateCRM_AnnualPass(CRM_AnnualPass instance);
     partial void DeleteCRM_AnnualPass(CRM_AnnualPass instance);
-    partial void InsertHoldingPen(HoldingPen instance);
-    partial void UpdateHoldingPen(HoldingPen instance);
-    partial void DeleteHoldingPen(HoldingPen instance);
     partial void InsertCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void UpdateCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void DeleteCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void InsertCRM_RelationCode(CRM_RelationCode instance);
     partial void UpdateCRM_RelationCode(CRM_RelationCode instance);
     partial void DeleteCRM_RelationCode(CRM_RelationCode instance);
+    partial void InsertHoldingPen(HoldingPen instance);
+    partial void UpdateHoldingPen(HoldingPen instance);
+    partial void DeleteHoldingPen(HoldingPen instance);
     #endregion
 		
 		public ServiceDataContext() : 
@@ -137,14 +137,6 @@ namespace Service
 			}
 		}
 		
-		public System.Data.Linq.Table<HoldingPen> HoldingPens
-		{
-			get
-			{
-				return this.GetTable<HoldingPen>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CRM_AnnualPassType> CRM_AnnualPassTypes
 		{
 			get
@@ -158,6 +150,14 @@ namespace Service
 			get
 			{
 				return this.GetTable<CRM_RelationCode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<HoldingPen> HoldingPens
+		{
+			get
+			{
+				return this.GetTable<HoldingPen>();
 			}
 		}
 	}
@@ -1755,6 +1755,274 @@ namespace Service
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassType")]
+	public partial class CRM_AnnualPassType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private bool _IsArchived;
+		
+		private decimal _DefaultPrice;
+		
+		private bool _IsWebsite;
+		
+		private bool _IsJoint;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnIsArchivedChanging(bool value);
+    partial void OnIsArchivedChanged();
+    partial void OnDefaultPriceChanging(decimal value);
+    partial void OnDefaultPriceChanged();
+    partial void OnIsWebsiteChanging(bool value);
+    partial void OnIsWebsiteChanged();
+    partial void OnIsJointChanging(bool value);
+    partial void OnIsJointChanged();
+    #endregion
+		
+		public CRM_AnnualPassType()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
+		public bool IsArchived
+		{
+			get
+			{
+				return this._IsArchived;
+			}
+			set
+			{
+				if ((this._IsArchived != value))
+				{
+					this.OnIsArchivedChanging(value);
+					this.SendPropertyChanging();
+					this._IsArchived = value;
+					this.SendPropertyChanged("IsArchived");
+					this.OnIsArchivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultPrice", DbType="Money NOT NULL")]
+		public decimal DefaultPrice
+		{
+			get
+			{
+				return this._DefaultPrice;
+			}
+			set
+			{
+				if ((this._DefaultPrice != value))
+				{
+					this.OnDefaultPriceChanging(value);
+					this.SendPropertyChanging();
+					this._DefaultPrice = value;
+					this.SendPropertyChanged("DefaultPrice");
+					this.OnDefaultPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebsite", DbType="Bit NOT NULL")]
+		public bool IsWebsite
+		{
+			get
+			{
+				return this._IsWebsite;
+			}
+			set
+			{
+				if ((this._IsWebsite != value))
+				{
+					this.OnIsWebsiteChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebsite = value;
+					this.SendPropertyChanged("IsWebsite");
+					this.OnIsWebsiteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsJoint", DbType="Bit NOT NULL")]
+		public bool IsJoint
+		{
+			get
+			{
+				return this._IsJoint;
+			}
+			set
+			{
+				if ((this._IsJoint != value))
+				{
+					this.OnIsJointChanging(value);
+					this.SendPropertyChanging();
+					this._IsJoint = value;
+					this.SendPropertyChanged("IsJoint");
+					this.OnIsJointChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_RelationCode")]
+	public partial class CRM_RelationCode : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public CRM_RelationCode()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HoldingPen")]
 	public partial class HoldingPen : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1811,6 +2079,16 @@ namespace Service
 		
 		private string _BasketContents;
 		
+		private System.Nullable<int> _JointHoldingPenID;
+		
+		private string _JointSalutation;
+		
+		private System.Nullable<int> _JointAtoBID;
+		
+		private System.Nullable<int> _JointBtoAID;
+		
+		private System.Nullable<char> _JointThisReferenceAB;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1865,6 +2143,16 @@ namespace Service
     partial void OnMembershipBChanged();
     partial void OnBasketContentsChanging(string value);
     partial void OnBasketContentsChanged();
+    partial void OnJointHoldingPenIDChanging(System.Nullable<int> value);
+    partial void OnJointHoldingPenIDChanged();
+    partial void OnJointSalutationChanging(string value);
+    partial void OnJointSalutationChanged();
+    partial void OnJointAtoBIDChanging(System.Nullable<int> value);
+    partial void OnJointAtoBIDChanged();
+    partial void OnJointBtoAIDChanging(System.Nullable<int> value);
+    partial void OnJointBtoAIDChanged();
+    partial void OnJointThisReferenceABChanging(System.Nullable<char> value);
+    partial void OnJointThisReferenceABChanged();
     #endregion
 		
 		public HoldingPen()
@@ -2372,270 +2660,102 @@ namespace Service
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassType")]
-	public partial class CRM_AnnualPassType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Name;
-		
-		private bool _IsArchived;
-		
-		private decimal _DefaultPrice;
-		
-		private bool _IsWebsite;
-		
-		private bool _IsJoint;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnIsArchivedChanging(bool value);
-    partial void OnIsArchivedChanged();
-    partial void OnDefaultPriceChanging(decimal value);
-    partial void OnDefaultPriceChanged();
-    partial void OnIsWebsiteChanging(bool value);
-    partial void OnIsWebsiteChanged();
-    partial void OnIsJointChanging(bool value);
-    partial void OnIsJointChanged();
-    #endregion
-		
-		public CRM_AnnualPassType()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JointHoldingPenID", DbType="Int")]
+		public System.Nullable<int> JointHoldingPenID
 		{
 			get
 			{
-				return this._ID;
+				return this._JointHoldingPenID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((this._JointHoldingPenID != value))
 				{
-					this.OnIDChanging(value);
+					this.OnJointHoldingPenIDChanging(value);
 					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					this._JointHoldingPenID = value;
+					this.SendPropertyChanged("JointHoldingPenID");
+					this.OnJointHoldingPenIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		public string Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JointSalutation", DbType="VarChar(500)")]
+		public string JointSalutation
 		{
 			get
 			{
-				return this._Name;
+				return this._JointSalutation;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((this._JointSalutation != value))
 				{
-					this.OnNameChanging(value);
+					this.OnJointSalutationChanging(value);
 					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this._JointSalutation = value;
+					this.SendPropertyChanged("JointSalutation");
+					this.OnJointSalutationChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
-		public bool IsArchived
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JointAtoBID", DbType="Int")]
+		public System.Nullable<int> JointAtoBID
 		{
 			get
 			{
-				return this._IsArchived;
+				return this._JointAtoBID;
 			}
 			set
 			{
-				if ((this._IsArchived != value))
+				if ((this._JointAtoBID != value))
 				{
-					this.OnIsArchivedChanging(value);
+					this.OnJointAtoBIDChanging(value);
 					this.SendPropertyChanging();
-					this._IsArchived = value;
-					this.SendPropertyChanged("IsArchived");
-					this.OnIsArchivedChanged();
+					this._JointAtoBID = value;
+					this.SendPropertyChanged("JointAtoBID");
+					this.OnJointAtoBIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultPrice", DbType="Money NOT NULL")]
-		public decimal DefaultPrice
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JointBtoAID", DbType="Int")]
+		public System.Nullable<int> JointBtoAID
 		{
 			get
 			{
-				return this._DefaultPrice;
+				return this._JointBtoAID;
 			}
 			set
 			{
-				if ((this._DefaultPrice != value))
+				if ((this._JointBtoAID != value))
 				{
-					this.OnDefaultPriceChanging(value);
+					this.OnJointBtoAIDChanging(value);
 					this.SendPropertyChanging();
-					this._DefaultPrice = value;
-					this.SendPropertyChanged("DefaultPrice");
-					this.OnDefaultPriceChanged();
+					this._JointBtoAID = value;
+					this.SendPropertyChanged("JointBtoAID");
+					this.OnJointBtoAIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebsite", DbType="Bit NOT NULL")]
-		public bool IsWebsite
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JointThisReferenceAB", DbType="Char(1)")]
+		public System.Nullable<char> JointThisReferenceAB
 		{
 			get
 			{
-				return this._IsWebsite;
+				return this._JointThisReferenceAB;
 			}
 			set
 			{
-				if ((this._IsWebsite != value))
+				if ((this._JointThisReferenceAB != value))
 				{
-					this.OnIsWebsiteChanging(value);
+					this.OnJointThisReferenceABChanging(value);
 					this.SendPropertyChanging();
-					this._IsWebsite = value;
-					this.SendPropertyChanged("IsWebsite");
-					this.OnIsWebsiteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsJoint", DbType="Bit NOT NULL")]
-		public bool IsJoint
-		{
-			get
-			{
-				return this._IsJoint;
-			}
-			set
-			{
-				if ((this._IsJoint != value))
-				{
-					this.OnIsJointChanging(value);
-					this.SendPropertyChanging();
-					this._IsJoint = value;
-					this.SendPropertyChanged("IsJoint");
-					this.OnIsJointChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_RelationCode")]
-	public partial class CRM_RelationCode : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Name;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    #endregion
-		
-		public CRM_RelationCode()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this._JointThisReferenceAB = value;
+					this.SendPropertyChanged("JointThisReferenceAB");
+					this.OnJointThisReferenceABChanged();
 				}
 			}
 		}

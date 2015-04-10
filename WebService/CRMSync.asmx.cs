@@ -69,6 +69,42 @@ namespace CRM.WebService
         }
 
 
+        /// <summary>
+        /// Used for joint memberships
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="account"></param>
+        /// <param name="interests"></param>
+        /// <returns>ID - The ID of the submitted holding pen</returns>
+        [WebMethod]
+        public int SendJointAccount(string key, Service.HoldingPen account, InterestAnswer[] interests)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+
+            account.InterestObjects = js.Serialize(interests);
+
+            db.HoldingPens.InsertOnSubmit(account);
+            db.SubmitChanges();
+
+            return account.ID;
+        }
+
+        /// <summary>
+        /// Used to link up two holding pens which have been joint by a membership
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="account"></param>
+        /// <param name="otherID">The 'other' holding pen to be joined to this account</param>
+        [WebMethod]
+        public void UpdateJointID(string key, Service.HoldingPen account, int otherID)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+            account.JointHoldingPenID = otherID;           
+            db.SubmitChanges();
+        }
+
         [WebMethod]
         public bool CheckMemberNo(string key, string memberNo)
         {

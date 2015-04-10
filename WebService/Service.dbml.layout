@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.25, 18" name="Service">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.25, 18.5" name="Service">
   <DataContextMoniker Name="/ServiceDataContext" />
   <nestedChildShapes>
     <classShape Id="88dbc25e-3795-49ea-b219-3352651dfe99" absoluteBounds="8, 2.625, 2, 1.9631982421875">
@@ -45,12 +45,6 @@
         <classShapeMoniker Id="9df17543-6511-464c-825f-bea8e02e8ebf" />
       </nodes>
     </associationConnector>
-    <classShape Id="f520ba21-6f39-4428-8176-704fcee115e6" absoluteBounds="3, 12.125, 2, 5.6169254557291657">
-      <DataClassMoniker Name="/ServiceDataContext/HoldingPen" />
-      <nestedChildShapes>
-        <elementListCompartment Id="541d699c-b32e-4c31-b481-e6c7f7651ad2" absoluteBounds="3.015, 12.585, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="87a8f15e-a65c-4932-bb4a-3d411d54e674" absoluteBounds="14, 3.75, 2, 1.9631982421875">
       <DataClassMoniker Name="/ServiceDataContext/CRM_AnnualPassType" />
       <nestedChildShapes>
@@ -61,6 +55,12 @@
       <DataClassMoniker Name="/ServiceDataContext/CRM_RelationCode" />
       <nestedChildShapes>
         <elementListCompartment Id="bc336ab2-df7e-49ee-b049-5771627ad40b" absoluteBounds="8.765, 8.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="153f474d-ad9f-4a64-85bd-255cb52d5ca3" absoluteBounds="5.125, 11.625, 2, 6.5784326171875">
+      <DataClassMoniker Name="/ServiceDataContext/HoldingPen" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aecc69b2-9b25-42a9-b33d-ae7d69d4553e" absoluteBounds="5.14, 12.085, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

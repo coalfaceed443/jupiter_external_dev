@@ -78,6 +78,24 @@ namespace CRM.admin.Merge
                 );
             rptConstituent.DataBind();
 
+            if (Entity.JointBtoAID != null)
+            {
+                CRM_RelationCode code = db.CRM_RelationCodes.SingleOrDefault(f => f.ID == Entity.JointBtoAID);
+                if (code != null)
+                {
+                    litOtherRecordRel.Text = code.Name;
+                }
+            }
+
+
+            if (Entity.JointAtoBID != null)
+            {
+                CRM_RelationCode code = db.CRM_RelationCodes.SingleOrDefault(f => f.ID == Entity.JointAtoBID);
+                if (code != null)
+                {
+                    litFromRel.Text = code.Name;
+                }
+            }
 
             try
             {
@@ -237,6 +255,8 @@ namespace CRM.admin.Merge
                 }
 
                  */
+
+                AddRelationship(person);
  
                 db.SubmitChanges();
 
@@ -244,6 +264,33 @@ namespace CRM.admin.Merge
                 NoticeManager.SetMessage("Record merged");
 
             }
+        }
+
+        protected void AddRelationship(CRM_Person person)
+        {
+            if (Entity.JointHoldingPenID != null)
+            {
+
+                CRM_Person otherRecord = db.CRM_Persons.FirstOrDefault(f => f.WebsiteAccountID == Entity.OriginAccountID &&
+                    Entity.OriginType == (byte)HoldingPen.Origins.websitemembership
+                    && person.ID != f.ID);
+
+                if (otherRecord != null)
+                {
+                    CRM_PersonRelationship relationship = new CRM_PersonRelationship();
+                    relationship.CRM_PersonIDAddress = person.ID;
+                    relationship.PersonA = otherRecord;
+                    relationship.PersonB = person;
+                    relationship.CRM_RelationCodeID = (int)Entity.JointAtoBID;
+                    relationship.CRM_RelationCodeID2 = (int)Entity.JointBtoAID;
+                    relationship.Salutation = Entity.JointSalutation;
+
+                    db.CRM_PersonRelationships.InsertOnSubmit(relationship);
+                    db.SubmitChanges();
+                }
+
+            }
+
         }
 
         protected void ApplyConstituentsToSelected(CRM_Person person)
@@ -338,6 +385,7 @@ namespace CRM.admin.Merge
             ApplyCustomField(person, 2, 22);
             ApplyConstituentsToSelected(person);
 
+            AddRelationship(person);
 
             NoticeManager.SetMessage("Record added (" + person.Reference + ")");
         }
