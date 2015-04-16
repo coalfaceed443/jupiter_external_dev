@@ -39,13 +39,11 @@ namespace CRM.Code.Models
             }
         }
 
-        public int? RelationshipID
+        public int AddressID
         {
             get
             {
-                if (this.PrimaryRelation != null)
-                    return this.PrimaryRelation.CRM_PersonIDAddress;
-                else return null;
+                return this.PrimaryAddressRecord.ID;
             }
         }
 
@@ -72,6 +70,36 @@ namespace CRM.Code.Models
                 return sb.ToString();
             }
         }
+
+        #region Filtered Relationships
+
+        public IEnumerable<CRM_PersonPersonal> PersonalRecords
+        {
+            get
+            {
+                return this.CRM_PersonPersonals.Where(r => !r.IsArchived);
+            }
+        }
+
+        public IEnumerable<CRM_PersonOrganisation> OrganisationRecords
+        {
+            get
+            {
+                return this.CRM_PersonOrganisations.Where(r => !r.IsArchived);
+            }
+        }
+
+        public IEnumerable<CRM_PersonSchool> SchoolRecords
+        {
+            get
+            {
+                return this.CRM_PersonSchools.Where(r => !r.IsArchived);
+            }
+        }
+
+        #endregion
+
+        #region Person Address
 
         [IsListData("Address 1")]
         public string Address1
@@ -137,6 +165,113 @@ namespace CRM.Code.Models
             }
         }
 
+        [IsListData("Address Country")]
+        public string Country
+        {
+            get
+            {
+                return this.PrimaryAddress.Country.Name;
+            }
+        }
+
+        #endregion 
+        
+        #region Organisation Address
+        [IsListData("Organisation Address 1")]
+        public string OrganisationAddress1
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.AddressLine1 : "";
+            }
+        }
+
+        [IsListData("Organisation Address 2")]
+        public string OrganisationAddress2
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.AddressLine2 : "";
+            }
+        }
+
+        [IsListData("Organisation Address 3")]
+        public string OrganisationAddress3
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.AddressLine3 : "";
+            }
+        }
+
+        [IsListData("Organisation Address 4")]
+        public string OrganisationAddress4
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.AddressLine4 : "";
+            }
+        }
+
+        [IsListData("Organisation Address 5")]
+        public string OrganisationAddress5
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.AddressLine5 : "";
+            }
+        }
+
+        [IsListData("Organisation Town")]
+        public string OrganisationAddressTown
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.Town : "";
+            }
+        }
+
+        [IsListData("Organisation County")]
+        public string OrganisationAddressCounty
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.County : "";
+            }
+        }
+
+
+        [IsListData("Organisation Country")]
+        public string OrganisationAddressCountry
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.Country.Name : "";
+            }
+        }
+
+        [IsListData("Organisation Postcode")]
+        public string OrganisationAddressPostcode
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.PrimaryAddress.Postcode : "";
+            }
+        }
+        #endregion 
+
+        #region Relationships
+
+        public int? RelationshipID
+        {
+            get
+            {
+                if (this.PrimaryRelation != null)
+                    return this.PrimaryRelation.CRM_PersonIDAddress;
+                else return null;
+            }
+        }
+
         public IEnumerable<CRM_PersonRelationship> Relationships
         {
             get
@@ -173,47 +308,119 @@ namespace CRM.Code.Models
             }
         }
 
-        [IsListData("Address Country")]
-        public string Country
+
+        [IsListData("Relation Address 1")]
+        public string RelationshipAddress1
         {
             get
             {
-                return this.PrimaryAddress.Country.Name;
+                return PrimaryRelation != null ? PrimaryRelation.Address1 : Address1;
             }
         }
 
-        public IEnumerable<CRM_CalendarInvite> Invites
+        [IsListData("Relation Address 2")]
+        public string RelationshipAddress2
         {
             get
             {
-                return MainDataContext.CurrentContext.CRM_CalendarInvites.Where(c => c.Reference == this.Reference);
+                return PrimaryRelation != null ? PrimaryRelation.Address2 : Address2;
             }
         }
 
-        public bool IsMailable
+        [IsListData("Relation Address 3")]
+        public string RelationshipAddress3
         {
             get
             {
-                return this.IsDoNotMail == false && this.IsDeceased == false && this.IsArchived == false;
+                return PrimaryRelation != null ? PrimaryRelation.Address3 : Address3;
             }
         }
 
-        public bool IsEmailable
+        [IsListData("Relation Address 4")]
+        public string RelationshipAddress4
         {
             get
             {
-                return this.IsDoNotEmail == false && this.IsDeceased == false && this.IsArchived == false;
+                return PrimaryRelation != null ? PrimaryRelation.Address4 : PrimaryAddress.AddressLine4;
             }
         }
 
-        [IsListData("No. attended")]
-        public int TimesAttended
+        [IsListData("Relation Address 5")]
+        public string RelationshipAddress5
         {
             get
             {
-                return Invites.Where(i => i.IsAttended).Count();
+                return PrimaryRelation != null ? PrimaryRelation.Address5 : PrimaryAddress.AddressLine5;
             }
         }
+
+
+        [IsListData("Relation Town")]
+        public string RelationshipTown
+        {
+            get
+            {
+                return PrimaryRelation != null ? PrimaryRelation.Town : PrimaryAddress.Town;
+            }
+        }
+
+        [IsListData("Relation County")]
+        public string RelationshipCounty
+        {
+            get
+            {
+                return PrimaryRelation != null ? PrimaryRelation.County : PrimaryAddress.County;
+            }
+        }
+
+        [IsListData("Relation Country")]
+        public string RelationshipCountry
+        {
+            get
+            {
+                return PrimaryRelation != null ? PrimaryRelation.Country : Country;
+            }
+        }
+
+        [IsListData("Relation Postcode")]
+        public string RelationshipPostcode
+        {
+            get
+            {
+                return PrimaryRelation != null ? PrimaryRelation.Postcode : Postcode;
+            }
+        }
+
+
+        [IsListData("Relation Salutation")]
+        public string RelationshipSaltuation
+        {
+            get
+            {
+                return PrimaryRelation != null ? PrimaryRelation.Salutation : CalculatedSalutation;
+            }
+        }
+
+        public CRM_PersonRelationship PrimaryRelation
+        {
+            get
+            {
+                return this.Relationships.FirstOrDefault();
+            }
+        }
+
+        public string RelationListURL
+        {
+            get
+            {
+                return "/admin/person/relation/list.aspx?id=" + this.ID;
+            }
+
+        }
+
+        #endregion 
+
+        #region Annual Passes
 
         [IsListData("Annual Pass Holder")]
         public bool IsAnnualPassHolder
@@ -288,6 +495,196 @@ namespace CRM.Code.Models
             }
         }
 
+        #endregion
+
+        #region Primary Address
+
+        public class AddressPoolItem
+        {
+            public CRM_Address CRM_Address { get; set; }
+            public string InternalName { get; set; }
+
+            public int ID
+            {
+                get
+                {
+                    return CRM_Address.ID;
+                }
+            }
+
+            public AddressPoolItem(CRM_Address cRM_Address, string internalName)
+            {
+                CRM_Address = cRM_Address;
+                InternalName = internalName;
+            }
+        }
+
+
+        /// <summary>
+        /// Pools all the addresses against the person, through the various db relations
+        /// </summary>
+        public List<AddressPoolItem> AddressPool
+        {
+            get
+            {
+                List<AddressPoolItem> pool = new List<AddressPoolItem>();
+                pool.Add(new AddressPoolItem(this.CRM_Address, "Person Address - " + this.CRM_Address.FormattedAddress));
+                
+                // personal addresses
+
+                foreach (CRM_PersonPersonal record in PersonalRecords.Where(r => !r.IsArchived && r.IsMailable))
+                {
+                    pool.Add(new AddressPoolItem(record.CRM_Address, "Personal Address - " + record.Name + " - " + record.CRM_Address.FormattedAddress));
+                }
+
+                // organisation addresses
+
+                foreach (CRM_PersonOrganisation record in OrganisationRecords.Where(r => !r.IsArchived && r.IsMailable))
+                {
+                    pool.Add(new AddressPoolItem(record.PrimaryAddress, "Organisation Address - " + record.Name + " - " + record.CRM_Role.Name + "  - " + record.PrimaryAddress.FormattedAddress));
+                }
+
+                // school addresses
+
+                foreach (CRM_PersonSchool record in SchoolRecords.Where(r => !r.IsArchived && r.IsMailable))
+                {
+                    pool.Add(new AddressPoolItem(record.PrimaryAddress, "School Address - " + record.Name + " - " + record.PrimaryAddress.FormattedAddress));
+                }
+
+                return pool;
+            }
+        }
+
+        /// <summary>
+        /// bad naming conventions, we now have 2 conflicting 'primary address' pointers.  PrimaryAddressRecord should be used for reporting, and is read only.
+        /// PrimaryAddress is full access but points to person address.
+        /// </summary>
+        public CRM_Address PrimaryAddressRecord
+        {
+            get
+            {
+                return this.CRM_Address1 == null ? this.PrimaryAddress : this.CRM_Address1;
+            }
+        }
+
+        [IsListData("Primary Address 1")]
+        public string PrimaryAddressLine1
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.AddressLine1;
+            }
+        }
+
+
+        [IsListData("Primary Address 2")]
+        public string PrimaryAddressLine2
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.AddressLine2;
+            }
+        }
+
+
+        [IsListData("Primary Address 3")]
+        public string PrimaryAddressLine3
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.AddressLine3;
+            }
+        }
+
+
+        [IsListData("Primary Address 4")]
+        public string PrimaryAddressLine4
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.AddressLine4;
+            }
+        }
+
+        [IsListData("Primary Address 5")]
+        public string PrimaryAddressLine5
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.AddressLine4;
+            }
+        }
+
+        [IsListData("Primary Address Town")]
+        public string PrimaryAddressTown
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.Town;
+            }
+        }
+
+        [IsListData("Primary Address County")]
+        public string PrimaryAddressCounty
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.County;
+            }
+        }
+
+        [IsListData("Primary Address Country")]
+        public string PrimaryAddressCountry
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.Country.Name;
+            }
+        }
+
+        [IsListData("Primary Address Postcode")]
+        public string PrimaryAddressPostcode
+        {
+            get
+            {
+                return this.PrimaryAddressRecord.Postcode;
+            }
+        }
+
+        #endregion 
+
+        public IEnumerable<CRM_CalendarInvite> Invites
+        {
+            get
+            {
+                return MainDataContext.CurrentContext.CRM_CalendarInvites.Where(c => c.Reference == this.Reference);
+            }
+        }
+
+        public bool IsMailable
+        {
+            get
+            {
+                return this.IsDoNotMail == false && this.IsDeceased == false && this.IsArchived == false;
+            }
+        }
+
+        public bool IsEmailable
+        {
+            get
+            {
+                return this.IsDoNotEmail == false && this.IsDeceased == false && this.IsArchived == false;
+            }
+        }
+
+        [IsListData("No. attended")]
+        public int TimesAttended
+        {
+            get
+            {
+                return Invites.Where(i => i.IsAttended).Count();
+            }
+        }
 
         [IsListData("No. invites")]
         public int TimesInvited
@@ -734,96 +1131,11 @@ namespace CRM.Code.Models
             };
         }
 
-
-        [IsListData("Mail Address 1")]
-        public string RelationshipAddress1
+        public CRM_PersonOrganisation PrimaryOrganisation
         {
             get
             {
-                return PrimaryRelation != null ? PrimaryRelation.Address1 : Address1;
-            }
-        }
-
-        [IsListData("Mail Address 2")]
-        public string RelationshipAddress2
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Address2 : Address2;
-            }
-        }
-
-        [IsListData("Mail Address 3")]
-        public string RelationshipAddress3
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Address3 : Address3;
-            }
-        }
-
-        [IsListData("Mail Address 4")]
-        public string RelationshipAddress4
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Address4 :PrimaryAddress.AddressLine4;
-            }
-        }
-
-        [IsListData("Mail Address 5")]
-        public string RelationshipAddress5
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Address5 : PrimaryAddress.AddressLine5;
-            }
-        }
-
-
-        [IsListData("Mail Town")]
-        public string RelationshipTown
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Town : PrimaryAddress.Town;
-            }
-        }
-
-        [IsListData("Mail County")]
-        public string RelationshipCounty
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.County : PrimaryAddress.County;
-            }
-        }
-
-        [IsListData("Mail Country")]
-        public string RelationshipCountry
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Country : Country;
-            }
-        }
-
-        [IsListData("Mail Postcode")]
-        public string RelationshipPostcode
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Postcode : Postcode;
-            }
-        }
-
-
-        [IsListData("Mail Salutation")]
-        public string RelationshipSaltuation
-        {
-            get
-            {
-                return PrimaryRelation != null ? PrimaryRelation.Salutation : CalculatedSalutation;
+                return this.CRM_PersonOrganisations.Where(r => !r.IsArchived && r.IsMailable).FirstOrDefault();
             }
         }
 
@@ -833,23 +1145,6 @@ namespace CRM.Code.Models
             {
                 return this.Fullname; 
             }
-        }
-
-        public CRM_PersonRelationship PrimaryRelation
-        {
-            get
-            {
-                return this.Relationships.FirstOrDefault();
-            }
-        }
-
-        public string RelationListURL
-        {
-            get
-            {
-                return "/admin/person/relation/list.aspx?id=" + this.ID;
-            }
-
         }
     }
 }

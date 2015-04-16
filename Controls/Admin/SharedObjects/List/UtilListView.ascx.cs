@@ -154,6 +154,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
                 rbMailOut.Checked = Request.QueryString["mailout"] == Boolean.TrueString;
                 rbEmail.Checked = Request.QueryString["emailing"] == Boolean.TrueString;
                 chkGroupByRelationship.Checked = Request.QueryString["groupbyrel"] == Boolean.TrueString;
+                chkGroupByAddress.Checked = Request.QueryString["groupbyaddress"] == Boolean.TrueString;
                 if (!String.IsNullOrEmpty(Request.QueryString["query"]))
                 {
                     RePopulateQueriesList();
@@ -407,6 +408,16 @@ namespace CRM.Controls.Admin.SharedObjects.List
                 data = recordsWithRelation.Concat(recordsWithoutRelation);
             }
 
+            if (chkGroupByAddress.Checked)
+            {
+                IEnumerable<IGrouping<int?, ListData>> groupset = data.GroupBy(g => g.AddressID);
+
+                var recordsWithAdress= groupset.Where(c => c.Key != null).Select(c => c.First());
+                var recordsWithoutAddress = groupset.Where(c => c.Key == null).SelectMany(c => c);
+                data = recordsWithAdress.Concat(recordsWithoutAddress);
+
+            }
+
             return data;
         }
 
@@ -578,7 +589,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
             }
 
             string redirect = Request.Url.AbsolutePath + (query.Count == 0 ? "?" : "?" + query + "&") + "query=" + ddlExistingQueries.SelectedValue;
-            redirect += "&data=" + rbNone.Checked + "&mailout=" + rbMailOut.Checked + "&emailing=" + rbEmail.Checked + "&groupbyrel=" + chkGroupByRelationship.Checked;
+            redirect += "&data=" + rbNone.Checked + "&mailout=" + rbMailOut.Checked + "&emailing=" + rbEmail.Checked + "&groupbyrel=" + chkGroupByRelationship.Checked + "&groupbyaddress=" + chkGroupByAddress.Checked;
 
     
             NoticeManager.SetMessage("Query Complete", redirect);

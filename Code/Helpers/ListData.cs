@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Reflection;
 using CRM.Code.Interfaces;
+using CRM.Code.Models;
 
 namespace CRM.Code.Helpers
 {
@@ -29,6 +30,18 @@ namespace CRM.Code.Helpers
             }
         }
 
+        public int? AddressID
+        {
+            get
+            {
+
+                if (DataItem is IContact)
+                    return ((IContact)DataItem).AddressID;
+                else
+                    return null;
+            }
+        }
+
         public int? RelationshipID
         {
             get
@@ -43,7 +56,7 @@ namespace CRM.Code.Helpers
                 }
             }
         }
-
+        
         public bool IsCRMRecord
         {
             get

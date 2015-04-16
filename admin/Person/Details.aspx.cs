@@ -112,6 +112,13 @@ namespace CRM.admin.Person
 
             ucCustomFields._DataTableID = db._DataTables.Single(c => c.TableReference == "CRM_Person").ID;
             ucCustomFields.Populate(Entity.Reference);
+
+            ddlPrimaryAddress.DataSource = Entity.AddressPool;
+            ddlPrimaryAddress.DataBind();
+
+            if (Entity.PrimaryAddressID != null)
+                ddlPrimaryAddress.SelectedValue = Entity.PrimaryAddressID.ToString();
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -183,6 +190,14 @@ namespace CRM.admin.Person
             {
                 Entity.CRM_Address = (CRM_Address)((Address)ucAddress).Save(Entity.CRM_Address);
             }
+
+            db.SubmitChanges();
+
+            if (ddlPrimaryAddress.SelectedValue != "")
+            {
+                Entity.PrimaryAddressID = Convert.ToInt32(ddlPrimaryAddress.SelectedValue);
+            }
+
             db.SubmitChanges();
 
             Entity.CRM_Address.ParentID = Entity.ID;

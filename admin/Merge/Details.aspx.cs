@@ -375,7 +375,8 @@ namespace CRM.admin.Merge
                 LegacyID = null,
                 IsMale = null,
                 AddressType = 0,
-                Telephone2 = ""
+                Telephone2 = "",
+                PrimaryAddressID = address.ID
 
             };
 

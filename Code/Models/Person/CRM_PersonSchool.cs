@@ -22,6 +22,14 @@ namespace CRM.Code.Models
             }
         }
 
+        public int AddressID
+        {
+            get
+            {
+                return this.PrimaryAddress.ID;
+            }
+        }
+
         public int? RelationshipID
         {
             get

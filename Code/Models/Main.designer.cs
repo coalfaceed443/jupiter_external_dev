@@ -940,6 +940,8 @@ namespace CRM.Code.Models
 		
 		private EntitySet<CRM_Person> _CRM_Persons;
 		
+		private EntitySet<CRM_Person> _CRM_Persons1;
+		
 		private EntitySet<CRM_PersonPersonal> _CRM_PersonPersonals;
 		
 		private EntitySet<CRM_Organisation> _CRM_Organisations;
@@ -1290,8 +1292,27 @@ namespace CRM.Code.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_PersonPersonal", Storage="_CRM_PersonPersonals", ThisKey="ID", OtherKey="AddressID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_Person1", Storage="_CRM_Persons1", ThisKey="ID", OtherKey="PrimaryAddressID")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16, EmitDefaultValue=false)]
+		public EntitySet<CRM_Person> CRM_Persons1
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_Persons1.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_Persons1;
+			}
+			set
+			{
+				this._CRM_Persons1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_PersonPersonal", Storage="_CRM_PersonPersonals", ThisKey="ID", OtherKey="AddressID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonPersonal> CRM_PersonPersonals
 		{
 			get
@@ -1310,7 +1331,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_Organisation", Storage="_CRM_Organisations", ThisKey="ID", OtherKey="CRM_AddressID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18, EmitDefaultValue=false)]
 		public EntitySet<CRM_Organisation> CRM_Organisations
 		{
 			get
@@ -1329,7 +1350,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_Calendar", Storage="_CRM_Calendars", ThisKey="ID", OtherKey="InvoiceAddressID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19, EmitDefaultValue=false)]
 		public EntitySet<CRM_Calendar> CRM_Calendars
 		{
 			get
@@ -1461,6 +1482,18 @@ namespace CRM.Code.Models
 			entity.CRM_Address = null;
 		}
 		
+		private void attach_CRM_Persons1(CRM_Person entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Address1 = this;
+		}
+		
+		private void detach_CRM_Persons1(CRM_Person entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_Address1 = null;
+		}
+		
 		private void attach_CRM_PersonPersonals(CRM_PersonPersonal entity)
 		{
 			this.SendPropertyChanging();
@@ -1504,6 +1537,7 @@ namespace CRM.Code.Models
 			this._CRM_Fundraisings = new EntitySet<CRM_Fundraising>(new Action<CRM_Fundraising>(this.attach_CRM_Fundraisings), new Action<CRM_Fundraising>(this.detach_CRM_Fundraisings));
 			this._CRM_Schools = new EntitySet<CRM_School>(new Action<CRM_School>(this.attach_CRM_Schools), new Action<CRM_School>(this.detach_CRM_Schools));
 			this._CRM_Persons = new EntitySet<CRM_Person>(new Action<CRM_Person>(this.attach_CRM_Persons), new Action<CRM_Person>(this.detach_CRM_Persons));
+			this._CRM_Persons1 = new EntitySet<CRM_Person>(new Action<CRM_Person>(this.attach_CRM_Persons1), new Action<CRM_Person>(this.detach_CRM_Persons1));
 			this._CRM_PersonPersonals = new EntitySet<CRM_PersonPersonal>(new Action<CRM_PersonPersonal>(this.attach_CRM_PersonPersonals), new Action<CRM_PersonPersonal>(this.detach_CRM_PersonPersonals));
 			this._CRM_Organisations = new EntitySet<CRM_Organisation>(new Action<CRM_Organisation>(this.attach_CRM_Organisations), new Action<CRM_Organisation>(this.detach_CRM_Organisations));
 			this._CRM_Calendars = new EntitySet<CRM_Calendar>(new Action<CRM_Calendar>(this.attach_CRM_Calendars), new Action<CRM_Calendar>(this.detach_CRM_Calendars));
@@ -16064,6 +16098,8 @@ namespace CRM.Code.Models
 		
 		private string _Telephone2;
 		
+		private System.Nullable<int> _PrimaryAddressID;
+		
 		private EntitySet<CRM_FamilyPerson> _CRM_FamilyPersons;
 		
 		private EntitySet<CRM_AnnualPassPerson> _CRM_AnnualPassPersons;
@@ -16085,6 +16121,8 @@ namespace CRM.Code.Models
 		private EntitySet<CRM_PersonRelationship> _CRM_PersonRelationships2;
 		
 		private EntityRef<CRM_Address> _CRM_Address;
+		
+		private EntityRef<CRM_Address> _CRM_Address1;
 		
 		private bool serializing;
 		
@@ -16146,6 +16184,8 @@ namespace CRM.Code.Models
     partial void OnAddressTypeChanged();
     partial void OnTelephone2Changing(string value);
     partial void OnTelephone2Changed();
+    partial void OnPrimaryAddressIDChanging(System.Nullable<int> value);
+    partial void OnPrimaryAddressIDChanged();
     #endregion
 		
 		public CRM_Person()
@@ -16724,8 +16764,33 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrimaryAddressID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=28)]
+		public System.Nullable<int> PrimaryAddressID
+		{
+			get
+			{
+				return this._PrimaryAddressID;
+			}
+			set
+			{
+				if ((this._PrimaryAddressID != value))
+				{
+					if (this._CRM_Address1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPrimaryAddressIDChanging(value);
+					this.SendPropertyChanging();
+					this._PrimaryAddressID = value;
+					this.SendPropertyChanged("PrimaryAddressID");
+					this.OnPrimaryAddressIDChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_FamilyPerson", Storage="_CRM_FamilyPersons", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=28, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29, EmitDefaultValue=false)]
 		public EntitySet<CRM_FamilyPerson> CRM_FamilyPersons
 		{
 			get
@@ -16744,7 +16809,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_AnnualPassPerson", Storage="_CRM_AnnualPassPersons", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30, EmitDefaultValue=false)]
 		public EntitySet<CRM_AnnualPassPerson> CRM_AnnualPassPersons
 		{
 			get
@@ -16763,7 +16828,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_CalendarAttendance", Storage="_CRM_CalendarAttendances", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31, EmitDefaultValue=false)]
 		public EntitySet<CRM_CalendarAttendance> CRM_CalendarAttendances
 		{
 			get
@@ -16782,7 +16847,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonSchool", Storage="_CRM_PersonSchools", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonSchool> CRM_PersonSchools
 		{
 			get
@@ -16801,7 +16866,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonOrganisation", Storage="_CRM_PersonOrganisations", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonOrganisation> CRM_PersonOrganisations
 		{
 			get
@@ -16820,7 +16885,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonPersonal", Storage="_CRM_PersonPersonals", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=34, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonPersonal> CRM_PersonPersonals
 		{
 			get
@@ -16839,7 +16904,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_FundraisingGiftProfile", Storage="_CRM_FundraisingGiftProfiles", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=34, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
 		public EntitySet<CRM_FundraisingGiftProfile> CRM_FundraisingGiftProfiles
 		{
 			get
@@ -16858,7 +16923,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship", Storage="_CRM_PersonRelationships", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships
 		{
 			get
@@ -16877,7 +16942,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship1", Storage="_CRM_PersonRelationships1", ThisKey="ID", OtherKey="CRM_PersonID2")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships1
 		{
 			get
@@ -16896,7 +16961,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship2", Storage="_CRM_PersonRelationships2", ThisKey="ID", OtherKey="CRM_PersonIDAddress")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=38, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships2
 		{
 			get
@@ -16944,6 +17009,40 @@ namespace CRM.Code.Models
 						this._CRM_AddressID = default(int);
 					}
 					this.SendPropertyChanged("CRM_Address");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Address_CRM_Person1", Storage="_CRM_Address1", ThisKey="PrimaryAddressID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_Address CRM_Address1
+		{
+			get
+			{
+				return this._CRM_Address1.Entity;
+			}
+			set
+			{
+				CRM_Address previousValue = this._CRM_Address1.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_Address1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_Address1.Entity = null;
+						previousValue.CRM_Persons1.Remove(this);
+					}
+					this._CRM_Address1.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_Persons1.Add(this);
+						this._PrimaryAddressID = value.ID;
+					}
+					else
+					{
+						this._PrimaryAddressID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CRM_Address1");
 				}
 			}
 		}
@@ -17101,6 +17200,7 @@ namespace CRM.Code.Models
 			this._CRM_PersonRelationships1 = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships1), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships1));
 			this._CRM_PersonRelationships2 = new EntitySet<CRM_PersonRelationship>(new Action<CRM_PersonRelationship>(this.attach_CRM_PersonRelationships2), new Action<CRM_PersonRelationship>(this.detach_CRM_PersonRelationships2));
 			this._CRM_Address = default(EntityRef<CRM_Address>);
+			this._CRM_Address1 = default(EntityRef<CRM_Address>);
 			OnCreated();
 		}
 		

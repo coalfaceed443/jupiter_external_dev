@@ -312,7 +312,27 @@
                 </tr>
 
                 <ucUtil:Address ID="ucAddress" runat="server" />
+
+
                 </asp:Panel>
+            </table>
+
+            <table class="details" style="width:960px;float:left;margin:20px 0;">
+
+                <tr>
+                    <td>                       
+                        <label>
+                            Primary Address
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:DropDownList ID="ddlPrimaryAddress" runat="server" DataTextField="InternalName" DataValueField="ID" />
+                    </td>
+
+                </tr>
+
             </table>
 
             <ucUtil:CustomFields ID="ucCustomFields" runat="server" />

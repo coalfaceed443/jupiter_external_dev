@@ -17,6 +17,7 @@
       <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Fundraisings" ThisKey="ID" OtherKey="GiftAidAddressID" Type="CRM_Fundraising" />
       <Association Name="CRM_Address_CRM_School" Member="CRM_Schools" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_School" />
       <Association Name="CRM_Address_CRM_Person" Member="CRM_Persons" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Person" />
+      <Association Name="CRM_Address_CRM_Person1" Member="CRM_Persons1" ThisKey="ID" OtherKey="PrimaryAddressID" Type="CRM_Person" />
       <Association Name="CRM_Address_CRM_PersonPersonal" Member="CRM_PersonPersonals" ThisKey="ID" OtherKey="AddressID" Type="CRM_PersonPersonal" />
       <Association Name="CRM_Address_CRM_Organisation" Member="CRM_Organisations" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Organisation" />
       <Association Name="CRM_Address_CRM_Calendar" Member="CRM_Calendars" ThisKey="ID" OtherKey="InvoiceAddressID" Type="CRM_Calendar" />
@@ -671,6 +672,7 @@
       <Column Name="IsMale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AddressType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Column Name="Telephone2" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="CRM_Person_CRM_FamilyPerson" Member="CRM_FamilyPersons" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_FamilyPerson" />
       <Association Name="CRM_Person_CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_AnnualPassPerson" />
       <Association Name="CRM_Person_CRM_CalendarAttendance" Member="CRM_CalendarAttendances" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_CalendarAttendance" />
@@ -682,6 +684,7 @@
       <Association Name="CRM_Person_CRM_PersonRelationship1" Member="CRM_PersonRelationships1" ThisKey="ID" OtherKey="CRM_PersonID2" Type="CRM_PersonRelationship" />
       <Association Name="CRM_Person_CRM_PersonRelationship2" Member="CRM_PersonRelationships2" ThisKey="ID" OtherKey="CRM_PersonIDAddress" Type="CRM_PersonRelationship" />
       <Association Name="CRM_Address_CRM_Person" Member="CRM_Address" ThisKey="CRM_AddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_Address_CRM_Person1" Member="CRM_Address1" ThisKey="PrimaryAddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CRM_CalendarAdmin" Member="CRM_CalendarAdmins">

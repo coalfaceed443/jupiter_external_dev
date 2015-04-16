@@ -72,6 +72,8 @@
     </div>
 
         <asp:CheckBox ID="chkGroupByRelationship" runat="server" Text="Group by relationship" style="float:left;" />
+            
+        <asp:CheckBox ID="chkGroupByAddress" runat="server" Text="Group by address" style="float:left;" />
 
         </asp:Panel>
 

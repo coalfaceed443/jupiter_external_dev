@@ -8,6 +8,7 @@ namespace CRM.Code.Interfaces
 {
     public interface IContact : IAutocomplete, IMailable
     {
+        int AddressID { get; }
         string Title { get; }
         string Fullname { get; }
         string Firstname { get; }
