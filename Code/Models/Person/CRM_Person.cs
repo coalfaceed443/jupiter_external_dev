@@ -177,6 +177,25 @@ namespace CRM.Code.Models
         #endregion 
         
         #region Organisation Address
+
+        [IsListData("Organisation Name")]
+        public string OrganisationName
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.Name : "";
+            }
+        }
+
+        [IsListData("Organisation Role")]
+        public string OrganisationRole
+        {
+            get
+            {
+                return PrimaryOrganisation != null ? PrimaryOrganisation.CRM_Role.Name : "";
+            }
+        }
+
         [IsListData("Organisation Address 1")]
         public string OrganisationAddress1
         {
