@@ -183,7 +183,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return PrimaryOrganisation != null ? PrimaryOrganisation.Name : "";
+                return PrimaryOrganisation != null ? PrimaryOrganisation.CRM_Organisation.Name : "";
             }
         }
 
