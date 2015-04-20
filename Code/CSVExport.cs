@@ -27,6 +27,7 @@ namespace CRM.Code
             response.Clear();
             response.ContentType = "text/csv";
             response.AddHeader("content-disposition", "attachment; filename=\"" + filename + "-" + DateTime.UtcNow.ToString("dd-MM-yyyy") + ".csv\"");
+            response.ContentEncoding = Encoding.GetEncoding("Windows-1252");
 
             HttpContext.Current.Response.Write(columnNames);
             HttpContext.Current.Response.Write(Environment.NewLine);
