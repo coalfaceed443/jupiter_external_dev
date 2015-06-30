@@ -1077,6 +1077,9 @@
     <Compile Include="admin\AnnualPassCard\Stats.aspx.designer.cs">
       <DependentUpon>Stats.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\AnnualPassCard\StatsResponse.ashx.cs">
+      <DependentUpon>StatsResponse.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Calendar\Frame\Rota.aspx.cs">
       <DependentUpon>Rota.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2443,6 +2446,7 @@
     <Content Include="admin\CollectStructure.ashx" />
     <Content Include="admin\UpdateTitles.ashx" />
     <Content Include="admin\Communications\Export.ashx" />
+    <Content Include="admin\AnnualPassCard\StatsResponse.ashx" />
     <None Include="Code\Models\Main.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Main.designer.cs</LastGenOutput>

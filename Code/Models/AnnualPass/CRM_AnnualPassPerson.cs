@@ -115,6 +115,14 @@ namespace CRM.Code.Models
             }
         }
 
+        public long StartDate_T
+        {
+            get
+            {
+                return this.CRM_AnnualPass.StartDate.Ticks;
+            }
+        }
+
         [IsListData("Start Date")]
         public string StartDate
         {

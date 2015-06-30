@@ -11,5 +11,14 @@ namespace CRM.admin.AnnualPassCard {
     
     
     public partial class Stats {
+        
+        /// <summary>
+        /// txtDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlDateCalendar txtDate;
     }
 }

@@ -22,6 +22,7 @@ namespace CRM.admin.AnnualPassCard
                         orderby c.Count() descending
                        select c;
 
+            txtDate.Value = DateTime.Now.Date;
         }
 
         

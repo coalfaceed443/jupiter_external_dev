@@ -26,6 +26,21 @@ namespace CRM.Code.Managers
                    select p;
         }
 
+        public int GetMembersOnJoinDate(DateTime DateTime)
+        {
+            return (from p in db.CRM_AnnualPasses
+                    where p.StartDate.Date == DateTime.Date
+                    select p).Count();
+        }
+
+        public int GetMembersOnDate(DateTime DateTime)
+        {
+            return (from p in db.CRM_AnnualPasses
+                   where p.StartDate.Date <= DateTime.Date
+                   where p.ExpiryDate.Date >= DateTime.Date
+                   select p).Count();
+        }
+
         public int NewestMemberID()
         {
             int latest = 100000;

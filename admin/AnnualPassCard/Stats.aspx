@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeBehind="Stats.aspx.cs" Inherits="CRM.admin.AnnualPassCard.Stats" %>
-<%@ Import NameSpace="System.Linq" %>
+
+<%@ Import Namespace="System.Linq" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHeader" runat="server">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
@@ -35,11 +36,11 @@
 
 
             <% while (financeActiveStartDate <= CRM.Code.Utils.Time.UKTime.Now)
-            {%>
+               {%>
 
             ['<%= financeActiveStartDate.ToString("MMMM yy")%>',
                 <% for (int i = 0; i < financeDataset.Count(); i++)
-                  { %>
+                   { %>
                 
                        <%= financeDataset[i].
                             CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == financeDataset[i].ID &&
@@ -63,7 +64,7 @@
                 'width': 1500,
                 'height': 800,
                 bars: 'vertical',
-                vAxis: {format:'###,###'},
+                vAxis: { format: '###,###' },
                 legend: { position: 'top' }
 
             };
@@ -82,7 +83,7 @@
 
             var data = new google.visualization.arrayToDataTable([
 
-                ['Year', 
+                ['Year',
                     <% foreach (CRM.Code.Models.CRM_AnnualPassType type in db.CRM_AnnualPassTypes)
                        {%>
                    '<%= type.Name%>',
@@ -93,12 +94,13 @@
 
 
             <% while (activeStartDate <= CRM.Code.Utils.Time.UKTime.Now)
-            {%>
+               {%>
 
-            [ '<%= activeStartDate.ToString("MMMM yy")%>', 
+            ['<%= activeStartDate.ToString("MMMM yy")%>', 
                 <% for (int i = 0; i < dataset.Count(); i++)
-                  { %>
-                       <%= dataset[i].CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == dataset[i].ID && r.StartDate <= activeStartDate && r.ExpiryDate >= activeStartDate).Count()%><% if (i +1 != dataset.Count()){%>,<%}%>
+                   { %>
+                       <%= dataset[i].CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == dataset[i].ID && r.StartDate <= activeStartDate && r.ExpiryDate >= activeStartDate).Count()%><% if (i + 1 != dataset.Count())
+                                                                                                                                                                                            {%>,<%}%>
                 <% }%> 
                 
                     <% activeStartDate = activeStartDate.AddMonths(1); %>
@@ -109,7 +111,7 @@
             ]);
 
 
-            
+
 
             var options = {
                 'title': 'Active Memberships by Type',
@@ -127,12 +129,12 @@
         function drawTimeline() {
             <% DateTime startDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
 
-            
+
             var data = google.visualization.arrayToDataTable([
               ['Month', 'Signups', 'Renewals', 'Total'],
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
-            {%>
+               {%>
 
                 ['<%= startDate.ToString("MMM yy")%>',
                     <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year)
@@ -161,15 +163,15 @@
         }
 
         function drawTotalMembers() {
-            
+
             <% startDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
 
-            
+
             var data = google.visualization.arrayToDataTable([
               ['Month', 'Total Susbcribers'],
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
-            {%>
+               {%>
                 ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= startDate && r.ExpiryDate >= startDate).Count()%>],
                 
                     <% startDate = startDate.AddMonths(1); %>
@@ -180,7 +182,7 @@
             var chart = new google.visualization.LineChart(document.getElementById('memberTimelineTotal'));
 
             var options = {
-                'title':' Memberships total active, during the past 36 months',
+                'title': ' Memberships total active, during the past 36 months',
                 'width': 550,
                 'height': 300,
                 is3D: true,
@@ -192,13 +194,13 @@
 
         function amountPaid() {
             <% startDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
-            
+
             var data = google.visualization.arrayToDataTable([
               ['Month', 'Total (£)'],
 
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
-            {%>
+               {%>
                 ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= startDate && r.ExpiryDate >= startDate).Sum(r => r.AmountPaid)%>],
 
                     <% startDate = startDate.AddMonths(1); %>
@@ -226,7 +228,7 @@
 
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
-            {%>
+               {%>
                 ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year).Sum(r => r.AmountPaid)%>],
 
                     <% startDate = startDate.AddMonths(1); %>
@@ -257,7 +259,7 @@
 
             data.addRows([
                     <% for (int i = 0; i < methods.Count(); i++)
-        { %>
+                       { %>
                     ['<%= methods[i].Value%>', <%= subscribers.Where(r => r.PaymentMethod == methods[i].Key).Count()%>],
                 <% }%>
             ]);
@@ -279,7 +281,7 @@
             var data = google.visualization.arrayToDataTable([
               ['Town City', 'Subscribers'],
                <% foreach (IGrouping<string, CRM.Code.Models.CRM_Person> item in GeoMember)
-         {
+                  {
          %>
                ['<%= item.Key.Replace("'", "").Replace("\"", "") %>',
                     <%= item.Count()%>],
@@ -289,7 +291,7 @@
 
 
             var options = {
-                chart: {title: 'Member locations'},
+                chart: { title: 'Member locations' },
                 width: 900,
                 legend: { position: 'none' },
                 bars: 'horizontal', // Required for Material Bar Charts.
@@ -304,13 +306,45 @@
             chart.draw(data, options);
         };
 
+        $(function () {
+
+            $("#ctl00_fullWidthContent_txtDate_txtDate").on("change", DateFilter);
+
+            DateFilter();
+
+        })
+
+        function DateFilter() {
+
+
+            var userDate = $("#ctl00_fullWidthContent_txtDate_txtDate").val();
+
+
+            var rbMembersActive = $("#rbMembersActive");
+
+            $.ajax({
+                type: "POST",
+                url: "StatsResponse.ashx",
+                data: { type: "bydate", date: userDate },
+                dataType: "json",
+                success: function (response) {
+                    console.log("success");
+                    console.log(response);
+
+                    $("#spnMembersOnDate").text(response.ActiveOnDate);
+                    $("#spnJoinedOnDate").text(response.JoinedOnDate);;
+
+                }
+            });
+        }
+
+
     </script>
 
 
     <style type="text/css">
-
         .graph {
-            float:left;
+            float: left;
         }
     </style>
 
@@ -318,8 +352,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="server">
     <div class="topContentBox">
         <div class="contentBoxTop">
-            <h3>
-                Members Report</h3>
+            <h3>Members Report</h3>
         </div>
 
 
@@ -330,57 +363,51 @@
 
 <asp:Content ID="cntFullWidth" ContentPlaceHolderID="fullWidthContent" runat="server">
 
-        
-         <div class="innerContentForm" style="width:100%;">
-             
-             
-             <div id="financeByType" class="graph">
-                 
-                 Loading...
 
-             </div>
-             
-
-             <div id="membershipByType" class="graph">
-                 
-                 Loading...
-
-             </div>
-             
-             <div id="paymentMethods" class="graph">
-
-                 Loading...
-             </div>
-
-             <div id="memberTimeline" class="graph">
-
-                 Loading...
-             </div>
-             
-             <div id="memberTimelineTotal" class="graph">
-
-                 Loading...
-             </div>
-             
-             <div id="memberRevenueActive" class="graph">
-
-                 Loading...
-             </div>
-
-             <div id="memberActualRevenue" class="graph">
-
-                 Loading...
-             </div>
-
-             
-             <div id="geoMap" class="graph" style="width:90%;height:800px;margin:0 auto;text-align:center;">
-
-                 Loading...
-             </div>
-             
+    <div class="innerContentForm" style="width: 100%;">
 
 
-         </div>
+        <div id="financeByType" class="graph">
+            Loading...
+
+        </div>
+
+
+        <div id="membershipByType" class="graph">
+            Loading...
+
+        </div>
+
+        <div id="paymentMethods" class="graph">
+            Loading...
+        </div>
+
+        <div id="memberTimeline" class="graph">
+            Loading...
+        </div>
+
+        <div id="memberTimelineTotal" class="graph">
+            Loading...
+        </div>
+
+        <div id="memberRevenueActive" class="graph">
+            Loading...
+        </div>
+
+        <div id="memberActualRevenue" class="graph">
+            Loading...
+        </div>
+
+        <div id="memberByDate" class="graph" style="width:500px;">
+            <h5 style="text-align: center; margin-top: 20px;">By Date</h5>
+            <ucUtil:DateCalendar ID="txtDate" runat="server" />
+            <label><span id="spnMembersOnDate"></span> Members active on date</label>
+            <label><span id="spnJoinedOnDate"></span> Members joined on date</label>
+
+        </div>
+
+
+    </div>
 
 
 </asp:Content>
