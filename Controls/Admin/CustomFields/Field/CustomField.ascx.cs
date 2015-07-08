@@ -38,7 +38,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                     case (byte)CRM_FormField.Types.DropDownList:
                         ddlDropDownList.Visible = true;
 
-                        foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.OrderBy(a => a.OrderNo))
+                        foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.Where(r => r.IsActive && !r.IsArchived).OrderBy(a => a.OrderNo))
                         {
                             if (!ddlDropDownList.Items.Contains(new ListItem(item.Label, item.Label)))
                             {
@@ -55,7 +55,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                         break;
                     case (byte)CRM_FormField.Types.MultipleCheckBoxes:
                         pnlMultipleCheckBox.Visible = true;
-                        foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.OrderBy(a => a.OrderNo))
+                        foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.Where(r => r.IsActive && !r.IsArchived).OrderBy(a => a.OrderNo))
                         {
                             chkBoxList.Items.Add(new ListItem(item.Label, item.Label));
                         }
@@ -63,7 +63,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                         break;
                     case (byte)CRM_FormField.Types.MultipleRadioButtons:
                         pnlMultipleRadioButton.Visible = true;
-                        foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.OrderBy(a => a.OrderNo))
+                        foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.Where(r => r.IsActive && !r.IsArchived).OrderBy(a => a.OrderNo))
                         {
                             radBtnList.Items.Add(new ListItem(item.Label, item.Label));
                         }
