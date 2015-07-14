@@ -1017,7 +1017,7 @@ namespace CRM.Code.Models
 
         public static IEnumerable<CRM_Person> BaseSet(MainDataContext db)
         {
-            return db.CRM_Persons;
+            return db.CRM_Persons.Where(r => !r.IsArchived);
         }
 
         public IEnumerable<IDuplicate> GetBaseSet(MainDataContext db)
