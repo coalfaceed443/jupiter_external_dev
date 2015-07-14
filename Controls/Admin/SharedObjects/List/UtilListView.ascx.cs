@@ -410,7 +410,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
 
             if (chkGroupByAddress.Checked)
             {
-                IEnumerable<IGrouping<int?, ListData>> groupset = data.GroupBy(g => g.AddressID);
+                IEnumerable<IGrouping<string, ListData>> groupset = data.GroupBy(g => g.Address);
 
                 var recordsWithAdress= groupset.Where(c => c.Key != null).Select(c => c.First());
                 var recordsWithoutAddress = groupset.Where(c => c.Key == null).SelectMany(c => c);
@@ -586,6 +586,7 @@ namespace CRM.Controls.Admin.SharedObjects.List
                 query.Remove("mailout");
                 query.Remove("emailing");
                 query.Remove("groupbyrel");
+                query.Remove("groupbyaddress");
             }
 
             string redirect = Request.Url.AbsolutePath + (query.Count == 0 ? "?" : "?" + query + "&") + "query=" + ddlExistingQueries.SelectedValue;

@@ -30,6 +30,18 @@ namespace CRM.Code.Helpers
             }
         }
 
+        public string Address
+        {
+            get
+            {
+                if (DataItem is IContact && ((IContact)DataItem).PrimaryAddress != null)
+                    return ((IContact)DataItem).PrimaryAddress.FormattedAddress;
+                else
+                    return null;
+
+            }
+        }
+
         public int? AddressID
         {
             get
