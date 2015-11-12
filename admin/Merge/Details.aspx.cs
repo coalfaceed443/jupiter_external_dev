@@ -423,10 +423,11 @@ namespace CRM.admin.Merge
             lblOption.InnerText = item.Label;
             lblOption.Attributes["for"] = chk.ClientID;
 
+            /*
             if (item.ID == 18 && Entity.BasketContents.Contains("Event"))
             {
                 chk.Checked = true;
-            }
+            }*/
 
             if (item.ID == 20)
             {
