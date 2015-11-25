@@ -229,7 +229,7 @@
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
                {%>
-                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year).Sum(r => r.AmountPaid)%>],
+                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year).Sum(r => (decimal?)r.AmountPaid)%>],
 
                     <% startDate = startDate.AddMonths(1); %>
             <%}%>
