@@ -869,6 +869,7 @@ namespace CRM.Code.Models
             get
             {
                 List<string> tokens = new List<string>();
+                tokens.AddRange(JSONSet.ConvertToTokens(this.ID.ToString()));
                 tokens.AddRange(JSONSet.ConvertToTokens(this.Fullname));
                 tokens.AddRange(JSONSet.ConvertToTokens(this.PreviousNames));
                 tokens.AddRange(this.CRM_Address.Tokens);

@@ -19,6 +19,7 @@
                 cache:  false
             },
             limit: 35,
+            valueKey: "objreference",
             template: [
                     '<div style="height:40px;" title="{{title}}" class="tt-suggestion-<%= this.ClientID %>"><input type="hidden" value="{{objreference}}" /><img src="{{image}}" alt="" style="vertical-align:middle;float:left;padding-right:20px;width:40px;height:30px;">',
                     '<p class="repo-name"><span class="name">{{name}}</span> <span class="alt-reference">{{typeName}}</p></div>'
