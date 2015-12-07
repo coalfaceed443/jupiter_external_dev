@@ -24,12 +24,12 @@ namespace CRM.admin.Merge
 
 
             Dictionary<byte, string> comparibles = new Dictionary<byte, string>();
-
-            comparibles.Add((byte)CRM_Person.SearchKeys.Firstname, Entity.Firstname);
-            comparibles.Add((byte)CRM_Person.SearchKeys.Lastname, Entity.Lastname);
+            
+            comparibles.Add((byte)CRM_Person.SearchKeys.DoB, "");
             comparibles.Add((byte)CRM_Person.SearchKeys.PrimaryEmail, Entity.Email);
             comparibles.Add((byte)CRM_Person.SearchKeys.Postcode, Entity.Postcode);
             comparibles.Add((byte)CRM_Person.SearchKeys.Telephone, Entity.Telephone);
+            comparibles.Add((byte)CRM_Person.SearchKeys.Fullname, Entity.Firstname + " " + Entity.Lastname);
 
 
             if (!Page.IsPostBack)
@@ -39,11 +39,11 @@ namespace CRM.admin.Merge
 
 
                 var dupes = from p in CRM_Person.BaseSet(db)
-                            where p.SearchDictionary.Any(c => comparibles.ContainsKey(c.Key) && comparibles[c.Key].Trim() != "" && c.Value.ToLower().Trim() == (comparibles[c.Key]))
+                            where p.SearchDictionary.Any(c => comparibles.ContainsKey(c.Key) && comparibles[c.Key].Trim() != "" && c.Value.ToLower().Trim() == (comparibles[c.Key].ToLower().Trim()))
                             orderby p.SearchDictionary.Where(c => comparibles.ContainsKey(c.Key) && comparibles[c.Key].Trim() != "" && c.Value.ToLower().Trim() == (comparibles[c.Key])).Count() descending
                             select (object)p;
 
-                lvItems.DataSource = dupes.Take(3);
+                lvItems.DataSource = dupes.Take(20);
                 lvItems.DataBind();
 
                 ddlTitle.DataSource = from p in db.CRM_Titles

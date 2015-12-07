@@ -24,6 +24,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2389,6 +2390,9 @@
       <DependentUpon>UserControlButton.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduled\duplicates.ashx.cs">
+      <DependentUpon>duplicates.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Swap.aspx.cs">
       <DependentUpon>Swap.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2438,7 +2442,6 @@
     <Folder Include="App_Data\PiczardTempFiles\" />
     <Folder Include="Code\Utils\CampaignMonitor\" />
     <Folder Include="Controls\Site\" />
-    <Folder Include="Scheduled\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\MasterPage.master" />
@@ -2465,6 +2468,7 @@
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <Content Include="TaskScript\art_booking_import.ashx" />
     <Content Include="TaskScript\Art_Booking.csv" />
+    <Content Include="Scheduled\duplicates.ashx" />
     <None Include="TaskScript\ConstTypes.csv" />
     <Content Include="TaskScript\expiry.ashx" />
     <Content Include="TaskScript\EdinSchoolsImport.ashx" />

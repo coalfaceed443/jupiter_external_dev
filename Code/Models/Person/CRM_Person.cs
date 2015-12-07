@@ -885,7 +885,8 @@ namespace CRM.Code.Models
             DoB,
             PrimaryEmail,
             Telephone,
-            Postcode
+            Postcode,
+            Fullname
         }
 
         public static string DataKey
@@ -905,12 +906,11 @@ namespace CRM.Code.Models
             {
                 return new Dictionary<byte, string>()
                 {
-                    {(byte)SearchKeys.Firstname, this.Firstname},
-                    {(byte)SearchKeys.Lastname, this.Lastname},
                     {(byte)SearchKeys.DoB, this.DateOfBirthOutput},
                     {(byte)SearchKeys.PrimaryEmail, this.PrimaryEmail},
                     {(byte)SearchKeys.Telephone, this.PrimaryTelephone},
-                    {(byte)SearchKeys.Postcode, this.Postcode}
+                    {(byte)SearchKeys.Postcode, this.Postcode},
+                    {(byte)SearchKeys.Fullname, this.Firstname + " " + this.Lastname}
                 };
             }
         }

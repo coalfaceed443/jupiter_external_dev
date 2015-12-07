@@ -111,9 +111,9 @@
             <asp:ValidationSummary ID="ValidationSummary1" CssClass="validation" EnableClientScript="false"
                 runat="server" />
 
-                
+                <!--
     <ucUtil:Duplicate ID="ucDuplicate" runat="server" />
-
+            -->
             <table class="details searchTableLeft">
                 <tr>
                     <td>
