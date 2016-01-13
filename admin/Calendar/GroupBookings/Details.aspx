@@ -157,6 +157,7 @@
 
             </table>
             <table class="details searchTableRight">
+                <!--
                 <tr>
                     <td>
                         <label>
@@ -166,7 +167,7 @@
                     <td>
                         <asp:CheckBox ID="chkIsBookshopRequired" runat="server" />
                     </td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td>
                         <label>
@@ -260,6 +261,7 @@
             </table>
             <br class="clearFix" />
             <br class="clearFix" />
+            <!--
             <table class="details">
                  <tr>
                     <td>
@@ -273,7 +275,7 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
-            </table>
+            </table>-->
 
             <div class="editor">
                 <label>Further Details</label>

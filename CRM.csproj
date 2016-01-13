@@ -112,6 +112,8 @@
     <Content Include="admin\Families\Details.aspx" />
     <Content Include="admin\Families\List.aspx" />
     <Content Include="admin\Fundraising\Gifts\List.aspx" />
+    <Content Include="admin\Fundraising\ImportGiftaid.aspx" />
+    <Content Include="admin\Fundraising\Split.aspx" />
     <Content Include="admin\Merge\Details.aspx" />
     <Content Include="admin\Merge\List.aspx" />
     <Content Include="admin\Organisation\Persons\FullList.aspx" />
@@ -1174,6 +1176,20 @@
     </Compile>
     <Compile Include="admin\Fundraising\Gifts\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\ImportGiftaid.aspx.cs">
+      <DependentUpon>ImportGiftaid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\ImportGiftaid.aspx.designer.cs">
+      <DependentUpon>ImportGiftaid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Fundraising\Split.aspx.cs">
+      <DependentUpon>Split.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Fundraising\Split.aspx.designer.cs">
+      <DependentUpon>Split.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Merge\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>

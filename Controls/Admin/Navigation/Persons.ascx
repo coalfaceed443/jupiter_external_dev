@@ -31,11 +31,12 @@
         <div class="sectionMenuItem" runat="server" id="navDonations">
             <a href='/admin/person/donations/list.aspx?id=<%= Entity.ID %>' title="Donations this person has made">Donations</a>
         </div>
-                
+               
+        <!--
         <div class="sectionMenuItem" runat="server" id="navGiftAid">
             <a href='/admin/person/gift/list.aspx?id=<%= Entity.ID %>' title="Gift aid profiles for this person">Gift Aid</a>
         </div>
-
+        -->
         <div class="sectionMenuItem" runat="server" id="navAttendance">
             <a href='/admin/person/attendance/list.aspx?id=<%= Entity.ID %>' title="Any records of attendance for this person">Attendance</a>
         </div>

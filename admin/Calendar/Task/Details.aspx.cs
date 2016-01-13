@@ -69,8 +69,7 @@ namespace CRM.admin.Calendar.Task
                 }
 
             }
-
-            LoadParticipantList();
+            
 
         }
 
@@ -178,8 +177,7 @@ namespace CRM.admin.Calendar.Task
 
         private void LoadParticipantList()
         {
-
-
+            
             ddlAddParticipant.DataSource = from a in db.Admins.ToArray()
                                            where (Task != null && !Task.CRM_TaskParticipants.Any(t => t.AdminID == a.ID)) || Task == null
                                            orderby a.FirstName

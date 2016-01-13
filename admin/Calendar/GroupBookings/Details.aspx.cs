@@ -214,6 +214,7 @@ namespace CRM.admin.Calendar.GroupBookings
                 oldEntity = CRM_CalendarGroupBooking.ShallowCopy();
             }
 
+
             CRM_CalendarGroupBooking.IsBookshopRequired = chkIsBookshopRequired.Checked;
             CRM_CalendarGroupBooking.Within2HourSlot = chkIsWithin2Hours.Checked;
             CRM_CalendarGroupBooking.IsPackedLunchSpace = chkRequiresLunch.Checked;
@@ -229,6 +230,7 @@ namespace CRM.admin.Calendar.GroupBookings
 
             CRM_CalendarGroupBooking.SchoolOrgReference = org.Reference;
             CRM_CalendarGroupBooking.OrganisationName = org.Name;
+            CRM_CalendarGroupBooking.CRM_SchoolID = null;
 
             CRM_CalendarGroupBooking.ActualAdults = Convert.ToInt32(txtAttendedAdults.Text);
             CRM_CalendarGroupBooking.ActualChildren = Convert.ToInt32(txtAttendedChildren.Text);

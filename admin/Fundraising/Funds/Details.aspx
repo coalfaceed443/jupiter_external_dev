@@ -45,7 +45,7 @@
             
             <br class="clearFix" />
             <label>Thank you Template</label>
-                    <ucUtil:TextEditor ID="txtTemplate" runat="server" Required="true" />
+                    <ucUtil:TextEditor ID="txtTemplate" runat="server" Required="true" Name="Thank you template" />
            
             <br class="clearFix" />
             <br class="clearFix" />

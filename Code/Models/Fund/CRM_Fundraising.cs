@@ -87,6 +87,14 @@ namespace CRM.Code.Models
             }
         }
 
+        [IsListData("Gift Aid Claimed")]
+        public string GiftAidClaimedOutput
+        {
+            get
+            {
+                return this.GiftClaimed != null ? ((DateTime)this.GiftClaimed).ToString("dd/MM/yyyy") : "Unclaimed";
+            }
+        }
 
         public string DetailsURL
         {

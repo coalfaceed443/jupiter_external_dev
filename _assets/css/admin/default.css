@@ -2135,6 +2135,10 @@ footer span
     display:none;
 }
 
+    .calendar-week-day-event .venue-item {
+     color:black;
+    }
+
 .calendar-week-day-event .venue-icon
 {
     position:absolute;

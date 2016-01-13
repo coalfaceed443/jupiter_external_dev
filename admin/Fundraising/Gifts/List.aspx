@@ -10,7 +10,7 @@
 
         <div class="innerContentForm">
 
-        <p class="top">Want to manage individual gift aid profiles?  Use the 'Gift aid profiles' against each person record to manage their logs.</p>       
+        <%--<p class="top">Want to manage individual gift aid profiles?  Use the 'Gift aid profiles' against each person record to manage their logs.</p>   --%>    
 
         <br class="clearFix" />
         <ucUtil:ListView ID="ucList" runat="server" />

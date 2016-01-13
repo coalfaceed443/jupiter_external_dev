@@ -32,7 +32,7 @@
                             Venue: *</label>
                     </td>
                     <td>
-                        <ucUtil:AutoComplete ID="acVenue" runat="server" Required="true" />
+                        <ucUtil:AutoComplete ID="acVenue" runat="server" Required="true" Name="Venue" />
                         
                     </td>
                     <td>

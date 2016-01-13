@@ -89,8 +89,7 @@ namespace CRM.Admin
 
             menuItems.Add(new AdminMenuListItem("/admin/fundraising/list.aspx", "Fundraising", new List<MenuListItem>()
                 {
-                    new MenuListItem("/admin/fundraising/gifts/list.aspx", "Fundraising Records"),      
-
+                    new MenuListItem("/admin/fundraising/split.aspx", "Split Records")
                 }));
 
             menuItems.Add(new AdminMenuListItem("#", "Dropdowns", new List<MenuListItem>()

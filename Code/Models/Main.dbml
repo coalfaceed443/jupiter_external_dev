@@ -14,13 +14,13 @@
       <Column Name="AddressLine5" Type="System.String" CanBeNull="false" />
       <Association Name="CRM_Address_CRM_Venue" Member="CRM_Venues" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Venue" />
       <Association Name="CRM_Address_CRM_Venue1" Member="CRM_Venues1" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Venue" />
-      <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Fundraisings" ThisKey="ID" OtherKey="GiftAidAddressID" Type="CRM_Fundraising" />
       <Association Name="CRM_Address_CRM_School" Member="CRM_Schools" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_School" />
       <Association Name="CRM_Address_CRM_Person" Member="CRM_Persons" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Person" />
       <Association Name="CRM_Address_CRM_Person1" Member="CRM_Persons1" ThisKey="ID" OtherKey="PrimaryAddressID" Type="CRM_Person" />
       <Association Name="CRM_Address_CRM_PersonPersonal" Member="CRM_PersonPersonals" ThisKey="ID" OtherKey="AddressID" Type="CRM_PersonPersonal" />
       <Association Name="CRM_Address_CRM_Organisation" Member="CRM_Organisations" ThisKey="ID" OtherKey="CRM_AddressID" Type="CRM_Organisation" />
       <Association Name="CRM_Address_CRM_Calendar" Member="CRM_Calendars" ThisKey="ID" OtherKey="InvoiceAddressID" Type="CRM_Calendar" />
+      <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Fundraisings" ThisKey="ID" OtherKey="GiftAidAddressID" Type="CRM_Fundraising" />
       <Association Name="Country_CRM_Address" Member="Country" ThisKey="CountryID" OtherKey="ID" Type="Country" IsForeignKey="true" />
     </Type>
   </Table>
@@ -454,31 +454,6 @@
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="CRM_OrganisationType_CRM_Organisation" Member="CRM_Organisations" ThisKey="ID" OtherKey="CRM_OrganisationTypeID" Type="CRM_Organisation" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CRM_Fundraising" Member="CRM_Fundraisings">
-    <Type Name="CRM_Fundraising">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ContactName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="ContactType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="IsInKind" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PledgedAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="IsGiftAid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="GiftAidFirstname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="GiftAidLastname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="GiftAidAddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsRecurring" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="RecurringEveryWeeks" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CRM_PaymentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CRM_FundraisingReasonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Reference" Type="System.String" DbType="VarChar(22)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="CRM_Fundraising_CRM_FundraisingSplit" Member="CRM_FundraisingSplits" ThisKey="ID" OtherKey="CRM_FundRaisingID" Type="CRM_FundraisingSplit" />
-      <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Address" ThisKey="GiftAidAddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
-      <Association Name="CRM_FundraisingReason_CRM_Fundraising" Member="CRM_FundraisingReason" ThisKey="CRM_FundraisingReasonID" OtherKey="ID" Type="CRM_FundraisingReason" IsForeignKey="true" />
-      <Association Name="CRM_PaymentType_CRM_Fundraising" Member="CRM_PaymentType" ThisKey="CRM_PaymentTypeID" OtherKey="ID" Type="CRM_PaymentType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CRM_SystemAccess" Member="CRM_SystemAccesses">
@@ -1080,6 +1055,54 @@
       <Column Name="JointAtoBID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="JointBtoAID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="JointThisReferenceAB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_Fundraising" Member="CRM_Fundraisings">
+    <Type Name="CRM_Fundraising">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PrimaryContactReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInKind" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PledgedAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsGiftAid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidFirstname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidLastname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GiftAidAddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsRecurring" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RecurringEveryWeeks" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PaymentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_FundraisingReasonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(22)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="GiftClaimed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CRM_Fundraising_CRM_FundraisingSplit" Member="CRM_FundraisingSplits" ThisKey="ID" OtherKey="CRM_FundRaisingID" Type="CRM_FundraisingSplit" />
+      <Association Name="CRM_Fundraising_CRM_GiftAidLogItem" Member="CRM_GiftAidLogItems" ThisKey="ID" OtherKey="CRM_FundraisingID" Type="CRM_GiftAidLogItem" />
+      <Association Name="CRM_Address_CRM_Fundraising" Member="CRM_Address" ThisKey="GiftAidAddressID" OtherKey="ID" Type="CRM_Address" IsForeignKey="true" />
+      <Association Name="CRM_FundraisingReason_CRM_Fundraising" Member="CRM_FundraisingReason" ThisKey="CRM_FundraisingReasonID" OtherKey="ID" Type="CRM_FundraisingReason" IsForeignKey="true" />
+      <Association Name="CRM_PaymentType_CRM_Fundraising" Member="CRM_PaymentType" ThisKey="CRM_PaymentTypeID" OtherKey="ID" Type="CRM_PaymentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_GiftAidLog" Member="CRM_GiftAidLogs">
+    <Type Name="CRM_GiftAidLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DataStore" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FileStore" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IncomingFileType" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_GiftAidLog_CRM_GiftAidLogItem" Member="CRM_GiftAidLogItems" ThisKey="ID" OtherKey="CRM_GiftAidLogID" Type="CRM_GiftAidLogItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_GiftAidLogItem" Member="CRM_GiftAidLogItems">
+    <Type Name="CRM_GiftAidLogItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_GiftAidLogID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_FundraisingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_Fundraising_CRM_GiftAidLogItem" Member="CRM_Fundraising" ThisKey="CRM_FundraisingID" OtherKey="ID" Type="CRM_Fundraising" IsForeignKey="true" />
+      <Association Name="CRM_GiftAidLog_CRM_GiftAidLogItem" Member="CRM_GiftAidLog" ThisKey="CRM_GiftAidLogID" OtherKey="ID" Type="CRM_GiftAidLog" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GetNewId" Method="GetNewId" IsComposable="true">
