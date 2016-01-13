@@ -12,7 +12,7 @@
 
         <div class="innerContentForm">
 
-        <p class="top"><a href="/admin/person/list.aspx">Use the fundraising tab to create a new donation</a></p>               
+        <p class="top"><a href="/admin/fundraising/list.aspx">Use the fundraising tab to create a new donation</a></p>               
 
         <ucUtil:ListView ID="ucList" runat="server" />
 
