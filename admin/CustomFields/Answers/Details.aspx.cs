@@ -45,6 +45,7 @@ namespace CRM.admin.CustomFields.Answers
             {
                 if (CRM_FormFieldItem != null)
                 {
+                    txtName.TextBox.Enabled = false;
                     PopulateFields();
                 }
             }
@@ -84,26 +85,16 @@ namespace CRM.admin.CustomFields.Answers
                 CRM_FormFieldItem = new CRM_FormFieldItem();
                 CRM_FormFieldItem.CRM_FormFieldID = Entity.ID;
                 CRM_FormFieldItem.OrderNo = Ordering.GetNextOrderID(db.CRM_FormFieldItems);
+                CRM_FormFieldItem.Label = txtName.Text; // Cannot let user change name due to the bad relation between FormFieldItems and Answers (all values bundled into a string).  Would need to be done in a script to ensure data is not lost.
                 db.CRM_FormFieldItems.InsertOnSubmit(CRM_FormFieldItem);
             }
             string oldName = CRM_FormFieldItem.Label;
 
             // common //
-            CRM_FormFieldItem.Label = txtName.Text;
             CRM_FormFieldItem.IsActive = chkIsActive.Checked;
             db.SubmitChanges();
 
             string newName = txtName.Text;
-
-            if (oldName != newName)
-            {
-
-                foreach (CRM_FormFieldAnswer answer in CRM_FormFieldItem.CRM_FormField.CRM_FormFieldAnswers)
-                {
-                    if (oldName != null && newName != null)
-                    answer.Answer = answer.Answer.Replace(oldName, newName);
-                }
-            }
 
             db.SubmitChanges();
 
