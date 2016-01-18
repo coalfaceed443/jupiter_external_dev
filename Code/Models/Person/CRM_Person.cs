@@ -16,11 +16,12 @@ namespace CRM.Code.Models
     {
         public static string[] ConstituentTypes(this CRM_Person person, MainDataContext db)
         {
-            var answers = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.TargetReference == person.Reference && f.CRM_FormFieldID == 1);
+            IEnumerable<CRM_FormFieldResponse> answers = db.CRM_FormFieldResponses.Where(f => f.TargetReference == person.Reference && f.CRM_FormFieldID == 1);
 
             if (answers != null)
             {
-                return answers.Answer.Split(new string[] { "<br/>" }, StringSplitOptions.None);
+                
+                return answers.Select(s => s.CRM_FormFieldItem.Label).ToArray();
             }
             else return new string[] { };
 

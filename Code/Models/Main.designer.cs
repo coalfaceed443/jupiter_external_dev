@@ -262,6 +262,9 @@ namespace CRM.Code.Models
     partial void InsertCRM_GiftAidLogItem(CRM_GiftAidLogItem instance);
     partial void UpdateCRM_GiftAidLogItem(CRM_GiftAidLogItem instance);
     partial void DeleteCRM_GiftAidLogItem(CRM_GiftAidLogItem instance);
+    partial void InsertCRM_FormFieldResponse(CRM_FormFieldResponse instance);
+    partial void UpdateCRM_FormFieldResponse(CRM_FormFieldResponse instance);
+    partial void DeleteCRM_FormFieldResponse(CRM_FormFieldResponse instance);
     #endregion
 		
 		public MainDataContext() : 
@@ -915,6 +918,14 @@ namespace CRM.Code.Models
 			get
 			{
 				return this.GetTable<CRM_GiftAidLogItem>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_FormFieldResponse> CRM_FormFieldResponses
+		{
+			get
+			{
+				return this.GetTable<CRM_FormFieldResponse>();
 			}
 		}
 		
@@ -8864,6 +8875,8 @@ namespace CRM.Code.Models
 		
 		private EntitySet<CRM_FormFieldAnswer> _CRM_FormFieldAnswers;
 		
+		private EntitySet<CRM_FormFieldResponse> _CRM_FormFieldResponses;
+		
 		private EntityRef<_DataTable> @__DataTable;
 		
 		private bool serializing;
@@ -9101,6 +9114,25 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_FormField_CRM_FormFieldResponse", Storage="_CRM_FormFieldResponses", ThisKey="ID", OtherKey="CRM_FormFieldID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11, EmitDefaultValue=false)]
+		public EntitySet<CRM_FormFieldResponse> CRM_FormFieldResponses
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_FormFieldResponses.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_FormFieldResponses;
+			}
+			set
+			{
+				this._CRM_FormFieldResponses.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="_DataTable_CRM_FormField", Storage="__DataTable", ThisKey="_DataTableID", OtherKey="ID", IsForeignKey=true)]
 		public _DataTable _DataTable
 		{
@@ -9179,10 +9211,23 @@ namespace CRM.Code.Models
 			entity.CRM_FormField = null;
 		}
 		
+		private void attach_CRM_FormFieldResponses(CRM_FormFieldResponse entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_FormField = this;
+		}
+		
+		private void detach_CRM_FormFieldResponses(CRM_FormFieldResponse entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_FormField = null;
+		}
+		
 		private void Initialize()
 		{
 			this._CRM_FormFieldItems = new EntitySet<CRM_FormFieldItem>(new Action<CRM_FormFieldItem>(this.attach_CRM_FormFieldItems), new Action<CRM_FormFieldItem>(this.detach_CRM_FormFieldItems));
 			this._CRM_FormFieldAnswers = new EntitySet<CRM_FormFieldAnswer>(new Action<CRM_FormFieldAnswer>(this.attach_CRM_FormFieldAnswers), new Action<CRM_FormFieldAnswer>(this.detach_CRM_FormFieldAnswers));
+			this._CRM_FormFieldResponses = new EntitySet<CRM_FormFieldResponse>(new Action<CRM_FormFieldResponse>(this.attach_CRM_FormFieldResponses), new Action<CRM_FormFieldResponse>(this.detach_CRM_FormFieldResponses));
 			this.@__DataTable = default(EntityRef<_DataTable>);
 			OnCreated();
 		}
@@ -9228,7 +9273,11 @@ namespace CRM.Code.Models
 		
 		private bool _IsArchived;
 		
+		private EntitySet<CRM_FormFieldResponse> _CRM_FormFieldResponses;
+		
 		private EntityRef<CRM_FormField> _CRM_FormField;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -9383,6 +9432,25 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_FormFieldItem_CRM_FormFieldResponse", Storage="_CRM_FormFieldResponses", ThisKey="ID", OtherKey="CRM_FormFieldItemID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
+		public EntitySet<CRM_FormFieldResponse> CRM_FormFieldResponses
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_FormFieldResponses.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_FormFieldResponses;
+			}
+			set
+			{
+				this._CRM_FormFieldResponses.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_FormField_CRM_FormFieldItem", Storage="_CRM_FormField", ThisKey="CRM_FormFieldID", OtherKey="ID", IsForeignKey=true)]
 		public CRM_FormField CRM_FormField
 		{
@@ -9437,8 +9505,21 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		private void attach_CRM_FormFieldResponses(CRM_FormFieldResponse entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_FormFieldItem = this;
+		}
+		
+		private void detach_CRM_FormFieldResponses(CRM_FormFieldResponse entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_FormFieldItem = null;
+		}
+		
 		private void Initialize()
 		{
+			this._CRM_FormFieldResponses = new EntitySet<CRM_FormFieldResponse>(new Action<CRM_FormFieldResponse>(this.attach_CRM_FormFieldResponses), new Action<CRM_FormFieldResponse>(this.detach_CRM_FormFieldResponses));
 			this._CRM_FormField = default(EntityRef<CRM_FormField>);
 			OnCreated();
 		}
@@ -9448,6 +9529,20 @@ namespace CRM.Code.Models
 		public void OnDeserializing(StreamingContext context)
 		{
 			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
 		}
 	}
 	
@@ -27557,6 +27652,264 @@ namespace CRM.Code.Models
 		{
 			this._CRM_Fundraising = default(EntityRef<CRM_Fundraising>);
 			this._CRM_GiftAidLog = default(EntityRef<CRM_GiftAidLog>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_FormFieldResponse")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_FormFieldResponse : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _TargetReference;
+		
+		private string _Answer;
+		
+		private System.Nullable<int> _CRM_FormFieldItemID;
+		
+		private int _CRM_FormFieldID;
+		
+		private EntityRef<CRM_FormField> _CRM_FormField;
+		
+		private EntityRef<CRM_FormFieldItem> _CRM_FormFieldItem;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTargetReferenceChanging(string value);
+    partial void OnTargetReferenceChanged();
+    partial void OnAnswerChanging(string value);
+    partial void OnAnswerChanged();
+    partial void OnCRM_FormFieldItemIDChanging(System.Nullable<int> value);
+    partial void OnCRM_FormFieldItemIDChanged();
+    partial void OnCRM_FormFieldIDChanging(int value);
+    partial void OnCRM_FormFieldIDChanged();
+    #endregion
+		
+		public CRM_FormFieldResponse()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetReference", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string TargetReference
+		{
+			get
+			{
+				return this._TargetReference;
+			}
+			set
+			{
+				if ((this._TargetReference != value))
+				{
+					this.OnTargetReferenceChanging(value);
+					this.SendPropertyChanging();
+					this._TargetReference = value;
+					this.SendPropertyChanged("TargetReference");
+					this.OnTargetReferenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Answer", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public string Answer
+		{
+			get
+			{
+				return this._Answer;
+			}
+			set
+			{
+				if ((this._Answer != value))
+				{
+					this.OnAnswerChanging(value);
+					this.SendPropertyChanging();
+					this._Answer = value;
+					this.SendPropertyChanged("Answer");
+					this.OnAnswerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_FormFieldItemID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<int> CRM_FormFieldItemID
+		{
+			get
+			{
+				return this._CRM_FormFieldItemID;
+			}
+			set
+			{
+				if ((this._CRM_FormFieldItemID != value))
+				{
+					if (this._CRM_FormFieldItem.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_FormFieldItemIDChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_FormFieldItemID = value;
+					this.SendPropertyChanged("CRM_FormFieldItemID");
+					this.OnCRM_FormFieldItemIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_FormFieldID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public int CRM_FormFieldID
+		{
+			get
+			{
+				return this._CRM_FormFieldID;
+			}
+			set
+			{
+				if ((this._CRM_FormFieldID != value))
+				{
+					if (this._CRM_FormField.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_FormFieldIDChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_FormFieldID = value;
+					this.SendPropertyChanged("CRM_FormFieldID");
+					this.OnCRM_FormFieldIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_FormField_CRM_FormFieldResponse", Storage="_CRM_FormField", ThisKey="CRM_FormFieldID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_FormField CRM_FormField
+		{
+			get
+			{
+				return this._CRM_FormField.Entity;
+			}
+			set
+			{
+				CRM_FormField previousValue = this._CRM_FormField.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_FormField.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_FormField.Entity = null;
+						previousValue.CRM_FormFieldResponses.Remove(this);
+					}
+					this._CRM_FormField.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_FormFieldResponses.Add(this);
+						this._CRM_FormFieldID = value.ID;
+					}
+					else
+					{
+						this._CRM_FormFieldID = default(int);
+					}
+					this.SendPropertyChanged("CRM_FormField");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_FormFieldItem_CRM_FormFieldResponse", Storage="_CRM_FormFieldItem", ThisKey="CRM_FormFieldItemID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_FormFieldItem CRM_FormFieldItem
+		{
+			get
+			{
+				return this._CRM_FormFieldItem.Entity;
+			}
+			set
+			{
+				CRM_FormFieldItem previousValue = this._CRM_FormFieldItem.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_FormFieldItem.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_FormFieldItem.Entity = null;
+						previousValue.CRM_FormFieldResponses.Remove(this);
+					}
+					this._CRM_FormFieldItem.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_FormFieldResponses.Add(this);
+						this._CRM_FormFieldItemID = value.ID;
+					}
+					else
+					{
+						this._CRM_FormFieldItemID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CRM_FormFieldItem");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_FormField = default(EntityRef<CRM_FormField>);
+			this._CRM_FormFieldItem = default(EntityRef<CRM_FormFieldItem>);
 			OnCreated();
 		}
 		

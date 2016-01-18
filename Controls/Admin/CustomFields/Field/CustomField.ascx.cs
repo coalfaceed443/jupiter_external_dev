@@ -40,9 +40,9 @@ namespace CRM.Controls.Admin.CustomFields.Form
 
                         foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.Where(r => r.IsActive && !r.IsArchived).OrderBy(a => a.OrderNo))
                         {
-                            if (!ddlDropDownList.Items.Contains(new ListItem(item.Label, item.Label)))
+                            if (!ddlDropDownList.Items.Contains(new ListItem(item.Label, item.ID.ToString())))
                             {
-                                ddlDropDownList.Items.Add(new ListItem(item.Label, item.Label));
+                                ddlDropDownList.Items.Add(new ListItem(item.Label, item.ID.ToString()));
                             }
                         }
 
@@ -57,7 +57,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                         pnlMultipleCheckBox.Visible = true;
                         foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.Where(r => r.IsActive && !r.IsArchived).OrderBy(a => a.OrderNo))
                         {
-                            chkBoxList.Items.Add(new ListItem(item.Label, item.Label));
+                            chkBoxList.Items.Add(new ListItem(item.Label, item.ID.ToString()));
                         }
 
                         break;
@@ -65,7 +65,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                         pnlMultipleRadioButton.Visible = true;
                         foreach (CRM_FormFieldItem item in CRM_FormField.CRM_FormFieldItems.Where(r => r.IsActive && !r.IsArchived).OrderBy(a => a.OrderNo))
                         {
-                            radBtnList.Items.Add(new ListItem(item.Label, item.Label));
+                            radBtnList.Items.Add(new ListItem(item.Label, item.ID.ToString()));
                         }
 
                         break;
@@ -73,37 +73,44 @@ namespace CRM.Controls.Admin.CustomFields.Form
             }
         }
 
-        public void Populate(string answer)
+        public void Populate(IEnumerable<CRM_FormFieldResponse> answers)
         {
             OrganiseForm();
             if (CRM_FormField != null)
             {
-                switch (CRM_FormField.Type)
+                if (answers.Any())
                 {
-                    case (byte)CRM_FormField.Types.SingleLineTextBox:
-                        txtSingleLineTextBox.Text = answer;
-                        break;
-                    case (byte)CRM_FormField.Types.MultiLineTextBox:
-                        txtMultiLineTextBox.Text = answer.Replace("<br/>", "\n");
-                        break;
-                    case (byte)CRM_FormField.Types.DropDownList:
-                        ddlDropDownList.SelectedValue = answer;
-                        break;
-                    case (byte)CRM_FormField.Types.SingleCheckBox:
-                        chkSingleCheckBox.Checked = answer == "Yes" ? true : false;
-                        break;
-                    case (byte)CRM_FormField.Types.MultipleCheckBoxes:
-                        foreach (ListItem item in chkBoxList.Items)
-                        {
-                            string[] items = answer.Split(new string[] { "<br/>" }, StringSplitOptions.RemoveEmptyEntries);
+                    switch (CRM_FormField.Type)
+                    {
+                        case (byte)CRM_FormField.Types.SingleLineTextBox:
+                            txtSingleLineTextBox.Text = answers.First().Answer;
+                            break;
+                        case (byte)CRM_FormField.Types.MultiLineTextBox:
+                            txtMultiLineTextBox.Text = answers.First().Answer;
+                            break;
+                        case (byte)CRM_FormField.Types.DropDownList:
+                            ddlDropDownList.SelectedValue = answers.First().CRM_FormFieldItemID.ToString();
+                            break;
+                        case (byte)CRM_FormField.Types.SingleCheckBox:
+                            chkSingleCheckBox.Checked = answers.First().Answer == "Yes" ? true : false;
+                            break;
+                        case (byte)CRM_FormField.Types.MultipleCheckBoxes:
+                            foreach (ListItem item in chkBoxList.Items)
+                            {
 
-                            if (items.Any(i => i.Trim().ToLower() == item.Text.Trim().ToLower()))
-                                item.Selected = true;
-                        }
-                        break;
-                    case (byte)CRM_FormField.Types.MultipleRadioButtons:
-                        radBtnList.SelectedValue = answer;
-                        break;
+                                foreach (CRM_FormFieldResponse answer in answers)
+                                {
+                                    if (item.Value == answer.CRM_FormFieldItemID.ToString())
+                                    {
+                                        item.Selected = true;
+                                    }
+                                }
+                            }
+                            break;
+                        case (byte)CRM_FormField.Types.MultipleRadioButtons:
+                            radBtnList.SelectedValue = answers.First().Answer;
+                            break;
+                    }
                 }
             }
         }
@@ -132,7 +139,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                         foreach (ListItem item in chkBoxList.Items)
                         {
                             if (item.Selected && !String.IsNullOrEmpty(returnValue))
-                                returnValue += "<br/>";
+                                returnValue += ",";
                             if (item.Selected)
                                 returnValue += item.Value;
                         }

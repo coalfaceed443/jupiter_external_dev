@@ -311,24 +311,20 @@ namespace CRM.admin.Merge
 
         protected void ApplyCustomField(CRM_Person Person, int formFieldID, int formFieldItemID)
         {
-            CRM_FormFieldAnswer answer = db.CRM_FormFieldAnswers.FirstOrDefault(f => f.CRM_FormFieldID == formFieldID && f.TargetReference == Person.Reference);
-
-            CRM_FormFieldItem item = db.CRM_FormFieldItems.FirstOrDefault(f => f.ID == formFieldItemID);
-
-            if (answer == null)
+            IEnumerable<CRM_FormFieldResponse> answers = 
+                db.CRM_FormFieldResponses.Where(f => f.CRM_FormFieldID == formFieldID  && f.TargetReference == Person.Reference && f.CRM_FormFieldItemID == formFieldItemID);
+            
+            if (!answers.Any())
             {
-                answer = new CRM_FormFieldAnswer()
+                CRM_FormFieldResponse answer = new CRM_FormFieldResponse()
                 {
-                    CRM_FormFieldID = item.CRM_FormFieldID,
-                    Answer = item.Label,
+                    CRM_FormFieldItemID = formFieldItemID,
+                    CRM_FormFieldID = formFieldID,
+                    Answer = "",
                     TargetReference = Person.Reference
                 };
 
-                db.CRM_FormFieldAnswers.InsertOnSubmit(answer);
-            }
-            else if (!answer.Answer.Contains(item.Label))
-            {
-                answer.Answer += "<br/>" + item.Label;
+                db.CRM_FormFieldResponses.InsertOnSubmit(answer);
             }
 
             db.SubmitChanges();

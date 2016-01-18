@@ -2422,6 +2422,9 @@
     <Compile Include="TaskScript\ConstType.ashx.cs">
       <DependentUpon>ConstType.ashx</DependentUpon>
     </Compile>
+    <Compile Include="TaskScript\CopyFormResponse.ashx.cs">
+      <DependentUpon>CopyFormResponse.ashx</DependentUpon>
+    </Compile>
     <Compile Include="TaskScript\EdinSchoolsImport.ashx.cs">
       <DependentUpon>EdinSchoolsImport.ashx</DependentUpon>
     </Compile>
@@ -2488,6 +2491,7 @@
     <None Include="TaskScript\ConstTypes.csv" />
     <Content Include="TaskScript\expiry.ashx" />
     <Content Include="TaskScript\EdinSchoolsImport.ashx" />
+    <Content Include="TaskScript\CopyFormResponse.ashx" />
     <None Include="TaskScript\FinalListforCoalFace.csv" />
     <Content Include="TaskScript\MemberHistory.ashx" />
     <Content Include="TaskScript\MoveSchools.ashx" />

@@ -356,6 +356,7 @@
       <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="CRM_FormField_CRM_FormFieldItem" Member="CRM_FormFieldItems" ThisKey="ID" OtherKey="CRM_FormFieldID" Type="CRM_FormFieldItem" />
       <Association Name="CRM_FormField_CRM_FormFieldAnswer" Member="CRM_FormFieldAnswers" ThisKey="ID" OtherKey="CRM_FormFieldID" Type="CRM_FormFieldAnswer" />
+      <Association Name="CRM_FormField_CRM_FormFieldResponse" Member="CRM_FormFieldResponses" ThisKey="ID" OtherKey="CRM_FormFieldID" Type="CRM_FormFieldResponse" />
       <Association Name="_DataTable_CRM_FormField" Member="_DataTable" ThisKey="_DataTableID" OtherKey="ID" Type="_DataTable" IsForeignKey="true" />
     </Type>
   </Table>
@@ -367,6 +368,7 @@
       <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_FormFieldItem_CRM_FormFieldResponse" Member="CRM_FormFieldResponses" ThisKey="ID" OtherKey="CRM_FormFieldItemID" Type="CRM_FormFieldResponse" />
       <Association Name="CRM_FormField_CRM_FormFieldItem" Member="CRM_FormField" ThisKey="CRM_FormFieldID" OtherKey="ID" Type="CRM_FormField" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1103,6 +1105,17 @@
       <Column Name="CRM_FundraisingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="CRM_Fundraising_CRM_GiftAidLogItem" Member="CRM_Fundraising" ThisKey="CRM_FundraisingID" OtherKey="ID" Type="CRM_Fundraising" IsForeignKey="true" />
       <Association Name="CRM_GiftAidLog_CRM_GiftAidLogItem" Member="CRM_GiftAidLog" ThisKey="CRM_GiftAidLogID" OtherKey="ID" Type="CRM_GiftAidLog" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_FormFieldResponse" Member="CRM_FormFieldResponses">
+    <Type Name="CRM_FormFieldResponse">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TargetReference" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_FormFieldItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRM_FormFieldID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_FormField_CRM_FormFieldResponse" Member="CRM_FormField" ThisKey="CRM_FormFieldID" OtherKey="ID" Type="CRM_FormField" IsForeignKey="true" />
+      <Association Name="CRM_FormFieldItem_CRM_FormFieldResponse" Member="CRM_FormFieldItem" ThisKey="CRM_FormFieldItemID" OtherKey="ID" Type="CRM_FormFieldItem" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GetNewId" Method="GetNewId" IsComposable="true">

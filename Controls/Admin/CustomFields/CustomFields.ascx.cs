@@ -49,13 +49,12 @@ namespace CRM.Controls.Admin.CustomFields
             {
                 int fieldID = Int32.Parse(((HiddenField)item.FindControl("hdnID")).Value);
                 CRM_FormField formField = db.CRM_FormFields.SingleOrDefault(a => a.ID == fieldID);
-                CRM_FormFieldAnswer answer = formField.CRM_FormFieldAnswers.FirstOrDefault(f => f.TargetReference == targetReference);
-                CRM.Controls.Admin.CustomFields.Form.CustomField formQuestionControl = (CRM.Controls.Admin.CustomFields.Form.CustomField)item.FindControl("ucFormQuestion");
                 
-                if (answer != null)
-                    formQuestionControl.Populate(answer.Answer);
-                else
-                    formQuestionControl.Populate(String.Empty);    
+                CRM.Controls.Admin.CustomFields.Form.CustomField formQuestionControl = (CRM.Controls.Admin.CustomFields.Form.CustomField)item.FindControl("ucFormQuestion");
+
+                IEnumerable<CRM_FormFieldResponse> answers = db.CRM_FormFieldResponses.Where(r => r.CRM_FormFieldID == formField.ID && r.TargetReference == targetReference);
+                
+                formQuestionControl.Populate(answers); 
             }
         }
 
@@ -110,19 +109,59 @@ namespace CRM.Controls.Admin.CustomFields
                     }
                     else
                     {
-                        
-                        CRM_FormFieldAnswer answer = formField.CRM_FormFieldAnswers.FirstOrDefault(f => f.TargetReference == TargetReference);
 
-                        if (answer == null)
+                        IEnumerable<CRM_FormFieldResponse> answers = db.CRM_FormFieldResponses.Where(r => r.TargetReference == TargetReference && r.CRM_FormFieldID == formField.ID);
+
+                        db.CRM_FormFieldResponses.DeleteAllOnSubmit(answers);
+                        db.SubmitChanges();
+
+                        if (formField.Type == (byte)CRM_FormField.Types.DropDownList)
                         {
-                            answer = new CRM_FormFieldAnswer();
-                            db.CRM_FormFieldAnswers.InsertOnSubmit(answer);
+                            CRM_FormFieldResponse response = new CRM_FormFieldResponse()
+                            {
+                                Answer = "",
+                                CRM_FormFieldItemID = db.CRM_FormFieldItems.Single(s => s.ID.ToString() == selectedValue).ID,
+                                CRM_FormFieldID = formField.ID,
+                                TargetReference = TargetReference
+                            };
+
+                            db.CRM_FormFieldResponses.InsertOnSubmit(response);
+                            db.SubmitChanges();
+                        }
+                        else if (formField.Type == (byte)CRM_FormField.Types.MultiLineTextBox || formField.Type == (byte)CRM_FormField.Types.SingleLineTextBox || formField.Type == (byte)CRM_FormField.Types.SingleCheckBox
+                             || formField.Type == (byte)CRM_FormField.Types.MultipleRadioButtons)
+                        {
+
+                            CRM_FormFieldResponse response = new CRM_FormFieldResponse()
+                            {
+                                Answer = selectedValue,
+                                CRM_FormFieldItemID = null,
+                                CRM_FormFieldID = formField.ID,
+                                TargetReference = TargetReference
+                            };
+
+                            db.CRM_FormFieldResponses.InsertOnSubmit(response);
+                            db.SubmitChanges();
+                        }
+                        else if (formField.Type == (byte)CRM_FormField.Types.MultipleCheckBoxes)
+                        {
+                            string[] IDs = selectedValue.Split(',');
+
+                            foreach (string id in IDs)
+                            {
+                                CRM_FormFieldResponse response = new CRM_FormFieldResponse()
+                                {
+                                    Answer = "",
+                                    CRM_FormFieldItemID = db.CRM_FormFieldItems.Single(s => s.ID.ToString() == id).ID,
+                                    CRM_FormFieldID = formField.ID,
+                                    TargetReference = TargetReference
+                                };
+
+                                db.CRM_FormFieldResponses.InsertOnSubmit(response);
+                                db.SubmitChanges();
+                            }
                         }
 
-                        answer.TargetReference = TargetReference;
-                        answer.CRM_FormFieldID = formField.ID;
-                        answer.Answer = selectedValue;
-                        db.SubmitChanges();
                        
                     }
                 }

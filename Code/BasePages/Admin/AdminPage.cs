@@ -194,24 +194,31 @@ namespace CRM.Code.BasePages.Admin
 
                         CRM_FormField field = db.CRM_FormFields.Single(s => s.ID == result);
 
-                        IEnumerable<CRM_FormFieldAnswer> FormFieldAnswers = null;
+                        IEnumerable<CRM_FormFieldResponse> FormFieldAnswers = null;
 
-                        var possibleAnswers = field.CRM_FormFieldAnswers;
+                        var possibleAnswers = field.CRM_FormFieldResponses;
 
                         if (filter.Operator == "==")
                         {
                             FormFieldAnswers = possibleAnswers
-                                    .Where(cfa => cfa.Answer.ToLower() == filter.Value.ToLower() && cfa.CRM_FormFieldID == result);
+                                    .Where(cfa => cfa.CRM_FormFieldID == result && (cfa.Answer.ToLower() == filter.Value.ToLower()
+                                    || (cfa.CRM_FormFieldItemID != null && cfa.CRM_FormFieldItem.Label == filter.Value.ToLower())
+                                    ));
                         }
                         else if (filter.Operator == "Contains")
                         {
                             FormFieldAnswers = possibleAnswers
-                                                               .Where(cfa => cfa.Answer.ToLower().Contains(filter.Value.ToLower()) && cfa.CRM_FormFieldID == result);
+                                                               .Where(cfa => cfa.CRM_FormFieldID == result &&
+                                                               ((cfa.Answer.ToLower().Contains(filter.Value.ToLower()) ||
+                                                               (cfa.CRM_FormFieldItemID != null && cfa.CRM_FormFieldItem.Label.ToLower().Contains(filter.Value.ToLower()))
+                                                               )));
                         }
                         else if (filter.Operator == "!Contains")
                         {
                             FormFieldAnswers = possibleAnswers
-                                   .Where(cfa => !cfa.Answer.ToLower().Contains(filter.Value.ToLower()) && cfa.CRM_FormFieldID == result);
+                                   .Where(cfa => cfa.CRM_FormFieldID == result && 
+                                   (!cfa.Answer.ToLower().Contains(filter.Value.ToLower()) || 
+                                   (cfa.CRM_FormFieldItemID != null && !cfa.CRM_FormFieldItem.Label.ToLower().Contains(filter.Value.ToLower()))));
                         }
                         else if (filter.Operator == ">")
                         {
