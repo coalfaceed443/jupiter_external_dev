@@ -145,17 +145,16 @@ namespace CRM.Controls.Admin.CustomFields
                         }
                         else if (formField.Type == (byte)CRM_FormField.Types.MultipleCheckBoxes)
                         {
-                            string[] IDs = selectedValue.Split(',');
+                            string[] IDs = selectedValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                             foreach (string id in IDs)
                             {
-                                CRM_FormFieldResponse response = new CRM_FormFieldResponse()
-                                {
-                                    Answer = "",
-                                    CRM_FormFieldItemID = db.CRM_FormFieldItems.Single(s => s.ID.ToString() == id).ID,
-                                    CRM_FormFieldID = formField.ID,
-                                    TargetReference = TargetReference
-                                };
+                                CRM_FormFieldResponse response = new CRM_FormFieldResponse();
+
+                                response.Answer = "";
+                                response.CRM_FormFieldItemID = db.CRM_FormFieldItems.Single(s => s.ID.ToString() == id).ID;
+                                    response.CRM_FormFieldID = formField.ID;
+                                response.TargetReference = TargetReference;
 
                                 db.CRM_FormFieldResponses.InsertOnSubmit(response);
                                 db.SubmitChanges();
