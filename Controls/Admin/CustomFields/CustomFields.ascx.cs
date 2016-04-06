@@ -115,7 +115,7 @@ namespace CRM.Controls.Admin.CustomFields
                         db.CRM_FormFieldResponses.DeleteAllOnSubmit(answers);
                         db.SubmitChanges();
 
-                        if (formField.Type == (byte)CRM_FormField.Types.DropDownList)
+                        if (formField.Type == (byte)CRM_FormField.Types.DropDownList || formField.Type == (byte)CRM_FormField.Types.MultipleRadioButtons)
                         {
                             CRM_FormFieldResponse response = new CRM_FormFieldResponse()
                             {
@@ -128,8 +128,7 @@ namespace CRM.Controls.Admin.CustomFields
                             db.CRM_FormFieldResponses.InsertOnSubmit(response);
                             db.SubmitChanges();
                         }
-                        else if (formField.Type == (byte)CRM_FormField.Types.MultiLineTextBox || formField.Type == (byte)CRM_FormField.Types.SingleLineTextBox || formField.Type == (byte)CRM_FormField.Types.SingleCheckBox
-                             || formField.Type == (byte)CRM_FormField.Types.MultipleRadioButtons)
+                        else if (formField.Type == (byte)CRM_FormField.Types.MultiLineTextBox || formField.Type == (byte)CRM_FormField.Types.SingleLineTextBox || formField.Type == (byte)CRM_FormField.Types.SingleCheckBox)
                         {
 
                             CRM_FormFieldResponse response = new CRM_FormFieldResponse()

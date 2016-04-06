@@ -7,23 +7,70 @@
     <script type="text/javascript">
 
         google.load('visualization', '1.0', { 'packages': ['corechart', 'bar'] });
-        google.setOnLoadCallback(drawChart);
-        google.setOnLoadCallback(drawFinanceChart);
+
+
+        google.setOnLoadCallback(drawMemberChart);
         google.setOnLoadCallback(drawTimeline);
         google.setOnLoadCallback(drawTotalMembers);
         google.setOnLoadCallback(amountPaid);
         google.setOnLoadCallback(actualIncome);
         google.setOnLoadCallback(paymentMethods);
 
+        function drawMemberChart() {
 
-        function drawFinanceChart() {
 
+            <% var dataset = db.CRM_AnnualPassTypes.Where(r => !r.IsArchived).ToList();%>
+            <% DateTime activeStartDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
+
+
+            var incomedata = new google.visualization.arrayToDataTable([
+
+                ['Year',
+                    <% foreach (CRM.Code.Models.CRM_AnnualPassType type in db.CRM_AnnualPassTypes)
+                       {%>
+                   '<%= type.Name%>',
+                    <%}%>
+
+                ],
+
+
+
+            <% while (activeStartDate <= CRM.Code.Utils.Time.UKTime.Now)
+               {%>
+
+            ['<%= activeStartDate.ToString("MMMM yy")%>', 
+                <% for (int i = 0; i < dataset.Count(); i++)
+                   { %>
+                       <%= dataset[i].CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == dataset[i].ID && r.StartDate <= activeStartDate && r.ExpiryDate >= activeStartDate).Count()%><% if (i + 1 != dataset.Count())
+                                                                                                                                                                                            {%>,<%}%>
+                <% }%> 
+                
+                    <% activeStartDate = activeStartDate.AddMonths(1); %>
+            ],
+            <%}%>
+
+
+            ]);
+
+
+
+
+            var memberoptions = {
+                'title': 'Active Memberships by Type',
+                'width': 1500,
+                'height': 800,
+                bars: 'vertical',
+                legend: { position: 'right' }
+
+            };
+
+            
 
             <% var financeDataset = db.CRM_AnnualPassTypes.Where(r => !r.IsArchived).ToList();%>
             <% DateTime financeActiveStartDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
 
 
-            var data = new google.visualization.arrayToDataTable([
+            var financeData = new google.visualization.arrayToDataTable([
 
                 ['Year',
                     <% foreach (CRM.Code.Models.CRM_AnnualPassType type in db.CRM_AnnualPassTypes)
@@ -59,72 +106,25 @@
 
 
 
-            var options = {
+            var financeoptions = {
                 'title': 'Income by Membership',
                 'width': 1500,
                 'height': 800,
                 bars: 'vertical',
                 vAxis: { format: '###,###' },
-                legend: { position: 'top' }
+                legend: { position: 'right' }
 
             };
 
+            var memberchart = new google.visualization.ColumnChart(document.getElementById('membershipByType'));
+            memberchart.draw(incomedata, memberoptions);
 
-            var chart = new google.charts.Bar(document.getElementById('financeByType'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
+            var chart = new google.visualization.ColumnChart(document.getElementById('financeByType'));
+            chart.draw(financeData, financeoptions);
+
         }
 
-        function drawChart() {
-
-
-            <% var dataset = db.CRM_AnnualPassTypes.Where(r => !r.IsArchived).ToList();%>
-            <% DateTime activeStartDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
-
-
-            var data = new google.visualization.arrayToDataTable([
-
-                ['Year',
-                    <% foreach (CRM.Code.Models.CRM_AnnualPassType type in db.CRM_AnnualPassTypes)
-                       {%>
-                   '<%= type.Name%>',
-                    <%}%>
-
-                ],
-
-
-
-            <% while (activeStartDate <= CRM.Code.Utils.Time.UKTime.Now)
-               {%>
-
-            ['<%= activeStartDate.ToString("MMMM yy")%>', 
-                <% for (int i = 0; i < dataset.Count(); i++)
-                   { %>
-                       <%= dataset[i].CRM_AnnualPasses.Where(r => r.CRM_AnnualPassTypeID == dataset[i].ID && r.StartDate <= activeStartDate && r.ExpiryDate >= activeStartDate).Count()%><% if (i + 1 != dataset.Count())
-                                                                                                                                                                                            {%>,<%}%>
-                <% }%> 
-                
-                    <% activeStartDate = activeStartDate.AddMonths(1); %>
-            ],
-            <%}%>
-
-
-            ]);
-
-
-
-
-            var options = {
-                'title': 'Active Memberships by Type',
-                'width': 1500,
-                'height': 400,
-                bars: 'vertical',
-                legend: { position: 'top' }
-
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('membershipByType'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
+        
 
         function drawTimeline() {
             <% DateTime startDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
@@ -218,6 +218,31 @@
             };
             chart.draw(data, options);
 
+            
+            <% startDate = CRM.Code.Utils.Time.UKTime.Now.AddYears(-6); %>
+            
+            var paiddata = google.visualization.arrayToDataTable([
+              ['Year', 'Total (£)'],
+
+
+            <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
+               {%>
+                ['<%= startDate.ToString("yyyy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= startDate && r.ExpiryDate >= startDate).Sum(r => r.AmountPaid)%>],
+
+                    <% startDate = startDate.AddYears(1); %>
+            <%}%>
+            ]);
+            var yearchart = new google.visualization.ColumnChart(document.getElementById('memberRevenueActiveYear'));
+
+            var paidoptions = {
+                'title': 'Total value of active members over the past 6 years',
+                'width': 500,
+                'height': 300,
+                is3D: true,
+                legend: { position: 'bottom' }
+            };
+            yearchart.draw(paiddata, paidoptions);
+
         }
 
         function actualIncome() {
@@ -229,7 +254,7 @@
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
                {%>
-                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year).Sum(r => (decimal?)r.AmountPaid)%>],
+                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year).Sum(r => (decimal?)r.AmountPaid) ?? 0%>],
 
                     <% startDate = startDate.AddMonths(1); %>
             <%}%>
@@ -245,6 +270,30 @@
                 legend: { position: 'bottom' }
             };
             chart.draw(data, options);
+
+            
+               <% startDate = CRM.Code.Utils.Time.UKTime.Now.AddYears(-6); %>
+
+            var yeardata = google.visualization.arrayToDataTable([
+             ['Year', 'Total (£)'],
+                         <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
+               {%>
+                ['<%= startDate.ToString("yyyy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Year == startDate.Year).Sum(r => (decimal?)r.AmountPaid) ?? 0%>],
+
+                    <% startDate = startDate.AddYears(1); %>
+            <%}%>
+            ]);
+
+            var yearchart = new google.visualization.ColumnChart(document.getElementById('memberActualRevenueYear'));
+
+            var yearoptions = {
+                'title': 'Actual income over the past 6 years',
+                'width': 600,
+                'height': 300,
+                is3D: true,
+                legend: { position: 'bottom' }
+            };
+            yearchart.draw(yeardata, yearoptions);
         }
 
         function paymentMethods() {
@@ -394,7 +443,16 @@
             Loading...
         </div>
 
+        
+        <div id="memberRevenueActiveYear" class="graph">
+            Loading...
+        </div>
+
         <div id="memberActualRevenue" class="graph">
+            Loading...
+        </div>
+        
+        <div id="memberActualRevenueYear" class="graph">
             Loading...
         </div>
 

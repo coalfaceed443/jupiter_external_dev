@@ -2434,6 +2434,9 @@
     <Compile Include="TaskScript\Import.ashx.cs">
       <DependentUpon>Import.ashx</DependentUpon>
     </Compile>
+    <Compile Include="TaskScript\Import_CBM.ashx.cs">
+      <DependentUpon>Import_CBM.ashx</DependentUpon>
+    </Compile>
     <Compile Include="TaskScript\MemberHistory.ashx.cs">
       <DependentUpon>MemberHistory.ashx</DependentUpon>
     </Compile>
@@ -2488,6 +2491,7 @@
     <Content Include="TaskScript\art_booking_import.ashx" />
     <Content Include="TaskScript\Art_Booking.csv" />
     <Content Include="Scheduled\duplicates.ashx" />
+    <Content Include="TaskScript\CBM_Europe_import.csv" />
     <None Include="TaskScript\ConstTypes.csv" />
     <Content Include="TaskScript\expiry.ashx" />
     <Content Include="TaskScript\EdinSchoolsImport.ashx" />
@@ -2497,6 +2501,7 @@
     <Content Include="TaskScript\MoveSchools.ashx" />
     <Content Include="TaskScript\scot_schools.ashx" />
     <Content Include="TaskScript\Relations.ashx" />
+    <Content Include="TaskScript\Import_CBM.ashx" />
     <None Include="WebService\Service.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Service.designer.cs</LastGenOutput>

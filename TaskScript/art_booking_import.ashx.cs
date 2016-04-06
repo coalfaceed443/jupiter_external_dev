@@ -130,7 +130,7 @@ namespace CRM.TaskScript
                                     CRM_AddressID = orgAddress.ID,
                                     Name = contentsSplit[(int)accountPos.Company],
                                     IsArchived = false,
-                                    PrimaryContactReference = person.Reference
+                                    PrimaryContactReference = person.Reference,
                                 };
                                 db.CRM_Organisations.InsertOnSubmit(org);
                                 db.SubmitChanges();

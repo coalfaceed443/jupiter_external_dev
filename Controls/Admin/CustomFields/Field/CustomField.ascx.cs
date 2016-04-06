@@ -108,7 +108,7 @@ namespace CRM.Controls.Admin.CustomFields.Form
                             }
                             break;
                         case (byte)CRM_FormField.Types.MultipleRadioButtons:
-                            radBtnList.SelectedValue = answers.First().Answer;
+                            radBtnList.SelectedValue = answers.First().CRM_FormFieldItemID.ToString();
                             break;
                     }
                 }
