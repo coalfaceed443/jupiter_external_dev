@@ -271,7 +271,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person2.CRM_Address;
+                return this.CRM_Person2.PrimaryAddress;
             }
         }
 

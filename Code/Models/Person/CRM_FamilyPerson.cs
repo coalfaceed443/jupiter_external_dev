@@ -62,7 +62,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person.Address1;
+                return this.CRM_Person.PrimaryAddressRecord.AddressLine1;
             }
         }
 
@@ -71,7 +71,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person.Address2;
+                return this.CRM_Person.PrimaryAddressRecord.AddressLine2;
             }
         }
 
@@ -80,7 +80,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person.Address3;
+                return this.CRM_Person.PrimaryAddressRecord.AddressLine3;
             }
         }
 
@@ -89,7 +89,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person.CRM_Address.Town;
+                return this.CRM_Person.PrimaryAddressRecord.Town;
             }
         }
 
@@ -98,7 +98,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person.CRM_Address.County;
+                return this.CRM_Person.PrimaryAddressRecord.County;
             }
         }
 
@@ -107,7 +107,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Person.CRM_Address.Postcode;
+                return this.CRM_Person.PrimaryAddressRecord.Postcode;
             }
         }
 

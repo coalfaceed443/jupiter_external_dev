@@ -49,7 +49,7 @@ namespace CRM.Controls.Forms.Handlers
                             jsonItems = from p in persons
                                         where !p.IsArchived
                                         where p.Tokens.Any(t => t.Contains(searchCriteria))
-                                        select new JSONSet(p.Fullname + " : " + p.CRM_Address.FormattedAddressBySep(", "), p.DateOfBirthOutput, p.ID.ToString(), p.Photo, p.Reference);
+                                        select new JSONSet(p.Fullname + " : " + p.PrimaryAddressRecord.FormattedAddressBySep(", "), p.DateOfBirthOutput, p.ID.ToString(), p.Photo, p.Reference);
                         }
                         break;
 

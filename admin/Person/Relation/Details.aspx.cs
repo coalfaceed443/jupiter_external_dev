@@ -171,8 +171,8 @@ namespace CRM.admin.Person.Relation
 
             if (PersonRelationship != null)
             {
-                addresses.Add(new ListItem(PersonRelationship.PersonA.PrimaryAddress.FormattedAddress, PersonRelationship.PersonA.ID.ToString()));
-                addresses.Add(new ListItem(PersonRelationship.PersonB.PrimaryAddress.FormattedAddress, PersonRelationship.PersonB.ID.ToString()));
+                addresses.Add(new ListItem(PersonRelationship.PersonA.PrimaryAddressRecord.FormattedAddress, PersonRelationship.PersonA.ID.ToString()));
+                addresses.Add(new ListItem(PersonRelationship.PersonB.PrimaryAddressRecord.FormattedAddress, PersonRelationship.PersonB.ID.ToString()));
             }
             else
             {
@@ -180,12 +180,12 @@ namespace CRM.admin.Person.Relation
                 CRM_Person personA = db.CRM_Persons.SingleOrDefault(s => s.Reference.ToString() == ucAcPerson.SelectedID);
 
                 if (personA != null)
-                    addresses.Add(new ListItem(personA.PrimaryAddress.FormattedAddress, personA.ID.ToString()));
+                    addresses.Add(new ListItem(personA.PrimaryAddressRecord.FormattedAddress, personA.ID.ToString()));
 
                 CRM_Person personB = db.CRM_Persons.SingleOrDefault(s => s.Reference.ToString() == ucAcPersonB.SelectedID);
 
                 if (personB != null)
-                    addresses.Add(new ListItem(personB.PrimaryAddress.FormattedAddress, personB.ID.ToString()));
+                    addresses.Add(new ListItem(personB.PrimaryAddressRecord.FormattedAddress, personB.ID.ToString()));
 
             }
 
