@@ -998,6 +998,7 @@
     <Content Include="_assets\images\files-extensions\pdf.png" />
     <Content Include="_assets\images\files-extensions\txt.png" />
     <Content Include="_assets\media\emails\template.html" />
+    <Content Include="_assets\media\label.xml" />
     <Content Include="_assets\media\logs\emails\email-log.txt" />
     <Content Include="_assets\media\persons\photos\test.png" />
     <Content Include="_assets\scripts\7S.CMS.Calendar.js" />
@@ -1006,6 +1007,9 @@
     <Content Include="_assets\scripts\autocomplete\jquery.autocomplete.pack.js" />
     <Content Include="_assets\scripts\dropkick\dropkick.css" />
     <Content Include="_assets\scripts\dropkick\jquery.dropkick-1.0.0.js" />
+    <Content Include="_assets\scripts\dymo.js" />
+    <Content Include="_assets\scripts\DYMO.Label.Framework.2.0.2.js" />
+    <Content Include="_assets\scripts\DYMO.Label.Framework_2.0Beta.js" />
     <Content Include="_assets\scripts\fancybox\blank.gif" />
     <Content Include="_assets\scripts\fancybox\fancybox-x.png" />
     <Content Include="_assets\scripts\fancybox\fancybox-y.png" />
@@ -1127,7 +1131,6 @@
     </Compile>
     <Compile Include="admin\Communications\Emails\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\Communications\Emails\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
@@ -1990,6 +1993,7 @@
     <Compile Include="Code\Interfaces\IArchivable.cs" />
     <Compile Include="Code\Interfaces\ICRMContext.cs" />
     <Compile Include="Code\Interfaces\IDynamicQueryable.cs" />
+    <Compile Include="Code\Interfaces\ILabel.cs" />
     <Compile Include="Code\Interfaces\IMailable.cs" />
     <Compile Include="Code\Interfaces\ISchoolOrganisation.cs" />
     <Compile Include="Code\Managers\AutoCompleteManager.cs" />
@@ -2405,6 +2409,9 @@
     <Compile Include="Controls\Forms\UserControlButton.ascx.designer.cs">
       <DependentUpon>UserControlButton.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\PrintLabel.ashx.cs">
+      <DependentUpon>PrintLabel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduled\duplicates.ashx.cs">
       <DependentUpon>duplicates.ashx</DependentUpon>
@@ -2487,6 +2494,7 @@
     <Content Include="Code\Models\Main.dbml.views">
       <DependentUpon>Main.dbml</DependentUpon>
     </Content>
+    <Content Include="Handlers\PrintLabel.ashx" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <Content Include="TaskScript\art_booking_import.ashx" />
     <Content Include="TaskScript\Art_Booking.csv" />

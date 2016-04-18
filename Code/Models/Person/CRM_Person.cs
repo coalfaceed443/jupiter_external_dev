@@ -27,8 +27,54 @@ namespace CRM.Code.Models
 
         }
     }
-    public partial class CRM_Person : IHistory, ICRMRecord, INotes, IDuplicate, IAutocomplete, IContact, ICustomField, ICRMContext, IMailable
+    public partial class CRM_Person : IHistory, ICRMRecord, INotes, IDuplicate, IAutocomplete, IContact, ICustomField, ICRMContext, IMailable, ILabel
     {
+
+        #region Ilabel
+
+        public string LabelName
+        {
+            get
+            {
+                return this.Fullname;
+            }
+        }
+
+        public string LabelOrganisation
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public string LabelAddress
+        {
+            get
+            {
+                return this.PrimaryAddress.LabelOutput(this.LabelName, this.LabelOrganisation);
+            }
+        }
+
+        public int LabelCRM_AddressID
+        {
+            get
+            {
+                return this.PrimaryAddress.ID;
+            }
+        }
+
+        public bool LabelIsPrimaryAddress
+        {
+            get
+            {
+                return this.PrimaryAddressID == this.CRM_AddressID;
+            }
+        }
+
+
+        #endregion 
+
         public const string PlaceholderPhoto = PhotoDirectory + "placeholder" + PhotoFileExtension;
         public const string PhotoDirectory = "/_assets/media/persons/photos/";
         private const string PhotoFileExtension = ".png";
@@ -539,6 +585,37 @@ namespace CRM.Code.Models
             }
         }
 
+        public List<ILabel> Labels
+        {
+            get
+            {
+                List<ILabel> pool = new List<ILabel>();
+                pool.Add(this);
+
+                // personal addresses
+
+                foreach (CRM_PersonPersonal record in PersonalRecords.Where(r => !r.IsArchived && r.IsMailable))
+                {
+                    pool.Add(record);
+                }
+
+                // organisation addresses
+
+                foreach (CRM_PersonOrganisation record in OrganisationRecords.Where(r => !r.IsArchived && r.IsMailable))
+                {
+                    pool.Add(record);
+                }
+
+                // school addresses
+
+                foreach (CRM_PersonSchool record in SchoolRecords.Where(r => !r.IsArchived && r.IsMailable))
+                {
+                    pool.Add(record);
+                }
+
+                return pool;
+            }
+        }
 
         /// <summary>
         /// Pools all the addresses against the person, through the various db relations
@@ -1013,7 +1090,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return (this.IsArchived ? "[ARCHIVED] " : "") + this.Title + " " + this.Firstname.Trim() + " " + this.Lastname.Trim();
+                return (this.IsArchived ? "[ARCHIVED] " : "") + (!String.IsNullOrEmpty(this.Title) ? this.Title + " " : "") + this.Firstname.Trim() + " " + this.Lastname.Trim();
             }
         }
 
@@ -1167,5 +1244,6 @@ namespace CRM.Code.Models
                 return this.Fullname; 
             }
         }
+        
     }
 }

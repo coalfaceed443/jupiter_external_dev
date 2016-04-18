@@ -71,6 +71,23 @@ namespace CRM.Code.Models
             }
         }
 
+        public string LabelOutput(string name, string organisation)
+        {
+
+            string outputLabel = "";
+            if (!String.IsNullOrEmpty(name))
+            {
+                outputLabel += name + Environment.NewLine;
+            }
+
+            if (!String.IsNullOrEmpty(organisation))
+            {
+                outputLabel += organisation + Environment.NewLine;
+            }
+
+            return outputLabel += this.FormattedAddressBySep(Environment.NewLine);
+        }
+
         public string FormattedAddressBySep(object Seperator)
         {
             string OutputAddress = "";

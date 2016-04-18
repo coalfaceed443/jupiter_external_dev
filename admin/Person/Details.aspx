@@ -90,6 +90,34 @@
         }
 
     </script>
+
+
+    <script type="text/javascript" src="/_assets/scripts/DYMO.Label.Framework.2.0.2.js"></script>
+    <script type="text/javascript" src="/_assets/scripts/dymo.js"></script>
+
+    <script type="text/javascript">
+
+        dymo.label.framework.trace = 1; //true
+        dymo.label.framework.init(startupCode);
+
+        function checkDymo() {
+            /* access DYMO Label Framework Library */
+
+            var printers = dymo.label.framework.getPrinters();
+            if (printers.length == 0) {
+                alert("No DYMO printers are installed. Install DYMO printers.");
+                return;
+            }
+
+        }
+
+        //window.onload = startupCode;
+
+        function printDymo(){
+            dymoExtension.print($("#<%= txtLabel.ClientID%>").val());
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="server">
     <ucUtil:ConfirmationPage ID="confirmationDelete" runat="server" />
@@ -115,6 +143,41 @@
     <ucUtil:Duplicate ID="ucDuplicate" runat="server" />
             -->
             <table class="details searchTableLeft">
+                <% if (Entity != null)
+                    {%>
+
+                
+                <tr>
+                    <td>
+                        <label>
+                            Addresses :</label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlLabelAddresses" runat="server" DataTextField="Text" DataValueField="Value" AutoPostBack="true" OnSelectedIndexChanged="ddlLabelAddresses_SelectedIndexChanged" Width="290">
+                            
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Label :</label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtLabel" runat="server" TextMode="MultiLine" Width="290" Height="100" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Print :</label>
+                    </td>
+                    <td><label>
+                        <a href="#" onclick="printDymo();">Print</a></label>
+                    </td>
+                </tr>
+
+                <%} %>
                 <tr>
                     <td>
                         <label>

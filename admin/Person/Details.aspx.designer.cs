@@ -49,6 +49,24 @@ namespace CRM.admin.Person {
         protected global::CRM.Controls.Admin.SharedObjects.Duplicate ucDuplicate;
         
         /// <summary>
+        /// ddlLabelAddresses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLabelAddresses;
+        
+        /// <summary>
+        /// txtLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLabel;
+        
+        /// <summary>
         /// ddlTitles control.
         /// </summary>
         /// <remarks>

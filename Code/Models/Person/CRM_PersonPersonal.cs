@@ -7,8 +7,53 @@ using CRM.Code.Helpers;
 
 namespace CRM.Code.Models
 {
-    public partial class CRM_PersonPersonal : ICRMRecord, IHistory, INotes, IContact, IAutocomplete, ICRMContext, IMailable
+    public partial class CRM_PersonPersonal : ICRMRecord, IHistory, INotes, IContact, IAutocomplete, ICRMContext, IMailable, ILabel
     {
+
+        #region Ilabel
+
+        public string LabelName
+        {
+            get
+            {
+                return this.CRM_Person.Fullname;
+            }
+        }
+
+        public string LabelOrganisation
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public string LabelAddress
+        {
+            get
+            {
+                return this.CRM_Address.LabelOutput(this.LabelName, this.LabelOrganisation);
+            }
+        }
+
+        public int LabelCRM_AddressID
+        {
+            get
+            {
+                return this.CRM_Address.ID;
+            }
+        }
+
+        public bool LabelIsPrimaryAddress
+        {
+            get
+            {
+                return this.PrimaryAddress.ID == this.CRM_Address.ID;
+            }
+        }
+
+        #endregion 
+
         public object ShallowCopy()
         {
             return (CRM_PersonPersonal)this.MemberwiseClone();

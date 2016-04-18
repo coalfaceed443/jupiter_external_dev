@@ -119,6 +119,16 @@ namespace CRM.admin.Person
             if (Entity.PrimaryAddressID != null)
                 ddlPrimaryAddress.SelectedValue = Entity.PrimaryAddressID.ToString();
 
+            ddlLabelAddresses.DataSource = Entity.Labels.OrderByDescending(r => r.LabelIsPrimaryAddress).Select(s => new ListItem(s.OutputTableName + " " + (s.LabelIsPrimaryAddress ? "[Primary]" : "") + " : " + s.LabelAddress.Replace(Environment.NewLine, ", "), s.Reference));
+            ddlLabelAddresses.DataBind();
+
+            SetLabelTextbox(ddlLabelAddresses.SelectedValue);
+
+        }
+
+        public void SetLabelTextbox(string reference)
+        {
+            txtLabel.Text = Entity.Labels.First(s => s.Reference == reference).LabelAddress;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -249,6 +259,9 @@ namespace CRM.admin.Person
             NoticeManager.SetMessage("Item reinstated");
         }
 
-
+        protected void ddlLabelAddresses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetLabelTextbox(ddlLabelAddresses.SelectedValue);
+        }
     }
 }
