@@ -99,6 +99,10 @@
     <Content Include="admin\AdminUser\Details.aspx" />
     <Content Include="admin\AnnualPassCard\Overview.aspx" />
     <Content Include="admin\AnnualPassCard\Stats.aspx" />
+    <Content Include="admin\Attendance\AddAttendance.aspx" />
+    <Content Include="admin\Attendance\AttendanceTypes\Details.aspx" />
+    <Content Include="admin\Attendance\AttendanceTypes\List.aspx" />
+    <Content Include="admin\Attendance\Report.aspx" />
     <Content Include="admin\Calendar\Frame\Rota.aspx" />
     <Content Include="admin\Calendar\Frame\WeekView.aspx" />
     <Content Include="admin\Calendar\Invite\List.aspx" />
@@ -1087,6 +1091,34 @@
     <Compile Include="admin\AnnualPassCard\StatsResponse.ashx.cs">
       <DependentUpon>StatsResponse.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Attendance\AddAttendance.aspx.cs">
+      <DependentUpon>AddAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Attendance\AddAttendance.aspx.designer.cs">
+      <DependentUpon>AddAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceTypes\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceTypes\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceTypes\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceTypes\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Attendance\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Attendance\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Calendar\Frame\Rota.aspx.cs">
       <DependentUpon>Rota.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1131,6 +1163,7 @@
     </Compile>
     <Compile Include="admin\Communications\Emails\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\Communications\Emails\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
@@ -2046,9 +2079,11 @@
     <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfile.cs" />
     <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfileLog.cs" />
     <Compile Include="Code\Models\HoldingPen.cs" />
+    <Compile Include="Code\Models\Main.designer.cs" />
     <Compile Include="Code\Models\Organisation\CRM_Organisation.cs" />
     <Compile Include="Code\Models\Organisation\CRM_OrganisationSchool.cs" />
     <Compile Include="Code\Models\Organisation\Type\CRM_OrganisationType.cs" />
+    <Compile Include="Code\Models\Person\CRM_AttendancePersonType.cs" />
     <Compile Include="Code\Models\Person\CRM_Family.cs" />
     <Compile Include="Code\Models\Person\CRM_FamilyPerson.cs" />
     <Compile Include="Code\Models\Person\CRM_PersonSchool.cs" />
@@ -2065,6 +2100,7 @@
     <Compile Include="Code\Models\TemplateEmail.cs" />
     <Compile Include="Code\Models\_DataTableColumn.cs" />
     <Compile Include="Code\Utils\List\Custom.cs" />
+    <Compile Include="Code\Utils\Percent\Percent.cs" />
     <Compile Include="Code\Utils\WebControl\AutoCompleteConfig.cs" />
     <Compile Include="Code\Utils\WebControl\TitledDropDownList.cs" />
     <Compile Include="Code\Utils\WebControl\UserControlBase.cs">
@@ -2268,11 +2304,6 @@
     <Compile Include="Code\Models\Calendar\CRM_CalendarVenue.cs" />
     <Compile Include="Code\Models\CRM_Address.cs" />
     <Compile Include="Code\Models\CRM_Venue.cs" />
-    <Compile Include="Code\Models\Main.designer.cs">
-      <DependentUpon>Main.dbml</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Code\Models\MainDataContext.cs" />
     <Compile Include="Code\Models\Meta.cs" />
     <Compile Include="Code\Models\Setting.cs" />
@@ -2481,8 +2512,8 @@
     <Content Include="admin\AnnualPassCard\StatsResponse.ashx" />
     <None Include="Code\Models\Main.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Main.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Main1.designer.cs</LastGenOutput>
     </None>
     <Content Include="Controls\Admin\ImageUpload\preview.ashx" />
     <Content Include="Controls\Admin\ImageUpload\uploadMonitor.ashx" />

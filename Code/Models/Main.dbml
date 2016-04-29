@@ -1118,6 +1118,33 @@
       <Association Name="CRM_FormFieldItem_CRM_FormFieldResponse" Member="CRM_FormFieldItem" ThisKey="CRM_FormFieldItemID" OtherKey="ID" Type="CRM_FormFieldItem" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CRM_AttendanceLog" Member="CRM_AttendanceLogs">
+    <Type Name="CRM_AttendanceLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AttendancePersonTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_CRM_AttendanceLogGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AttendanceLogGroup_CRM_AttendanceLog" Member="CRM_AttendanceLogGroup" ThisKey="CRM_CRM_AttendanceLogGroupID" OtherKey="ID" Type="CRM_AttendanceLogGroup" IsForeignKey="true" />
+      <Association Name="CRM_AttendancePersonType_CRM_AttendanceLog" Member="CRM_AttendancePersonType" ThisKey="CRM_AttendancePersonTypeID" OtherKey="ID" Type="CRM_AttendancePersonType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AttendanceLogGroup" Member="CRM_AttendanceLogGroups">
+    <Type Name="CRM_AttendanceLogGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AddedTimeStamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AttendanceLogGroup_CRM_AttendanceLog" Member="CRM_AttendanceLogs" ThisKey="ID" OtherKey="CRM_CRM_AttendanceLogGroupID" Type="CRM_AttendanceLog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AttendancePersonType" Member="CRM_AttendancePersonTypes">
+    <Type Name="CRM_AttendancePersonType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AttendancePersonType_CRM_AttendanceLog" Member="CRM_AttendanceLogs" ThisKey="ID" OtherKey="CRM_AttendancePersonTypeID" Type="CRM_AttendanceLog" />
+    </Type>
+  </Table>
   <Function Name="dbo.GetNewId" Method="GetNewId" IsComposable="true">
     <Return Type="System.Guid" />
   </Function>

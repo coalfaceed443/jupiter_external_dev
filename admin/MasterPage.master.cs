@@ -112,9 +112,15 @@ namespace CRM.Admin
                 }));
 
             menuItems.Add(new AdminMenuListItem("/admin/customfields/list.aspx", "Custom Fields"));
-            menuItems.Add(new AdminMenuListItem("/admin/communications/list.aspx", "Communications", new List<MenuListItem>()
+            menuItems.Add(new AdminMenuListItem("/admin/communications/list.aspx", "Comms", new List<MenuListItem>()
                 {
                     new MenuListItem("/admin/communications/emails/list.aspx", "Automated Emails")
+                }));
+            menuItems.Add(new AdminMenuListItem("/admin/attendance/addattendance.aspx", "Attendance", new List<MenuListItem>()
+                {
+                    new MenuListItem("/admin/attendance/addattendance.aspx", "Add"),
+                    new MenuListItem("/admin/attendance/attendancetypes/list.aspx", "Person Types"),
+                    new MenuListItem("/admin/attendance/report.aspx", "Report"),
                 }));
 
             foreach (var item in menuItems)

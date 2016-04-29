@@ -320,7 +320,6 @@ namespace CRM.Code.Models
             }
         }
 
-
         public string TableName
         {
             get
