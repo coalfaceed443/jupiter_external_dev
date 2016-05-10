@@ -29,13 +29,17 @@ namespace CRM.admin.Attendance
 
             PeopleToday = allGroupsToday.Sum(a => a.CRM_AttendanceLogs.Sum(b => b.Quantity));
             GroupsToday = allGroupsToday.Count();
+            
             if (GroupsToday > 0)
                 averageGroupSizeToday = (decimal)PeopleToday / (decimal)GroupsToday;
        
             if (!Page.IsPostBack)
             {
-                dcDateFrom.Value = allGroups.Min(a => a.AddedTimeStamp);
-                dcDateTo.Value = allGroups.Max(a => a.AddedTimeStamp);
+                if (allGroups.Any())
+                {
+                    dcDateFrom.Value = allGroups.Min(a => a.AddedTimeStamp);
+                    dcDateTo.Value = allGroups.Max(a => a.AddedTimeStamp);
+                }
             }
 
             ReloadSearch();
@@ -43,6 +47,8 @@ namespace CRM.admin.Attendance
 
         public void ReloadSearch()
         {
+            if (!db.CRM_AttendanceLogGroups.Any()) return;
+
             IQueryable<CRM_AttendanceLogGroup> allGroups = db.CRM_AttendanceLogGroups.Where(a => a.AddedTimeStamp >= dcDateFrom.Value && a.AddedTimeStamp <= dcDateTo.Value);
 
             //repSearchTypeTotals.DataSource = allGroups.SelectMany(a => a.CRM_AttendanceLogs).GroupBy(b => b.CRM_AttendancePersonType);
@@ -54,7 +60,7 @@ namespace CRM.admin.Attendance
 
             //foreach (CRM_AttendancePersonType type in db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived).OrderBy(a => a.OrderNo))
             //{
-            //    data.Add(new KeyValuePair<string,int>(type.Name, allLogs.Where(l => l.CRM_AttendancePersonType == type).Sum(l => l.Quantity)));
+            //    data.Add(new KeyValuePair<string, int>(type.Name, allLogs.Where(l => l.CRM_AttendancePersonType == type).Sum(l => l.Quantity)));
             //}
 
 
@@ -62,6 +68,7 @@ namespace CRM.admin.Attendance
                 db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived)
                 .OrderBy(a => a.OrderNo)
                 .Select(a => new KeyValuePair<string, int>(a.Name, allLogs.Where(l => l.CRM_AttendancePersonType == a).Sum(l => (int?)l.Quantity) ?? 0));
+
             repSearchTypeTotals.DataBind();
 
 

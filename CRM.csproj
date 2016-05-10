@@ -2555,7 +2555,6 @@
     <None Include="_assets\ckeditor\browsers\Filemanager-master\.gitignore" />
     <Content Include="_assets\ckeditor\browsers\Filemanager-master\connectors\ashx\filemanager.ashx" />
     <None Include="_assets\ckeditor\browsers\Filemanager-master\ReadMe.md" />
-    <Content Include="_assets\ckeditor\browsers\Filemanager-master\scripts\filemanager.config.js" />
     <None Include="_assets\ckeditor\plugins\wsc\LICENSE.md" />
     <None Include="_assets\ckeditor\plugins\wsc\README.md" />
     <None Include="_assets\ckeditor\samples\assets\posteddata.php" />
