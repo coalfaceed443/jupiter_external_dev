@@ -100,6 +100,8 @@
     <Content Include="admin\AnnualPassCard\Overview.aspx" />
     <Content Include="admin\AnnualPassCard\Stats.aspx" />
     <Content Include="admin\Attendance\AddAttendance.aspx" />
+    <Content Include="admin\Attendance\AttendanceEvent\Details.aspx" />
+    <Content Include="admin\Attendance\AttendanceEvent\List.aspx" />
     <Content Include="admin\Attendance\AttendanceTypes\Details.aspx" />
     <Content Include="admin\Attendance\AttendanceTypes\List.aspx" />
     <Content Include="admin\Attendance\Report.aspx" />
@@ -1098,6 +1100,20 @@
     <Compile Include="admin\Attendance\AddAttendance.aspx.designer.cs">
       <DependentUpon>AddAttendance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Attendance\AttendanceEvent\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceEvent\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceEvent\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Attendance\AttendanceEvent\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Attendance\AttendanceTypes\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2046,6 +2062,7 @@
     <Compile Include="Code\Models\Calendar\CRM_CalendarAdmin.cs" />
     <Compile Include="Code\Models\Calendar\CRM_CalendarInvite.cs" />
     <Compile Include="Code\Models\Country.cs" />
+    <Compile Include="Code\Models\CRM_AttendanceEvent.cs" />
     <Compile Include="Code\Models\CRM_Communication.cs" />
     <Compile Include="Code\Models\CRM_Region.cs" />
     <Compile Include="Code\Models\CRM_Exhibition.cs" />

@@ -31,6 +31,9 @@ namespace CRM.admin.Attendance
 
                 repTypes.DataSource = db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived && a.IsActive).OrderBy(a => a.OrderNo);
                 repTypes.DataBind();
+
+                ddlEvents.Items.Add(new ListItem("None"));
+                ddlEvents.Items.AddRange(db.CRM_AttendanceEvents.OrderBy(a => a.Name).Select(a => new ListItem(a.Name, a.ID.ToString())).ToArray());
             }
         }
 
@@ -43,7 +46,11 @@ namespace CRM.admin.Attendance
             if (dcDateOverride.Text != "")
             {
                 newGroup.AddedTimeStamp = dcDateOverride.Value;
-            }
+            } 
+            
+            int eventID = 0;
+            if (int.TryParse(ddlEvents.SelectedValue, out eventID))
+            { newGroup.CRM_AttendanceEventID = eventID; }
 
             db.CRM_AttendanceLogGroups.InsertOnSubmit(newGroup);
 
@@ -54,6 +61,8 @@ namespace CRM.admin.Attendance
 
                 int typeID = 0;
                 int.TryParse(((HtmlInputHidden)RI.FindControl("hdn_typeID")).Value, out typeID);
+
+               
 
                 if (quantity > 0 && typeID != 0)
                 {

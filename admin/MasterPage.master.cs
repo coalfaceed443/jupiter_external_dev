@@ -120,6 +120,7 @@ namespace CRM.Admin
                 {
                     new MenuListItem("/admin/attendance/addattendance.aspx", "Add"),
                     new MenuListItem("/admin/attendance/attendancetypes/list.aspx", "Person Types"),
+                    new MenuListItem("/admin/attendance/attendanceevent/list.aspx", "Events"),
                     new MenuListItem("/admin/attendance/report.aspx", "Report"),
                 }));
 

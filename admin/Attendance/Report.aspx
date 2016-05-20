@@ -73,6 +73,21 @@
                     </ItemTemplate>
                 </asp:Repeater>
 
+                <asp:Repeater ID="repEventsTotals" runat="server">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <label>
+                                    Total Attendees For <%#Eval("Key")%> :
+                                </label>
+                            </td>
+                            <td>
+                                <span><%#Eval("Value") %></span>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+
 
             </table>
 

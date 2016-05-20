@@ -51,18 +51,7 @@ namespace CRM.admin.Attendance
 
             IQueryable<CRM_AttendanceLogGroup> allGroups = db.CRM_AttendanceLogGroups.Where(a => a.AddedTimeStamp >= dcDateFrom.Value && a.AddedTimeStamp <= dcDateTo.Value);
 
-            //repSearchTypeTotals.DataSource = allGroups.SelectMany(a => a.CRM_AttendanceLogs).GroupBy(b => b.CRM_AttendancePersonType);
-            //repSearchTypeTotals.DataBind();
-
             IQueryable<CRM_AttendanceLog> allLogs = allGroups.SelectMany(a => a.CRM_AttendanceLogs);
-
-            //List<KeyValuePair<string, int>> data = new List<KeyValuePair<string, int>>();
-
-            //foreach (CRM_AttendancePersonType type in db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived).OrderBy(a => a.OrderNo))
-            //{
-            //    data.Add(new KeyValuePair<string, int>(type.Name, allLogs.Where(l => l.CRM_AttendancePersonType == type).Sum(l => l.Quantity)));
-            //}
-
 
             repSearchTypeTotals.DataSource =
                 db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived)
@@ -71,6 +60,8 @@ namespace CRM.admin.Attendance
 
             repSearchTypeTotals.DataBind();
 
+            repEventsTotals.DataSource = allGroups.Where(a => a.CRM_AttendanceEvent != null).GroupBy(a => a.CRM_AttendanceEvent).Select(g => new KeyValuePair<string, int>(g.Key.Name, g.Sum(gi => gi.CRM_AttendanceLogs.Sum(al => al.Quantity))));
+            repEventsTotals.DataBind();
 
             PeopleSearch = allGroups.Any() ? allGroups.Sum(a => a.CRM_AttendanceLogs.Any() ? a.CRM_AttendanceLogs.Sum(b => b.Quantity) : 0) : 0;
             GroupsSearch = allGroups.Count();

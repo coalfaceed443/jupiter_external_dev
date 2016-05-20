@@ -7,46 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CRM.admin.Attendance {
+namespace CRM.admin.Attendance.AttendanceEvent {
     
     
-    public partial class AddAttendance {
+    public partial class Details {
         
         /// <summary>
-        /// spnPeopleToday control.
+        /// confirmationDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spnPeopleToday;
+        protected global::CRM.Controls.Forms.UserControlConfirmationPage confirmationDelete;
         
         /// <summary>
-        /// repTypes control.
+        /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repTypes;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// dcDateOverride control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CRM.Controls.Forms.UserControlDateCalendar dcDateOverride;
-        
-        /// <summary>
-        /// ddlEvents control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEvents;
+        protected global::CRM.Controls.Forms.UserControlTextBox txtName;
         
         /// <summary>
         /// btnSubmit control.
@@ -56,5 +47,23 @@ namespace CRM.admin.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CRM.Controls.Forms.UserControlButton btnSubmit;
+        
+        /// <summary>
+        /// btnSubmitChanges control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlButton btnSubmitChanges;
+        
+        /// <summary>
+        /// btnDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlButton btnDelete;
     }
 }

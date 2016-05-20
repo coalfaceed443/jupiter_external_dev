@@ -36,6 +36,14 @@
                         <ucUtil:DateCalendar ID="dcDateOverride" runat="server" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label>Link to event</label>
+                    </td>
+                    <td>
+                        <asp:DropDownList id="ddlEvents" runat="server" DataTextField="Value" DataValueField="Key" />
+                    </td>
+                </tr>
             </table>
 
             <br class="clearFix" />
