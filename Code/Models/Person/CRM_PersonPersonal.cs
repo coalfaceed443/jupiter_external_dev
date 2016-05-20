@@ -32,7 +32,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_Address.LabelOutput(this.LabelName, this.LabelOrganisation);
+                return this.CRM_Address.LabelOutput(this.LabelName, this.LabelOrganisation, "");
             }
         }
 

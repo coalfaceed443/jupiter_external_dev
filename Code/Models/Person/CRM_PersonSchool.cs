@@ -31,7 +31,7 @@ namespace CRM.Code.Models
         {
             get
             {
-                return this.CRM_School.CRM_Address.LabelOutput(this.LabelName, this.LabelOrganisation);
+                return this.CRM_School.CRM_Address.LabelOutput(this.LabelName, this.LabelOrganisation, this.CRM_Role.Name);
             }
         }
 

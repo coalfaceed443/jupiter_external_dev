@@ -99,21 +99,29 @@
 
         dymo.label.framework.trace = 1; //true
         dymo.label.framework.init(startupCode);
+        function startupCode() {
+            console.log("starting...");
+        }
 
         function checkDymo() {
             /* access DYMO Label Framework Library */
 
             var printers = dymo.label.framework.getPrinters();
-            if (printers.length == 0) {
-                alert("No DYMO printers are installed. Install DYMO printers.");
-                return;
+            if (printers.length == 0) {                
+                return false;
             }
 
         }
 
         //window.onload = startupCode;
 
-        function printDymo(){
+        function printDymo() {
+
+            if (checkDymo() == false)
+            {
+                alert("No printer found");
+            }
+
             dymoExtension.print($("#<%= txtLabel.ClientID%>").val());
         }
     </script>

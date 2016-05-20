@@ -71,7 +71,7 @@ namespace CRM.Code.Models
             }
         }
 
-        public string LabelOutput(string name, string organisation)
+        public string LabelOutput(string name, string organisation, string role)
         {
 
             string outputLabel = "";
@@ -80,10 +80,17 @@ namespace CRM.Code.Models
                 outputLabel += name + Environment.NewLine;
             }
 
+            if (!String.IsNullOrEmpty(role))
+            {
+                outputLabel += role + Environment.NewLine;
+            }
+
             if (!String.IsNullOrEmpty(organisation))
             {
                 outputLabel += organisation + Environment.NewLine;
             }
+
+
 
             return outputLabel += this.FormattedAddressBySep(Environment.NewLine);
         }
