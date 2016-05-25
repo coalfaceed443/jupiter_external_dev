@@ -137,10 +137,9 @@
                {%>
 
                 ['<%= startDate.ToString("MMM yy")%>',
-                    <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year)
-    .Where(r => !r.CRM_AnnualPassCard.CRM_AnnualPasses.Any(c => c.StartDate.Year < startDate.Year)).Count()%>,
-                    <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year)
-     .Where(r => r.CRM_AnnualPassCard.CRM_AnnualPasses.Any(c => c.StartDate.Year < startDate.Year)).Count()%>,
+                    <%= db.CRM_AnnualPasses.GroupBy(g => g.PrimaryContactReference).Where(r => r.Any(c => c.StartDate.Month == startDate.Month && c.StartDate.Year == startDate.Year) && !r.Any(c => c.StartDate.Year < startDate.Year)).Count()%>,
+                    <%= db.CRM_AnnualPasses.GroupBy(g => g.PrimaryContactReference).Where(r => r.Any(c => c.StartDate.Month == startDate.Month && c.StartDate.Year == startDate.Year) && r.Any(c => c.StartDate.Year < startDate.Year)).Count()
+     %>,
                     <%= db.CRM_AnnualPasses.Where(r => r.StartDate.Month == startDate.Month && r.StartDate.Year == startDate.Year).Count()%>
                 ],
 
