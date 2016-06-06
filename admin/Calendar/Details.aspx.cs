@@ -148,6 +148,8 @@ namespace CRM.Admin.Calendar
                 Entity.DatePaid = null;
                 Entity.PONumber = "";
                 Entity.PrimaryContactReference = "";
+                Entity.Taken = 0;
+                Entity.Limit = 0;
                 db.CRM_Calendars.InsertOnSubmit(Entity);
             }
             else

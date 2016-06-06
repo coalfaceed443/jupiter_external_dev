@@ -37,7 +37,7 @@ namespace CRM.admin.Attendance
             {
                 if (allGroups.Any())
                 {
-                    dcDateFrom.Value = allGroups.Min(a => a.AddedTimeStamp);
+                    dcDateFrom.Value = DateTime.Now.AddMonths(-1);
                     dcDateTo.Value = allGroups.Max(a => a.AddedTimeStamp);
                 }
             }

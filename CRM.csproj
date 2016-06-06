@@ -2096,7 +2096,11 @@
     <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfile.cs" />
     <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfileLog.cs" />
     <Compile Include="Code\Models\HoldingPen.cs" />
-    <Compile Include="Code\Models\Main.designer.cs" />
+    <Compile Include="Code\Models\Main1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Code\Models\Organisation\CRM_Organisation.cs" />
     <Compile Include="Code\Models\Organisation\CRM_OrganisationSchool.cs" />
     <Compile Include="Code\Models\Organisation\Type\CRM_OrganisationType.cs" />
@@ -2527,11 +2531,6 @@
     <Content Include="admin\UpdateTitles.ashx" />
     <Content Include="admin\Communications\Export.ashx" />
     <Content Include="admin\AnnualPassCard\StatsResponse.ashx" />
-    <None Include="Code\Models\Main.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Main1.designer.cs</LastGenOutput>
-    </None>
     <Content Include="Controls\Admin\ImageUpload\preview.ashx" />
     <Content Include="Controls\Admin\ImageUpload\uploadMonitor.ashx" />
     <Content Include="Controls\Forms\Handlers\AutoCompleteJSON.ashx" />
@@ -2539,10 +2538,15 @@
     <Content Include="Controls\Admin\CaptureImageStream.ashx" />
     <Content Include="TaskScript\Import.ashx" />
     <Content Include="TaskScript\ConstType.ashx" />
+    <Content Include="Handlers\PrintLabel.ashx" />
+    <Content Include="Code\Models\Main.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Main1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Code\Models\Main.dbml.views">
       <DependentUpon>Main.dbml</DependentUpon>
     </Content>
-    <Content Include="Handlers\PrintLabel.ashx" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <Content Include="TaskScript\art_booking_import.ashx" />
     <Content Include="TaskScript\Art_Booking.csv" />
@@ -2600,19 +2604,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Code\Models\Main.dbml.layout">
-      <DependentUpon>Main.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="WebService\Service.dbml.layout">
       <DependentUpon>Service.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Code\Models\Main.dbml.views_def.layout">
+    <None Include="Code\Models\Main.dbml.layout">
       <DependentUpon>Main.dbml</DependentUpon>
-    </EmbeddedResource>
+    </None>
     <EmbeddedResource Include="WebService\Service.dbml.views_def.layout">
       <DependentUpon>Service.dbml</DependentUpon>
     </EmbeddedResource>

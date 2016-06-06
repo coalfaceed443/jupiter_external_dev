@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 using CRM.Code.Utils.Enumeration;
 using System.Runtime.Serialization;
 using CRM.Code.Utils.Time;
+using System.Diagnostics;
 
 namespace CRM.WebService
 {
@@ -68,6 +69,135 @@ namespace CRM.WebService
             return true;
         }
 
+        [WebMethod]
+        public string SyncCalendar(int ExternalEventID, string Name, DateTime startDate, int attendees, int total, bool UpdateAttendance)
+        {
+
+            try
+            {
+
+                ServiceDataContext db = new ServiceDataContext();
+
+                Service.CRM_Calendar calendarItem = db.CRM_Calendars.FirstOrDefault(f => f.ExternalEventID == ExternalEventID && startDate.Date == f.StartDateTime.Date);
+
+
+                int CalendarTypeID = db.CRM_CalendarTypes.Single(s => s.FixedRef == (int)Code.Models.CRM_CalendarType.TypeList.Event).ID;
+
+
+                if (calendarItem == null)
+                {
+                    calendarItem = new Service.CRM_Calendar();
+                    calendarItem.CancellationReason = "";
+                    calendarItem.CreatedByAdminID = 1;
+                    calendarItem.CRM_CalendarTypeID = CalendarTypeID;
+                    calendarItem.DateCancelled = null;
+                    calendarItem.DatePaid = null;
+                    calendarItem.Status = (byte)Code.Models.CRM_Calendar.StatusTypes.Confirmed;
+                    calendarItem.ExternalEventID = ExternalEventID;
+                    calendarItem.InvoiceAddressID = null;
+                    calendarItem.InvoiceFirstname = "";
+                    calendarItem.InvoiceLastname = "";
+                    calendarItem.InvoiceTitle = "";
+                    calendarItem.IsCancelled = false;
+                    calendarItem.IsInvoiced = false;
+                    calendarItem.PONumber = "";
+                    calendarItem.PriceAgreed = 0;
+                    calendarItem.PriceType = 0;
+                    calendarItem.PrimaryContactReference = "";
+                    calendarItem.PrivacyStatus = (byte)Code.Models.CRM_Calendar.PrivacyTypes.Editable;
+                    calendarItem.RequiresCatering = false;
+                    calendarItem.TargetReference = "";
+
+
+                    if (ExternalEventID == 91)
+                    {
+                        calendarItem.CRM_CalendarTypeID = db.CRM_CalendarTypes.Single(s => s.FixedRef == (int)Code.Models.CRM_CalendarType.TypeList.generic).ID;
+
+                        calendarItem.StartDateTime = startDate.AddHours(9);
+                        calendarItem.EndDateTime = startDate.AddHours(17);
+                    }
+                    else
+                    {
+                        if (startDate.Hour == 0)
+                        {
+                            calendarItem.StartDateTime = startDate.AddHours(9);
+                            calendarItem.EndDateTime = startDate.AddHours(10);
+                        }
+                        else
+                        {
+                            calendarItem.StartDateTime = startDate;
+                            calendarItem.EndDateTime = startDate.AddHours(1);
+                        }
+                    }
+
+                    db.CRM_Calendars.InsertOnSubmit(calendarItem);
+                }
+
+                calendarItem.Taken = attendees;
+                calendarItem.Limit = total;
+                calendarItem.DisplayName = Name;
+
+                db.SubmitChanges();
+
+                if (UpdateAttendance)
+                {
+
+                    Service.CRM_AttendanceEvent attendanceEvent = db.CRM_AttendanceEvents.FirstOrDefault(f => f.ExternalEventID == ExternalEventID);
+
+                    Service.CRM_AttendancePersonType personType = db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == "Web Booking");
+
+                    if (personType == null)
+                    {
+                        personType = new Service.CRM_AttendancePersonType();
+                        personType.IsActive = true;
+                        personType.IsArchived = false;
+                        personType.Name = "Web Booking";
+                        personType.OrderNo = 0;
+                        db.CRM_AttendancePersonTypes.InsertOnSubmit(personType);
+                    }
+
+                    db.SubmitChanges();
+
+                    if (attendanceEvent == null)
+                    {
+                        attendanceEvent = new Service.CRM_AttendanceEvent();
+                        attendanceEvent.Name = Name;
+                        attendanceEvent.ExternalEventID = ExternalEventID;
+                        db.CRM_AttendanceEvents.InsertOnSubmit(attendanceEvent);
+                    }
+
+                    db.SubmitChanges();
+
+                    Service.CRM_AttendanceLogGroup group = new Service.CRM_AttendanceLogGroup();
+
+                    group.CRM_AttendanceEventID = attendanceEvent.ID;
+                    group.AddedTimeStamp = UKTime.Now;
+                    db.CRM_AttendanceLogGroups.InsertOnSubmit(group);
+                    db.SubmitChanges();
+
+
+                    Service.CRM_AttendanceLog log = new Service.CRM_AttendanceLog();
+                    log.CRM_AttendancePersonTypeID = personType.ID;
+                    log.Quantity = attendees;
+                    log.CRM_CRM_AttendanceLogGroupID = group.ID;
+                    db.CRM_AttendanceLogs.InsertOnSubmit(log);
+                    db.SubmitChanges();
+
+                }
+                return "OK";
+            }
+            catch(Exception ex) {
+
+
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+
+                return ex.Message + ":" + line;
+            }
+        }
 
         /// <summary>
         /// Used for joint memberships
