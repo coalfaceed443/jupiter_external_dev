@@ -99,6 +99,7 @@ namespace CRM.admin.Person.Relation
             RebindAddresses();
             rbPersonAddress.SelectedValue = PersonRelationship.CRM_PersonIDAddress.ToString();
             txtSalutation.Text = PersonRelationship.Salutation;
+            txtLabel.Text = txtSalutation.Text + Environment.NewLine + PersonRelationship.Address.FormattedAddressBySep(Environment.NewLine);
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

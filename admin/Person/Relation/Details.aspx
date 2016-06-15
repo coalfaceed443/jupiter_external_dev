@@ -17,6 +17,40 @@
 
     </style>
 
+      <script type="text/javascript" src="/_assets/scripts/DYMO.Label.Framework.2.0.2.js"></script>
+    <script type="text/javascript" src="/_assets/scripts/dymo.js"></script>
+
+    <script type="text/javascript">
+
+        dymo.label.framework.trace = 1; //true
+        dymo.label.framework.init(startupCode);
+        function startupCode() {
+            console.log("starting...");
+        }
+
+        function checkDymo() {
+            /* access DYMO Label Framework Library */
+
+            var printers = dymo.label.framework.getPrinters();
+            if (printers.length == 0) {                
+                return false;
+            }
+
+        }
+
+        //window.onload = startupCode;
+
+        function printDymo() {
+
+            if (checkDymo() == false)
+            {
+                alert("No printer found");
+            }
+
+            dymoExtension.print($("#<%= txtLabel.ClientID%>").val());
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="server">
 
@@ -98,6 +132,15 @@
                     </td>
                     <td class="rblist">
                         <asp:RadioButtonList ID="rbPersonAddress" runat="server" DataTextField="Text" DataValueField="Value" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label><a href="#" onclick="printDymo();return false;">Print Label</a></label>
+                        
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtLabel" runat="server" TextMode="MultiLine" Height="80" style="width:280px;" />
                     </td>
                 </tr>
             </table>
