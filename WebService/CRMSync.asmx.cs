@@ -70,7 +70,7 @@ namespace CRM.WebService
         }
 
         [WebMethod]
-        public string SyncCalendar(int ExternalEventID, string Name, DateTime startDate, int attendees, int total, bool UpdateAttendance)
+        public string SyncCalendar(int ExternalEventID, string Name, DateTime startDate, int attendees, int total, bool UpdateAttendance, int Adults, int children, int altChildren, int concessions, int student)
         {
 
             try
@@ -83,9 +83,11 @@ namespace CRM.WebService
 
                 int CalendarTypeID = db.CRM_CalendarTypes.Single(s => s.FixedRef == (int)Code.Models.CRM_CalendarType.TypeList.Event).ID;
 
-
+                bool addedNew = false;
                 if (calendarItem == null)
                 {
+                    addedNew = true;
+
                     calendarItem = new Service.CRM_Calendar();
                     calendarItem.CancellationReason = "";
                     calendarItem.CreatedByAdminID = 1;
@@ -133,8 +135,11 @@ namespace CRM.WebService
                     db.CRM_Calendars.InsertOnSubmit(calendarItem);
                 }
 
-                calendarItem.Taken = attendees;
-                calendarItem.Limit = total;
+                if (!UpdateAttendance|| addedNew)
+                {
+                    calendarItem.Taken = attendees;
+                    calendarItem.Limit = total;
+                }
                 calendarItem.DisplayName = Name;
 
                 db.SubmitChanges();
@@ -144,29 +149,15 @@ namespace CRM.WebService
 
                     Service.CRM_AttendanceEvent attendanceEvent = db.CRM_AttendanceEvents.FirstOrDefault(f => f.ExternalEventID == ExternalEventID);
 
-                    Service.CRM_AttendancePersonType personType = db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == "Web Booking");
-
-                    if (personType == null)
+                    List<string> ticketTypes = new List<string>()
                     {
-                        personType = new Service.CRM_AttendancePersonType();
-                        personType.IsActive = true;
-                        personType.IsArchived = false;
-                        personType.Name = "Web Booking";
-                        personType.OrderNo = 0;
-                        db.CRM_AttendancePersonTypes.InsertOnSubmit(personType);
-                    }
+                        "Adults",
+                        "Children",
+                        "Alt Children",
+                        "Concessions",
+                        "Student"
+                    };
 
-                    db.SubmitChanges();
-
-                    if (attendanceEvent == null)
-                    {
-                        attendanceEvent = new Service.CRM_AttendanceEvent();
-                        attendanceEvent.Name = Name;
-                        attendanceEvent.ExternalEventID = ExternalEventID;
-                        db.CRM_AttendanceEvents.InsertOnSubmit(attendanceEvent);
-                    }
-
-                    db.SubmitChanges();
 
                     Service.CRM_AttendanceLogGroup group = new Service.CRM_AttendanceLogGroup();
 
@@ -175,13 +166,69 @@ namespace CRM.WebService
                     db.CRM_AttendanceLogGroups.InsertOnSubmit(group);
                     db.SubmitChanges();
 
+                    foreach (string ticketType in ticketTypes)
+                    {
+                        int attendanceNumber = 0;
+                        switch (ticketType)
+                        {
+                            case "Adults":
+                                attendanceNumber = Adults;
+                                break;
+                            case "Children":
+                                attendanceNumber = children;
+                                break;
+                            case "Alt Children":
+                                attendanceNumber = altChildren;
+                                break;
+                            case "Concessions":
+                                attendanceNumber = concessions;
+                                break;
+                            case "Student":
+                                attendanceNumber = student;
+                                break;
+                        }
 
-                    Service.CRM_AttendanceLog log = new Service.CRM_AttendanceLog();
-                    log.CRM_AttendancePersonTypeID = personType.ID;
-                    log.Quantity = attendees;
-                    log.CRM_CRM_AttendanceLogGroupID = group.ID;
-                    db.CRM_AttendanceLogs.InsertOnSubmit(log);
-                    db.SubmitChanges();
+                        
+
+                        if (attendanceNumber > 0)
+                        {
+
+                            string logticketType = "Web Booking - " + ticketType;
+
+                            Service.CRM_AttendancePersonType personType = db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == ticketType);
+
+                            if (personType == null)
+                            {
+                                personType = new Service.CRM_AttendancePersonType();
+                                personType.IsActive = true;
+                                personType.IsArchived = false;
+                                personType.Name = ticketType;
+                                personType.OrderNo = 0;
+                                db.CRM_AttendancePersonTypes.InsertOnSubmit(personType);
+                            }
+
+                            db.SubmitChanges();
+
+                            if (attendanceEvent == null)
+                            {
+                                attendanceEvent = new Service.CRM_AttendanceEvent();
+                                attendanceEvent.Name = Name;
+                                attendanceEvent.ExternalEventID = ExternalEventID;
+                                db.CRM_AttendanceEvents.InsertOnSubmit(attendanceEvent);
+                            }
+
+                            db.SubmitChanges();
+
+
+
+                            Service.CRM_AttendanceLog log = new Service.CRM_AttendanceLog();
+                            log.CRM_AttendancePersonTypeID = personType.ID;
+                            log.Quantity = attendees;
+                            log.CRM_CRM_AttendanceLogGroupID = group.ID;
+                            db.CRM_AttendanceLogs.InsertOnSubmit(log);
+                            db.SubmitChanges();
+                        }
+                    }
 
                 }
                 return "OK";
