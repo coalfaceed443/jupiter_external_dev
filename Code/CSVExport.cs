@@ -55,6 +55,44 @@ namespace CRM.Code
              response.End();
         }
 
+        public static void MemberAudit(IEnumerable<CRM_AnnualPass> passes, HttpResponse Response)
+        {
+ 
+
+            string columnNames = "Signup Date, Membership Type, Name, Number";
+
+            string filename = "audit";
+
+            Response.Clear();
+            Response.ContentType = "text/csv";
+            Response.AddHeader("content-disposition", "attachment; filename=\"" + filename + "-" + DateTime.UtcNow.ToString("dd-MM-yyyy") + ".csv\"");
+            Response.ContentEncoding = Encoding.GetEncoding("Windows-1252");
+
+            HttpContext.Current.Response.Write(columnNames);
+            HttpContext.Current.Response.Write(Environment.NewLine);
+
+
+            StringBuilder sbItems = new StringBuilder();
+
+            foreach (Code.Models.CRM_AnnualPass pass in passes)
+            {
+
+                CRM_AnnualPassPerson owner = pass.CRM_AnnualPassPersons.FirstOrDefault(r => r.CRM_Person.Reference == pass.PrimaryContactReference);
+
+                AddComma(pass.StartDate.ToString("dd/MM/yyyy HH:mm"), sbItems);
+                AddComma(pass.TypeOfPass, sbItems);
+                AddComma(owner == null ? "Unknown" : owner.CRM_Person.Fullname, sbItems);
+                AddComma(pass.CRM_AnnualPassCard.MembershipNumber.ToString(), sbItems);
+
+
+                Response.Write(sbItems.ToString());
+                Response.Write(Environment.NewLine);
+                sbItems = new StringBuilder();
+            }
+
+            Response.End();
+        }
+
         private static void AddComma(string value, StringBuilder stringBuilder)
         {
             bool mustQuote = (value.Contains(",") || value.Contains("\"") || value.Contains("\r") || value.Contains("\n"));
