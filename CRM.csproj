@@ -2071,6 +2071,7 @@
     <Compile Include="Code\Models\Calendar\CRM_CalendarInvite.cs" />
     <Compile Include="Code\Models\Country.cs" />
     <Compile Include="Code\Models\CRM_AttendanceEvent.cs" />
+    <Compile Include="Code\Models\CRM_AttendanceLogGroup.cs" />
     <Compile Include="Code\Models\CRM_Communication.cs" />
     <Compile Include="Code\Models\CRM_Region.cs" />
     <Compile Include="Code\Models\CRM_Exhibition.cs" />
@@ -2104,7 +2105,7 @@
     <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfile.cs" />
     <Compile Include="Code\Models\Fund\Gift\CRM_FundraisingGiftProfileLog.cs" />
     <Compile Include="Code\Models\HoldingPen.cs" />
-    <Compile Include="Code\Models\Main1.designer.cs">
+    <Compile Include="Code\Models\Main.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Main.dbml</DependentUpon>
@@ -2549,7 +2550,7 @@
     <Content Include="Handlers\PrintLabel.ashx" />
     <Content Include="Code\Models\Main.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Main1.designer.cs</LastGenOutput>
+      <LastGenOutput>Main.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Code\Models\Main.dbml.views">

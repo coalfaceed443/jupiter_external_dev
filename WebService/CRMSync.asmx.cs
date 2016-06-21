@@ -144,10 +144,24 @@ namespace CRM.WebService
 
                 db.SubmitChanges();
 
+
                 if (UpdateAttendance)
                 {
 
                     Service.CRM_AttendanceEvent attendanceEvent = db.CRM_AttendanceEvents.FirstOrDefault(f => f.ExternalEventID == ExternalEventID);
+
+
+                    if (attendanceEvent == null)
+                    {
+                        attendanceEvent = new Service.CRM_AttendanceEvent()
+                        {
+                            ExternalEventID = ExternalEventID,
+                            Name = Name
+                        };
+
+                        db.CRM_AttendanceEvents.InsertOnSubmit(attendanceEvent);
+                        db.SubmitChanges();
+                    }
 
                     List<string> ticketTypes = new List<string>()
                     {
@@ -158,11 +172,13 @@ namespace CRM.WebService
                         "Student"
                     };
 
-
+                    
                     Service.CRM_AttendanceLogGroup group = new Service.CRM_AttendanceLogGroup();
 
                     group.CRM_AttendanceEventID = attendanceEvent.ID;
-                    group.AddedTimeStamp = UKTime.Now;
+                    group.AddedTimeStamp = startDate;
+                    group.OriginType = (byte)CRM.Code.Models.CRM_AttendanceLogGroup.OriginTypes.WebsiteWebservice;
+                    group.DateInserted = UKTime.Now;
                     db.CRM_AttendanceLogGroups.InsertOnSubmit(group);
                     db.SubmitChanges();
 
@@ -195,14 +211,14 @@ namespace CRM.WebService
 
                             string logticketType = "Web Booking - " + ticketType;
 
-                            Service.CRM_AttendancePersonType personType = db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == ticketType);
+                            Service.CRM_AttendancePersonType personType = db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == logticketType);
 
                             if (personType == null)
                             {
                                 personType = new Service.CRM_AttendancePersonType();
                                 personType.IsActive = true;
                                 personType.IsArchived = false;
-                                personType.Name = ticketType;
+                                personType.Name = logticketType;
                                 personType.OrderNo = 0;
                                 db.CRM_AttendancePersonTypes.InsertOnSubmit(personType);
                             }
@@ -223,7 +239,7 @@ namespace CRM.WebService
 
                             Service.CRM_AttendanceLog log = new Service.CRM_AttendanceLog();
                             log.CRM_AttendancePersonTypeID = personType.ID;
-                            log.Quantity = attendees;
+                            log.Quantity = attendanceNumber;
                             log.CRM_CRM_AttendanceLogGroupID = group.ID;
                             db.CRM_AttendanceLogs.InsertOnSubmit(log);
                             db.SubmitChanges();
@@ -242,7 +258,7 @@ namespace CRM.WebService
                 // Get the line number from the stack frame
                 var line = frame.GetFileLineNumber();
 
-                return ex.Message + ":" + line;
+                return "External Event ID " + ExternalEventID + " : " + ex.Message + ":" + line;
             }
         }
 

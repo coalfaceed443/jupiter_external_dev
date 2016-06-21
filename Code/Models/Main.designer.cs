@@ -271,12 +271,12 @@ namespace CRM.Code.Models
     partial void InsertCRM_AttendancePersonType(CRM_AttendancePersonType instance);
     partial void UpdateCRM_AttendancePersonType(CRM_AttendancePersonType instance);
     partial void DeleteCRM_AttendancePersonType(CRM_AttendancePersonType instance);
-    partial void InsertCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
-    partial void UpdateCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
-    partial void DeleteCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
     partial void InsertCRM_AttendanceEvent(CRM_AttendanceEvent instance);
     partial void UpdateCRM_AttendanceEvent(CRM_AttendanceEvent instance);
     partial void DeleteCRM_AttendanceEvent(CRM_AttendanceEvent instance);
+    partial void InsertCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
+    partial void UpdateCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
+    partial void DeleteCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
     #endregion
 		
 		public MainDataContext() : 
@@ -957,19 +957,19 @@ namespace CRM.Code.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<CRM_AttendanceLogGroup> CRM_AttendanceLogGroups
-		{
-			get
-			{
-				return this.GetTable<CRM_AttendanceLogGroup>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CRM_AttendanceEvent> CRM_AttendanceEvents
 		{
 			get
 			{
 				return this.GetTable<CRM_AttendanceEvent>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_AttendanceLogGroup> CRM_AttendanceLogGroups
+		{
+			get
+			{
+				return this.GetTable<CRM_AttendanceLogGroup>();
 			}
 		}
 		
@@ -28474,223 +28474,6 @@ namespace CRM.Code.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AttendanceLogGroup")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class CRM_AttendanceLogGroup : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.DateTime _AddedTimeStamp;
-		
-		private System.Nullable<int> _CRM_AttendanceEventID;
-		
-		private EntitySet<CRM_AttendanceLog> _CRM_AttendanceLogs;
-		
-		private EntityRef<CRM_AttendanceEvent> _CRM_AttendanceEvent;
-		
-		private bool serializing;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnAddedTimeStampChanging(System.DateTime value);
-    partial void OnAddedTimeStampChanged();
-    partial void OnCRM_AttendanceEventIDChanging(System.Nullable<int> value);
-    partial void OnCRM_AttendanceEventIDChanged();
-    #endregion
-		
-		public CRM_AttendanceLogGroup()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddedTimeStamp", DbType="DateTime NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.DateTime AddedTimeStamp
-		{
-			get
-			{
-				return this._AddedTimeStamp;
-			}
-			set
-			{
-				if ((this._AddedTimeStamp != value))
-				{
-					this.OnAddedTimeStampChanging(value);
-					this.SendPropertyChanging();
-					this._AddedTimeStamp = value;
-					this.SendPropertyChanged("AddedTimeStamp");
-					this.OnAddedTimeStampChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_AttendanceEventID", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public System.Nullable<int> CRM_AttendanceEventID
-		{
-			get
-			{
-				return this._CRM_AttendanceEventID;
-			}
-			set
-			{
-				if ((this._CRM_AttendanceEventID != value))
-				{
-					if (this._CRM_AttendanceEvent.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCRM_AttendanceEventIDChanging(value);
-					this.SendPropertyChanging();
-					this._CRM_AttendanceEventID = value;
-					this.SendPropertyChanged("CRM_AttendanceEventID");
-					this.OnCRM_AttendanceEventIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AttendanceLogGroup_CRM_AttendanceLog", Storage="_CRM_AttendanceLogs", ThisKey="ID", OtherKey="CRM_CRM_AttendanceLogGroupID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
-		public EntitySet<CRM_AttendanceLog> CRM_AttendanceLogs
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._CRM_AttendanceLogs.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._CRM_AttendanceLogs;
-			}
-			set
-			{
-				this._CRM_AttendanceLogs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AttendanceEvent_CRM_AttendanceLogGroup", Storage="_CRM_AttendanceEvent", ThisKey="CRM_AttendanceEventID", OtherKey="ID", IsForeignKey=true)]
-		public CRM_AttendanceEvent CRM_AttendanceEvent
-		{
-			get
-			{
-				return this._CRM_AttendanceEvent.Entity;
-			}
-			set
-			{
-				CRM_AttendanceEvent previousValue = this._CRM_AttendanceEvent.Entity;
-				if (((previousValue != value) 
-							|| (this._CRM_AttendanceEvent.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CRM_AttendanceEvent.Entity = null;
-						previousValue.CRM_AttendanceLogGroups.Remove(this);
-					}
-					this._CRM_AttendanceEvent.Entity = value;
-					if ((value != null))
-					{
-						value.CRM_AttendanceLogGroups.Add(this);
-						this._CRM_AttendanceEventID = value.ID;
-					}
-					else
-					{
-						this._CRM_AttendanceEventID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CRM_AttendanceEvent");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_CRM_AttendanceLogs(CRM_AttendanceLog entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AttendanceLogGroup = this;
-		}
-		
-		private void detach_CRM_AttendanceLogs(CRM_AttendanceLog entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AttendanceLogGroup = null;
-		}
-		
-		private void Initialize()
-		{
-			this._CRM_AttendanceLogs = new EntitySet<CRM_AttendanceLog>(new Action<CRM_AttendanceLog>(this.attach_CRM_AttendanceLogs), new Action<CRM_AttendanceLog>(this.detach_CRM_AttendanceLogs));
-			this._CRM_AttendanceEvent = default(EntityRef<CRM_AttendanceEvent>);
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerializing(StreamingContext context)
-		{
-			this.serializing = true;
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializedAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerialized(StreamingContext context)
-		{
-			this.serializing = false;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AttendanceEvent")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class CRM_AttendanceEvent : INotifyPropertyChanging, INotifyPropertyChanged
@@ -28842,6 +28625,273 @@ namespace CRM.Code.Models
 		private void Initialize()
 		{
 			this._CRM_AttendanceLogGroups = new EntitySet<CRM_AttendanceLogGroup>(new Action<CRM_AttendanceLogGroup>(this.attach_CRM_AttendanceLogGroups), new Action<CRM_AttendanceLogGroup>(this.detach_CRM_AttendanceLogGroups));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AttendanceLogGroup")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_AttendanceLogGroup : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.DateTime _AddedTimeStamp;
+		
+		private System.Nullable<int> _CRM_AttendanceEventID;
+		
+		private byte _OriginType;
+		
+		private System.Nullable<System.DateTime> _DateInserted;
+		
+		private EntitySet<CRM_AttendanceLog> _CRM_AttendanceLogs;
+		
+		private EntityRef<CRM_AttendanceEvent> _CRM_AttendanceEvent;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnAddedTimeStampChanging(System.DateTime value);
+    partial void OnAddedTimeStampChanged();
+    partial void OnCRM_AttendanceEventIDChanging(System.Nullable<int> value);
+    partial void OnCRM_AttendanceEventIDChanged();
+    partial void OnOriginTypeChanging(byte value);
+    partial void OnOriginTypeChanged();
+    partial void OnDateInsertedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateInsertedChanged();
+    #endregion
+		
+		public CRM_AttendanceLogGroup()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddedTimeStamp", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.DateTime AddedTimeStamp
+		{
+			get
+			{
+				return this._AddedTimeStamp;
+			}
+			set
+			{
+				if ((this._AddedTimeStamp != value))
+				{
+					this.OnAddedTimeStampChanging(value);
+					this.SendPropertyChanging();
+					this._AddedTimeStamp = value;
+					this.SendPropertyChanged("AddedTimeStamp");
+					this.OnAddedTimeStampChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_AttendanceEventID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<int> CRM_AttendanceEventID
+		{
+			get
+			{
+				return this._CRM_AttendanceEventID;
+			}
+			set
+			{
+				if ((this._CRM_AttendanceEventID != value))
+				{
+					if (this._CRM_AttendanceEvent.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_AttendanceEventIDChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_AttendanceEventID = value;
+					this.SendPropertyChanged("CRM_AttendanceEventID");
+					this.OnCRM_AttendanceEventIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginType", DbType="TinyInt NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public byte OriginType
+		{
+			get
+			{
+				return this._OriginType;
+			}
+			set
+			{
+				if ((this._OriginType != value))
+				{
+					this.OnOriginTypeChanging(value);
+					this.SendPropertyChanging();
+					this._OriginType = value;
+					this.SendPropertyChanged("OriginType");
+					this.OnOriginTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateInserted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Nullable<System.DateTime> DateInserted
+		{
+			get
+			{
+				return this._DateInserted;
+			}
+			set
+			{
+				if ((this._DateInserted != value))
+				{
+					this.OnDateInsertedChanging(value);
+					this.SendPropertyChanging();
+					this._DateInserted = value;
+					this.SendPropertyChanged("DateInserted");
+					this.OnDateInsertedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AttendanceLogGroup_CRM_AttendanceLog", Storage="_CRM_AttendanceLogs", ThisKey="ID", OtherKey="CRM_CRM_AttendanceLogGroupID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
+		public EntitySet<CRM_AttendanceLog> CRM_AttendanceLogs
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_AttendanceLogs.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_AttendanceLogs;
+			}
+			set
+			{
+				this._CRM_AttendanceLogs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AttendanceEvent_CRM_AttendanceLogGroup", Storage="_CRM_AttendanceEvent", ThisKey="CRM_AttendanceEventID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_AttendanceEvent CRM_AttendanceEvent
+		{
+			get
+			{
+				return this._CRM_AttendanceEvent.Entity;
+			}
+			set
+			{
+				CRM_AttendanceEvent previousValue = this._CRM_AttendanceEvent.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_AttendanceEvent.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_AttendanceEvent.Entity = null;
+						previousValue.CRM_AttendanceLogGroups.Remove(this);
+					}
+					this._CRM_AttendanceEvent.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_AttendanceLogGroups.Add(this);
+						this._CRM_AttendanceEventID = value.ID;
+					}
+					else
+					{
+						this._CRM_AttendanceEventID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CRM_AttendanceEvent");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CRM_AttendanceLogs(CRM_AttendanceLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AttendanceLogGroup = this;
+		}
+		
+		private void detach_CRM_AttendanceLogs(CRM_AttendanceLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AttendanceLogGroup = null;
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_AttendanceLogs = new EntitySet<CRM_AttendanceLog>(new Action<CRM_AttendanceLog>(this.attach_CRM_AttendanceLogs), new Action<CRM_AttendanceLog>(this.detach_CRM_AttendanceLogs));
+			this._CRM_AttendanceEvent = default(EntityRef<CRM_AttendanceEvent>);
 			OnCreated();
 		}
 		

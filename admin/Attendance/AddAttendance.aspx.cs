@@ -1,6 +1,7 @@
 ﻿using CRM.Code.BasePages.Admin;
 using CRM.Code.Managers;
 using CRM.Code.Models;
+using CRM.Code.Utils.Time;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,9 @@ namespace CRM.admin.Attendance
             int eventID = 0;
             if (int.TryParse(ddlEvents.SelectedValue, out eventID))
             { newGroup.CRM_AttendanceEventID = eventID; }
+
+            newGroup.DateInserted = UKTime.Now;
+            newGroup.OriginType = (byte)CRM_AttendanceLogGroup.OriginTypes.CRM;
 
             db.CRM_AttendanceLogGroups.InsertOnSubmit(newGroup);
 

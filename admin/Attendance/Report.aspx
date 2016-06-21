@@ -65,7 +65,7 @@
                 ['Date',
                     <% foreach (CRM.Code.Models.CRM_AttendancePersonType type in db.CRM_AttendancePersonTypes)
                        {%>
-                   '<%= type.Name%>',
+                   '<%= type.Name.Replace("'", "")%>',
                     <%}%>],
 
                     

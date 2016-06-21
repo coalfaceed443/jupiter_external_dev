@@ -21,7 +21,7 @@ namespace CRM.admin.AnnualPassCard
         {
             
             var startDate = new DateTime(2015, 01, 01);
-            var endDate = new DateTime(2015, 01, 31);
+            var endDate = new DateTime(2015, 12, 31);
 
             var members = from p in db.CRM_AnnualPasses
                 where p.StartDate >= startDate

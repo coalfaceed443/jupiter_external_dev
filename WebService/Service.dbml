@@ -144,17 +144,8 @@
       <Column Name="CRM_AttendancePersonTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CRM_CRM_AttendanceLogGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="CRM_AttendanceLogGroup_CRM_AttendanceLog" Member="CRM_AttendanceLogGroup" ThisKey="CRM_CRM_AttendanceLogGroupID" OtherKey="ID" Type="CRM_AttendanceLogGroup" IsForeignKey="true" />
       <Association Name="CRM_AttendancePersonType_CRM_AttendanceLog" Member="CRM_AttendancePersonType" ThisKey="CRM_AttendancePersonTypeID" OtherKey="ID" Type="CRM_AttendancePersonType" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CRM_AttendanceLogGroup" Member="CRM_AttendanceLogGroups">
-    <Type Name="CRM_AttendanceLogGroup">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AddedTimeStamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="CRM_AttendanceEventID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="CRM_AttendanceLogGroup_CRM_AttendanceLog" Member="CRM_AttendanceLogs" ThisKey="ID" OtherKey="CRM_CRM_AttendanceLogGroupID" Type="CRM_AttendanceLog" />
-      <Association Name="CRM_AttendanceEvent_CRM_AttendanceLogGroup" Member="CRM_AttendanceEvent" ThisKey="CRM_AttendanceEventID" OtherKey="ID" Type="CRM_AttendanceEvent" IsForeignKey="true" />
+      <Association Name="CRM_AttendanceLogGroup_CRM_AttendanceLog" Member="CRM_AttendanceLogGroup" ThisKey="CRM_CRM_AttendanceLogGroupID" OtherKey="ID" Type="CRM_AttendanceLogGroup" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CRM_AttendancePersonType" Member="CRM_AttendancePersonTypes">
@@ -209,6 +200,17 @@
       <Column Name="Hex" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
       <Column Name="FixedRef" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="CRM_CalendarType_CRM_Calendar" Member="CRM_Calendars" ThisKey="ID" OtherKey="CRM_CalendarTypeID" Type="CRM_Calendar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AttendanceLogGroup" Member="CRM_AttendanceLogGroups">
+    <Type Name="CRM_AttendanceLogGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AddedTimeStamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_AttendanceEventID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="DateInserted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CRM_AttendanceLogGroup_CRM_AttendanceLog" Member="CRM_AttendanceLogs" ThisKey="ID" OtherKey="CRM_CRM_AttendanceLogGroupID" Type="CRM_AttendanceLog" />
+      <Association Name="CRM_AttendanceEvent_CRM_AttendanceLogGroup" Member="CRM_AttendanceEvent" ThisKey="CRM_AttendanceEventID" OtherKey="ID" Type="CRM_AttendanceEvent" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
