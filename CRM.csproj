@@ -130,6 +130,7 @@
     <Content Include="admin\Person\Gift\List.aspx" />
     <Content Include="admin\Person\Relation\Details.aspx" />
     <Content Include="admin\Person\Relation\List.aspx" />
+    <Content Include="admin\Person\Reports.aspx" />
     <Content Include="admin\RelationshipCode\Details.aspx" />
     <Content Include="admin\RelationshipCode\List.aspx" />
     <Content Include="admin\School\Region\Details.aspx" />
@@ -1316,6 +1317,13 @@
     </Compile>
     <Compile Include="admin\Person\Relation\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\RelationshipCode\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
