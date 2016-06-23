@@ -29,7 +29,11 @@ namespace CRM.Code.Models
     }
     public partial class CRM_Person : IHistory, ICRMRecord, INotes, IDuplicate, IAutocomplete, IContact, ICustomField, ICRMContext, IMailable, ILabel
     {
-
+        public string ConstituentTypeOutput(MainDataContext db, string seperator)
+        {
+                return CRM.Code.Helpers.JSONSet.FlattenList(this.ConstituentTypes(db).ToList(), seperator);
+            
+        }
         #region Ilabel
 
         public string LabelName

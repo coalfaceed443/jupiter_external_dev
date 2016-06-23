@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CRM.Code.Extensions;
 
 namespace CRM.admin.Person
 {
@@ -15,6 +16,7 @@ namespace CRM.admin.Person
         protected void Page_Load(object sender, EventArgs e)
         {
             btnExportExhibitionPostal.EventHandler = btnExportExhibitionPostal_Click;
+            btnExportLearningContacts.EventHandler = btnExportLearningContacts_Click;
         }
 
         protected enum CustomFieldIDs
@@ -53,27 +55,86 @@ namespace CRM.admin.Person
                 (int)CustomFieldIDs.Galleries,
                 (int)CustomFieldIDs.Artist,
                 (int)CustomFieldIDs.Festivals,
-                (int)CustomFieldIDs.Government
+                (int)CustomFieldIDs.Government,
+                (int)CustomFieldIDs.Volunteer,
+
             };
 
             return constituents;
+        }
+
+
+        protected List<int> Learning()
+        {
+            List<int> constituents = new List<int>()
+            {
+                (int)CustomFieldIDs.CourseAttendee,
+                (int)CustomFieldIDs.schools,
+                (int)CustomFieldIDs.FreelanceTeacher,
+                (int)CustomFieldIDs.Educational
+            };
+
+            return constituents;
+        }
+
+        protected void btnExportLearningContacts_Click(object sender, EventArgs e)
+        {
+            var constituents = Learning();
+
+            var dataset = from p in db.CRM_Persons
+                          where db.CRM_FormFieldResponses.Any(r =>
+                          r.CRM_FormFieldItemID != null && constituents.Contains((int)r.CRM_FormFieldItemID) &&
+                              r.TargetReference == p.Reference)
+                              let constituentOutput = p.ConstituentTypeOutput(db, " ")
+                          where !p.IsArchived
+                          select new { 
+                          
+                              p.Title,
+                              p.Firstname,
+                              p.Lastname,
+                              p.IsAnnualPassHolder,
+                              p.PrimaryEmail,
+                              p.CalculatedSalutation,
+                              constituentOutput,
+                              p.PrimaryAddressLine1,
+                              p.PrimaryAddressLine2,
+                              p.PrimaryAddressLine3,
+                              p.PrimaryAddressLine4,
+                              p.PrimaryAddressLine5,
+                              p.PrimaryAddressTown,
+                              p.PrimaryAddressCounty,
+                              p.PrimaryAddressPostcode,
+                             p.PrimaryAddressCountry,
+                             p.NextExpiryDate,
+                             p.IsDoNotEmail,
+                             p.IsDoNotMail
+
+                          };
+
+            CSVExport.GenericExport(dataset.ToArray(), "learning-contacts");
+
+
+
         }
 
         protected void btnExportExhibitionPostal_Click(object sender, EventArgs e)
         {
             var constituents = ExhibitionPostals();
 
-            var dataset = from p in (from p in db.CRM_Persons
+            var dataset = from p in(from p in db.CRM_Persons
+                                     where !p.IsArchived
                           where db.CRM_FormFieldResponses.Any(r =>
                               r.CRM_FormFieldItemID != null &&
                               constituents.Contains((int)r.CRM_FormFieldItemID) &&
                               r.TargetReference == p.Reference)
                                      where !p.IsDoNotMail
                                 select p
-                               ).ToList()
+                               ).ToList().DistinctOnRelations()
                           where !p.IsAnnualPassHolder
-                          select new { 
-                          
+                          let ConstituentType = p.ConstituentTypeOutput(db, ", ")
+                          select new {
+                          ConstituentType,
+                          p.RelationshipSaltuation,
                           p.Title,
                           p.Firstname,
                           p.Lastname,
