@@ -1159,6 +1159,15 @@
       <Association Name="CRM_AttendanceEvent_CRM_AttendanceLogGroup" Member="CRM_AttendanceEvent" ThisKey="CRM_AttendanceEventID" OtherKey="ID" Type="CRM_AttendanceEvent" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Cardpresso" Member="Cardpressos">
+    <Type Name="Cardpresso">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Membership" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Expiry" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.GetNewId" Method="GetNewId" IsComposable="true">
     <Return Type="System.Guid" />
   </Function>

@@ -277,6 +277,9 @@ namespace CRM.Code.Models
     partial void InsertCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
     partial void UpdateCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
     partial void DeleteCRM_AttendanceLogGroup(CRM_AttendanceLogGroup instance);
+    partial void InsertCardpresso(Cardpresso instance);
+    partial void UpdateCardpresso(Cardpresso instance);
+    partial void DeleteCardpresso(Cardpresso instance);
     #endregion
 		
 		public MainDataContext() : 
@@ -970,6 +973,14 @@ namespace CRM.Code.Models
 			get
 			{
 				return this.GetTable<CRM_AttendanceLogGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Cardpresso> Cardpressos
+		{
+			get
+			{
+				return this.GetTable<Cardpresso>();
 			}
 		}
 		
@@ -28914,6 +28925,182 @@ namespace CRM.Code.Models
 		public void OnSerialized(StreamingContext context)
 		{
 			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cardpresso")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class Cardpresso : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _Membership;
+		
+		private System.DateTime _Expiry;
+		
+		private string _Barcode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnMembershipChanging(string value);
+    partial void OnMembershipChanged();
+    partial void OnExpiryChanging(System.DateTime value);
+    partial void OnExpiryChanged();
+    partial void OnBarcodeChanging(string value);
+    partial void OnBarcodeChanged();
+    #endregion
+		
+		public Cardpresso()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Membership", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public string Membership
+		{
+			get
+			{
+				return this._Membership;
+			}
+			set
+			{
+				if ((this._Membership != value))
+				{
+					this.OnMembershipChanging(value);
+					this.SendPropertyChanging();
+					this._Membership = value;
+					this.SendPropertyChanged("Membership");
+					this.OnMembershipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Expiry", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.DateTime Expiry
+		{
+			get
+			{
+				return this._Expiry;
+			}
+			set
+			{
+				if ((this._Expiry != value))
+				{
+					this.OnExpiryChanging(value);
+					this.SendPropertyChanging();
+					this._Expiry = value;
+					this.SendPropertyChanged("Expiry");
+					this.OnExpiryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Barcode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public string Barcode
+		{
+			get
+			{
+				return this._Barcode;
+			}
+			set
+			{
+				if ((this._Barcode != value))
+				{
+					this.OnBarcodeChanging(value);
+					this.SendPropertyChanging();
+					this._Barcode = value;
+					this.SendPropertyChanged("Barcode");
+					this.OnBarcodeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
 		}
 	}
 }
