@@ -98,9 +98,26 @@ namespace CRM.admin.Attendance
                                  RecordCreatedOn = p.CRM_AttendanceLogGroup.DateInserted,
                                  Event = p.CRM_AttendanceLogGroup.CRM_AttendanceEvent.Name,
                                  Origin = p.CRM_AttendanceLogGroup.OriginType == 0 ? "Manual Input by Jupiter Staff" : "Website Automated"
-                             }).ToArray();
+                             }).ToList();
 
-            CRM.Code.CSVExport.GenericExport(attendance, "attendance-export-");
+            var scannedItems = (from p in db.CRM_CalendarInvites
+                                let AttendedOn = p.CRM_Calendar.StartDateTime
+                                where AttendedOn >= dcDateFrom.Value
+                                where AttendedOn <= dcDateTo.Value
+                                orderby AttendedOn
+                                select new
+                                {
+                                    PersonType = "Annual Pass Scan",
+                                    Quantity = 1,
+                                    AttendedOn,
+                                    RecordCreatedOn = (DateTime?)p.LastUpdated,
+                                    Event = p.CRM_Calendar.DisplayName,
+                                    Origin = "Manually Scanned"
+                                }).ToList();
+
+
+            attendance.AddRange(scannedItems);
+            CRM.Code.CSVExport.GenericExport(attendance.ToArray(), "attendance-export-");
         }
     }
 }

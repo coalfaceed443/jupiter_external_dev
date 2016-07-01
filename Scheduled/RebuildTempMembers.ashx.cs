@@ -11,7 +11,6 @@ namespace CRM.Scheduled
     /// </summary>
     public class RebuildTempMembers : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
             MainDataContext db = new MainDataContext();
@@ -28,13 +27,14 @@ namespace CRM.Scheduled
                                     select p).ToList()
                                     where p.IsCurrent
                                     let CRM_Person = db.CRM_Persons.SingleOrDefault(s => s.Reference == p.PrimaryContactReference)
+                                    where p.CRM_AnnualPassType.IsWebsite
                                     where CRM_Person != null
                                     select new Cardpresso()
                                     {
                                         Barcode = p.CRM_AnnualPassCard.MembershipNumber.ToString(),
                                         Expiry = p.ExpiryDate,
                                         Membership = p.CRM_AnnualPassType.Name,
-                                        Name = CRM_Person.Fullname
+                                        Name = CRM_Person.RelationshipSaltuation
                                     };
 
             db.Cardpressos.InsertAllOnSubmit(activeMemberships);

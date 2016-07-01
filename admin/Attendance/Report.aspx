@@ -189,27 +189,6 @@
                         <span><%=PeopleSearch %></span>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Groups
-                        </label>
-                    </td>
-                    <td>
-                        <span><%=GroupsSearch %></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Average Group Size
-                        </label>
-                    </td>
-                    <td>
-                        <span><%=averageGroupSizeSearch.ToString("N1") %></span>
-                    </td>
-                </tr>
-
                 <asp:Repeater ID="repSearchTypeTotals" runat="server">
                     <ItemTemplate>
                         <tr>
@@ -249,27 +228,6 @@
                         <span><%=PeopleToday %></span>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Groups Today
-                        </label>
-                    </td>
-                    <td>
-                        <span><%=GroupsToday %></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>
-                            Average Group Size Today
-                        </label>
-                    </td>
-                    <td>
-                        <span><%=averageGroupSizeToday.ToString("N1") %></span>
-                    </td>
-                </tr>
-
             </table>
 
         </div>
