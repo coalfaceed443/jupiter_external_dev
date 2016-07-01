@@ -82,5 +82,25 @@ namespace CRM.admin.Attendance
 
             spnTotal.InnerText = grouped.Sum(a => a.Quantity).ToString();
         }
+
+        protected void btnExport_Click(object sender, EventArgs e)
+        {
+
+            var attendance = (from p in db.CRM_AttendanceLogs
+                              let AttendedOn = p.CRM_AttendanceLogGroup.AddedTimeStamp
+                              where AttendedOn >= dcDateFrom.Value
+                              where AttendedOn <= dcDateTo.Value
+                              orderby AttendedOn
+                              select new {
+                                 PersonType = p.CRM_AttendancePersonType.Name,
+                                 p.Quantity,
+                                 AttendedOn,
+                                 RecordCreatedOn = p.CRM_AttendanceLogGroup.DateInserted,
+                                 Event = p.CRM_AttendanceLogGroup.CRM_AttendanceEvent.Name,
+                                 Origin = p.CRM_AttendanceLogGroup.OriginType == 0 ? "Manual Input by Jupiter Staff" : "Website Automated"
+                             }).ToArray();
+
+            CRM.Code.CSVExport.GenericExport(attendance, "attendance-export-");
+        }
     }
 }
