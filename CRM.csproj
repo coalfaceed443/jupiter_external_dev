@@ -2489,6 +2489,9 @@
     <Compile Include="Scheduled\RebuildTempMembers.ashx.cs">
       <DependentUpon>RebuildTempMembers.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Scheduled\RemoveWebBooking.ashx.cs">
+      <DependentUpon>RemoveWebBooking.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Swap.aspx.cs">
       <DependentUpon>Swap.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2574,6 +2577,7 @@
     <Content Include="Scheduled\duplicates.ashx" />
     <Content Include="TaskScript\CBM_Europe_import.csv" />
     <Content Include="Scheduled\RebuildTempMembers.ashx" />
+    <Content Include="Scheduled\RemoveWebBooking.ashx" />
     <None Include="TaskScript\ConstTypes.csv" />
     <Content Include="TaskScript\expiry.ashx" />
     <Content Include="TaskScript\EdinSchoolsImport.ashx" />

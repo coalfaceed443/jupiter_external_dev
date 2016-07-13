@@ -22,7 +22,9 @@ namespace CRM.admin.Attendance
 
             if (db.CRM_AttendanceLogGroups.Any(a => a.AddedTimeStamp.Date == DateTime.Today.Date))
             {
-                spnPeopleToday.InnerText = db.CRM_AttendanceLogGroups.Where(a => a.AddedTimeStamp.Date == DateTime.Today.Date).Sum(a => a.CRM_AttendanceLogs.Sum(b => b.Quantity)).ToString();
+                spnPeopleToday.InnerText = db.CRM_AttendanceLogGroups
+                    .Where(a => a.AddedTimeStamp.Date == DateTime.Today.Date)
+                    .Sum(a => a.CRM_AttendanceLogs.Sum(b => b.Quantity)).ToString();
             }
 
             if (!Page.IsPostBack)
@@ -30,7 +32,7 @@ namespace CRM.admin.Attendance
 
                 dcDateOverride.ShowTime = true;
 
-                repTypes.DataSource = db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived && a.IsActive).OrderBy(a => a.OrderNo);
+                repTypes.DataSource = db.CRM_AttendancePersonTypes.Where(a => !a.IsArchived && a.IsActive && !a.Name.Contains("web")).OrderBy(a => a.OrderNo);
                 repTypes.DataBind();
 
                 ddlEvents.Items.Add(new ListItem("None"));
