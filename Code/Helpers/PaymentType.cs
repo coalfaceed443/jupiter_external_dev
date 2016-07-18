@@ -25,7 +25,9 @@ namespace CRM.Code.Helpers
             [StringValue("StandingOrder")]
             StandingOrder,
             [StringValue("Other")]
-            Other
+            Other,
+            [StringValue("Direct Debit")]
+            DirectDebit
 
         }
     }
