@@ -69,6 +69,60 @@ namespace CRM.WebService
             return true;
         }
 
+        private bool IsFriend(string email)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+
+            var personsMatchingEmail = db.CRM_Persons.Where(r => r.PrimaryEmail.ToLower().Trim() == email.ToLower().Trim());
+
+            bool hasPass = false;
+
+            foreach (Service.CRM_Person person in personsMatchingEmail)
+            {
+                bool HasPass = db.CRM_AnnualPasses.Any(r => r.StartDate >= UKTime.Now && r.ExpiryDate <= UKTime.Now && r.PrimaryContactReference == person.Reference);
+
+                if (HasPass)
+                    hasPass = true;
+            }
+
+            return hasPass;
+
+        }
+
+        [WebMethod]
+        public ContextResult<List<string>> ActiveFriendEmails(string authKey)
+        {
+
+            bool valid = IsAuthValid(authKey);
+
+            List<string> ActiveFriends = new List<string>();
+
+            if (valid)
+            {
+                var now = UKTime.Now;
+
+                using (ServiceDataContext db = new ServiceDataContext())
+                {
+                    foreach (Service.CRM_AnnualPass pass in db.CRM_AnnualPasses.Where(r => r.StartDate <= now && r.ExpiryDate >= now))
+                    {
+                        Service.CRM_Person person = db.CRM_Persons.FirstOrDefault(f => f.Reference == pass.PrimaryContactReference);
+
+                        if (person != null && person.PrimaryEmail != "")
+                            ActiveFriends.Add(person.PrimaryEmail.ToLower().Trim());
+                    }
+                }
+            }
+
+            ContextResult<List<string>> result = new ContextResult<List<string>>() { ReturnObject = ActiveFriends };
+            result.IsSuccess = valid;
+
+            SetResponseHeaders(result.IsSuccess);
+
+            return result;
+            
+        }
+
+
         [WebMethod]
         public string SyncCalendar(int ExternalEventID, string Name, DateTime startDate, int attendees, int total, bool UpdateAttendance, int Adults, int children, int altChildren, int concessions, int student)
         {

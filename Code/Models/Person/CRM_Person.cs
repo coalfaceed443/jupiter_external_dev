@@ -956,6 +956,9 @@ namespace CRM.Code.Models
                 tokens.AddRange(JSONSet.ConvertToTokens(this.PreviousNames));
                 tokens.AddRange(this.CRM_Address.Tokens);
                 tokens.AddRange(JSONSet.ConvertToTokens(DateOfBirthOutput));
+
+                tokens.AddRange(JSONSet.ConvertToTokens(this.PrimaryEmail));
+
                 return tokens;
             }
         }
