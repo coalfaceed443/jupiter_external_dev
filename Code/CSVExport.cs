@@ -151,7 +151,7 @@ namespace CRM.Code
         {
  
 
-            string columnNames = "Signup Date,Membership Type,Name,Number,Amount Paid,Payment Method";
+            string columnNames = "Signup Date,Membership Type,Name,Number,Amount Paid,Payment Method,Email";
 
             string filename = "audit";
 
@@ -177,6 +177,13 @@ namespace CRM.Code
                 AddComma(pass.CRM_AnnualPassCard.MembershipNumber.ToString(), sbItems);
                 AddComma(pass.AmountPaid.ToString("N2"), sbItems);
                 AddComma(pass.PaymentMethodOutput, sbItems);
+
+                if (owner != null && owner.CRM_Person != null)
+                    AddComma(owner.CRM_Person.PrimaryEmail, sbItems);
+                else
+                {
+                    AddComma("", sbItems);
+                }
 
 
                 Response.Write(sbItems.ToString());
