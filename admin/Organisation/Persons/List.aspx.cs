@@ -15,7 +15,7 @@ namespace CRM.admin.Organisation.Persons
         protected void Page_Load(object sender, EventArgs e)
         {
             ucList.Type = typeof(CRM_PersonOrganisation);
-            BaseSet = Entity.CRM_PersonOrganisations;
+            BaseSet = Entity.CRM_PersonOrganisations.Where(r => !r.IsArchived);
             CheckQuery(ucList);
             ucList.ItemsPerPage = 10;
             ucList.CanOrder = false;
