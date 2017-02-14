@@ -450,9 +450,22 @@ namespace CRM.WebService
 
             var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
 
-            var emailManager = new EmailManager(result.PrimaryEmail);
+            if (result != null)
+            {
+                // reset password //
 
-            emailManager.SendPassword(result.Firstname, result.Password);
+                if (result.Password.Length == 0)
+                {
+                    result.Password = Code.Models.CRM_Person.GeneratePassword();
+                    db.SubmitChanges();
+                }
+
+                // send password //
+
+                var emailManager = new EmailManager(result.PrimaryEmail);
+
+                emailManager.SendPassword(result.Firstname, result.Password);
+            }
 
             return true;
         }
