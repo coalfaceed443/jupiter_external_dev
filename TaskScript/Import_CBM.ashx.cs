@@ -121,6 +121,7 @@ namespace CRM.TaskScript
                                 PrimaryTelephone = "",
                                 Telephone2 = "",
                                 Title = "",
+                                Password = CRM_Person.GeneratePassword()
                             };
 
                             db.CRM_Persons.InsertOnSubmit(person);

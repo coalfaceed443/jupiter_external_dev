@@ -8,6 +8,7 @@ using CRM.Code.BasePages.Admin;
 using CRM.Code.Models;
 using CRM.Code.Interfaces;
 using System.Web.Script.Serialization;
+using System.Web.Security;
 using CRM.Code.Managers;
 using CRM.Code.Utils.Time;
 using System.Web.UI.HtmlControls;
@@ -197,18 +198,19 @@ namespace CRM.admin.Merge
         {
             if (hdnRecord.Value != "")
             {
-
                 object oldEntity = null;
                 object oldAddress = null;
 
                 CRM.Code.Models.CRM_Person person = db.CRM_Persons.Single(s => s.ID.ToString() == hdnRecord.Value);
 
-
                 oldEntity = person.ShallowCopy();
                 oldAddress = person.CRM_Address.ShallowCopy();
 
                 TransformPerson(person);
+
                 person.WebsiteAccountID = Entity.OriginAccountID;
+                person.Password = Entity.Password;
+
                 if (Entity.DoNotMail != null)
                     person.IsDoNotMail = (bool)Entity.DoNotMail;
 
@@ -219,6 +221,7 @@ namespace CRM.admin.Merge
                 if (Entity.AlwaysSendPassInfo != null)
                     person.AlwaysSendPassInfo = (bool)Entity.AlwaysSendPassInfo;
                 */
+
                 db.SubmitChanges();
 
                 CRM.Code.History.History.RecordLinqUpdate(AdminUser, oldEntity, person);
@@ -372,8 +375,8 @@ namespace CRM.admin.Merge
                 IsMale = null,
                 AddressType = 0,
                 Telephone2 = "",
-                PrimaryAddressID = address.ID
-
+                PrimaryAddressID = address.ID,
+                Password = CRM_Person.GeneratePassword()
             };
 
             db.CRM_Persons.InsertOnSubmit(person);

@@ -233,6 +233,7 @@
     <Content Include="App_Emails\Invites\DateTimeChange.aspx" />
     <Content Include="App_Emails\Invites\NewInvite.aspx" />
     <Content Include="App_Emails\Invites\VenueChange.aspx" />
+    <Content Include="App_Emails\PasswordReminder.aspx" />
     <Content Include="App_Emails\ResetLink.aspx" />
     <Content Include="bin\Utils.dll" />
     <Content Include="Controls\Admin\calendar.aspx" />
@@ -2016,6 +2017,13 @@
     <Compile Include="App_Emails\Invites\VenueChange.aspx.designer.cs">
       <DependentUpon>VenueChange.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Emails\PasswordReminder.aspx.cs">
+      <DependentUpon>PasswordReminder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\PasswordReminder.aspx.designer.cs">
+      <DependentUpon>PasswordReminder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Emails\ResetLink.aspx.cs">
       <DependentUpon>ResetLink.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2081,6 +2089,7 @@
     <Compile Include="Code\Models\CRM_AttendanceEvent.cs" />
     <Compile Include="Code\Models\CRM_AttendanceLogGroup.cs" />
     <Compile Include="Code\Models\CRM_Communication.cs" />
+    <Compile Include="Code\Models\CMR_Person.cs" />
     <Compile Include="Code\Models\CRM_Region.cs" />
     <Compile Include="Code\Models\CRM_Exhibition.cs" />
     <Compile Include="Code\Models\CRM_NavHistory.cs" />

@@ -115,6 +115,19 @@ namespace CRM.Code.Managers
         
         }
 
+        public void SendPassword(string name, string password)
+        {
+            System.IO.StringWriter htmlStringWriter = new System.IO.StringWriter();
+            HttpContext.Current.Server.Execute("/app_emails/PasswordReminder.aspx", htmlStringWriter);
+
+            string htmlOutput = htmlStringWriter.GetStringBuilder().ToString();
+
+            htmlOutput = htmlOutput.Replace("@NAME@", name);
+            htmlOutput = htmlOutput.Replace("@PASSWORD@", password);
+
+            Email.SendTemplateEmail(htmlOutput.ToString(), "Your password reminder", mailTo, mailCc, mailBcc, attachments);
+        }
+
         public void SendUserRemoved(string message, CRM_CalendarAdmin Invite, MainDataContext db, Models.Admin CurrentUser)
         {
             System.IO.StringWriter htmlStringWriter = new System.IO.StringWriter();

@@ -101,7 +101,8 @@ namespace CRM.TaskScript
                                 IsDoNotMail = false,
                                 Telephone2 = "",
                                 PreviousNames = "",
-                                CRM_AddressID = address.ID
+                                CRM_AddressID = address.ID,
+                                Password = CRM_Person.GeneratePassword()
                             };
 
                             db.CRM_Persons.InsertOnSubmit(personB);

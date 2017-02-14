@@ -12,6 +12,7 @@ using CRM.Code.Utils.Enumeration;
 using System.Runtime.Serialization;
 using CRM.Code.Utils.Time;
 using System.Diagnostics;
+using CRM.Code.Managers;
 
 namespace CRM.WebService
 {
@@ -25,9 +26,30 @@ namespace CRM.WebService
     // [System.Web.Script.Services.ScriptService]
     public class CRMSync : System.Web.Services.WebService
     {
-
         private const string AuthKey = "yud9usa98xasdw2A8sy7d98as87da9s8ds";
 
+        [WebMethod]
+        public ContextResult<Service.CRM_Venue[]> GetVenues(string authkey)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+
+            var venueList = new List<Service.CRM_Venue>();
+
+            foreach (var source in db.CRM_Venues.ToArray())
+            {
+                venueList.Add(new Service.CRM_Venue()
+                {
+                   Name = source.Name
+                });
+            }
+
+            ContextResult<Service.CRM_Venue[]> result = new ContextResult<Service.CRM_Venue[]>() { ReturnObject = venueList.ToArray() };
+            result.IsSuccess = IsAuthValid(authkey);
+
+            SetResponseHeaders(result.IsSuccess);
+
+            return result;
+        }
 
         [WebMethod]
         public ContextResult<Service.Country[]> GetCountries(string authkey)
@@ -353,6 +375,141 @@ namespace CRM.WebService
         }
 
         [WebMethod]
+        public bool CheckUserLogin(string key, string email, string password)
+        {
+            if (!IsAuthValid(key))
+            {
+                return false;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.Password == password);
+
+            return result != null;
+        }
+
+        [WebMethod]
+        public ContextResult<Service.CRM_Person> GetUserDetails(string key, string email, string password)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var person = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.Password == password);
+
+            ContextResult<Service.CRM_Person> result = new ContextResult<Service.CRM_Person>() { ReturnObject = person };
+            result.IsSuccess = IsAuthValid(key);
+
+            SetResponseHeaders(result.IsSuccess);
+
+            return result;
+        }
+
+        [WebMethod]
+        public ContextResult<Service.CRM_Address> GetAddress(string key, int addressID)
+        {
+            ServiceDataContext db = new ServiceDataContext();
+
+            var address = db.CRM_Addresses.ToList().FirstOrDefault(c => c.ID == addressID);
+
+            ContextResult<Service.CRM_Address> result = new ContextResult<Service.CRM_Address>()
+            {
+                ReturnObject = new Service.CRM_Address()
+                {
+                    AddressLine1 = address.AddressLine1,
+                    AddressLine2 = address.AddressLine3,
+                    AddressLine3 = address.AddressLine3,
+                    AddressLine4 = address.AddressLine4,
+                    AddressLine5 = address.AddressLine5,
+                    Town = address.Town,
+                    County = address.County,
+                    Postcode = address.Postcode
+                }
+            };
+            result.IsSuccess = IsAuthValid(key);
+
+            SetResponseHeaders(result.IsSuccess);
+
+            return result;
+        }
+
+        [WebMethod]
+        public bool SendPassword(string key, string email)
+        {
+            if (!IsAuthValid(key))
+            {
+                return false;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+
+            var emailManager = new EmailManager(result.PrimaryEmail);
+
+            emailManager.SendPassword(result.Firstname, result.Password);
+
+            return true;
+        }
+
+        [WebMethod]
+        public bool UpdatePassword(string key, string email, string password)
+        {
+            if (!IsAuthValid(key))
+            {
+                return false;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+
+            if (result != null)
+            {
+                result.Password = password;
+                db.SubmitChanges();
+            }
+
+            return true;
+        }
+
+        [WebMethod]
+        public byte CheckUserExists(string key, string email)
+        {
+            if (!IsAuthValid(key))
+            {
+                return 0;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+
+            if (result != null)
+            {
+                if (result.Password.Length == 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+
+            return 0;
+        }
+
+        [WebMethod]
         public bool CheckMemberNo(string key, string memberNo)
         {
             ServiceDataContext db = new ServiceDataContext();
@@ -361,8 +518,7 @@ namespace CRM.WebService
                 && c.CRM_AnnualPasses.Any(ap => ap.StartDate <= UKTime.Now
                     && ap.ExpiryDate >= UKTime.Now && !ap.IsArchived));
         }
-
-
+        
         [WebMethod]
         public ContextResult<CRM_Title[]> GetTitles(string authkey)
         {
@@ -476,3 +632,4 @@ namespace CRM.WebService
 
     }
 }
+
