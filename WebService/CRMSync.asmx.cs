@@ -85,6 +85,11 @@ namespace CRM.WebService
 
             account.InterestObjects = js.Serialize(interests);
 
+            if (account.Password == null)
+            {
+                account.Password = "";
+            }
+
             db.HoldingPens.InsertOnSubmit(account);
             db.SubmitChanges();
 
@@ -353,6 +358,11 @@ namespace CRM.WebService
             JavaScriptSerializer js = new JavaScriptSerializer();
 
             account.InterestObjects = js.Serialize(interests);
+
+            if (account.Password == null)
+            {
+                account.Password = "";
+            }
 
             db.HoldingPens.InsertOnSubmit(account);
             db.SubmitChanges();
