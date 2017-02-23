@@ -79,7 +79,8 @@ namespace CRM.Admin
 
             menuItems.Add(new AdminMenuListItem("/admin/organisation/list.aspx", "Organisations", new List<MenuListItem>()
                 {
-                    new MenuListItem("/admin/organisation/persons/fulllist.aspx", "View People"),       
+                    new MenuListItem("/admin/organisation/persons/fulllist.aspx", "View People"),
+                    new MenuListItem("/admin/organisation/reports.aspx", "Reports"),
                 }));
 
             menuItems.Add(new AdminMenuListItem("/admin/school/list.aspx", "Schools", new List<MenuListItem>()
