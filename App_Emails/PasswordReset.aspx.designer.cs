@@ -10,6 +10,6 @@
 namespace CRM.App_Emails {
     
     
-    public partial class PasswordReminder {
+    public partial class PasswordReset {
     }
 }

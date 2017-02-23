@@ -162,7 +162,8 @@ namespace CRM.admin.Person
                 Entity = new CRM_Person();
                 Entity.IsArchived = false;
                 Entity.DateAdded = UKTime.Now;
-                Entity.Password = CRM_Person.GeneratePassword();
+                Entity.Password = "";
+                Entity.TempCode = "";
                 db.CRM_Persons.InsertOnSubmit(Entity);
             }
             else

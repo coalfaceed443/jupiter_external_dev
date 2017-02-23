@@ -87,7 +87,8 @@ namespace CRM.TaskScript
                             person.IsDoNotMail = false;
                             person.LegacyID = null;
                             person.CRM_AddressID = address.ID;
-
+                            person.Password = "";
+                            person.TempCode = "";
                         }
 
                         person.DateModified = UKTime.Now;

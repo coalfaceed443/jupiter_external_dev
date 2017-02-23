@@ -233,7 +233,7 @@
     <Content Include="App_Emails\Invites\DateTimeChange.aspx" />
     <Content Include="App_Emails\Invites\NewInvite.aspx" />
     <Content Include="App_Emails\Invites\VenueChange.aspx" />
-    <Content Include="App_Emails\PasswordReminder.aspx" />
+    <Content Include="App_Emails\PasswordReset.aspx" />
     <Content Include="App_Emails\ResetLink.aspx" />
     <Content Include="bin\Utils.dll" />
     <Content Include="Controls\Admin\calendar.aspx" />
@@ -2017,12 +2017,12 @@
     <Compile Include="App_Emails\Invites\VenueChange.aspx.designer.cs">
       <DependentUpon>VenueChange.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Emails\PasswordReminder.aspx.cs">
-      <DependentUpon>PasswordReminder.aspx</DependentUpon>
+    <Compile Include="App_Emails\PasswordReset.aspx.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Emails\PasswordReminder.aspx.designer.cs">
-      <DependentUpon>PasswordReminder.aspx</DependentUpon>
+    <Compile Include="App_Emails\PasswordReset.aspx.designer.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Emails\ResetLink.aspx.cs">
       <DependentUpon>ResetLink.aspx</DependentUpon>

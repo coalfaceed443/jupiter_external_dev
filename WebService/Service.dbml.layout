@@ -101,14 +101,14 @@
         <elementListCompartment Id="7380f27f-dd86-4447-aaa6-4d4231abfee8" absoluteBounds="0.51500000000000012, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.40625 : 5.52089680989583); (1.40625 : 7.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.40625 : 5.52089680989583); (1.40625 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ServiceDataContext/CRM_AttendanceLogGroup/CRM_AttendanceLogGroup_CRM_AttendanceLog" />
       <nodes>
         <classShapeMoniker Id="f9ba18e8-c8c7-4b7c-a3df-bf5a83384436" />
         <classShapeMoniker Id="062a13e2-192a-491e-b650-a087272c38d5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.3750005 : 5.5); (3.3750005 : 4.6249995); (2.5 : 4.6249995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.3750005 : 5.5); (3.3750005 : 4.6249995); (2.5 : 4.6249995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ServiceDataContext/CRM_AttendanceEvent/CRM_AttendanceEvent_CRM_AttendanceLogGroup" />
       <nodes>
         <classShapeMoniker Id="5394d470-6990-418a-94b8-0b9b51c8bbc4" />
@@ -121,10 +121,10 @@
         <elementListCompartment Id="6f5ec7bc-80d6-4e73-8fa4-e66ac42eb5c5" absoluteBounds="1.2650000000000001, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9d39b75f-baf5-452c-a404-150d9a5c76a3" absoluteBounds="8.5, 9.875, 2, 6.3861311848958326">
+    <classShape Id="9d39b75f-baf5-452c-a404-150d9a5c76a3" absoluteBounds="8.5, 9.875, 2, 6.5784326171875023">
       <DataClassMoniker Name="/ServiceDataContext/CRM_Person" />
       <nestedChildShapes>
-        <elementListCompartment Id="ce7b3740-602c-44a7-b42b-63fc27634218" absoluteBounds="8.515, 10.335, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ce7b3740-602c-44a7-b42b-63fc27634218" absoluteBounds="8.515, 10.335, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="17ef88a3-ba84-410e-bd98-f6dec3e3ca38" absoluteBounds="6.25, 0.875, 2, 2.7324039713541666">
@@ -133,28 +133,28 @@
         <elementListCompartment Id="4473febe-417e-4b39-ae26-68719dce9903" absoluteBounds="6.265, 1.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.625 : 3.60740397135417); (7.625 : 17.6353670247396); (4.125 : 17.6353670247396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.6875 : 3.60740397135417); (7.6875 : 17.6353670247396); (4.125 : 17.6353670247396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ServiceDataContext/CRM_Address/CRM_Address_CRM_Calendar" />
       <nodes>
         <classShapeMoniker Id="17ef88a3-ba84-410e-bd98-f6dec3e3ca38" />
         <classShapeMoniker Id="a89e9cac-2adf-458a-a84e-cc466386d1fb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.25 : 1.46875); (3.25 : 1.46875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.25 : 1.46875); (3.25 : 1.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ServiceDataContext/CRM_Address/CRM_Address_CRM_Venue" />
       <nodes>
         <classShapeMoniker Id="17ef88a3-ba84-410e-bd98-f6dec3e3ca38" />
         <classShapeMoniker Id="11bed055-23fe-4e6f-832f-8c0f5f91c028" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.25 : 1.828125); (3.25 : 1.828125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.25 : 1.828125); (3.25 : 1.828125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ServiceDataContext/CRM_Address/CRM_Address_CRM_Venue1" />
       <nodes>
         <classShapeMoniker Id="17ef88a3-ba84-410e-bd98-f6dec3e3ca38" />
         <classShapeMoniker Id="11bed055-23fe-4e6f-832f-8c0f5f91c028" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8 : 4.12905360677083); (7.70833333333333 : 4.12905360677083 : JumpStart); (7.54166666666667 : 4.12905360677083 : JumpEnd); (7.1875 : 4.12905360677083); (7.1875 : 3.60740397135417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8 : 4.12905360677083); (6.9374975 : 4.12905360677083); (6.9374975 : 3.60740397135417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ServiceDataContext/Country/Country_CRM_Address" />
       <nodes>
         <classShapeMoniker Id="88dbc25e-3795-49ea-b219-3352651dfe99" />
@@ -167,5 +167,25 @@
         <elementListCompartment Id="57edf20e-d768-4774-adad-67c71f1631b6" absoluteBounds="4.515, 10.085, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="a3b0e64f-ed71-48d2-af65-bdfb89319b54" absoluteBounds="5.375, 4.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ServiceDataContext/CRM_AnnualPassPerson" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca048094-37e6-4f7d-8be1-7d2485a6ea4e" absoluteBounds="5.39, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.875 : 5.21875); (7.375 : 5.21875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ServiceDataContext/CRM_AnnualPass/CRM_AnnualPass_CRM_AnnualPassPerson" />
+      <nodes>
+        <classShapeMoniker Id="9df17543-6511-464c-825f-bea8e02e8ebf" />
+        <classShapeMoniker Id="a3b0e64f-ed71-48d2-af65-bdfb89319b54" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 13.1642163085938); (7.77083333333333 : 13.1642163085938 : JumpStart); (7.60416666666667 : 13.1642163085938 : JumpEnd); (6.75 : 13.1642163085938); (6.75 : 9.375); (6.375 : 9.375); (6.375 : 6.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ServiceDataContext/CRM_Person/CRM_Person_CRM_AnnualPassPerson" />
+      <nodes>
+        <classShapeMoniker Id="9d39b75f-baf5-452c-a404-150d9a5c76a3" />
+        <classShapeMoniker Id="a3b0e64f-ed71-48d2-af65-bdfb89319b54" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

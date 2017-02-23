@@ -102,7 +102,8 @@ namespace CRM.TaskScript
                                 Telephone2 = "",
                                 PreviousNames = "",
                                 CRM_AddressID = address.ID,
-                                Password = CRM_Person.GeneratePassword()
+                                Password = "",
+                                TempCode = ""
                             };
 
                             db.CRM_Persons.InsertOnSubmit(personB);

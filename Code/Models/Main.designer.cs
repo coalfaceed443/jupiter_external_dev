@@ -15625,6 +15625,8 @@ namespace CRM.Code.Models
 		
 		private string _Password;
 		
+		private string _TempCode;
+		
 		private EntitySet<CRM_FamilyPerson> _CRM_FamilyPersons;
 		
 		private EntitySet<CRM_AnnualPassPerson> _CRM_AnnualPassPersons;
@@ -15713,6 +15715,8 @@ namespace CRM.Code.Models
     partial void OnPrimaryAddressIDChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
+    partial void OnTempCodeChanging(string value);
+    partial void OnTempCodeChanged();
     #endregion
 		
 		public CRM_Person()
@@ -16337,8 +16341,29 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TempCode", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30)]
+		public string TempCode
+		{
+			get
+			{
+				return this._TempCode;
+			}
+			set
+			{
+				if ((this._TempCode != value))
+				{
+					this.OnTempCodeChanging(value);
+					this.SendPropertyChanging();
+					this._TempCode = value;
+					this.SendPropertyChanged("TempCode");
+					this.OnTempCodeChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_FamilyPerson", Storage="_CRM_FamilyPersons", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31, EmitDefaultValue=false)]
 		public EntitySet<CRM_FamilyPerson> CRM_FamilyPersons
 		{
 			get
@@ -16357,7 +16382,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_AnnualPassPerson", Storage="_CRM_AnnualPassPersons", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32, EmitDefaultValue=false)]
 		public EntitySet<CRM_AnnualPassPerson> CRM_AnnualPassPersons
 		{
 			get
@@ -16376,7 +16401,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_CalendarAttendance", Storage="_CRM_CalendarAttendances", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33, EmitDefaultValue=false)]
 		public EntitySet<CRM_CalendarAttendance> CRM_CalendarAttendances
 		{
 			get
@@ -16395,7 +16420,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonSchool", Storage="_CRM_PersonSchools", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=34, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonSchool> CRM_PersonSchools
 		{
 			get
@@ -16414,7 +16439,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonOrganisation", Storage="_CRM_PersonOrganisations", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=34, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonOrganisation> CRM_PersonOrganisations
 		{
 			get
@@ -16433,7 +16458,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonPersonal", Storage="_CRM_PersonPersonals", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonPersonal> CRM_PersonPersonals
 		{
 			get
@@ -16452,7 +16477,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_FundraisingGiftProfile", Storage="_CRM_FundraisingGiftProfiles", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
 		public EntitySet<CRM_FundraisingGiftProfile> CRM_FundraisingGiftProfiles
 		{
 			get
@@ -16471,7 +16496,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship", Storage="_CRM_PersonRelationships", ThisKey="ID", OtherKey="CRM_PersonID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=38, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships
 		{
 			get
@@ -16490,7 +16515,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship1", Storage="_CRM_PersonRelationships1", ThisKey="ID", OtherKey="CRM_PersonID2")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=38, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=39, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships1
 		{
 			get
@@ -16509,7 +16534,7 @@ namespace CRM.Code.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_Person_CRM_PersonRelationship2", Storage="_CRM_PersonRelationships2", ThisKey="ID", OtherKey="CRM_PersonIDAddress")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=39, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=40, EmitDefaultValue=false)]
 		public EntitySet<CRM_PersonRelationship> CRM_PersonRelationships2
 		{
 			get

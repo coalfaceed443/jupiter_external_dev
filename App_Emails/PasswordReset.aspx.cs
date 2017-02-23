@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CRM.App_Emails
 {
-    public partial class PasswordReminder : System.Web.UI.Page
+    public partial class PasswordReset : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -419,6 +419,26 @@ namespace CRM.WebService
         }
 
         [WebMethod]
+        public bool HasActiveMembership(string key, string email)
+        {
+            if (!IsAuthValid(key))
+            {
+                return false;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            var person = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+
+            if (person == null)
+            {
+                return false;
+            }
+
+            return person.CRM_AnnualPassPersons.Any(c => !c.IsArchived && !c.CRM_AnnualPass.IsArchived && c.CRM_AnnualPass.ExpiryDate >= DateTime.Today);
+        }
+
+        [WebMethod]
         public ContextResult<Service.CRM_Address> GetAddress(string key, int addressID)
         {
             ServiceDataContext db = new ServiceDataContext();
@@ -447,7 +467,7 @@ namespace CRM.WebService
         }
 
         [WebMethod]
-        public bool SendPassword(string key, string email)
+        public bool SendPasswordReset(string key, string email)
         {
             if (!IsAuthValid(key))
             {
@@ -462,22 +482,42 @@ namespace CRM.WebService
 
             if (result != null)
             {
-                // reset password //
+                // reset code //
 
-                if (result.Password.Length == 0)
-                {
-                    result.Password = Code.Models.CRM_Person.GeneratePassword();
-                    db.SubmitChanges();
-                }
+                result.TempCode = Code.Models.CRM_Person.GeneratePassword();
 
-                // send password //
+                db.SubmitChanges();
+
+                // send email //
 
                 var emailManager = new EmailManager(result.PrimaryEmail);
 
-                emailManager.SendPassword(result.Firstname, result.Password);
+                emailManager.SendPasswordReset(result.Firstname, result.PrimaryEmail, result.TempCode);
             }
 
             return true;
+        }
+
+        [WebMethod]
+        public bool ResetCodeValid(string key, string email, string code)
+        {
+            if (!IsAuthValid(key))
+            {
+                return false;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.TempCode == code);
+
+            if (result != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         [WebMethod]
@@ -646,13 +686,10 @@ namespace CRM.WebService
             return key == AuthKey;
         }
 
-
         private void SetResponseHeaders(bool success)
         {
             HttpContext.Current.Response.StatusCode = success ? 200 : 500;
         }
-
-
     }
 }
 

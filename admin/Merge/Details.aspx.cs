@@ -376,7 +376,8 @@ namespace CRM.admin.Merge
                 AddressType = 0,
                 Telephone2 = "",
                 PrimaryAddressID = address.ID,
-                Password = CRM_Person.GeneratePassword()
+                Password = "",
+                TempCode = ""
             };
 
             db.CRM_Persons.InsertOnSubmit(person);

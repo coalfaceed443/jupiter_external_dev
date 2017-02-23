@@ -651,6 +651,7 @@
       <Column Name="Telephone2" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="PrimaryAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="TempCode" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Association Name="CRM_Person_CRM_FamilyPerson" Member="CRM_FamilyPersons" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_FamilyPerson" />
       <Association Name="CRM_Person_CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_AnnualPassPerson" />
       <Association Name="CRM_Person_CRM_CalendarAttendance" Member="CRM_CalendarAttendances" ThisKey="ID" OtherKey="CRM_PersonID" Type="CRM_CalendarAttendance" />

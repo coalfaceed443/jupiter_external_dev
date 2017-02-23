@@ -125,7 +125,8 @@ namespace CRM.TaskScript
                             person.IsDoNotMail = false;
                             person.LegacyID = Convert.ToInt32(contentsSplit[(int)accountPos.LegacyID]);
                             person.CRM_AddressID = address.ID;
-                            person.Password = CRM_Person.GeneratePassword();
+                            person.Password = "";
+                            person.TempCode = "";
                         }
 
 
