@@ -39,7 +39,8 @@ namespace CRM.WebService
             {
                 venueList.Add(new Service.CRM_Venue()
                 {
-                   Name = source.Name
+                   Name = source.Name,
+                   ID = source.ID
                 });
             }
 

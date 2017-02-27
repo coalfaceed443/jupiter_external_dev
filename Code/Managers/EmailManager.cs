@@ -112,7 +112,6 @@ namespace CRM.Code.Managers
 
             AddTo(Invite.Admin.Email);
             Email.SendTemplateEmail(htmlOutput.ToString(), "An event's venues have been amended - " + Invite.EventName + " - " + Invite.EventDate, mailTo, mailCc, mailBcc, attachments);
-        
         }
 
         public void SendPasswordReset(string name, string email, string code)
