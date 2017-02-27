@@ -122,7 +122,7 @@ namespace CRM.Code.Managers
             string htmlOutput = htmlStringWriter.GetStringBuilder().ToString();
 
             htmlOutput = htmlOutput.Replace("@NAME@", name);
-            htmlOutput = htmlOutput.Replace("@URL@", "http://jupiterartland.cfpreview.co.uk/checkout?code=" + code + "&email=" + email);
+            htmlOutput = htmlOutput.Replace("@URL@", "https://www.jupiterartland.org/checkout?code=" + code + "&email=" + email);
 
             mailTo.Add(email);
 
