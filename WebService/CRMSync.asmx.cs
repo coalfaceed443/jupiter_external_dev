@@ -411,7 +411,16 @@ namespace CRM.WebService
 
             var person = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.Password == password);
 
-            ContextResult<Service.CRM_Person> result = new ContextResult<Service.CRM_Person>() { ReturnObject = person };
+            var tempPerson = new Service.CRM_Person()
+            {
+                PrimaryEmail = person.PrimaryEmail,
+                Title = person.Title,
+                Firstname = person.Firstname,
+                Lastname = person.Lastname,
+                PrimaryAddressID = person.PrimaryAddressID,
+            };
+
+            ContextResult<Service.CRM_Person> result = new ContextResult<Service.CRM_Person>() { ReturnObject = tempPerson };
             result.IsSuccess = IsAuthValid(key);
 
             SetResponseHeaders(result.IsSuccess);
