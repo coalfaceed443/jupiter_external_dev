@@ -237,6 +237,15 @@ namespace CRM.Code.Models
             }
         }
 
+        [IsListData("Role")]
+        public string RoleOutput
+        {
+            get
+            {
+                return this.CRM_Role.Name;
+            }
+        }
+
         public string CRM_PersonReference
         {
             get
