@@ -20,8 +20,8 @@ namespace CRM.admin.AnnualPassCard
         protected void btnExportAudit_Click(object sender, EventArgs e)
         {
             
-            var startDate = new DateTime(2015, 01, 01);
-            var endDate = new DateTime(2015, 12, 31);
+            var startDate = new DateTime(DateTime.Now.Year - 1, 01, 01);
+            var endDate = new DateTime(DateTime.Now.Year -1, 12, 31);
 
             var members = from p in db.CRM_AnnualPasses
                 where p.StartDate >= startDate
