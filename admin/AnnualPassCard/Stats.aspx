@@ -163,15 +163,15 @@
 
         function drawTotalMembers() {
 
-            <% startDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36); %>
-
-
+            <% startDate = CRM.Code.Utils.Time.UKTime.Now.AddMonths(-36).AddDays(0-(CRM.Code.Utils.Time.UKTime.Now.Day-1)); %>
+            
             var data = google.visualization.arrayToDataTable([
               ['Month', 'Total Susbcribers'],
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
-               {%>
-                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= startDate && r.ExpiryDate >= startDate).Count()%>],
+               {
+                   DateTime endDate = startDate.AddMonths(1).AddDays(-1);  %>
+                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= endDate && r.ExpiryDate >= startDate).Count()%>],
                 
                     <% startDate = startDate.AddMonths(1); %>
             <%}%>
