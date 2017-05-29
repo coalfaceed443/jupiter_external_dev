@@ -397,7 +397,7 @@ namespace CRM.WebService
 
             email = email.ToLower();
 
-            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.Password == password);
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email && c.Password == password);
 
             return result != null;
         }
@@ -409,7 +409,7 @@ namespace CRM.WebService
 
             email = email.ToLower();
 
-            var person = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.Password == password);
+            var person = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email && c.Password == password);
 
             var tempPerson = new Service.CRM_Person()
             {
@@ -438,7 +438,7 @@ namespace CRM.WebService
 
             ServiceDataContext db = new ServiceDataContext();
 
-            var person = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+            var person = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email);
 
             if (person == null)
             {
@@ -488,7 +488,7 @@ namespace CRM.WebService
 
             email = email.ToLower();
 
-            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email);
 
             if (result != null)
             {
@@ -520,7 +520,7 @@ namespace CRM.WebService
 
             email = email.ToLower();
 
-            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email && c.TempCode == code);
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email && c.TempCode == code);
 
             if (result != null)
             {
@@ -542,7 +542,7 @@ namespace CRM.WebService
 
             email = email.ToLower();
 
-            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email);
 
             if (result != null)
             {
@@ -565,7 +565,7 @@ namespace CRM.WebService
 
             email = email.ToLower();
 
-            var result = db.CRM_Persons.ToList().FirstOrDefault(c => c.PrimaryEmail.ToLower() == email);
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email);
 
             if (result != null)
             {
