@@ -2542,6 +2542,9 @@
     <Compile Include="TaskScript\Relations.ashx.cs">
       <DependentUpon>Relations.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Scheduled\SendReminders.ashx.cs">
+      <DependentUpon>SendReminders.ashx</DependentUpon>
+    </Compile>
     <Compile Include="TaskScript\scot_schools.ashx.cs">
       <DependentUpon>scot_schools.ashx</DependentUpon>
     </Compile>
@@ -2600,6 +2603,7 @@
     <Content Include="TaskScript\scot_schools.ashx" />
     <Content Include="TaskScript\Relations.ashx" />
     <Content Include="TaskScript\Import_CBM.ashx" />
+    <Content Include="Scheduled\SendReminders.ashx" />
     <None Include="WebService\Service.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Service.designer.cs</LastGenOutput>
