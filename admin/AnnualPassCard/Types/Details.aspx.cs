@@ -57,7 +57,8 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
         {
             txtName.Text = Entity.Name;
             txtPrice.Text = Entity.DefaultPrice.ToString("N2");
-            chkIsJoint.Checked = Entity.IsJoint;
+            ddlType.SelectedValue = Entity.Type.ToString();
+            txtGroupSize.Text = Entity.GroupSize.ToString();
             chkIsWebsite.Checked = Entity.IsWebsite;
         }
 
@@ -95,7 +96,8 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type
 
             Entity.Name = txtName.Text;
             Entity.DefaultPrice = Convert.ToDecimal(txtPrice.Text);
-            Entity.IsJoint = chkIsJoint.Checked;
+            Entity.Type = Convert.ToByte(ddlType.SelectedValue);
+            Entity.GroupSize = Convert.ToInt32(txtGroupSize.Text);
             Entity.IsWebsite = chkIsWebsite.Checked;
             db.SubmitChanges();
 

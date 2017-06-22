@@ -211,6 +211,19 @@ namespace CRM.admin.Merge
                 person.WebsiteAccountID = Entity.OriginAccountID;
                 person.Password = Entity.Password;
 
+                if (Entity.GroupNames.Length > 0)
+                {
+                    var groupNames = Entity.GroupNames.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+
+                    foreach (var groupName in groupNames)
+                    {
+                        if (groupName.Trim().Length > 0)
+                        {
+                           
+                        }
+                    }
+                }
+
                 if (Entity.DoNotMail != null)
                     person.IsDoNotMail = (bool)Entity.DoNotMail;
 

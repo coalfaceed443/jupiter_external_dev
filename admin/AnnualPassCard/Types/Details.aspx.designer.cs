@@ -58,13 +58,22 @@ namespace CRM.admin.AnnualPassCard.AnnualPass.Type {
         protected global::System.Web.UI.WebControls.CheckBox chkIsWebsite;
         
         /// <summary>
-        /// chkIsJoint control.
+        /// ddlType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsJoint;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        
+        /// <summary>
+        /// txtGroupSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlTextBox txtGroupSize;
         
         /// <summary>
         /// btnSubmit control.

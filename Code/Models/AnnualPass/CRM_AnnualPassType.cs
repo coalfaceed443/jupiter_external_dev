@@ -62,12 +62,29 @@ namespace CRM.Code.Models
             }
         }
 
-        [IsListData("Is Joint")]
-        public string IsJointOutput
+        [IsListData("Type")]
+        public string TypeOutput
         {
             get
             {
-                return IsJoint ? "Yes" : "No";
+                string type = "";
+
+                switch (this.Type)
+                {
+                    case 0:
+                        type = "Single";
+                        break;
+
+                    case 1:
+                        type = "Joint";
+                        break;
+
+                    case 2:
+                        type = "Group";
+                        break;
+                }
+
+                return type;
             }
         }
 

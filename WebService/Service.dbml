@@ -52,17 +52,8 @@
       <Column Name="Reference" Type="System.String" DbType="VarChar(21)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="PaymentMethod" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Association Name="CRM_AnnualPass_CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons" ThisKey="ID" OtherKey="CRM_AnnualPassID" Type="CRM_AnnualPassPerson" />
+      <Association Name="CRM_AnnualPass_CRM_AnnualPassCorporate" Member="CRM_AnnualPassCorporates" ThisKey="ID" OtherKey="CRM_AnnualPassID" Type="CRM_AnnualPassCorporate" />
       <Association Name="CRM_AnnualPassCard_CRM_AnnualPass" Member="CRM_AnnualPassCard" ThisKey="CRM_AnnualPassCardID" OtherKey="ID" Type="CRM_AnnualPassCard" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CRM_AnnualPassType" Member="CRM_AnnualPassTypes">
-    <Type Name="CRM_AnnualPassType">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="IsWebsite" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsJoint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.CRM_RelationCode" Member="CRM_RelationCodes">
@@ -220,6 +211,35 @@
       <Association Name="Country_CRM_Address" Member="Country" ThisKey="CountryID" OtherKey="ID" Type="Country" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons">
+    <Type Name="CRM_AnnualPassPerson">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPass_CRM_AnnualPassPerson" Member="CRM_AnnualPass" ThisKey="CRM_AnnualPassID" OtherKey="ID" Type="CRM_AnnualPass" IsForeignKey="true" />
+      <Association Name="CRM_Person_CRM_AnnualPassPerson" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassType" Member="CRM_AnnualPassTypes">
+    <Type Name="CRM_AnnualPassType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsWebsite" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CRM_AnnualPassCorporate" Member="CRM_AnnualPassCorporates">
+    <Type Name="CRM_AnnualPassCorporate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CRM_AnnualPassID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="CRM_AnnualPass_CRM_AnnualPassCorporate" Member="CRM_AnnualPass" ThisKey="CRM_AnnualPassID" OtherKey="ID" Type="CRM_AnnualPass" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.HoldingPen" Member="HoldingPens">
     <Type Name="HoldingPen">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -253,16 +273,7 @@
       <Column Name="JointBtoAID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="JointThisReferenceAB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CRM_AnnualPassPerson" Member="CRM_AnnualPassPersons">
-    <Type Name="CRM_AnnualPassPerson">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CRM_AnnualPassID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CRM_PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsArchived" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="CRM_AnnualPass_CRM_AnnualPassPerson" Member="CRM_AnnualPass" ThisKey="CRM_AnnualPassID" OtherKey="ID" Type="CRM_AnnualPass" IsForeignKey="true" />
-      <Association Name="CRM_Person_CRM_AnnualPassPerson" Member="CRM_Person" ThisKey="CRM_PersonID" OtherKey="ID" Type="CRM_Person" IsForeignKey="true" />
+      <Column Name="GroupNames" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>

@@ -170,8 +170,8 @@
 
             <% while (startDate <= CRM.Code.Utils.Time.UKTime.Now)
                {
-                   DateTime endDate = startDate.AddMonths(1).AddDays(-1);  %>
-                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= endDate && r.ExpiryDate >= startDate).Count()%>],
+                   DateTime endDate = startDate.AddMonths(1).AddDays(-1); %>
+                ['<%= startDate.ToString("MMM yy")%>', <%= db.CRM_AnnualPasses.Where(r => r.StartDate <= endDate && r.ExpiryDate >= startDate).GroupBy(p => p.PrimaryContactReference).Count()%>],
                 
                     <% startDate = startDate.AddMonths(1); %>
             <%}%>

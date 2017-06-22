@@ -148,6 +148,24 @@ namespace CRM.admin.AnnualPassCard.AnnualPass {
         protected global::CRM.Controls.Forms.UserControlButton btnDelete;
         
         /// <summary>
+        /// txtGroupName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlTextBox txtGroupName;
+        
+        /// <summary>
+        /// btnAddGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlButton btnAddGroup;
+        
+        /// <summary>
         /// ucACNewPerson control.
         /// </summary>
         /// <remarks>

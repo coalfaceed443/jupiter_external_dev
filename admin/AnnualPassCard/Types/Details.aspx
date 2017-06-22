@@ -48,16 +48,19 @@
                     </td>
                 </tr>
                 <tr>
+                    <td><label>Type : *</label></td>
                     <td>
-                        <label>
-                           Is a Joint Membership : *</label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkIsJoint" runat="server" />
+                        <asp:DropDownList ID="ddlType" runat="server">
+                            <asp:ListItem Value="0">Single</asp:ListItem>
+                            <asp:ListItem Value="1">Joint</asp:ListItem>
+                            <asp:ListItem Value="2">Group</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
-            
-            
+                <tr>
+                    <td><label>Group Size : *</label></td>
+                    <td><ucUtil:TextBox ID="txtGroupSize" Text="0" runat="server" DataType="integer" /></td>
+                </tr>
             </table>
 
            

@@ -44,8 +44,10 @@
         <ucUtil:NavigationAnnualPass ID="ucNav" runat="server" Section="navPasses" />
 
         <div class="innerContentForm">
-            <asp:ValidationSummary ID="ValidationSummary1" CssClass="validation" EnableClientScript="false"
-                runat="server" />
+            
+            <h2 style="border-bottom: solid 1px #ccc; margin: 0 0 10px 0; padding: 0 0 10px 0;">Annual Pass Details</h2>
+
+            <asp:ValidationSummary ID="ValidationSummary1" CssClass="validation" EnableClientScript="false" runat="server" />
 
             <table class="details searchTableLeft">
                 <tr>
@@ -143,49 +145,92 @@
             </table>
             
             <br class="clearFix" />
-            <div class="buttons">
-                <%if (CRM_AnnualPass == null)
-                  { %>
-                <ucUtil:Button ID="btnSubmit" runat="server" ButtonText="Save and start adding members" ImagePath="tick.png"
-                    Class="positive" />
-                <%}
-                  else
-                  { %>
-                <ucUtil:Button ID="btnSubmitChanges" runat="server" ButtonText="Save Pass" ImagePath="tick.png"
-                    Class="positive" />
-   
-                <ucUtil:Button ID="btnDelete" runat="server" ButtonText="Delete Item" ImagePath="cross.png"
-                    Class="negative" />
-                <%} %>
-            </div>
 
-            <br class="clearFix" />  
-            <br class="clearFix" />
+            <div class="buttons">
+                
+                <%if (CRM_AnnualPass == null) { %>
+                    <ucUtil:Button ID="btnSubmit" runat="server" ButtonText="Save and start adding members" ImagePath="tick.png" Class="positive" />
+                <% } else { %>
+                    <ucUtil:Button ID="btnSubmitChanges" runat="server" ButtonText="Save Pass" ImagePath="tick.png" Class="positive" />
+                    <ucUtil:Button ID="btnDelete" runat="server" ButtonText="Delete Item" ImagePath="cross.png" Class="negative" />
+                <% } %>
+
+            </div>
+            
+            <% if (CRM_AnnualPass != null && CRM_AnnualPass.CRM_AnnualPassType.Type == 2) { %>
+            
+                <br class="clearFix" /><br class="clearFix" />
+
+                <h2 style="border-bottom: solid 1px #ccc; margin: 0 0 10px 0; padding: 20px 0 10px 0;">Group Members</h2>
+            
+                <p><strong><%= CRM_AnnualPass.CRM_AnnualPassCorporates.Count %> of <%= CRM_AnnualPass.CRM_AnnualPassType.GroupSize %> group members added</strong></p>
+            
+                <% if (CRM_AnnualPass.CRM_AnnualPassCorporates.Count < CRM_AnnualPass.CRM_AnnualPassType.GroupSize) { %>
+
+                    <table class="details">
+
+                        <tr>
+                            <td style="width: 200px;"><label>Add a new person to group :</label></td>
+                            <td><ucUtil:TextBox ID="txtGroupName" runat="server" Name="Name" /></td>
+                            <td><ucUtil:Button ID="btnAddGroup" runat="server" ButtonText="Add Member" ImagePath="tick.png" Class="positive" /></td>
+                        </tr>
+
+                    </table> 
+            
+                <% } %>
+            
+                <table class="sTable" style="width: 950px">
+                    <thead>
+                        <tr class="header">
+                            <th style="text-align: left;"><strong>Name</strong></th>
+                            <th style="text-align: left;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <% foreach (var crmAnnualPassCorporate in CRM_AnnualPass.CRM_AnnualPassCorporates) { %>
+                   
+                            <tr>
+                                <td style="text-align: left;"><%= crmAnnualPassCorporate.Name %></td>
+                                <td style="text-align: center; width: 120px;"><a href="/admin/annualpasscard/annualpass/details.aspx?id=<%= CRM_AnnualPass.CRM_AnnualPassCardID %>&amp;pid=<%= CRM_AnnualPass.ID %>&action=delete&cid=<%= crmAnnualPassCorporate.ID %>">Delete</a></td>
+                            </tr>
+                
+                        <% } %>
+                        
+                        <% if (CRM_AnnualPass.CRM_AnnualPassCorporates.Count == 0) { %>
+                        
+                            <tr>
+                                <td style="text-align: left;" colspan="2">There are currently no group members</td>
+                            </tr>
+
+                        <% } %>
+
+                    </tbody>
+                </table>
+
+            <% } %>
+
+            <br class="clearFix" /><br class="clearFix" />
+            
+            <h2 style="border-bottom: solid 1px #ccc; margin: 0 0 10px 0; padding: 20px 0 10px 0;">People</h2>
 
             <% if (CRM_AnnualPass != null)
                { %>
             <table class="details">
 
                 <tr>
-                    <td>
-                        <label>
-                            Add a new person to pass :
-                        </label>
-                    </td>
-                    <td>
-                        <ucUtil:AutoComplete ID="ucACNewPerson" runat="server" />
-
-                    </td>
-
+                    <td style="width: 200px;"><label>Add a new person to pass :</label></td>
+                    <td><ucUtil:AutoComplete ID="ucACNewPerson" runat="server" /></td>
                 </tr>
 
             </table> 
             <% } %>
+
             <ucUtil:ListView ID="lvPersons" runat="server" />
 
         </div>
     </div>
-
+    
     <ucUtil:LogNotes ID="ucNotes" runat="server" />
 
 </asp:Content>

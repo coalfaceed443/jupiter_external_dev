@@ -21,11 +21,24 @@ namespace CRM.admin.AnnualPassCard.AnnualPass
         protected CRM_AnnualPass CRM_AnnualPass;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["action"] == "delete")
+            {
+                int cid = Convert.ToInt32(Request.QueryString["cid"]);
+                var member = db.CRM_AnnualPassCorporates.FirstOrDefault(p => p.ID == cid);
+
+                if (member != null)
+                {
+                    db.CRM_AnnualPassCorporates.DeleteOnSubmit(member);
+                    db.SubmitChanges();
+                }
+            }
+
             CRM_AnnualPass = Entity.CRM_AnnualPasses.SingleOrDefault(f => f.ID.ToString() == Request.QueryString["pid"]);
 
             btnSubmit.EventHandler = btnSubmit_Click;
             btnSubmitChanges.EventHandler = btnSubmitChanges_Click;
             btnDelete.EventHandler = btnDelete_Click;
+            btnAddGroup.EventHandler = btnAddGroup_Click;
 
             confirmationDelete.StandardDeleteHidden("pass", btnRealDelete_Click);
 
@@ -33,6 +46,7 @@ namespace CRM.admin.AnnualPassCard.AnnualPass
 
             ucACPrimaryContact.EventHandler = lnkSelect_Click;
             ucACPrimaryContact.Config = new AutoCompleteConfig(JSONSet.DataSets.contact);
+
             ucACNewPerson.EventHandler = lnkSelectNew_Click;
             ucACNewPerson.Config = new AutoCompleteConfig(JSONSet.DataSets.person);
 
@@ -106,6 +120,24 @@ namespace CRM.admin.AnnualPassCard.AnnualPass
         
             db.CRM_AnnualPassPersons.InsertOnSubmit(passperson);
             db.SubmitChanges();
+        }
+
+        protected void btnAddGroup_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                var member = new CRM_AnnualPassCorporate();
+
+                member.Name = txtGroupName.Text;
+                member.CRM_AnnualPassID = CRM_AnnualPass.ID;
+
+                db.CRM_AnnualPassCorporates.InsertOnSubmit(member);
+                db.SubmitChanges();
+
+                txtGroupName.Text = "";
+
+                NoticeManager.SetMessage("Group member added to pass");
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

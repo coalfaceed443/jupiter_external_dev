@@ -241,9 +241,6 @@ namespace CRM.Code.Models
     partial void InsertTemplateEmailPlaceholder(TemplateEmailPlaceholder instance);
     partial void UpdateTemplateEmailPlaceholder(TemplateEmailPlaceholder instance);
     partial void DeleteTemplateEmailPlaceholder(TemplateEmailPlaceholder instance);
-    partial void InsertCRM_AnnualPassType(CRM_AnnualPassType instance);
-    partial void UpdateCRM_AnnualPassType(CRM_AnnualPassType instance);
-    partial void DeleteCRM_AnnualPassType(CRM_AnnualPassType instance);
     partial void InsertCRM_RelationCode(CRM_RelationCode instance);
     partial void UpdateCRM_RelationCode(CRM_RelationCode instance);
     partial void DeleteCRM_RelationCode(CRM_RelationCode instance);
@@ -277,6 +274,12 @@ namespace CRM.Code.Models
     partial void InsertCardpresso(Cardpresso instance);
     partial void UpdateCardpresso(Cardpresso instance);
     partial void DeleteCardpresso(Cardpresso instance);
+    partial void InsertCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void UpdateCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void DeleteCRM_AnnualPassType(CRM_AnnualPassType instance);
+    partial void InsertCRM_AnnualPassCorporate(CRM_AnnualPassCorporate instance);
+    partial void UpdateCRM_AnnualPassCorporate(CRM_AnnualPassCorporate instance);
+    partial void DeleteCRM_AnnualPassCorporate(CRM_AnnualPassCorporate instance);
     partial void InsertHoldingPen(HoldingPen instance);
     partial void UpdateHoldingPen(HoldingPen instance);
     partial void DeleteHoldingPen(HoldingPen instance);
@@ -880,14 +883,6 @@ namespace CRM.Code.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<CRM_AnnualPassType> CRM_AnnualPassTypes
-		{
-			get
-			{
-				return this.GetTable<CRM_AnnualPassType>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CRM_RelationCode> CRM_RelationCodes
 		{
 			get
@@ -973,6 +968,22 @@ namespace CRM.Code.Models
 			get
 			{
 				return this.GetTable<Cardpresso>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_AnnualPassType> CRM_AnnualPassTypes
+		{
+			get
+			{
+				return this.GetTable<CRM_AnnualPassType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CRM_AnnualPassCorporate> CRM_AnnualPassCorporates
+		{
+			get
+			{
+				return this.GetTable<CRM_AnnualPassCorporate>();
 			}
 		}
 		
@@ -23776,6 +23787,8 @@ namespace CRM.Code.Models
 		
 		private EntitySet<CRM_AnnualPassPerson> _CRM_AnnualPassPersons;
 		
+		private EntitySet<CRM_AnnualPassCorporate> _CRM_AnnualPassCorporates;
+		
 		private EntityRef<CRM_AnnualPassCard> _CRM_AnnualPassCard;
 		
 		private EntityRef<CRM_Offer> _CRM_Offer;
@@ -24125,6 +24138,25 @@ namespace CRM.Code.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPass_CRM_AnnualPassCorporate", Storage="_CRM_AnnualPassCorporates", ThisKey="ID", OtherKey="CRM_AnnualPassID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15, EmitDefaultValue=false)]
+		public EntitySet<CRM_AnnualPassCorporate> CRM_AnnualPassCorporates
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_AnnualPassCorporates.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_AnnualPassCorporates;
+			}
+			set
+			{
+				this._CRM_AnnualPassCorporates.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassCard_CRM_AnnualPass", Storage="_CRM_AnnualPassCard", ThisKey="CRM_AnnualPassCardID", OtherKey="ID", IsForeignKey=true)]
 		public CRM_AnnualPassCard CRM_AnnualPassCard
 		{
@@ -24259,9 +24291,22 @@ namespace CRM.Code.Models
 			entity.CRM_AnnualPass = null;
 		}
 		
+		private void attach_CRM_AnnualPassCorporates(CRM_AnnualPassCorporate entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AnnualPass = this;
+		}
+		
+		private void detach_CRM_AnnualPassCorporates(CRM_AnnualPassCorporate entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AnnualPass = null;
+		}
+		
 		private void Initialize()
 		{
 			this._CRM_AnnualPassPersons = new EntitySet<CRM_AnnualPassPerson>(new Action<CRM_AnnualPassPerson>(this.attach_CRM_AnnualPassPersons), new Action<CRM_AnnualPassPerson>(this.detach_CRM_AnnualPassPersons));
+			this._CRM_AnnualPassCorporates = new EntitySet<CRM_AnnualPassCorporate>(new Action<CRM_AnnualPassCorporate>(this.attach_CRM_AnnualPassCorporates), new Action<CRM_AnnualPassCorporate>(this.detach_CRM_AnnualPassCorporates));
 			this._CRM_AnnualPassCard = default(EntityRef<CRM_AnnualPassCard>);
 			this._CRM_Offer = default(EntityRef<CRM_Offer>);
 			this._CRM_AnnualPassType = default(EntityRef<CRM_AnnualPassType>);
@@ -24880,257 +24925,6 @@ namespace CRM.Code.Models
 		public void OnDeserializing(StreamingContext context)
 		{
 			this.Initialize();
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassType")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class CRM_AnnualPassType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Name;
-		
-		private bool _IsArchived;
-		
-		private decimal _DefaultPrice;
-		
-		private bool _IsWebsite;
-		
-		private bool _IsJoint;
-		
-		private EntitySet<CRM_AnnualPass> _CRM_AnnualPasses;
-		
-		private bool serializing;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnIsArchivedChanging(bool value);
-    partial void OnIsArchivedChanged();
-    partial void OnDefaultPriceChanging(decimal value);
-    partial void OnDefaultPriceChanged();
-    partial void OnIsWebsiteChanging(bool value);
-    partial void OnIsWebsiteChanged();
-    partial void OnIsJointChanging(bool value);
-    partial void OnIsJointChanged();
-    #endregion
-		
-		public CRM_AnnualPassType()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public bool IsArchived
-		{
-			get
-			{
-				return this._IsArchived;
-			}
-			set
-			{
-				if ((this._IsArchived != value))
-				{
-					this.OnIsArchivedChanging(value);
-					this.SendPropertyChanging();
-					this._IsArchived = value;
-					this.SendPropertyChanged("IsArchived");
-					this.OnIsArchivedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultPrice", DbType="Money NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public decimal DefaultPrice
-		{
-			get
-			{
-				return this._DefaultPrice;
-			}
-			set
-			{
-				if ((this._DefaultPrice != value))
-				{
-					this.OnDefaultPriceChanging(value);
-					this.SendPropertyChanging();
-					this._DefaultPrice = value;
-					this.SendPropertyChanged("DefaultPrice");
-					this.OnDefaultPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebsite", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public bool IsWebsite
-		{
-			get
-			{
-				return this._IsWebsite;
-			}
-			set
-			{
-				if ((this._IsWebsite != value))
-				{
-					this.OnIsWebsiteChanging(value);
-					this.SendPropertyChanging();
-					this._IsWebsite = value;
-					this.SendPropertyChanged("IsWebsite");
-					this.OnIsWebsiteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsJoint", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
-		public bool IsJoint
-		{
-			get
-			{
-				return this._IsJoint;
-			}
-			set
-			{
-				if ((this._IsJoint != value))
-				{
-					this.OnIsJointChanging(value);
-					this.SendPropertyChanging();
-					this._IsJoint = value;
-					this.SendPropertyChanged("IsJoint");
-					this.OnIsJointChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPasses", ThisKey="ID", OtherKey="CRM_AnnualPassTypeID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
-		public EntitySet<CRM_AnnualPass> CRM_AnnualPasses
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._CRM_AnnualPasses.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._CRM_AnnualPasses;
-			}
-			set
-			{
-				this._CRM_AnnualPasses.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_CRM_AnnualPasses(CRM_AnnualPass entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AnnualPassType = this;
-		}
-		
-		private void detach_CRM_AnnualPasses(CRM_AnnualPass entity)
-		{
-			this.SendPropertyChanging();
-			entity.CRM_AnnualPassType = null;
-		}
-		
-		private void Initialize()
-		{
-			this._CRM_AnnualPasses = new EntitySet<CRM_AnnualPass>(new Action<CRM_AnnualPass>(this.attach_CRM_AnnualPasses), new Action<CRM_AnnualPass>(this.detach_CRM_AnnualPasses));
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerializing(StreamingContext context)
-		{
-			this.serializing = true;
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializedAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerialized(StreamingContext context)
-		{
-			this.serializing = false;
 		}
 	}
 	
@@ -28353,6 +28147,449 @@ namespace CRM.Code.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_AnnualPassType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private bool _IsArchived;
+		
+		private decimal _DefaultPrice;
+		
+		private bool _IsWebsite;
+		
+		private byte _Type;
+		
+		private int _GroupSize;
+		
+		private EntitySet<CRM_AnnualPass> _CRM_AnnualPasses;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnIsArchivedChanging(bool value);
+    partial void OnIsArchivedChanged();
+    partial void OnDefaultPriceChanging(decimal value);
+    partial void OnDefaultPriceChanged();
+    partial void OnIsWebsiteChanging(bool value);
+    partial void OnIsWebsiteChanged();
+    partial void OnTypeChanging(byte value);
+    partial void OnTypeChanged();
+    partial void OnGroupSizeChanging(int value);
+    partial void OnGroupSizeChanged();
+    #endregion
+		
+		public CRM_AnnualPassType()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsArchived", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public bool IsArchived
+		{
+			get
+			{
+				return this._IsArchived;
+			}
+			set
+			{
+				if ((this._IsArchived != value))
+				{
+					this.OnIsArchivedChanging(value);
+					this.SendPropertyChanging();
+					this._IsArchived = value;
+					this.SendPropertyChanged("IsArchived");
+					this.OnIsArchivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultPrice", DbType="Money NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public decimal DefaultPrice
+		{
+			get
+			{
+				return this._DefaultPrice;
+			}
+			set
+			{
+				if ((this._DefaultPrice != value))
+				{
+					this.OnDefaultPriceChanging(value);
+					this.SendPropertyChanging();
+					this._DefaultPrice = value;
+					this.SendPropertyChanged("DefaultPrice");
+					this.OnDefaultPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebsite", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public bool IsWebsite
+		{
+			get
+			{
+				return this._IsWebsite;
+			}
+			set
+			{
+				if ((this._IsWebsite != value))
+				{
+					this.OnIsWebsiteChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebsite = value;
+					this.SendPropertyChanged("IsWebsite");
+					this.OnIsWebsiteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="TinyInt NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public byte Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupSize", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public int GroupSize
+		{
+			get
+			{
+				return this._GroupSize;
+			}
+			set
+			{
+				if ((this._GroupSize != value))
+				{
+					this.OnGroupSizeChanging(value);
+					this.SendPropertyChanging();
+					this._GroupSize = value;
+					this.SendPropertyChanged("GroupSize");
+					this.OnGroupSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPassType_CRM_AnnualPass", Storage="_CRM_AnnualPasses", ThisKey="ID", OtherKey="CRM_AnnualPassTypeID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8, EmitDefaultValue=false)]
+		public EntitySet<CRM_AnnualPass> CRM_AnnualPasses
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._CRM_AnnualPasses.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._CRM_AnnualPasses;
+			}
+			set
+			{
+				this._CRM_AnnualPasses.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CRM_AnnualPasses(CRM_AnnualPass entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AnnualPassType = this;
+		}
+		
+		private void detach_CRM_AnnualPasses(CRM_AnnualPass entity)
+		{
+			this.SendPropertyChanging();
+			entity.CRM_AnnualPassType = null;
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_AnnualPasses = new EntitySet<CRM_AnnualPass>(new Action<CRM_AnnualPass>(this.attach_CRM_AnnualPasses), new Action<CRM_AnnualPass>(this.detach_CRM_AnnualPasses));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CRM_AnnualPassCorporate")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CRM_AnnualPassCorporate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _CRM_AnnualPassID;
+		
+		private string _Name;
+		
+		private EntityRef<CRM_AnnualPass> _CRM_AnnualPass;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCRM_AnnualPassIDChanging(int value);
+    partial void OnCRM_AnnualPassIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public CRM_AnnualPassCorporate()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRM_AnnualPassID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public int CRM_AnnualPassID
+		{
+			get
+			{
+				return this._CRM_AnnualPassID;
+			}
+			set
+			{
+				if ((this._CRM_AnnualPassID != value))
+				{
+					if (this._CRM_AnnualPass.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCRM_AnnualPassIDChanging(value);
+					this.SendPropertyChanging();
+					this._CRM_AnnualPassID = value;
+					this.SendPropertyChanged("CRM_AnnualPassID");
+					this.OnCRM_AnnualPassIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CRM_AnnualPass_CRM_AnnualPassCorporate", Storage="_CRM_AnnualPass", ThisKey="CRM_AnnualPassID", OtherKey="ID", IsForeignKey=true)]
+		public CRM_AnnualPass CRM_AnnualPass
+		{
+			get
+			{
+				return this._CRM_AnnualPass.Entity;
+			}
+			set
+			{
+				CRM_AnnualPass previousValue = this._CRM_AnnualPass.Entity;
+				if (((previousValue != value) 
+							|| (this._CRM_AnnualPass.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CRM_AnnualPass.Entity = null;
+						previousValue.CRM_AnnualPassCorporates.Remove(this);
+					}
+					this._CRM_AnnualPass.Entity = value;
+					if ((value != null))
+					{
+						value.CRM_AnnualPassCorporates.Add(this);
+						this._CRM_AnnualPassID = value.ID;
+					}
+					else
+					{
+						this._CRM_AnnualPassID = default(int);
+					}
+					this.SendPropertyChanged("CRM_AnnualPass");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._CRM_AnnualPass = default(EntityRef<CRM_AnnualPass>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HoldingPen")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class HoldingPen : INotifyPropertyChanging, INotifyPropertyChanged
@@ -28422,6 +28659,8 @@ namespace CRM.Code.Models
 		
 		private string _Password;
 		
+		private string _GroupNames;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -28488,6 +28727,8 @@ namespace CRM.Code.Models
     partial void OnJointThisReferenceABChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
+    partial void OnGroupNamesChanging(string value);
+    partial void OnGroupNamesChanged();
     #endregion
 		
 		public HoldingPen()
@@ -29142,6 +29383,27 @@ namespace CRM.Code.Models
 					this._Password = value;
 					this.SendPropertyChanged("Password");
 					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupNames", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32)]
+		public string GroupNames
+		{
+			get
+			{
+				return this._GroupNames;
+			}
+			set
+			{
+				if ((this._GroupNames != value))
+				{
+					this.OnGroupNamesChanging(value);
+					this.SendPropertyChanging();
+					this._GroupNames = value;
+					this.SendPropertyChanged("GroupNames");
+					this.OnGroupNamesChanged();
 				}
 			}
 		}
