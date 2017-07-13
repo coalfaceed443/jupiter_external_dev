@@ -246,28 +246,32 @@ namespace CRM.WebService
                     db.CRM_AttendanceLogGroups.InsertOnSubmit(group);
                     db.SubmitChanges();
 
-                    string logticketType = "Web Booking - " + ticketTypeName;
-
-                    Service.CRM_AttendancePersonType personType = db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == logticketType);
-
-                    if (personType == null)
+                    if (ticketTypeName.Length > 0)
                     {
-                        personType = new Service.CRM_AttendancePersonType();
-                        personType.IsActive = true;
-                        personType.IsArchived = false;
-                        personType.Name = logticketType;
-                        personType.OrderNo = 0;
-                        db.CRM_AttendancePersonTypes.InsertOnSubmit(personType);
+                        string logticketType = "Web Booking - " + ticketTypeName;
+
+                        Service.CRM_AttendancePersonType personType =
+                            db.CRM_AttendancePersonTypes.FirstOrDefault(f => f.Name == logticketType);
+
+                        if (personType == null)
+                        {
+                            personType = new Service.CRM_AttendancePersonType();
+                            personType.IsActive = true;
+                            personType.IsArchived = false;
+                            personType.Name = logticketType;
+                            personType.OrderNo = 0;
+                            db.CRM_AttendancePersonTypes.InsertOnSubmit(personType);
+                        }
+
+                        db.SubmitChanges();
+
+                        Service.CRM_AttendanceLog log = new Service.CRM_AttendanceLog();
+                        log.CRM_AttendancePersonTypeID = personType.ID;
+                        log.Quantity = attendees;
+                        log.CRM_CRM_AttendanceLogGroupID = group.ID;
+                        db.CRM_AttendanceLogs.InsertOnSubmit(log);
+                        db.SubmitChanges();
                     }
-
-                    db.SubmitChanges();
-
-                    Service.CRM_AttendanceLog log = new Service.CRM_AttendanceLog();
-                    log.CRM_AttendancePersonTypeID = personType.ID;
-                    log.Quantity = attendees;
-                    log.CRM_CRM_AttendanceLogGroupID = group.ID;
-                    db.CRM_AttendanceLogs.InsertOnSubmit(log);
-                    db.SubmitChanges();
                 }
 
                 return "OK";
