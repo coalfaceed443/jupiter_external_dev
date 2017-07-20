@@ -51,6 +51,12 @@ namespace CRM.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!Request.IsSecureConnection)
+            {
+                string absoluteUri = Request.Url.AbsoluteUri;
+                Response.Redirect(absoluteUri.Replace("http://", "https://"));
+            }
+
             this.Page.Title = ((AdminPage)Page).GetPageTitle();
 
             // menu //

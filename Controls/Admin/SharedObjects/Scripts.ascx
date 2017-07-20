@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/_assets/scripts/typeahead.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" ></script>
 <script src="/_assets/scripts/modernizr.custom.00047.js" type="text/javascript"></script>
-<script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js" type="text/javascript"></script>
+<script src="/_assets/scripts/hogan-2.0.0.js" type="text/javascript"></script>
 <script src="/_assets/scripts/typeahead.min.js?v=2" ></script>
 <script type="text/javascript" src="/_assets/scripts/fancybox/jquery.mousewheel-3.0.2.pack.js"></script>
 <script type="text/javascript" src="/_assets/scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="/_assets/scripts/stylesheets/jquery.sidr.light.css">
 <link href="/_assets/scripts/autocomplete/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/_assets/scripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
-<link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
 
 <link href="/_assets/scripts/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="/_assets/scripts/jquery.mousewheel.min.js"></script>

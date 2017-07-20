@@ -236,7 +236,6 @@
     <Content Include="App_Emails\Invites\VenueChange.aspx" />
     <Content Include="App_Emails\PasswordReset.aspx" />
     <Content Include="App_Emails\ResetLink.aspx" />
-    <Content Include="bin\Utils.dll" />
     <Content Include="Controls\Admin\calendar.aspx" />
     <Content Include="Controls\Admin\CustomFields\CustomFields.ascx" />
     <Content Include="Controls\Admin\CustomFields\Field\CustomField.ascx" />
@@ -1046,6 +1045,7 @@
     <Content Include="_assets\scripts\fancybox\jquery.fancybox-1.3.1.js" />
     <Content Include="_assets\scripts\fancybox\jquery.fancybox-1.3.1.pack.js" />
     <Content Include="_assets\scripts\fancybox\jquery.mousewheel-3.0.2.pack.js" />
+    <Content Include="_assets\scripts\hogan-2.0.0.js" />
     <Content Include="_assets\scripts\jcrop\Jcrop.gif" />
     <Content Include="_assets\scripts\jcrop\jquery.Jcrop.css" />
     <Content Include="_assets\scripts\jcrop\jquery.Jcrop.js" />
@@ -2561,6 +2561,7 @@
   <ItemGroup>
     <Folder Include="admin\Calendar\WebsiteBookings\" />
     <Folder Include="App_Data\PiczardTempFiles\" />
+    <Folder Include="bin\" />
     <Folder Include="Code\Utils\CampaignMonitor\" />
     <Folder Include="Controls\Site\" />
   </ItemGroup>
