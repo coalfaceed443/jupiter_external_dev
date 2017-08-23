@@ -234,6 +234,7 @@
     <Content Include="App_Emails\Invites\DateTimeChange.aspx" />
     <Content Include="App_Emails\Invites\NewInvite.aspx" />
     <Content Include="App_Emails\Invites\VenueChange.aspx" />
+    <Content Include="App_Emails\NewPassword.aspx" />
     <Content Include="App_Emails\PasswordReset.aspx" />
     <Content Include="App_Emails\ResetLink.aspx" />
     <Content Include="Controls\Admin\calendar.aspx" />
@@ -2024,6 +2025,13 @@
     </Compile>
     <Compile Include="App_Emails\Invites\VenueChange.aspx.designer.cs">
       <DependentUpon>VenueChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Emails\NewPassword.aspx.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Emails\NewPassword.aspx.designer.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Emails\PasswordReset.aspx.cs">
       <DependentUpon>PasswordReset.aspx</DependentUpon>

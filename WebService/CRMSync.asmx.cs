@@ -454,6 +454,38 @@ namespace CRM.WebService
         }
 
         [WebMethod]
+        public bool SendNewPassword(string key, string email)
+        {
+            if (!IsAuthValid(key))
+            {
+                return false;
+            }
+
+            ServiceDataContext db = new ServiceDataContext();
+
+            email = email.ToLower();
+
+            var result = db.CRM_Persons.ToList().FirstOrDefault(c => !c.IsArchived && c.PrimaryEmail.ToLower() == email);
+
+            if (result != null)
+            {
+                // reset code //
+
+                result.TempCode = Code.Models.CRM_Person.GeneratePassword();
+
+                db.SubmitChanges();
+
+                // send email //
+
+                var emailManager = new EmailManager(result.PrimaryEmail);
+
+                emailManager.SendNewPassword(result.Firstname, result.PrimaryEmail, result.TempCode);
+            }
+
+            return true;
+        }
+
+        [WebMethod]
         public bool ResetCodeValid(string key, string email, string code)
         {
             if (!IsAuthValid(key))

@@ -129,6 +129,21 @@ namespace CRM.Code.Managers
             Email.SendTemplateEmail(htmlOutput.ToString(), "Your password reset", mailTo, mailCc, mailBcc, attachments);
         }
 
+        public void SendNewPassword(string name, string email, string code)
+        {
+            System.IO.StringWriter htmlStringWriter = new System.IO.StringWriter();
+            HttpContext.Current.Server.Execute("/app_emails/NewPassword.aspx", htmlStringWriter);
+
+            string htmlOutput = htmlStringWriter.GetStringBuilder().ToString();
+
+            htmlOutput = htmlOutput.Replace("@NAME@", name);
+            htmlOutput = htmlOutput.Replace("@URL@", "https://www.jupiterartland.org/checkout?code=" + code + "&email=" + email);
+
+            mailTo.Add(email);
+
+            Email.SendTemplateEmail(htmlOutput.ToString(), "Set your password", mailTo, mailCc, mailBcc, attachments);
+        }
+
         public void SendUserRemoved(string message, CRM_CalendarAdmin Invite, MainDataContext db, Models.Admin CurrentUser)
         {
             System.IO.StringWriter htmlStringWriter = new System.IO.StringWriter();
