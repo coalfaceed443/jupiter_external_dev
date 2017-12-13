@@ -20,5 +20,14 @@ namespace CRM.admin.AnnualPassCard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CRM.Controls.Forms.UserControlButton btnExportAudit;
+        
+        /// <summary>
+        /// btnActiveFriends control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CRM.Controls.Forms.UserControlButton btnActiveFriends;
     }
 }

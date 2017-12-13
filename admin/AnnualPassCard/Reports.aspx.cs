@@ -15,6 +15,35 @@ namespace CRM.admin.AnnualPassCard
         protected void Page_Load(object sender, EventArgs e)
         {
             btnExportAudit.EventHandler = btnExportAudit_Click;
+
+            btnActiveFriends.EventHandler = btnActiveFriends_Click;
+        }
+
+        protected void btnActiveFriends_Click(object sender, EventArgs e)
+        {
+            int Friend = 1;
+            int PersonalFriend = 2;
+
+            var members = from p in db.CRM_AnnualPasses
+                          let FormFieldResponses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.PrimaryContactReference)
+                          let IsFriendByConstituent = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == Friend))
+                          let IsPersonalFriend = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == PersonalFriend))
+                          let Person = db.CRM_Persons.First(r => r.Reference == p.PrimaryContactReference)
+                          where p.ExpiryDate >= DateTime.Now.Date
+                          where p.StartDate <= DateTime.Now.Date
+                          where Person.IsDoNotEmail == false
+                          where Person.PrimaryEmail.Trim().Length > 0
+                          select new CRM.Code.Helpers.FriendReportHelper() {
+                              CRM_AnnualPass = p,
+                              IsFriend = IsFriendByConstituent.Any(),
+                              IsPersonalFriend = IsPersonalFriend.Any(),
+                              CRM_Person = Person
+                          };
+
+
+            CSVExport.ActiveFriendsByConstituent(members, Response);
+
+
         }
 
         protected void btnExportAudit_Click(object sender, EventArgs e)

@@ -98,7 +98,44 @@ namespace CRM.Code
 
             }
 
-            public static string FormatLine(string intput)
+        internal static void ActiveFriendsByConstituent(IQueryable<FriendReportHelper> members, HttpResponse Response)
+        {
+
+            string columnNames = "Email, Firstname, Surname, Is Friend,Is Personal Friend, Expiry Date, Pass Type";
+
+            string filename = "ActiveFriendsByConstituent";
+
+            Response.Clear();
+            Response.ContentType = "text/csv";
+            Response.AddHeader("content-disposition", "attachment; filename=\"" + filename + "-" + DateTime.UtcNow.ToString("dd-MM-yyyy") + ".csv\"");
+            Response.ContentEncoding = Encoding.GetEncoding("Windows-1252");
+
+            HttpContext.Current.Response.Write(columnNames);
+            HttpContext.Current.Response.Write(Environment.NewLine);
+
+            StringBuilder sbItems = new StringBuilder();
+
+            foreach (FriendReportHelper friend in members)
+            {
+                AddComma(friend.CRM_Person.PrimaryEmail, sbItems);
+                AddComma(friend.CRM_Person.Firstname, sbItems);
+                AddComma(friend.CRM_Person.Lastname, sbItems);
+                AddComma(friend.IsFriend ? "TRUE" : "FALSE", sbItems);
+                AddComma(friend.IsPersonalFriend ? "TRUE" : "FALSE", sbItems);
+                AddComma(friend.CRM_AnnualPass.ExpiryDate.ToString("dd/MM/yyyy"), sbItems);
+                AddComma(friend.CRM_AnnualPass.TypeOfPass, sbItems);
+
+                Response.Write(sbItems.ToString());
+                Response.Write(Environment.NewLine);
+                sbItems = new StringBuilder();
+            }
+
+            Response.End();
+            
+
+        }
+
+        public static string FormatLine(string intput)
             {
                 return "\"" + intput.Replace(",", "").Replace(System.Environment.NewLine, "").Replace("\t", "").Replace("\n", "").Replace("\r", "") + "\"" + ",";
             }

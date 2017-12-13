@@ -51,7 +51,7 @@ namespace CRM.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!Request.IsSecureConnection)
+            if (!Request.Url.AbsoluteUri.Contains("localhost") && !Request.IsSecureConnection)
             {
                 string absoluteUri = Request.Url.AbsoluteUri;
                 Response.Redirect(absoluteUri.Replace("http://", "https://"));

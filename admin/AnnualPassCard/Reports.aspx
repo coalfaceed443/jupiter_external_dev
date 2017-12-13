@@ -13,8 +13,13 @@
          <div class="innerContentForm">
 
              <div class="buttons">
-             <ucUtil:Button ID="btnExportAudit" runat="server" ButtonText="Export Audit" />
-                 </div>
+                <ucUtil:Button ID="btnExportAudit" runat="server" ButtonText="Export Audit" />
+             </div>
+             
+             <div class="buttons">
+                <ucUtil:Button ID="btnActiveFriends" runat="server" ButtonText="Export Active Friends and Personal Friends" />
+             </div>
+
          </div>
 
     </div>

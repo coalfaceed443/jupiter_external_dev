@@ -2071,6 +2071,7 @@
     <Compile Include="Code\CSVExport.cs" />
     <Compile Include="Code\Described.cs" />
     <Compile Include="Code\Extensions\Extensions.cs" />
+    <Compile Include="Code\Helpers\FriendReportHelper.cs" />
     <Compile Include="Code\Helpers\PaymentType.cs" />
     <Compile Include="Code\Helpers\WebService\ContextResult.cs" />
     <Compile Include="Code\Helpers\DynamicQueryable.cs" />
