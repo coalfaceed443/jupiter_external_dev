@@ -31,8 +31,8 @@ namespace CRM.admin.AnnualPassCard
                           let Person = db.CRM_Persons.First(r => r.Reference == p.PrimaryContactReference)
                           where p.ExpiryDate >= DateTime.Now.Date
                           where p.StartDate <= DateTime.Now.Date
-                          where Person.IsDoNotEmail == false
-                          where Person.PrimaryEmail.Trim().Length > 0
+                          where Person.IsDoNotEmail == false || Person.IsDoNotMail == false
+
                           select new CRM.Code.Helpers.FriendReportHelper() {
                               CRM_AnnualPass = p,
                               IsFriend = IsFriendByConstituent.Any(),

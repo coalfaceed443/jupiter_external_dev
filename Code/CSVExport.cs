@@ -101,7 +101,8 @@ namespace CRM.Code
         internal static void ActiveFriendsByConstituent(IQueryable<FriendReportHelper> members, HttpResponse Response)
         {
 
-            string columnNames = "Email, Firstname, Surname, Is Friend,Is Personal Friend, Expiry Date, Pass Type";
+            string columnNames = "Do not Email, Do not Post, Email, Title, Firstname, Surname, Address 1, Address 2, Address 3, Address 4, Address 5, Town, County, Postcode, Country"
+                + "Is Friend,Is Personal Friend, Expiry Date, Pass Type";
 
             string filename = "ActiveFriendsByConstituent";
 
@@ -117,9 +118,21 @@ namespace CRM.Code
 
             foreach (FriendReportHelper friend in members)
             {
+                AddComma(friend.CRM_Person.IsDoNotEmail ? "TRUE" : "FALSE", sbItems);
+                AddComma(friend.CRM_Person.IsDoNotMail ? "TRUE" : "FALSE", sbItems);                
                 AddComma(friend.CRM_Person.PrimaryEmail, sbItems);
+                AddComma(friend.CRM_Person.Title, sbItems);
                 AddComma(friend.CRM_Person.Firstname, sbItems);
                 AddComma(friend.CRM_Person.Lastname, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.AddressLine1, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.AddressLine2, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.AddressLine3, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.AddressLine4, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.AddressLine5, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.Town, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.County, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.Postcode, sbItems);
+                AddComma(friend.CRM_Person.CRM_Address.Country.Name, sbItems);
                 AddComma(friend.IsFriend ? "TRUE" : "FALSE", sbItems);
                 AddComma(friend.IsPersonalFriend ? "TRUE" : "FALSE", sbItems);
                 AddComma(friend.CRM_AnnualPass.ExpiryDate.ToString("dd/MM/yyyy"), sbItems);
