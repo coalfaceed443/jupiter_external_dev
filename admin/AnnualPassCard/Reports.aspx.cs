@@ -24,7 +24,7 @@ namespace CRM.admin.AnnualPassCard
             int Friend = 1;
             int PersonalFriend = 2;
 
-            var members = from p in db.CRM_AnnualPasses
+            var members = (from p in db.CRM_AnnualPasses
                           let FormFieldResponses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.PrimaryContactReference)
                           let IsFriendByConstituent = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == Friend))
                           let IsPersonalFriend = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == PersonalFriend))
@@ -38,8 +38,30 @@ namespace CRM.admin.AnnualPassCard
                               IsFriend = IsFriendByConstituent.Any(),
                               IsPersonalFriend = IsPersonalFriend.Any(),
                               CRM_Person = Person
-                          };
+                          }).ToList();
 
+
+            members = members.ToList();
+            var PersonalFriendsWithoutPasses = (from p in db.CRM_Persons
+                                               let FormFieldResponses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.Reference)
+                                               let IsFriendByConstituent = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == Friend))
+                                               let IsPersonalFriend = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == PersonalFriend))
+                                               where p.IsDoNotEmail == false || p.IsDoNotMail == false
+                                               where IsPersonalFriend.Any()
+                                               select new CRM.Code.Helpers.FriendReportHelper()
+                                               {
+                                                   CRM_AnnualPass = null,
+                                                   IsFriend = IsFriendByConstituent.Any(),
+                                                   IsPersonalFriend = IsPersonalFriend.Any(),
+                                                   CRM_Person = p
+                                               }).ToList();
+
+
+            PersonalFriendsWithoutPasses = (from p in PersonalFriendsWithoutPasses
+                                           where !members.Any(m => m.CRM_Person.Reference == p.CRM_Person.Reference)
+                                           select p).ToList();
+
+            members = members.Concat(PersonalFriendsWithoutPasses).Where(r => r.CRM_Person.Address1 != "").ToList();
 
             CSVExport.ActiveFriendsByConstituent(members, Response);
 

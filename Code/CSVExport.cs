@@ -98,10 +98,10 @@ namespace CRM.Code
 
             }
 
-        internal static void ActiveFriendsByConstituent(IQueryable<FriendReportHelper> members, HttpResponse Response)
+        internal static void ActiveFriendsByConstituent(List<FriendReportHelper> members, HttpResponse Response)
         {
 
-            string columnNames = "Do not Email, Do not Post, Email, Title, Firstname, Surname, Address 1, Address 2, Address 3, Address 4, Address 5, Town, County, Postcode, Country"
+            string columnNames = "Do not Email, Do not Post, Email, Title, Firstname, Surname, Address 1, Address 2, Address 3, Address 4, Address 5, Town, County, Postcode, Country,"
                 + "Is Friend,Is Personal Friend, Expiry Date, Pass Type";
 
             string filename = "ActiveFriendsByConstituent";
@@ -135,9 +135,18 @@ namespace CRM.Code
                 AddComma(friend.CRM_Person.CRM_Address.Country.Name, sbItems);
                 AddComma(friend.IsFriend ? "TRUE" : "FALSE", sbItems);
                 AddComma(friend.IsPersonalFriend ? "TRUE" : "FALSE", sbItems);
-                AddComma(friend.CRM_AnnualPass.ExpiryDate.ToString("dd/MM/yyyy"), sbItems);
-                AddComma(friend.CRM_AnnualPass.TypeOfPass, sbItems);
 
+                if (friend.CRM_AnnualPass != null)
+                {
+                    AddComma(friend.CRM_AnnualPass.ExpiryDate.ToString("dd/MM/yyyy"), sbItems);
+                    AddComma(friend.CRM_AnnualPass.TypeOfPass, sbItems);
+                }
+                else
+                {
+                    AddComma("NO PASS", sbItems);
+                    AddComma("NO PASS", sbItems);
+                }
+                
                 Response.Write(sbItems.ToString());
                 Response.Write(Environment.NewLine);
                 sbItems = new StringBuilder();
