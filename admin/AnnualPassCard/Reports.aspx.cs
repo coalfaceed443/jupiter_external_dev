@@ -1,5 +1,7 @@
 ﻿using CRM.Code;
 using CRM.Code.BasePages.Admin;
+using CRM.Code.Helpers;
+using CRM.Code.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +64,22 @@ namespace CRM.admin.AnnualPassCard
                                            select p).ToList();
 
             members = members.Concat(PersonalFriendsWithoutPasses).Where(r => r.CRM_Person.Address1 != "").ToList();
+
+            
+            IEnumerable<IGrouping<int?, FriendReportHelper>> groupset = members.GroupBy(g => g.CRM_Person.RelationshipID);
+
+            var recordsWithRelation = groupset.Where(c => c.Key != null).Select(c => c.First());
+            var recordsWithoutRelation = groupset.Where(c => c.Key == null).SelectMany(c => c);
+            members = recordsWithRelation.Concat(recordsWithoutRelation).ToList();
+            
+            
+            IEnumerable<IGrouping<string, FriendReportHelper>> addressGroupset = members.GroupBy(g => g.CRM_Person.CRM_Address.FormattedAddress);
+
+            var recordsWithAdress = addressGroupset.Where(c => c.Key != null).Select(c => c.First());
+            var recordsWithoutAddress = addressGroupset.Where(c => c.Key == null).SelectMany(c => c);
+            members = recordsWithAdress.Concat(recordsWithoutAddress).ToList();
+
+            
 
             CSVExport.ActiveFriendsByConstituent(members, Response);
 

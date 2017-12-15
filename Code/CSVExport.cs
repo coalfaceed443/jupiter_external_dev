@@ -101,7 +101,7 @@ namespace CRM.Code
         internal static void ActiveFriendsByConstituent(List<FriendReportHelper> members, HttpResponse Response)
         {
 
-            string columnNames = "Do not Email, Do not Post, Email, Title, Firstname, Surname, Address 1, Address 2, Address 3, Address 4, Address 5, Town, County, Postcode, Country,"
+            string columnNames = "Do not Email, Do not Post, Email, Relation Salutation, Title, Firstname, Surname, Address 1, Address 2, Address 3, Address 4, Address 5, Town, County, Postcode, Country,"
                 + "Is Friend,Is Personal Friend, Expiry Date, Pass Type";
 
             string filename = "ActiveFriendsByConstituent";
@@ -121,18 +121,20 @@ namespace CRM.Code
                 AddComma(friend.CRM_Person.IsDoNotEmail ? "TRUE" : "FALSE", sbItems);
                 AddComma(friend.CRM_Person.IsDoNotMail ? "TRUE" : "FALSE", sbItems);                
                 AddComma(friend.CRM_Person.PrimaryEmail, sbItems);
+
+                AddComma(friend.CRM_Person.RelationshipSaltuation, sbItems);
                 AddComma(friend.CRM_Person.Title, sbItems);
                 AddComma(friend.CRM_Person.Firstname, sbItems);
                 AddComma(friend.CRM_Person.Lastname, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.AddressLine1, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.AddressLine2, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.AddressLine3, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.AddressLine4, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.AddressLine5, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.Town, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.County, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.Postcode, sbItems);
-                AddComma(friend.CRM_Person.CRM_Address.Country.Name, sbItems);
+                AddComma(friend.CRM_Person.RelationshipAddress1, sbItems);
+                AddComma(friend.CRM_Person.RelationshipAddress2, sbItems);
+                AddComma(friend.CRM_Person.RelationshipAddress3, sbItems);
+                AddComma(friend.CRM_Person.RelationshipAddress4, sbItems);
+                AddComma(friend.CRM_Person.RelationshipAddress5, sbItems);
+                AddComma(friend.CRM_Person.RelationshipTown, sbItems);
+                AddComma(friend.CRM_Person.RelationshipCounty, sbItems);
+                AddComma(friend.CRM_Person.RelationshipPostcode, sbItems);
+                AddComma(friend.CRM_Person.RelationshipCountry, sbItems);
                 AddComma(friend.IsFriend ? "TRUE" : "FALSE", sbItems);
                 AddComma(friend.IsPersonalFriend ? "TRUE" : "FALSE", sbItems);
 
