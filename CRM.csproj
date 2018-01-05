@@ -125,6 +125,7 @@
     <Content Include="admin\Merge\List.aspx" />
     <Content Include="admin\Organisation\Persons\FullList.aspx" />
     <Content Include="admin\Organisation\Reports.aspx" />
+    <Content Include="admin\Person\Archived.aspx" />
     <Content Include="admin\Person\Attendance\List.aspx" />
     <Content Include="admin\Person\Donations\List.aspx" />
     <Content Include="admin\Person\Gift\Details.aspx" />
@@ -1281,6 +1282,13 @@
     </Compile>
     <Compile Include="admin\Organisation\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Person\Archived.aspx.cs">
+      <DependentUpon>Archived.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Person\Archived.aspx.designer.cs">
+      <DependentUpon>Archived.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Person\Attendance\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

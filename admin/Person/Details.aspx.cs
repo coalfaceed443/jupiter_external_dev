@@ -32,6 +32,7 @@ namespace CRM.admin.Person
             btnDelete.EventHandler = btnDelete_Click;
             btnSubmit.EventHandler = btnSubmit_Click;
             btnSubmitChanges.EventHandler = btnSubmitChanges_Click;
+            btnReinstate.EventHandler = btnReinstate_Click;
 
             ucNavPerson.Entity = Entity;
 

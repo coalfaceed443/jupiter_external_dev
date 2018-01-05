@@ -87,7 +87,9 @@ namespace CRM.Code.Helpers
             [StringValue("schoolorgs")]
             schoolorgs,
             [StringValue("orgperson")]
-            orgperson
+            orgperson,
+            [StringValue("archivedperson")]
+            archivedperson
 
 
         }

@@ -53,6 +53,17 @@ namespace CRM.Controls.Forms.Handlers
                         }
                         break;
 
+                    case (int)JSONSet.DataSets.archivedperson:
+                        {
+                            var persons = db.CRM_Persons;
+                            jsonItems = from p in (from p in persons
+                                        where p.IsArchived
+                                        select p).ToList()
+                                        where p.Tokens.Any(t => t.Contains(searchCriteria))
+                                        select new JSONSet(p.Fullname + " : " + p.PrimaryAddressRecord.FormattedAddressBySep(", "), p.DateOfBirthOutput, p.Reference.ToString(), p.Photo, p.Reference);
+                        }
+                        break;
+
 
                     case (int)JSONSet.DataSets.contact:
                         {
