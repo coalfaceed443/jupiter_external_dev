@@ -22,6 +22,15 @@ namespace CRM.Code.Extensions
 
             return data.ToList();
         }
+
+
+        public static List<CRM_Person> DistinctOnNamePostcode(this List<CRM_Person> persons)
+        {
+            IEnumerable<IGrouping<string, CRM_Person>> groupset = persons.GroupBy(g => g.Fullname + g.PrimaryAddressPostcode);            
+
+            return groupset.Select(c => c.First()).ToList();
+        }
+
     }
 
 

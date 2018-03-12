@@ -22,6 +22,15 @@ namespace CRM.admin.AnnualPassCard {
         protected global::CRM.Controls.Forms.UserControlButton btnExportAudit;
         
         /// <summary>
+        /// txtDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDays;
+        
+        /// <summary>
         /// btnActiveFriends control.
         /// </summary>
         /// <remarks>

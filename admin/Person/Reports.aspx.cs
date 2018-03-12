@@ -129,7 +129,7 @@ namespace CRM.admin.Person
                               r.TargetReference == p.Reference)
                                      where !p.IsDoNotMail
                                 select p
-                               ).ToList().DistinctOnRelations()
+                               ).ToList().DistinctOnRelations().DistinctOnNamePostcode()
                           where !p.IsAnnualPassHolder
                           let ConstituentType = p.ConstituentTypeOutput(db, ", ")
                           select new {

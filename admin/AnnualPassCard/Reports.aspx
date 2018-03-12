@@ -15,7 +15,24 @@
              <div class="buttons">
                 <ucUtil:Button ID="btnExportAudit" runat="server" ButtonText="Export Audit" />
              </div>
+
              
+             <div class="buttons">
+
+             <p><strong>Active Friends</strong></p>
+             
+             <p>All friends that are<br />
+                not deceased<br />
+                OK to send postals<br />
+                 not archived <br />
+                 removing relationship duplicates<br />
+                 removing duplicates by full name + postcode
+                 not expired, or have expired within <asp:TextBox ID="txtDays" runat="server" Text="30" Width="80" /> days
+
+             </p>
+
+                 </div>
+
              <div class="buttons">
                 <ucUtil:Button ID="btnActiveFriends" runat="server" ButtonText="Export Active Friends and Personal Friends" />
              </div>

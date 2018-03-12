@@ -26,15 +26,19 @@ namespace CRM.admin.AnnualPassCard
             int Friend = 1;
             int PersonalFriend = 2;
 
+            int days = 30;
+
+            Int32.TryParse(txtDays.Text, out days);
+
             var members = (from p in db.CRM_AnnualPasses
                           let FormFieldResponses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.PrimaryContactReference)
                           let IsFriendByConstituent = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == Friend))
                           let IsPersonalFriend = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == PersonalFriend))
                           let Person = db.CRM_Persons.First(r => r.Reference == p.PrimaryContactReference)
-                          where p.ExpiryDate >= DateTime.Now.Date
+                          where p.ExpiryDate >= DateTime.Now.Date.AddDays(-days)
                           where p.StartDate <= DateTime.Now.Date
                           where Person.IsDeceased == false
-                          where Person.IsDoNotEmail == false || Person.IsDoNotMail == false
+                          where Person.IsDoNotMail == false
                           where Person.IsArchived == false
 
                           select new CRM.Code.Helpers.FriendReportHelper() {
@@ -50,7 +54,7 @@ namespace CRM.admin.AnnualPassCard
                                                let FormFieldResponses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.Reference)
                                                let IsFriendByConstituent = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == Friend))
                                                let IsPersonalFriend = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == PersonalFriend))
-                                               where p.IsDoNotEmail == false || p.IsDoNotMail == false
+                                               where p.IsDoNotMail == false
                                                 where p.IsDeceased == false
                                                 where IsPersonalFriend.Any()
                                                 where p.IsArchived == false
@@ -83,7 +87,10 @@ namespace CRM.admin.AnnualPassCard
             var recordsWithoutAddress = addressGroupset.Where(c => c.Key == null).SelectMany(c => c);
             members = recordsWithAdress.Concat(recordsWithoutAddress).ToList();
 
-            
+            IEnumerable<IGrouping<string, FriendReportHelper>> fullnamePostcode = members.GroupBy(g => g.CRM_Person.CRM_Address.Postcode + g.CRM_Person.Fullname);
+
+            members = fullnamePostcode.Select(c => c.First()).ToList();
+
 
             CSVExport.ActiveFriendsByConstituent(members, Response);
 
