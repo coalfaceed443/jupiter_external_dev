@@ -55,8 +55,7 @@ namespace CRM.admin.Person
                 (int)CustomFieldIDs.Galleries,
                 (int)CustomFieldIDs.Artist,
                 (int)CustomFieldIDs.Festivals,
-                (int)CustomFieldIDs.Government,
-                (int)CustomFieldIDs.Volunteer,
+                (int)CustomFieldIDs.Government
 
             };
 

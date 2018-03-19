@@ -31,6 +31,15 @@ namespace CRM.admin.AnnualPassCard {
         protected global::System.Web.UI.WebControls.TextBox txtDays;
         
         /// <summary>
+        /// chkExhibition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkExhibition;
+        
+        /// <summary>
         /// btnActiveFriends control.
         /// </summary>
         /// <remarks>

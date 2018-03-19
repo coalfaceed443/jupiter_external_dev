@@ -9,11 +9,57 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CRM.Code.Extensions;
 
 namespace CRM.admin.AnnualPassCard
 {
+
     public partial class Reports : AdminPage
     {
+        protected enum CustomFieldIDs
+        {
+            Friend = 1,
+            PersonalFriend = 2,
+            FreelanceTeacher = 3,
+            Press = 4,
+            Museums = 5,
+            schools = 6,
+            Supplier,
+            Council,
+            Galleries,
+            Artist,
+            Festivals,
+            PotentialProblem,
+            Government,
+            Educational,
+            Opinion,
+            VIP,
+            Staff,
+            CourseAttendee,
+            Volunteer,
+            OnlineCustomer,
+            Charity
+        }
+
+        protected List<int> ExhibitionPostals()
+        {
+
+            List<int> constituents = new List<int>()
+            {
+                (int)CustomFieldIDs.PersonalFriend,
+                (int)CustomFieldIDs.Press,
+                (int)CustomFieldIDs.Museums,
+                (int)CustomFieldIDs.Council,
+                (int)CustomFieldIDs.Galleries,
+                (int)CustomFieldIDs.Artist,
+                (int)CustomFieldIDs.Festivals,
+                (int)CustomFieldIDs.Government
+
+            };
+
+            return constituents;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             btnExportAudit.EventHandler = btnExportAudit_Click;
@@ -73,7 +119,38 @@ namespace CRM.admin.AnnualPassCard
 
             members = members.Concat(PersonalFriendsWithoutPasses).Where(r => r.CRM_Person.Address1 != "").ToList();
 
-            
+
+            if (chkExhibition.Checked)
+            {
+                var constituents = ExhibitionPostals();
+
+                var dataset = from p in (from p in db.CRM_Persons
+                                         let FormFieldResponses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.Reference)
+                                         let IsFriendByConstituent = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == Friend))
+                                         let IsPersonalFriend = (FormFieldResponses.Where(r => r.CRM_FormFieldItemID == PersonalFriend))
+                                         where !p.IsArchived
+                                         where db.CRM_FormFieldResponses.Any(r =>
+                                             r.CRM_FormFieldItemID != null &&
+                                             constituents.Contains((int)r.CRM_FormFieldItemID) &&
+                                             r.TargetReference == p.Reference)
+                                         where !p.IsDoNotMail
+                                         select new CRM.Code.Helpers.FriendReportHelper()
+                                         {
+                                             CRM_AnnualPass = null,
+                                             IsFriend = IsFriendByConstituent.Any(),
+                                             IsPersonalFriend = IsPersonalFriend.Any(),
+                                             CRM_Person = p
+                                         }).ToList()
+                    select p;
+
+
+                members = members.Concat(dataset).ToList();
+
+            }
+
+
+
+
             IEnumerable<IGrouping<int?, FriendReportHelper>> groupset = members.GroupBy(g => g.CRM_Person.RelationshipID);
 
             var recordsWithRelation = groupset.Where(c => c.Key != null).Select(c => c.First());

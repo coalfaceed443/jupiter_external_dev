@@ -26,9 +26,9 @@
                 OK to send postals<br />
                  not archived <br />
                  removing relationship duplicates<br />
-                 removing duplicates by full name + postcode
-                 not expired, or have expired within <asp:TextBox ID="txtDays" runat="server" Text="30" Width="80" /> days
-
+                 removing duplicates by full name + postcode<br />
+                 not expired, or have expired within <asp:TextBox ID="txtDays" runat="server" Text="30" Width="80" /> days<br />
+                 <asp:CheckBox ID="chkExhibition" runat="server" /> also include "Press, Museums, Council, Galleries, Artist, Festivals, Government"
              </p>
 
                  </div>
