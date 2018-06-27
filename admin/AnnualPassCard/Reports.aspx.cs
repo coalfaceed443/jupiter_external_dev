@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CRM.Code.Extensions;
+using CRM.Code.Utils.Time;
 
 namespace CRM.admin.AnnualPassCard
 {
@@ -60,8 +61,17 @@ namespace CRM.admin.AnnualPassCard
             return constituents;
         }
 
+
+        protected DateTime startDate;
+        protected DateTime endDate;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            int year = UKTime.Now.Year - 1;
+            startDate = new DateTime(year, 1, 1);
+            endDate = new DateTime(DateTime.Now.Year - 1, 12, 31);
+
             btnExportAudit.EventHandler = btnExportAudit_Click;
 
             btnActiveFriends.EventHandler = btnActiveFriends_Click;
@@ -173,16 +183,12 @@ namespace CRM.admin.AnnualPassCard
 
 
         }
-
         protected void btnExportAudit_Click(object sender, EventArgs e)
         {
-            
-            var startDate = new DateTime(DateTime.Now.Year - 1, 01, 01);
-            var endDate = new DateTime(DateTime.Now.Year -1, 12, 31);
 
             var members = from p in db.CRM_AnnualPasses
-                where p.StartDate >= startDate
                 where p.StartDate <= endDate
+                where p.ExpiryDate >= startDate
                 where !p.IsArchived
                 select p;
 

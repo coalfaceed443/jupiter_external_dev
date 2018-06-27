@@ -98,6 +98,81 @@ namespace CRM.Code
 
             }
 
+        public class ExportByInterestHelper
+        {
+            public CRM_Person Person { get; set; }
+            public IQueryable<CRM_FormFieldResponse> Responses { get; set; }
+        }
+
+        internal static void ContactsByInterest(List<ExportByInterestHelper> Helpers, List<CRM_FormFieldItem> interests, HttpResponse Response)
+        {
+            string columns = "Title, Firstname, Lastname, IsAnnualPassHolder, PrimaryEmail, CalculatedSalutation, PrimaryAddressLine1, PrimaryAddressLine2, PrimaryAddressLine3, PrimaryAddressLine4, PrimaryAddressLine5, PrimaryAddressTown, PrimaryAddressCounty, PrimaryAddressPostcode, PrimaryAddressCountry, NextExpiryDate, IsDoNotEmail, IsDoNotMail, IsDeceased, ";
+
+               string filename = "contacts_by_interest";
+
+             Response.Clear();
+            Response.ContentType = "text/csv";
+            Response.AddHeader("content-disposition", "attachment; filename=\"" + filename + "-" + DateTime.UtcNow.ToString("dd-MM-yyyy") + ".csv\"");
+            Response.ContentEncoding = Encoding.GetEncoding("Windows-1252");
+
+
+            foreach (CRM_FormFieldItem item in interests)
+            {
+                columns += item.DisplayName.Replace(",", "") + ",";
+            }
+
+            HttpContext.Current.Response.Write(columns);
+            HttpContext.Current.Response.Write(Environment.NewLine);
+
+
+            StringBuilder sbItems = new StringBuilder();
+
+            foreach (ExportByInterestHelper helper in Helpers)
+            {
+                CRM_Person p = helper.Person;
+
+                AddComma(p.Title, sbItems);
+                AddComma(p.Firstname, sbItems);
+                AddComma(p.Lastname, sbItems);
+                AddComma(p.IsAnnualPassHolder ? "TRUE" : "FALSE", sbItems);
+                AddComma(p.PrimaryEmail, sbItems);
+                AddComma(p.CalculatedSalutation, sbItems);
+                AddComma(p.PrimaryAddressLine1, sbItems);
+                AddComma(p.PrimaryAddressLine2, sbItems);
+                AddComma(p.PrimaryAddressLine3, sbItems);
+                AddComma(p.PrimaryAddressLine4, sbItems);
+                AddComma(p.PrimaryAddressLine5, sbItems);
+                AddComma(p.PrimaryAddressTown, sbItems);
+                AddComma(p.PrimaryAddressCounty, sbItems);
+                AddComma(p.PrimaryAddressPostcode, sbItems);
+                AddComma(p.PrimaryAddressCountry, sbItems);
+                AddComma(p.NextExpiryDate, sbItems);
+                AddComma(p.IsDoNotEmail ? "TRUE" : "FALSE", sbItems);
+                AddComma(p.IsDoNotMail ? "TRUE" : "FALSE", sbItems);
+                AddComma(p.IsDeceased ? "TRUE" : "FALSE", sbItems);
+
+                foreach (CRM_FormFieldItem interest in interests)
+                {
+                    if (helper.Responses.Any(c => c.TargetReference == p.Reference && c.CRM_FormFieldItemID == interest.ID))
+                    {
+                        AddComma("TRUE", sbItems);
+                    }
+                    else
+                    {
+                        AddComma("FALSE", sbItems);
+                    }
+                }
+
+                Response.Write(sbItems.ToString());
+                Response.Write(Environment.NewLine);
+                sbItems = new StringBuilder();
+            }
+
+
+            Response.End();
+
+        }
+
         internal static void ActiveFriendsByConstituent(List<FriendReportHelper> members, HttpResponse Response)
         {
 
@@ -212,7 +287,7 @@ namespace CRM.Code
         {
  
 
-            string columnNames = "Signup Date,Membership Type,Name,Number,Amount Paid,Payment Method,Email";
+            string columnNames = "Signup Date, Expiry Date, Membership Type,Name,Number,Amount Paid,Payment Method,Email";
 
             string filename = "audit";
 
@@ -233,6 +308,7 @@ namespace CRM.Code
                 CRM_AnnualPassPerson owner = pass.CRM_AnnualPassPersons.FirstOrDefault(r => r.CRM_Person.Reference == pass.PrimaryContactReference);
 
                 AddComma(pass.StartDate.ToString("dd/MM/yyyy HH:mm"), sbItems);
+                AddComma(pass.ExpiryDate.ToString("dd/MM/yyyy HH:mm"), sbItems);
                 AddComma(pass.TypeOfPass, sbItems);
                 AddComma(owner == null ? "Unknown" : owner.CRM_Person.Fullname, sbItems);
                 AddComma(pass.CRM_AnnualPassCard.MembershipNumber.ToString(), sbItems);

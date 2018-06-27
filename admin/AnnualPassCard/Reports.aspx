@@ -13,6 +13,9 @@
          <div class="innerContentForm">
 
              <div class="buttons">
+
+                 <p>Active friends between <%= startDate.ToString("dd/MM/yyyy") %> and <%= endDate.ToString("dd/MM/yyyy") %></p>
+
                 <ucUtil:Button ID="btnExportAudit" runat="server" ButtonText="Export Audit" />
              </div>
 

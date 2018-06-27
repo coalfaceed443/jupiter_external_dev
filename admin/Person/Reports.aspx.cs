@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CRM.Code.Extensions;
+using static CRM.Code.CSVExport;
 
 namespace CRM.admin.Person
 {
@@ -17,6 +18,15 @@ namespace CRM.admin.Person
         {
             btnExportExhibitionPostal.EventHandler = btnExportExhibitionPostal_Click;
             btnExportLearningContacts.EventHandler = btnExportLearningContacts_Click;
+            btnExportByInterest.EventHandler = btnExportByInterest_Click;
+
+            if (!Page.IsPostBack)
+            {
+                ddlInterest.DataSource = from p in db.CRM_FormFieldItems.Where(r => !r.IsArchived && r.IsActive && r.CRM_FormFieldID == 1)
+                                         orderby p.OrderNo
+                                         select p;
+                ddlInterest.DataBind();
+            }
         }
 
         protected enum CustomFieldIDs
@@ -74,6 +84,57 @@ namespace CRM.admin.Person
             };
 
             return constituents;
+        }
+
+
+
+        protected void btnExportByInterest_Click(object sender, EventArgs e)
+        {
+            //var dataset = from p in db.CRM_Persons
+            //              where !p.IsArchived
+            //              let Responses = db.CRM_FormFieldResponses.Where(r => r.TargetReference == p.Reference && r.CRM_FormFieldID == 1)
+            //              select new ExportByInterestHelper{
+            //                  Person = p,
+            //                  Responses = Responses
+            //              };
+
+            //List<CRM_FormFieldItem> items = db.CRM_FormFieldItems.Where(r => r.CRM_FormFieldID == 1).ToList(); // Constituents
+
+            //CSVExport.ContactsByInterest(dataset.ToList(), items, Response);
+            
+            var dataset = from p in db.CRM_Persons
+                          where db.CRM_FormFieldResponses.Any(r =>
+                          r.CRM_FormFieldItemID != null && ddlInterest.SelectedValue == ((int)r.CRM_FormFieldItemID).ToString() &&
+                              r.TargetReference == p.Reference)
+                          let constituentOutput = p.ConstituentTypeOutput(db, " ")
+                          where !p.IsArchived
+                          select new
+                          {
+
+                              p.Title,
+                              p.Firstname,
+                              p.Lastname,
+                              p.IsAnnualPassHolder,
+                              p.PrimaryEmail,
+                              p.CalculatedSalutation,
+                              p.PrimaryAddressLine1,
+                              p.PrimaryAddressLine2,
+                              p.PrimaryAddressLine3,
+                              p.PrimaryAddressLine4,
+                              p.PrimaryAddressLine5,
+                              p.PrimaryAddressTown,
+                              p.PrimaryAddressCounty,
+                              p.PrimaryAddressPostcode,
+                              p.PrimaryAddressCountry,
+                              p.NextExpiryDate,
+                              p.IsDoNotEmail,
+                              p.IsDoNotMail,
+                              constituentOutput
+
+                          };
+
+            CSVExport.GenericExport(dataset.ToArray(), "byinterest-contacts");
+
         }
 
         protected void btnExportLearningContacts_Click(object sender, EventArgs e)

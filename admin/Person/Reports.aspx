@@ -38,6 +38,16 @@
                 <p>
                     <ucUtil:Button ID="btnExportLearningContacts" runat="server" ButtonText="Export Learning Contacts" />
                 </p>
+                <h2>Contacts by Interest</h2>
+               
+                    <ul>
+                        <li>All contacts who aren't archived</li>
+                        <li>By <asp:DropDownList ID="ddlInterest" runat="server" DataTextField="Label" DataValueField="ID" />.</li>
+                    </ul>
+
+                <p>
+                    <ucUtil:Button ID="btnExportByInterest" runat="server" ButtonText="Export by Interest" />
+                </p>
             </div>
         </div>
 
